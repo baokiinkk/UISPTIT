@@ -20,8 +20,8 @@ import kotlin.coroutines.resume
 
 // T muốn là tạo 2 hàm 1 hàm kiểm tra login 1 hàm lấy list điểm nhưng mà t buồn ngủ quá rồi T_T làm hộ nha
 
-class HttpUis(override var context: Context) : Network {
-    override fun login(loginInfor: LoginInfor) : MutableList<String>  {
+class HttpUis( var context: Context)  {
+     fun login(loginInfor: LoginInfor) : MutableList<String>  {
         val cookieJars: ClearableCookieJar =
             PersistentCookieJar(SetCookieCache(), SharedPrefsCookiePersistor(context))
         var client = OkHttpClient().newBuilder()
@@ -54,10 +54,6 @@ class HttpUis(override var context: Context) : Network {
             list.add(x.text())
         }
         return list
-    }
-
-    override suspend fun getMark(): MutableList<String> {
-        return mutableListOf()
     }
 
 

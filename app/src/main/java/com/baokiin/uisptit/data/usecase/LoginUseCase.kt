@@ -5,5 +5,6 @@ import com.baokiin.uis.data.repository.LoginRepository
 
 interface LoginUseCase {
     val repo : LoginRepository
-    @Throws(LoginRepository.LoginException::class) suspend fun getStatusLogin(loginInfor: LoginInfor): Boolean
+    @Throws(LoginRepository.LoginException::class)
+     fun isLogin(loginInfor: LoginInfor,islogin:(Boolean)->Unit)
 }

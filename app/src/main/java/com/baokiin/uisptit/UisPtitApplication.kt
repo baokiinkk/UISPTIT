@@ -16,7 +16,6 @@ class UisPtitApplication : Application() {
                 dataBase,
                 loginRepositoryDi,
                 loginUseCaseDi,
-                markUseCaseDi,
                 loginViewModelDi
             ))
         }

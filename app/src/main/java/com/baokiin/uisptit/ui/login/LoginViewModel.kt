@@ -18,7 +18,9 @@ class LoginViewModel(val useCase: LoginUseCase) : ViewModel() {
     fun login(loginInfor: LoginInfor) {
         viewModelScope.launch(Dispatchers.IO) {
             try{
-                isLogin.postValue(useCase.getStatusLogin(loginInfor))
+                useCase.isLogin(loginInfor){
+                    isLogin.postValue(it)
+                }
             }catch (e: LoginRepository.LoginException){
                 isLogin.postValue(null)
             }
