@@ -1,28 +1,26 @@
-package com.baokiin.uis.ui.login
+package com.baokiin.uisptit.ui.login
 
 import android.content.Context
 import android.text.Editable
 import android.view.View
-import android.view.WindowManager
 import android.view.inputmethod.InputMethodManager
 import androidx.core.widget.doAfterTextChanged
 import androidx.lifecycle.Observer
 import com.baokiin.uis.data.database.domain.LoginInfor
 import com.baokiin.uis.ui.BaseFragment
 import com.baokiin.uisptit.R
-import com.baokiin.uisptit.databinding.LoginFragmentBinding
+import com.baokiin.uisptit.databinding.FragmentLoginBinding
 import org.koin.android.ext.android.inject
-import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
 typealias EditEvent = (Editable?) -> Unit
 
 
 @Suppress("CAST_NEVER_SUCCEEDS")
-class LoginFragment : BaseFragment<LoginViewModel, LoginFragmentBinding>() {
+class LoginFragment : BaseFragment<LoginViewModel, FragmentLoginBinding>() {
 
 
-    override fun getLayoutRes(): Int = R.layout.login_fragment
+    override fun getLayoutRes(): Int = R.layout.fragment_login
     private var callBack: LoginCallBack? = null
     private val inputManager: InputMethodManager by lazy {
         activity?.applicationContext?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
@@ -32,14 +30,14 @@ class LoginFragment : BaseFragment<LoginViewModel, LoginFragmentBinding>() {
             // Tạo delay ở
             loginInfor.username = baseBinding.usernameEt.editText?.text.toString()
             loginInfor.password = baseBinding.passwordEt.editText?.text.toString()
-            baseViewModel.login(loginInfor)
             activity?.currentFocus?.let {
                 inputManager.hideSoftInputFromWindow(it.windowToken, 0)
             }
+            baseViewModel.login(loginInfor)
         }
     }
     private val changeInput: EditEvent by lazy {
-        object :EditEvent{
+        object : EditEvent {
             override fun invoke(editable: Editable?) {
                 baseBinding.errorTv.text = ""
             }
@@ -56,8 +54,9 @@ class LoginFragment : BaseFragment<LoginViewModel, LoginFragmentBinding>() {
             // Kết thúc delay ở
             if(it == null){
                 baseBinding.errorTv.text = getString(R.string.login_false)
+                baseViewModel.isLogin.value = false
             }
-            if(it == true){
+            else if(it == true){
                 callBack?.success(loginInfor)
             }
         })

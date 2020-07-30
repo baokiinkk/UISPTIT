@@ -4,7 +4,7 @@ import android.app.Activity
 import android.content.Intent
 import com.baokiin.uis.data.database.domain.LoginInfor
 import com.baokiin.uis.ui.BaseActivity
-import com.baokiin.uis.ui.login.LoginFragment
+import com.baokiin.uisptit.ui.login.LoginFragment
 import com.baokiin.uisptit.databinding.ActivityStartBinding
 
 class StartActivity : BaseActivity<ActivityStartBinding>(), LoginFragment.LoginCallBack {

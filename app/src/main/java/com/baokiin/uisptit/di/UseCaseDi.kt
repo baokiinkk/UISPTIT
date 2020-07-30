@@ -1,6 +1,6 @@
 package com.baokiin.uis.di
 
-import com.baokiin.uis.data.usecase.LoginUseCase
+import com.baokiin.uisptit.data.usecase.LoginUseCase
 import com.baokiin.uis.data.usecase.LoginUseCaseImpl
 import com.baokiin.uis.data.usecase.MarkUseCase
 import com.baokiin.uis.data.usecase.MarkUseCaseImpl

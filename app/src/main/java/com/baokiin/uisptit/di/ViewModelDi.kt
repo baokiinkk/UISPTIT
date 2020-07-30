@@ -1,6 +1,6 @@
-package com.baokiin.uis.di
+package com.baokiin.uisptit.di
 
-import com.baokiin.uis.ui.login.LoginViewModel
+import com.baokiin.uisptit.ui.login.LoginViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.core.module.Module
 import org.koin.dsl.module
