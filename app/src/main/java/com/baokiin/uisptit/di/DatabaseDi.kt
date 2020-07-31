@@ -2,8 +2,9 @@ package com.baokiin.uis.di
 
 import com.baokiin.uis.data.repository.login.LoginInfor
 import org.koin.android.ext.koin.androidApplication
-import org.koin.android.ext.koin.androidContext
 import com.baokiin.uis.data.api.HttpUis
+import com.baokiin.uisptit.data.db.AppDao
+import com.baokiin.uisptit.data.db.AppDatabase
 import org.koin.core.module.Module
 import org.koin.dsl.module
 
@@ -13,4 +14,7 @@ val HttpUis: Module = module {
 
 val dataBase: Module = module {
     factory { LoginInfor("", "") }
+}
+val appdaoModule= module {
+    single<AppDao> { AppDatabase.getInstance(androidApplication()).appDao()}
 }

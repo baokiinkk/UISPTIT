@@ -2,7 +2,7 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "60756f3d5d7c42495089513a2fd4c174",
+    "identityHash": "44568ab82b68be47614acfe94c355da2",
     "entities": [
       {
         "tableName": "Mark",
@@ -143,12 +143,68 @@
         },
         "indices": [],
         "foreignKeys": []
+      },
+      {
+        "tableName": "SemesterMark",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`semester` TEXT NOT NULL, `mediumScore10` REAL NOT NULL, `mediumScore4` REAL NOT NULL, `gpa10` REAL NOT NULL, `gpa4` REAL NOT NULL, `credits` INTEGER NOT NULL, `creditsAccumulated` INTEGER NOT NULL, PRIMARY KEY(`semester`))",
+        "fields": [
+          {
+            "fieldPath": "semester",
+            "columnName": "semester",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "mediumScore10",
+            "columnName": "mediumScore10",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "mediumScore4",
+            "columnName": "mediumScore4",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "gpa10",
+            "columnName": "gpa10",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "gpa4",
+            "columnName": "gpa4",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "credits",
+            "columnName": "credits",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "creditsAccumulated",
+            "columnName": "creditsAccumulated",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "semester"
+          ],
+          "autoGenerate": false
+        },
+        "indices": [],
+        "foreignKeys": []
       }
     ],
     "views": [],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '60756f3d5d7c42495089513a2fd4c174')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '44568ab82b68be47614acfe94c355da2')"
     ]
   }
 }

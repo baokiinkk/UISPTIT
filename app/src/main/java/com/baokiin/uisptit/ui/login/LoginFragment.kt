@@ -2,6 +2,7 @@ package com.baokiin.uisptit.ui.login
 
 import android.content.Context
 import android.text.Editable
+import android.util.Log
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import androidx.core.widget.doAfterTextChanged
@@ -57,7 +58,16 @@ class LoginFragment : BaseFragment<LoginViewModel, FragmentLoginBinding>() {
                 baseViewModel.isLogin.value = false
             }
             else if(it == true){
+                baseViewModel.getData("")
                 callBack?.success(loginInfor)
+            }
+        })
+        baseViewModel.listData.observe(viewLifecycleOwner, Observer {
+            if(it!= null){
+                Log.d("quocbaokiin",it.size.toString())
+                for(i in it){
+                    Log.d("quocbaokiin",i.toString())
+                }
             }
         })
     }

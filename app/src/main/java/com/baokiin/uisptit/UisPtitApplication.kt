@@ -19,7 +19,8 @@ class UisPtitApplication : Application() {
                 loginRepositoryDi,
                 loginUseCaseDi,
                 inforViewModelDi,
-                loginViewModelDi
+                loginViewModelDi,
+                appdaoModule
             ))
         }
     }

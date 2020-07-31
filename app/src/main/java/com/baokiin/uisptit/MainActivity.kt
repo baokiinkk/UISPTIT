@@ -9,6 +9,7 @@ import com.baokiin.uis.ui.BaseActivity
 import com.baokiin.uisptit.databinding.ActivityMainBinding
 import com.baokiin.uisptit.ui.info.InfoFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : BaseActivity<ActivityMainBinding>() {
     companion object{

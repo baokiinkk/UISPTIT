@@ -6,5 +6,5 @@ import org.koin.core.module.Module
 import org.koin.dsl.module
 
 val loginRepositoryDi: Module = module {
-    single<LoginRepository> { LoginRepositoryImpl(get()) }
+    single<LoginRepository> { LoginRepositoryImpl(get(),get()) }
 }

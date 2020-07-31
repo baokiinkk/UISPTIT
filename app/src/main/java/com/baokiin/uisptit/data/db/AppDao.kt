@@ -1,42 +1,31 @@
 package com.baokiin.uisptit.data.db
 
 import androidx.room.*
+import com.baokiin.uis.data.db.model.SemesterMark
+import com.baokiin.uisptit.data.db.model.Mark
 
 @Dao
 interface AppDao {
 
-//    //insert
-//    @Insert(onConflict = OnConflictStrategy.IGNORE) // khi trung thi bo qua
-//    suspend fun addBoMon(bomon: BoMon)
+    //insert
+    @Insert(onConflict = OnConflictStrategy.IGNORE) // khi trung thi bo qua
+    suspend fun addMark(mark: Mark)
 //
-//    @Insert(onConflict = OnConflictStrategy.IGNORE) // khi trung thi bo qua
-//    suspend fun addScore(score: Score)
-//
-//    @Insert(onConflict = OnConflictStrategy.IGNORE) // khi trung thi bo qua
-//    suspend fun addDeThi(deThi: DeThi)
-//
-//    @Insert(onConflict = OnConflictStrategy.IGNORE) // khi trung thi bo qua
-//    suspend fun addBaiThi(baiThi: BaiThi)
-//
+    @Insert(onConflict = OnConflictStrategy.IGNORE) // khi trung thi bo qua
+    suspend fun addSemester(semester: SemesterMark)
+
 //    // delete
-//    @Delete
-//       suspend fun deleteDeThi(vararg deThi: DeThi)
-//    // update
-//    @Update
-//    suspend fun updateBoMon(bomon: BoMon)
+    @Delete
+    suspend fun deleteMark(vararg mark: Mark)
 //
-//
-//    @Update
-//    suspend fun updateBaiThi(baiThi: BaiThi)
-//
-//    @Update
-//    suspend fun updateDeThi(deThi: DeThi)
-//
+
 //    //query
-//    @Query("select * from BoMon")
-//    suspend fun getALLBoMon(): MutableList<BoMon>
-//    @Query("DELETE  from BoMon")
-//    suspend fun deleteBoMon()
+    @Query("select * from Mark Where Mark.semester=:hocki")
+    suspend fun getMarkHK(hocki:String): MutableList<Mark>
+    @Query("select * from Mark ")
+    suspend fun getMark(): MutableList<Mark>
+    @Query("DELETE  from Mark")
+    suspend fun deleteMark()
 //
 //    @Query("select * from Score")
 //    suspend fun getScore(): Score

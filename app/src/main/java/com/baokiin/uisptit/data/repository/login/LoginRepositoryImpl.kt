@@ -1,13 +1,16 @@
 package com.baokiin.uis.data.repository.login
 
-import android.util.Log
 import com.baokiin.uis.data.api.HttpUis
-import kotlinx.coroutines.suspendCancellableCoroutine
-import org.jsoup.Jsoup
-import javax.security.auth.login.LoginException
-import kotlin.coroutines.resume
+import com.baokiin.uisptit.data.db.AppDao
+import com.baokiin.uisptit.data.db.model.Mark
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 
-class LoginRepositoryImpl( var network: HttpUis) : LoginRepository {
+import org.jsoup.Jsoup
+
+
+class LoginRepositoryImpl( var network: HttpUis,var dao:AppDao) : LoginRepository {
     private var list: MutableMap<String, String>? = null
     // private lateinit var loginInfor: LoginInfor
 
@@ -16,17 +19,31 @@ class LoginRepositoryImpl( var network: HttpUis) : LoginRepository {
     override fun isLogin(loginInfor: LoginInfor, islogin: (Boolean) -> Unit) {
         this.list = network.login(loginInfor)
         if (list!!.isNotEmpty()) {
-            val x = xuLiDiemTongKet(list!!.get("Diem")!!)
-            for(i in x){
-               //0 Log.d("quocbaokiin",i)
+            GlobalScope.launch(Dispatchers.IO) {
+                val x = xuLiDiem(list!!.get("Diem")!!)
+                dao.deleteMark()
+                for (i in x)
+                    dao.addMark(Mark(0,i[0],i[2],i[3],i[4],i[5],i[6],i[7],i[8],i[9],i[10],
+                        i[11],i[12],i[13],i[14],i[15],i[16],i[17],i[18],i[19],i[20]))
+                islogin(true)
             }
-            islogin(true)
 
         } else {
             throw LoginRepository.LoginException()
         }
 
 
+    }
+
+    override fun getDataDiem( hk:String,getdata: (MutableList<Mark>) -> Unit) {
+        GlobalScope.launch {
+
+            val markHK:MutableList<Mark>
+            if(hk.equals(""))
+                markHK= dao.getMark()
+            else markHK = dao.getMarkHK(hk)
+            getdata(markHK)
+        }
     }
 
     fun xuLiThongTin(htmlFile : String) : MutableList<String>{
@@ -49,29 +66,37 @@ class LoginRepositoryImpl( var network: HttpUis) : LoginRepository {
         }
         return res
     }
-    fun xuLiDiem(htmlFile: String): MutableList<String> {
+    fun xuLiDiem(htmlFile: String): MutableList<MutableList<String>> {
         var noiDung: MutableList<String> = mutableListOf()
         var htmlDidJsoup = Jsoup.parse(htmlFile)
         var doc = htmlDidJsoup.select("div#ctl00_ContentPlaceHolder1_ctl00_div1 tr.title-hk-diem span.Label,tr.row-diem span.Label")
         for (x in doc) {
             noiDung.add(x.text())
         }
-        var res = mutableListOf<String>()
+        var res = mutableListOf<MutableList<String>>()
+        var result:MutableList<String> = mutableListOf()
+        result.add("")
         var cnt = 1
-        var result = ""
+        var hk = ""
         for (x in noiDung) {
+
             // x có dạng "Học kỳ ......."
             if (isHocKy(x)) {
-                res.add(x)
+                //res.add(x)
+                hk=x
+                result[0]=(hk)
+
             } else {
                 if (cnt < 20) {
-                    result += x + " | "
+                    result.add(x)
+
                     cnt++;
                 } else {
-                    result += x + " | "
+                    result.add(x)
                     res.add(result)
+                    result = mutableListOf()
+                    result.add(hk)
                     cnt = 1
-                    result = ""
                 }
             }
         }
