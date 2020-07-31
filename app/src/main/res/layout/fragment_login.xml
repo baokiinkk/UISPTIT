@@ -73,7 +73,6 @@
             android:ems="10"
             android:focusable="auto"
             android:hint="@string/password"
-            android:inputType="textPassword"
             android:singleLine="true"
             android:textColorHint="@color/my_color"
             app:boxBackgroundMode="outline"
@@ -89,7 +88,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:singleLine="true"
-                android:textCursorDrawable="@drawable/custom_cursor"/>
+                android:textCursorDrawable="@drawable/custom_cursor"
+                android:inputType="textPassword"/>
         </com.google.android.material.textfield.TextInputLayout>
         <com.google.android.material.button.MaterialButton
             android:id="@+id/login_button"

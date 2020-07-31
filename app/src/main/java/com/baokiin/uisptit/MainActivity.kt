@@ -7,7 +7,7 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.baokiin.uis.ui.BaseActivity
 import com.baokiin.uisptit.databinding.ActivityMainBinding
-import com.baokiin.uisptit.ui.home.HomeFragment
+import com.baokiin.uisptit.ui.info.InfoFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : BaseActivity<ActivityMainBinding>() {
@@ -26,13 +26,14 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
     private val navHostFragment by lazy {
         supportFragmentManager.findFragmentById(R.id.nav_host_fragment)
     }
+    val navView: BottomNavigationView by lazy{
+        baseViewBinding.navView
+    }
 
     override fun getLayoutRes(): Int = R.layout.activity_main
 
     override fun setUpViews() {
         startActivityForResult(startIntent, LOGIN_CODE)
-        val navView: BottomNavigationView = baseViewBinding.navView//findViewById(R.id.nav_view)
-
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         //val appBarConfiguration = AppBarConfiguration(setOf(
@@ -41,14 +42,13 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
         navView.setupWithNavController(navController)
     }
 
-
-
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if(requestCode == LOGIN_CODE){
             if(resultCode == Activity.RESULT_OK){
                 try {
-                    (navHostFragment?.childFragmentManager?.fragments?.get(0) as HomeFragment).callBack()
+                    navView.selectedItemId = R.id.navigation_infor
+                    (navHostFragment?.childFragmentManager?.fragments?.get(0) as InfoFragment).callBack()
                 }catch (e: Exception){
                     println(e.message.toString())
                 }

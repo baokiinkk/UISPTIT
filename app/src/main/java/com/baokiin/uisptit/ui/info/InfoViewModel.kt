@@ -1,4 +1,4 @@
-package com.baokiin.uisptit.ui.home
+package com.baokiin.uisptit.ui.info
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -6,7 +6,7 @@ import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class HomeViewModel() : ViewModel() {
+class InfoViewModel() : ViewModel() {
 
     val markLiveData: MutableLiveData<MutableList<String>?> by lazy {
         MutableLiveData<MutableList<String>?>().also {

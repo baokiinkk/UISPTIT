@@ -1,6 +1,6 @@
 package com.baokiin.uisptit.di
 
-import com.baokiin.uisptit.ui.home.HomeViewModel
+import com.baokiin.uisptit.ui.info.InfoViewModel
 import com.baokiin.uisptit.ui.login.LoginViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.core.module.Module
@@ -12,6 +12,6 @@ val loginViewModelDi: Module = module {
     viewModel{ LoginViewModel(get()) }
 }
 
-val markViewModelDi: Module = module {
-    viewModel { HomeViewModel() }
+val inforViewModelDi: Module = module {
+    viewModel { InfoViewModel() }
 }

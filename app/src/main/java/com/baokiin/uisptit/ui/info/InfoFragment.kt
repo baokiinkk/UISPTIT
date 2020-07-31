@@ -1,18 +1,17 @@
-package com.baokiin.uisptit.ui.home
+package com.baokiin.uisptit.ui.info
 
-import androidx.lifecycle.Observer
 import com.baokiin.uis.ui.BaseFragment
 import com.baokiin.uisptit.MainActivity
 import com.baokiin.uisptit.R
-import com.baokiin.uisptit.databinding.FragmentHomeBinding
+import com.baokiin.uisptit.databinding.FragmentInfoBinding
 
-class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>(), MainActivity.MarkCallBack {
+class InfoFragment : BaseFragment<InfoViewModel, FragmentInfoBinding>(), MainActivity.MarkCallBack {
 
     override fun callBack() {
         baseViewModel.getMark()
     }
 
-    override fun getLayoutRes(): Int = R.layout.fragment_home
+    override fun getLayoutRes(): Int = R.layout.fragment_info
 
     override fun setUpViews() {
 //        baseViewModel.markLiveData.observe(this, Observer {

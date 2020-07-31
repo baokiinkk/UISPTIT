@@ -13,7 +13,10 @@
     <string name="login_false">Wrong username or password</string>
     <string name="title_activity_main2">MainActivity</string>
 
-    <string name="menu_home">Home</string>
-    <string name="menu_gallery">Gallery</string>
-    <string name="menu_slideshow">Slideshow</string>
+    <string name="menu_info">Info</string>
+    <string name="menu_exam_schedule">Exam Schedule</string>
+    <string name="menu_mark">Mark</string>
+    <string name="menu_schedule">Schedule</string>
+    <string name="menu_option">Option</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
