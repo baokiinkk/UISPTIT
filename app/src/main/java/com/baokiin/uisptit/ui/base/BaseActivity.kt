@@ -5,7 +5,6 @@ import androidx.annotation.LayoutRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
-import com.baokiin.uis.data.database.domain.LoginInfor
 import org.koin.android.ext.android.inject
 
 // Sử dụng BaseActivity vì có vài thuộc tính giống nhau không cần phải cài đặt lại

@@ -15,11 +15,11 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>(), MainAct
     override fun getLayoutRes(): Int = R.layout.fragment_home
 
     override fun setUpViews() {
-        baseViewModel.markLiveData.observe(this, Observer {
-            if(it == null) return@Observer
-            for(x in it){
-                println(x)
-            }
-        })
+//        baseViewModel.markLiveData.observe(this, Observer {
+//            if(it == null) return@Observer
+//            for(x in it){
+//                println(x)
+//            }
+//        })
     }
 }

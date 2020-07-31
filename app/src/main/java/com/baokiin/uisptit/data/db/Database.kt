@@ -4,7 +4,7 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.baokiin.uis.data.db.model.Mark
+import com.baokiin.uisptit.data.db.model.Mark
 
 @Database(entities = [Mark::class], version = 1)
 abstract class AppDatabase: RoomDatabase() {

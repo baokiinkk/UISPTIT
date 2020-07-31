@@ -18,7 +18,7 @@ class LoginRepositoryImpl( var network: HttpUis) : LoginRepository {
         if (list!!.isNotEmpty()) {
             val x = xuLiDiemTongKet(list!!.get("Diem")!!)
             for(i in x){
-                Log.d("quocbaokiin",i)
+               //0 Log.d("quocbaokiin",i)
             }
             islogin(true)
 

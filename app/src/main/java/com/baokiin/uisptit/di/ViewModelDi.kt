@@ -13,5 +13,5 @@ val loginViewModelDi: Module = module {
 }
 
 val markViewModelDi: Module = module {
-    viewModel { HomeViewModel(get()) }
+    viewModel { HomeViewModel() }
 }

@@ -1,0 +1,154 @@
+{
+  "formatVersion": 1,
+  "database": {
+    "version": 1,
+    "identityHash": "60756f3d5d7c42495089513a2fd4c174",
+    "entities": [
+      {
+        "tableName": "Mark",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `semester` TEXT NOT NULL, `objectId` TEXT NOT NULL, `objectName` TEXT NOT NULL, `objectCredits` TEXT NOT NULL, `percentCC` TEXT NOT NULL, `percentKT` TEXT NOT NULL, `percentTH` TEXT NOT NULL, `percentSE` TEXT NOT NULL, `percentThi` TEXT NOT NULL, `CC` TEXT NOT NULL, `KT` TEXT NOT NULL, `TH` TEXT NOT NULL, `Se` TEXT NOT NULL, `Thi1` TEXT NOT NULL, `Thi2` TEXT NOT NULL, `Thi3` TEXT NOT NULL, `Tk10` TEXT NOT NULL, `TKCH` TEXT NOT NULL, `KQ1` TEXT NOT NULL, `KQ` TEXT NOT NULL)",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "semester",
+            "columnName": "semester",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "objectId",
+            "columnName": "objectId",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "objectName",
+            "columnName": "objectName",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "objectCredits",
+            "columnName": "objectCredits",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "percentCC",
+            "columnName": "percentCC",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "percentKT",
+            "columnName": "percentKT",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "percentTH",
+            "columnName": "percentTH",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "percentSE",
+            "columnName": "percentSE",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "percentThi",
+            "columnName": "percentThi",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "CC",
+            "columnName": "CC",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "KT",
+            "columnName": "KT",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "TH",
+            "columnName": "TH",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "Se",
+            "columnName": "Se",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "Thi1",
+            "columnName": "Thi1",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "Thi2",
+            "columnName": "Thi2",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "Thi3",
+            "columnName": "Thi3",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "Tk10",
+            "columnName": "Tk10",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "TKCH",
+            "columnName": "TKCH",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "KQ1",
+            "columnName": "KQ1",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "KQ",
+            "columnName": "KQ",
+            "affinity": "TEXT",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "id"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [],
+        "foreignKeys": []
+      }
+    ],
+    "views": [],
+    "setupQueries": [
+      "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '60756f3d5d7c42495089513a2fd4c174')"
+    ]
+  }
+}

@@ -6,7 +6,7 @@ import android.view.View
 import android.view.inputmethod.InputMethodManager
 import androidx.core.widget.doAfterTextChanged
 import androidx.lifecycle.Observer
-import com.baokiin.uis.data.database.domain.LoginInfor
+import com.baokiin.uis.data.repository.login.LoginInfor
 import com.baokiin.uis.ui.BaseFragment
 import com.baokiin.uisptit.R
 import com.baokiin.uisptit.databinding.FragmentLoginBinding
