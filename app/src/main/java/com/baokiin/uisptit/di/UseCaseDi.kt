@@ -1,4 +1,4 @@
-package com.baokiin.uis.di
+package com.baokiin.uisptit.di
 
 import com.baokiin.uisptit.data.usecase.LoginUseCase
 import com.baokiin.uis.data.usecase.LoginUseCaseImpl
