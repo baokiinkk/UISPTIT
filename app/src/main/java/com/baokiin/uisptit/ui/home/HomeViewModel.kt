@@ -1,13 +1,23 @@
 package com.baokiin.uisptit.ui.home
 
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import com.baokiin.uis.data.usecase.MarkUseCase
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
-class HomeViewModel : ViewModel() {
+class HomeViewModel(private val markUseCase: MarkUseCase) : ViewModel() {
 
-    private val _text = MutableLiveData<String>().apply {
-        value = "This is home Fragment"
+    val markLiveData: MutableLiveData<MutableList<String>?> by lazy {
+        MutableLiveData<MutableList<String>?>().also {
+            mutableListOf<String>()
+        }
     }
-    val text: LiveData<String> = _text
+
+    fun getMark(){
+        viewModelScope.launch(Dispatchers.IO) {
+            markLiveData.postValue(markUseCase.getMark())
+        }
+    }
 }

@@ -8,15 +8,11 @@ import kotlinx.coroutines.suspendCancellableCoroutine
 import kotlin.coroutines.resume
 
 class LoginRepositoryImpl(override var network: Network) : LoginRepository {
-    private  val list: MutableList<String>? by lazy {
-        network.login(loginInfor)
-    }
-    private lateinit var loginInfor: LoginInfor
+    private var list: MutableList<String>? = null
 
     @Throws(LoginRepository.LoginException::class)
     override suspend fun getStatusLogin(loginInfor: LoginInfor): Boolean = suspendCancellableCoroutine {
-        this.loginInfor = loginInfor
-        //list = network.login(loginInfor)
+        this.list = network.login(loginInfor)
         if(list!!.isNotEmpty()){
             it.resume(true)
         }else{
