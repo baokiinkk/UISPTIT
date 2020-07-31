@@ -1,7 +1,8 @@
-package com.baokiin.uis.data.database.network
+package com.baokiin.uis.data.api
 
 import android.content.Context
-import com.baokiin.uis.data.database.domain.LoginInfor
+import android.util.Log
+import com.baokiin.uis.data.repository.login.LoginInfor
 import com.franmontiel.persistentcookiejar.ClearableCookieJar
 import com.franmontiel.persistentcookiejar.PersistentCookieJar
 import com.franmontiel.persistentcookiejar.cache.SetCookieCache
@@ -21,7 +22,8 @@ import kotlin.coroutines.resume
 // T muốn là tạo 2 hàm 1 hàm kiểm tra login 1 hàm lấy list điểm nhưng mà t buồn ngủ quá rồi T_T làm hộ nha
 
 class HttpUis( var context: Context)  {
-     fun login(loginInfor: LoginInfor) : MutableList<String>  {
+     fun login(loginInfor: LoginInfor) : MutableMap<String,String>  {
+         val list :MutableMap<String,String> = mutableMapOf()
         val cookieJars: ClearableCookieJar =
             PersistentCookieJar(SetCookieCache(), SharedPrefsCookiePersistor(context))
         var client = OkHttpClient().newBuilder()
@@ -40,19 +42,33 @@ class HttpUis( var context: Context)  {
             .post(formBody)
             .build()
 
-        val response = client.newCall(request).execute()
+        var response = client.newCall(request).execute()
+         if(response.priorResponse() == null) return mutableMapOf()
+
+
+         //Diem
         request = Request.Builder()
             .url("http://uis.ptithcm.edu.vn/default.aspx?page=xemdiemthi")
             .get()
             .build()
-        val ans =client.newCall(request).execute()
-        val e = Jsoup.parse(ans.body().string())
-        val name = e.select("tr.row-diem span.Label")
-        val list :MutableList<String> = mutableListOf()
+         val responseHtml = Jsoup.parse(client.newCall(request).execute().body().string())
+         val viewState = responseHtml.select("#__VIEWSTATE").attr("value")
+         val formGetMark: RequestBody = FormBody.Builder()
+             .add("__EVENTTARGET" , "ctl00\$ContentPlaceHolder1\$ctl00\$lnkChangeview2")
+             .add("__EVENTARGUMENT" , "")
+             .add("__VIEWSTATE", viewState)
+             .add("__VIEWSTATEGENERATOR", "CA0B0334")
+             .build()
+         request = Request.Builder()
+             .url("http://uis.ptithcm.edu.vn/default.aspx?page=xemdiemthi")
+             .post(formGetMark)
+             .build()
 
-        for(x in name){
-            list.add(x.text())
-        }
+         response = client.newCall(request).execute()
+         list.put("Diem",response.body().string())
+
+         //infor
+
         return list
     }
 

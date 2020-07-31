@@ -1,0 +1,58 @@
+{
+  "formatVersion": 1,
+  "database": {
+    "version": 1,
+    "identityHash": "57ca36a94e015e1ca732955842196ef7",
+    "entities": [
+      {
+        "tableName": "Mark",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`semester` TEXT NOT NULL, `mediumScore10` REAL NOT NULL, `mediumScore4` REAL NOT NULL, `gpa10` REAL NOT NULL, `gpa4` REAL NOT NULL, PRIMARY KEY(`semester`))",
+        "fields": [
+          {
+            "fieldPath": "semester",
+            "columnName": "semester",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "mediumScore10",
+            "columnName": "mediumScore10",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "mediumScore4",
+            "columnName": "mediumScore4",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "gpa10",
+            "columnName": "gpa10",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "gpa4",
+            "columnName": "gpa4",
+            "affinity": "REAL",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "semester"
+          ],
+          "autoGenerate": false
+        },
+        "indices": [],
+        "foreignKeys": []
+      }
+    ],
+    "views": [],
+    "setupQueries": [
+      "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '57ca36a94e015e1ca732955842196ef7')"
+    ]
+  }
+}

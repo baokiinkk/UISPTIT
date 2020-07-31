@@ -1,6 +1,5 @@
-package com.baokiin.uis.data.repository
+package com.baokiin.uis.data.repository.login
 
-import com.baokiin.uis.data.database.domain.LoginInfor
 
 interface LoginRepository {
 
