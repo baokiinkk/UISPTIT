@@ -55,9 +55,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:singleLine="true"
-                android:textCursorDrawable="@drawable/custom_cursor">
-                <requestFocus />
-            </com.google.android.material.textfield.TextInputEditText>
+                android:textCursorDrawable="@drawable/custom_cursor"/>
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout

@@ -2,6 +2,7 @@ package com.baokiin.uisptit.di
 
 import com.baokiin.uisptit.ui.info.InfoViewModel
 import com.baokiin.uisptit.ui.login.LoginViewModel
+import com.baokiin.uisptit.ui.mark.MarkViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.core.module.Module
 import org.koin.dsl.module
@@ -14,4 +15,8 @@ val loginViewModelDi: Module = module {
 
 val inforViewModelDi: Module = module {
     viewModel { InfoViewModel() }
+}
+
+val markViewModelDi: Module = module {
+    viewModel { MarkViewModel(get()) }
 }

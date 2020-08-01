@@ -3,6 +3,8 @@ package com.baokiin.uis.data.repository.login
 import com.baokiin.uis.data.api.HttpUis
 import com.baokiin.uisptit.data.db.AppDao
 import com.baokiin.uisptit.data.db.model.Mark
+import com.baokiin.uisptit.data.db.LoginInfor
+import com.baokiin.uisptit.data.repository.LoginRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -10,7 +12,8 @@ import kotlinx.coroutines.launch
 import org.jsoup.Jsoup
 
 
-class LoginRepositoryImpl( var network: HttpUis,var dao:AppDao) : LoginRepository {
+class LoginRepositoryImpl( var network: HttpUis,var dao:AppDao) :
+    LoginRepository {
     private var list: MutableMap<String, String>? = null
     // private lateinit var loginInfor: LoginInfor
 

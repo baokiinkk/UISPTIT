@@ -1,13 +1,21 @@
 package com.baokiin.uisptit.ui.mark
 
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import com.baokiin.uisptit.data.db.model.Mark
+import com.baokiin.uisptit.data.usecase.MarkUseCase
+import kotlinx.coroutines.launch
 
-class MarkViewModel : ViewModel() {
+class MarkViewModel(private val markUseCase: MarkUseCase) : ViewModel() {
+    val listData:MutableLiveData<MutableList<Mark>?> = MutableLiveData(null)
 
-    private val _text = MutableLiveData<String>().apply {
-        value = "This is dashboard Fragment"
+
+    fun getData(hk:String){
+        viewModelScope.launch {
+            markUseCase.getMark(hk){
+                listData.postValue(it)
+            }
+        }
     }
-    val text: LiveData<String> = _text
 }

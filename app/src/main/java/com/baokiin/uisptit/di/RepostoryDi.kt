@@ -1,6 +1,6 @@
-package com.baokiin.uis.di
+package com.baokiin.uisptit.di
 
-import com.baokiin.uis.data.repository.login.LoginRepository
+import com.baokiin.uisptit.data.repository.LoginRepository
 import com.baokiin.uis.data.repository.login.LoginRepositoryImpl
 import org.koin.core.module.Module
 import org.koin.dsl.module

@@ -61,6 +61,9 @@ dependencies {
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0'
     implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.2.0'
 
+    //gson
+    implementation 'com.google.code.gson:gson:2.8.5'
+
     // koin
     implementation "org.koin:koin-android:2.0.1"
     implementation "org.koin:koin-core:2.0.1"

@@ -1,7 +1,7 @@
 package com.baokiin.uis.data.usecase
 
-import com.baokiin.uis.data.repository.login.LoginInfor
-import com.baokiin.uis.data.repository.login.LoginRepository
+import com.baokiin.uisptit.data.db.LoginInfor
+import com.baokiin.uisptit.data.repository.LoginRepository
 import com.baokiin.uisptit.data.db.model.Mark
 import com.baokiin.uisptit.data.usecase.LoginUseCase
 

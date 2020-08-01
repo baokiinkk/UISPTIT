@@ -2,9 +2,7 @@ package com.baokiin.uisptit
 
 import android.app.Application
 import com.baokiin.uis.di.*
-import com.baokiin.uisptit.di.loginUseCaseDi
-import com.baokiin.uisptit.di.loginViewModelDi
-import com.baokiin.uisptit.di.inforViewModelDi
+import com.baokiin.uisptit.di.*
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
 
@@ -17,7 +15,9 @@ class UisPtitApplication : Application() {
                 HttpUis,
                 dataBase,
                 loginRepositoryDi,
+                markUseCaseDi,
                 loginUseCaseDi,
+                markViewModelDi,
                 inforViewModelDi,
                 loginViewModelDi,
                 appdaoModule

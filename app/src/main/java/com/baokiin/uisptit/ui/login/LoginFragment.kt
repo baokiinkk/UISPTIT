@@ -1,17 +1,21 @@
 package com.baokiin.uisptit.ui.login
 
 import android.content.Context
+import android.content.SharedPreferences
 import android.text.Editable
 import android.util.Log
 import android.view.View
 import android.view.inputmethod.InputMethodManager
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.doAfterTextChanged
 import androidx.lifecycle.Observer
-import com.baokiin.uis.data.repository.login.LoginInfor
-import com.baokiin.uis.ui.BaseFragment
+import com.baokiin.uisptit.MainActivity
+import com.baokiin.uisptit.data.db.LoginInfor
+import com.baokiin.uisptit.ui.base.BaseFragment
 import com.baokiin.uisptit.R
 import com.baokiin.uisptit.databinding.FragmentLoginBinding
-import org.koin.android.ext.android.inject
+import com.google.gson.Gson
+import org.koin.android.ext.android.get
 
 
 typealias EditEvent = (Editable?) -> Unit
@@ -20,6 +24,9 @@ typealias EditEvent = (Editable?) -> Unit
 @Suppress("CAST_NEVER_SUCCEEDS")
 class LoginFragment : BaseFragment<LoginViewModel, FragmentLoginBinding>() {
 
+    private val editor : SharedPreferences.Editor? by lazy {
+        activity?.getSharedPreferences(MainActivity.LOGIN_FORGOT, AppCompatActivity.MODE_PRIVATE)?.edit()
+    }
 
     override fun getLayoutRes(): Int = R.layout.fragment_login
     private var callBack: LoginCallBack? = null
@@ -45,41 +52,46 @@ class LoginFragment : BaseFragment<LoginViewModel, FragmentLoginBinding>() {
         }
     }
 
-    private val loginInfor: LoginInfor by inject<LoginInfor>()
+    private val isLoginObserver: Observer<Boolean?> by lazy {
+        Observer<Boolean?> {
+            // Kết thúc delay ở
+            if (it == null) {
+                baseBinding.errorTv.text = getString(R.string.login_false)
+                baseViewModel.isLogin.value = false
+            } else if (it == true) {
+                callBack?.success(loginInfor)
+            }
+        }
+    }
+
+    private lateinit var loginInfor: LoginInfor
 
     override fun setUpViews() {
+        loginInfor = get()
         baseBinding.loginButton.setOnClickListener(loginAction)
         baseBinding.usernameEt.editText?.doAfterTextChanged(changeInput)
         baseBinding.passwordEt.editText?.doAfterTextChanged(changeInput)
-        baseViewModel.isLogin.observe(viewLifecycleOwner, Observer {
-            // Kết thúc delay ở
-            if(it == null){
-                baseBinding.errorTv.text = getString(R.string.login_false)
-                baseViewModel.isLogin.value = false
-            }
-            else if(it == true){
-                baseViewModel.getData("")
-                callBack?.success(loginInfor)
-            }
-        })
-        baseViewModel.listData.observe(viewLifecycleOwner, Observer {
-            if(it!= null){
-                Log.d("quocbaokiin",it.size.toString())
-                for(i in it){
-                    Log.d("quocbaokiin",i.toString())
-                }
-            }
-        })
+        baseViewModel.isLogin.observe(viewLifecycleOwner, isLoginObserver)
+
+        if (callBack?.setUpData() != null) {
+            loginInfor = callBack?.setUpData()!!
+            editor?.putString(MainActivity.LOGIN_FORGOT, Gson().toJson(loginInfor))
+            editor?.commit()
+            baseBinding.usernameEt.editText?.setText(loginInfor.username)
+            baseBinding.passwordEt.editText?.setText(loginInfor.password)
+            baseViewModel.login(loginInfor)
+        }
     }
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        if(context is LoginCallBack){
+        if (context is LoginCallBack) {
             callBack = context
         }
     }
 
-    interface LoginCallBack{
+    interface LoginCallBack {
         fun success(loginInfor: LoginInfor)
+        fun setUpData(): LoginInfor?
     }
 }

@@ -1,4 +1,4 @@
-package com.baokiin.uis.ui
+package com.baokiin.uisptit.ui.base
 
 import android.os.Bundle
 import android.view.LayoutInflater

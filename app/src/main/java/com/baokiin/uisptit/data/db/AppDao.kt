@@ -1,7 +1,7 @@
 package com.baokiin.uisptit.data.db
 
 import androidx.room.*
-import com.baokiin.uis.data.db.model.SemesterMark
+import com.baokiin.uisptit.data.db.model.SemesterMark
 import com.baokiin.uisptit.data.db.model.Mark
 
 @Dao
