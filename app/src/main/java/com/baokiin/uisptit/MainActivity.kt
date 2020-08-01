@@ -91,6 +91,9 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
         }
     }
 
+    //Interface này được sử dụng vì khi đăng nhập có 2 trường hợp
+    //Thứ nhất: Đăng nhập lần đầu hàm callBack sẽ được gọi sau khi đăng nhập
+    //Thứ 2: Đăng nhập lần thứ 2 hàm callBack sẽ được gọi sau khi lấy dữ liệu
     interface SetUpDataCalLBack{
         fun callBack()
     }
