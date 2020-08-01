@@ -4,7 +4,7 @@ import com.baokiin.uisptit.data.db.LoginInfor
 import com.baokiin.uisptit.data.db.model.Mark
 
 
-interface LoginRepository {
+interface DataRepository {
 
     @Throws(LoginException::class)
     fun isLogin(loginInfor: LoginInfor, islogin:(Boolean)->Unit)

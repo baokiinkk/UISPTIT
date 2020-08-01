@@ -66,7 +66,8 @@ class HttpUis( var context: Context)  {
              .url("http://uis.ptithcm.edu.vn/Default.aspx?page=xemlichthi")
              .get()
              .build()
-
+         if (response.body() == null)
+             Log.d("tncnhan", "null")
          response = client.newCall(request).execute()
          list["LichThi"] = response.body().string()
 
@@ -75,12 +76,13 @@ class HttpUis( var context: Context)  {
              .url("http://uis.ptithcm.edu.vn/Default.aspx?page=thoikhoabieu")
              .get()
              .build()
-         responseHtml = Jsoup.parse(client.newCall(request).execute().body().string())
-         list["TuanHoc"] = response.body().string()
-         val weeks = responseHtml.select("#ctl00_ContentPlaceHolder1_ctl00_ddlTuan>option")
-         for(x in weeks) {
-             Log.d("tncnhan", x.text())
-         }
+         response = client.newCall(request).execute()
+         responseHtml = Jsoup.parse(response.body().string())
+         //list["TuanHoc"] = response.body().string()
+//         val weeks = responseHtml.select("#ctl00_ContentPlaceHolder1_ctl00_ddlTuan>option")
+//         for(x in weeks) {
+//             Log.d("tncnhan", x.text())
+//         }
          viewState = responseHtml.select("#__VIEWSTATE").attr("value")
          val formGetSchedule: RequestBody = FormBody.Builder()
              .add("__EVENTTARGET" , "ctl00\$ContentPlaceHolder1\$ctl00\$rad_ThuTiet")
@@ -96,9 +98,9 @@ class HttpUis( var context: Context)  {
              .build()
          response = client.newCall(request).execute()
          responseHtml = Jsoup.parse(client.newCall(request).execute().body().string())
-         val elements = responseHtml.select("table.body-table td")
-         for(x in elements)
-            //Log.d("tncnhan", x.text())
+//         val elements = responseHtml.select("table.body-table td")
+//         for(x in elements)
+//            //Log.d("tncnhan", x.text())
          list["TKB"] = response.body().string()
         return list
     }

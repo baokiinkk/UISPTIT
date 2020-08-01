@@ -5,7 +5,7 @@ import com.baokiin.uis.data.api.HttpUis
 import com.baokiin.uisptit.data.db.AppDao
 import com.baokiin.uisptit.data.db.model.Mark
 import com.baokiin.uisptit.data.db.LoginInfor
-import com.baokiin.uisptit.data.repository.LoginRepository
+import com.baokiin.uisptit.data.repository.DataRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -13,22 +13,17 @@ import kotlinx.coroutines.launch
 import org.jsoup.Jsoup
 
 
-class LoginRepositoryImpl( var network: HttpUis,var dao:AppDao) :
-    LoginRepository {
+class DataRepositoryImpl(var network: HttpUis, var dao:AppDao) :
+    DataRepository {
     private var list: MutableMap<String, String>? = null
     // private lateinit var loginInfor: LoginInfor
 
 
-    @Throws(LoginRepository.LoginException::class)
+    @Throws(DataRepository.LoginException::class)
     override fun isLogin(loginInfor: LoginInfor, islogin: (Boolean) -> Unit) {
         this.list = network.login(loginInfor)
         if (list!!.isNotEmpty()) {
             GlobalScope.launch(Dispatchers.IO) {
-                val lichthi = xuliLichThi(list!!.get("LichThi")!!)
-                for (i in lichthi)
-                {
-                    //Log.d("tncnhan", i)
-                }
                 val x = xuLiDiem(list!!.get("Diem")!!)
                 dao.deleteMark()
                 for (i in x)
@@ -38,7 +33,7 @@ class LoginRepositoryImpl( var network: HttpUis,var dao:AppDao) :
             }
 
         } else {
-            throw LoginRepository.LoginException()
+            throw DataRepository.LoginException()
         }
 
 
