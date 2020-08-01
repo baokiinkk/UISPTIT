@@ -2,7 +2,7 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "44568ab82b68be47614acfe94c355da2",
+    "identityHash": "2aae3112e4ab351543909008c607da9b",
     "entities": [
       {
         "tableName": "Mark",
@@ -199,12 +199,92 @@
         },
         "indices": [],
         "foreignKeys": []
+      },
+      {
+        "tableName": "ExamTimetable",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `maMon` TEXT NOT NULL, `tenMon` TEXT NOT NULL, `lop` TEXT NOT NULL, `toThi` TEXT NOT NULL, `soLuong` TEXT NOT NULL, `ngayThi` TEXT NOT NULL, `startTime` INTEGER NOT NULL, `sotiet` INTEGER NOT NULL, `phong` TEXT NOT NULL, `ghichu` TEXT NOT NULL)",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "maMon",
+            "columnName": "maMon",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "tenMon",
+            "columnName": "tenMon",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "lop",
+            "columnName": "lop",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "toThi",
+            "columnName": "toThi",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "soLuong",
+            "columnName": "soLuong",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "ngayThi",
+            "columnName": "ngayThi",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "startTime",
+            "columnName": "startTime",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "sotiet",
+            "columnName": "sotiet",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "phong",
+            "columnName": "phong",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "ghichu",
+            "columnName": "ghichu",
+            "affinity": "TEXT",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "id"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [],
+        "foreignKeys": []
       }
     ],
     "views": [],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '44568ab82b68be47614acfe94c355da2')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '2aae3112e4ab351543909008c607da9b')"
     ]
   }
 }

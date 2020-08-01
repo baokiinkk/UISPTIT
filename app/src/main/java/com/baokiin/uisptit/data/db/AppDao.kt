@@ -1,8 +1,10 @@
 package com.baokiin.uisptit.data.db
 
 import androidx.room.*
+import com.baokiin.uisptit.data.db.model.ExamTimetable
 import com.baokiin.uisptit.data.db.model.SemesterMark
 import com.baokiin.uisptit.data.db.model.Mark
+import com.baokiin.uisptit.data.db.model.TimeTable
 
 @Dao
 interface AppDao {
@@ -14,9 +16,22 @@ interface AppDao {
     @Insert(onConflict = OnConflictStrategy.IGNORE) // khi trung thi bo qua
     suspend fun addSemester(semester: SemesterMark)
 
+    @Insert(onConflict = OnConflictStrategy.IGNORE) // khi trung thi bo qua
+    suspend fun addExamTimeTable(timetable: ExamTimetable)
+
+    @Insert(onConflict = OnConflictStrategy.IGNORE) // khi trung thi bo qua
+    suspend fun addTimeTable(timetable: TimeTable)
+
+
 //    // delete
     @Delete
     suspend fun deleteMark(vararg mark: Mark)
+    @Delete
+    suspend fun deleteSemester(vararg semester: SemesterMark )
+    @Delete
+    suspend fun deleteExamTimeTable(vararg timetable: ExamTimetable )
+    @Delete
+    suspend fun deleteTimeTable(vararg timetable: TimeTable )
 //
 
 //    //query
@@ -24,6 +39,20 @@ interface AppDao {
     suspend fun getMarkHK(hocki:String): MutableList<Mark>
     @Query("select * from Mark ")
     suspend fun getMark(): MutableList<Mark>
+
+    @Query("select * from SemesterMark ")
+    suspend fun getSemester(): MutableList<SemesterMark>
+    @Query("select * from SemesterMark Where SemesterMark.semester=:hocki")
+    suspend fun getSemesterHK(hocki:String): MutableList<SemesterMark>
+
+    @Query("select * from ExamTimetable ")
+    suspend fun getExamTimeTable(): MutableList<ExamTimetable>
+
+    @Query("select * from TimeTable ")
+    suspend fun getTimeTable(): MutableList<TimeTable>
+    @Query("select * from TimeTable Where TimeTable.tuan=:tuan")
+    suspend fun getTimeTable(tuan:String): MutableList<TimeTable>
+
     @Query("DELETE  from Mark")
     suspend fun deleteMark()
 //
