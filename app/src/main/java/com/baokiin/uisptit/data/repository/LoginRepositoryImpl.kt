@@ -1,5 +1,6 @@
 package com.baokiin.uis.data.repository.login
 
+import android.util.Log
 import com.baokiin.uis.data.api.HttpUis
 import com.baokiin.uisptit.data.db.AppDao
 import com.baokiin.uisptit.data.db.model.Mark
@@ -23,6 +24,11 @@ class LoginRepositoryImpl( var network: HttpUis,var dao:AppDao) :
         this.list = network.login(loginInfor)
         if (list!!.isNotEmpty()) {
             GlobalScope.launch(Dispatchers.IO) {
+                val lichthi = xuliLichThi(list!!.get("LichThi")!!)
+                for (i in lichthi)
+                {
+                    //Log.d("tncnhan", i)
+                }
                 val x = xuLiDiem(list!!.get("Diem")!!)
                 dao.deleteMark()
                 for (i in x)
@@ -47,6 +53,17 @@ class LoginRepositoryImpl( var network: HttpUis,var dao:AppDao) :
             else markHK = dao.getMarkHK(hk)
             getdata(markHK)
         }
+    }
+
+    fun xuliLichThi(htmlFile : String) : MutableList<String>{
+        val doc = Jsoup.parse(htmlFile)
+        val noiDung = doc.select("table#ctl00_ContentPlaceHolder1_ctl00_gvXem td")
+        var res = mutableListOf<String>()
+        for(x in noiDung )
+        {
+            res.add(x.text())
+        }
+        return res
     }
 
     fun xuLiThongTin(htmlFile : String) : MutableList<String>{
@@ -86,7 +103,7 @@ class LoginRepositoryImpl( var network: HttpUis,var dao:AppDao) :
             // x có dạng "Học kỳ ......."
             if (isHocKy(x)) {
                 //res.add(x)
-                hk=x
+                hk = maHocKi(hk)
                 result[0]=(hk)
 
             } else {
@@ -102,6 +119,37 @@ class LoginRepositoryImpl( var network: HttpUis,var dao:AppDao) :
                     cnt = 1
                 }
             }
+        }
+        return res
+    }
+
+    private fun maHocKi(stringHK : String) : String{
+        var res = ""
+        for (x in stringHK){
+            if (x.isDigit())
+                res += x
+        }
+        return res
+    }
+
+    fun xuLiTKB(htmlFile : String) : MutableList<String>{
+        val doc = Jsoup.parse(htmlFile)
+        val noiDung = doc.select("table.body-table td")
+        var res = mutableListOf<String>()
+        for(x in noiDung )
+        {
+            res.add(x.text())
+        }
+        return res
+    }
+
+    fun xuLiTuanHoc(htmlFile : String) : MutableList<String>{
+        val doc = Jsoup.parse(htmlFile)
+        val noiDung = doc.select("#ctl00_ContentPlaceHolder1_ctl00_ddlTuan>option")
+        var res = mutableListOf<String>()
+        for(x in noiDung )
+        {
+            res.add(x.text())
         }
         return res
     }
