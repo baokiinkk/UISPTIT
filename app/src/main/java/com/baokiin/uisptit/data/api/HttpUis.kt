@@ -77,8 +77,9 @@ class HttpUis( var context: Context)  {
              .get()
              .build()
          response = client.newCall(request).execute()
-         responseHtml = Jsoup.parse(response.body().string())
-         //list["TuanHoc"] = response.body().string()
+         val res = response.body().string()
+         responseHtml = Jsoup.parse(res)
+         list["TuanHoc"] = res
 //         val weeks = responseHtml.select("#ctl00_ContentPlaceHolder1_ctl00_ddlTuan>option")
 //         for(x in weeks) {
 //             Log.d("tncnhan", x.text())

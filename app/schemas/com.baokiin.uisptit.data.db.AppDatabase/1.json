@@ -2,7 +2,7 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "2aae3112e4ab351543909008c607da9b",
+    "identityHash": "e9a69fa0ee0deb23c0fda375e81b0de0",
     "entities": [
       {
         "tableName": "Mark",
@@ -279,12 +279,62 @@
         },
         "indices": [],
         "foreignKeys": []
+      },
+      {
+        "tableName": "TimeTable",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `tuan` TEXT NOT NULL, `thu` TEXT NOT NULL, `buoi` TEXT NOT NULL, `tenMon` TEXT NOT NULL, `phong` TEXT NOT NULL)",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "tuan",
+            "columnName": "tuan",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "thu",
+            "columnName": "thu",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "buoi",
+            "columnName": "buoi",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "tenMon",
+            "columnName": "tenMon",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "phong",
+            "columnName": "phong",
+            "affinity": "TEXT",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "id"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [],
+        "foreignKeys": []
       }
     ],
     "views": [],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '2aae3112e4ab351543909008c607da9b')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'e9a69fa0ee0deb23c0fda375e81b0de0')"
     ]
   }
 }
