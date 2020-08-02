@@ -26,7 +26,7 @@ class DataRepositoryImpl(var network: HttpUis, var dao:AppDao) :
     override fun isLogin(loginInfor: LoginInfor, islogin: (Boolean) -> Unit) {
         this.list = network.login(loginInfor)
         if (list!!.isNotEmpty()) {
-            //postMarkToSQl(loginInfor)
+            postMarkToSQl(loginInfor)
             islogin(true)
         } else {
             throw DataRepository.LoginException()
@@ -68,7 +68,6 @@ class DataRepositoryImpl(var network: HttpUis, var dao:AppDao) :
 
     override fun getDataDiem( hk:String,getdata: (MutableList<Mark>) -> Unit) {
         GlobalScope.launch {
-
             val markHK:MutableList<Mark>
             if(hk.equals(""))
                 markHK= dao.getMark()

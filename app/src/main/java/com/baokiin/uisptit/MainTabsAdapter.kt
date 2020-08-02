@@ -32,10 +32,14 @@ class MainTabsAdapter(fragment: FragmentManager) : FragmentPagerAdapter(fragment
         )
     }
 
-    public fun setUpData(){
+    public fun  setUpData(){
         for(item in listFragment){
             (item as MainActivity.SetUpDataCalLBack).callBack()
         }
+    }
+
+    public fun setUpData(position: Int){
+        (listFragment[position] as MainActivity.SetUpDataCalLBack).callBack()
     }
 
     override fun getItem(position: Int): Fragment = listFragment[position]

@@ -3,13 +3,10 @@ package com.baokiin.uisptit.ui.mark
 import android.util.Log
 import androidx.lifecycle.Observer
 import com.baokiin.uisptit.MainActivity
-import com.baokiin.uisptit.ui.base.BaseFragment
 import com.baokiin.uisptit.R
-import com.baokiin.uisptit.data.db.LoginInfor
 import com.baokiin.uisptit.data.db.model.Mark
-import com.baokiin.uisptit.data.db.model.SemesterMark
 import com.baokiin.uisptit.databinding.FragmentMarkBinding
-import java.lang.reflect.Array.get
+import com.baokiin.uisptit.ui.base.BaseFragment
 
 class MarkFragment : BaseFragment<MarkViewModel, FragmentMarkBinding>(), MainActivity.SetUpDataCalLBack {
     override fun getLayoutRes(): Int = R.layout.fragment_mark
@@ -24,11 +21,13 @@ class MarkFragment : BaseFragment<MarkViewModel, FragmentMarkBinding>(), MainAct
         }
     }
     override fun setUpViews() {
-        baseViewModel.getData("120172018")
         baseViewModel.listData.observe(viewLifecycleOwner, listDataObserver)
+        baseBinding.logMark.setOnClickListener {
+            baseViewModel.getData("")
+        }
     }
 
     override fun callBack() {
-
+        baseViewModel.getData("120192020")
     }
 }
