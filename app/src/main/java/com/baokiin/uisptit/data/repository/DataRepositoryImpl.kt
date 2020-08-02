@@ -26,12 +26,22 @@ class DataRepositoryImpl(var network: HttpUis, var dao:AppDao) :
     override fun isLogin(loginInfor: LoginInfor, islogin: (Boolean) -> Unit) {
         this.list = network.login(loginInfor)
         if (list!!.isNotEmpty()) {
-            GlobalScope.launch(Dispatchers.IO) {
-//                var x = xuLiDiem(list!!.get("Diem")!!)
-//                dao.deleteMark()
-//                for (i in x)
-//                    dao.addMark(Mark(0,i[0],i[2],i[3],i[4],i[5],i[6],i[7],i[8],i[9],i[10],
-//                        i[11],i[12],i[13],i[14],i[15],i[16],i[17],i[18],i[19],i[20]))
+            //postMarkToSQl(loginInfor)
+            islogin(true)
+        } else {
+            throw DataRepository.LoginException()
+        }
+
+
+    }
+    override fun postMarkToSQl(loginInfor: LoginInfor) {
+        this.list = network.login(loginInfor)
+        GlobalScope.launch(Dispatchers.IO) {
+            var x = xuLiDiem(list!!.get("Diem")!!)
+            dao.deleteMark()
+            for (i in x)
+                dao.addMark(Mark(0,i[0],i[2],i[3],i[4],i[5],i[6],i[7],i[8],i[9],i[10],
+                    i[11],i[12],i[13],i[14],i[15],i[16],i[17],i[18],i[19],i[20]))
 
 
 //                val y = xuliLichThi(list!!.get("Diem")!!)
@@ -40,26 +50,20 @@ class DataRepositoryImpl(var network: HttpUis, var dao:AppDao) :
 //                    i[4].toFloat(),i[5].toInt(),i[6].toInt()))
 //                }
 
-                // trả về list môn học để đổ vào SQL, có dạng: [472906202005072020, 5, 1, Cấu trúc dữ liệu và giải thuật, 2A08]
-                // 472906202005072020 -> mã tuần -> tuần 47 từ 29-06-2020 đến 05-07-2020
-                // 5 -> thứ 5
-                // 1 -> buổi sáng / 2 là buổi chiều
-                // Cấu trúc dữ liệu và giải thuật -> tên
-                // 2A08 -> phòng
-                var x = xuLiTKB(xuLiMonHoc(list!!.get("TKB")!!), xuLiTuanHoc(list!!.get("TuanHoc")!!))
-                Log.d("tncnhan", "sizeTKB:" + x.size.toString())
-                for( i in x)
-                {
-                    Log.d("tncnhan",i.toString())
-                }
-                islogin(true)
-            }
+            // trả về list môn học để đổ vào SQL, có dạng: [472906202005072020, 5, 1, Cấu trúc dữ liệu và giải thuật, 2A08]
+            // 472906202005072020 -> mã tuần -> tuần 47 từ 29-06-2020 đến 05-07-2020
+            // 5 -> thứ 5
+            // 1 -> buổi sáng / 2 là buổi chiều
+            // Cấu trúc dữ liệu và giải thuật -> tên
+            // 2A08 -> phòng
+//                var x = xuLiTKB(xuLiMonHoc(list!!.get("TKB")!!), xuLiTuanHoc(list!!.get("TuanHoc")!!))
+//                Log.d("tncnhan", "sizeTKB:" + x.size.toString())
+//                for( i in x)
+//                {
+//                    Log.d("tncnhan",i.toString())
+//                }
 
-        } else {
-            throw DataRepository.LoginException()
         }
-
-
     }
 
     override fun getDataDiem( hk:String,getdata: (MutableList<Mark>) -> Unit) {
@@ -82,6 +86,7 @@ class DataRepositoryImpl(var network: HttpUis, var dao:AppDao) :
             getdata(markHK)
         }
     }
+
     @SuppressLint("SimpleDateFormat")
     fun toDate(str:String): java.util.Date {
         val sdf =
