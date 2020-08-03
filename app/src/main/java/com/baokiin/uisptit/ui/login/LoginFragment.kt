@@ -28,6 +28,10 @@ class LoginFragment : BaseFragment<LoginViewModel, FragmentLoginBinding>() {
         activity?.getSharedPreferences(MainActivity.LOGIN_FORGOT, AppCompatActivity.MODE_PRIVATE)?.edit()
     }
 
+    private val gson: Gson by lazy {
+        Gson()
+    }
+
     override fun getLayoutRes(): Int = R.layout.fragment_login
     private var callBack: LoginCallBack? = null
     private val inputManager: InputMethodManager by lazy {
@@ -71,12 +75,10 @@ class LoginFragment : BaseFragment<LoginViewModel, FragmentLoginBinding>() {
         baseBinding.loginButton.setOnClickListener(loginAction)
         baseBinding.usernameEt.editText?.doAfterTextChanged(changeInput)
         baseBinding.passwordEt.editText?.doAfterTextChanged(changeInput)
-        baseViewModel.isLogin.observe(viewLifecycleOwner, isLoginObserver)
+        baseViewModel.isLogin.observe(this, isLoginObserver)
 
         if (callBack?.setUpData() != null) {
             loginInfor = callBack?.setUpData()!!
-            editor?.putString(MainActivity.LOGIN_FORGOT, Gson().toJson(loginInfor))
-            editor?.commit()
             baseBinding.usernameEt.editText?.setText(loginInfor.username)
             baseBinding.passwordEt.editText?.setText(loginInfor.password)
             baseViewModel.login(loginInfor)
@@ -93,5 +95,11 @@ class LoginFragment : BaseFragment<LoginViewModel, FragmentLoginBinding>() {
     interface LoginCallBack {
         fun success(loginInfor: LoginInfor)
         fun setUpData(): LoginInfor?
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        editor?.putString(MainActivity.LOGIN_FORGOT, gson.toJson(loginInfor))
+        editor?.commit()
     }
 }

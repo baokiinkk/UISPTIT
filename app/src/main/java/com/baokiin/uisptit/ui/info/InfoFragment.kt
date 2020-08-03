@@ -1,5 +1,6 @@
 package com.baokiin.uisptit.ui.info
 
+import android.util.Log
 import com.baokiin.uisptit.ui.base.BaseFragment
 import com.baokiin.uisptit.MainActivity
 import com.baokiin.uisptit.R
@@ -19,6 +20,6 @@ class InfoFragment : BaseFragment<InfoViewModel, FragmentInfoBinding>(), MainAct
     }
 
     override fun callBack() {
-
+        Log.d("Choose Fragment", "Info Fragment")
     }
 }

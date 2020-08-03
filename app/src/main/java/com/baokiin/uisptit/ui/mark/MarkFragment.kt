@@ -21,13 +21,14 @@ class MarkFragment : BaseFragment<MarkViewModel, FragmentMarkBinding>(), MainAct
         }
     }
     override fun setUpViews() {
-        baseViewModel.listData.observe(viewLifecycleOwner, listDataObserver)
+        baseViewModel.listData.observe(this, listDataObserver)
         baseBinding.logMark.setOnClickListener {
             baseViewModel.getData("")
         }
     }
 
     override fun callBack() {
-        baseViewModel.getData("120192020")
+        //baseViewModel.getData("120192020")
+        Log.d("Choose Fragment", "Mark Fragment")
     }
 }

@@ -33,10 +33,6 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
         getSharedPreferences(LOGIN_FORGOT, MODE_PRIVATE)
     }
 
-    private val editor: SharedPreferences.Editor by lazy {
-        pref.edit()
-    }
-
     private val gson: Gson by lazy {
         Gson()
     }
@@ -89,7 +85,6 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
         // navView.setupWithNavController(navController)
         baseViewBinding.viewPager.adapter = mainAdapter
         tabs.setupWithViewPager(baseViewBinding.viewPager)
-        tabs.getTabAt(2)?.select()
         tabs.addOnTabSelectedListener(setUpData)
     }
 
@@ -102,9 +97,11 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
 //                navView.selectedItemId = R.id.navigation_infor
 //                (navHostFragment?.childFragmentManager?.fragments?.get(0) as InfoFragment).callBack()
                 //mainAdapter.setUpData(tabs.selectedTabPosition)
-                val loginInfor: LoginInfor = data?.getSerializableExtra(LOGIN_SUCCESS) as LoginInfor
-                editor.putString(LOGIN_FORGOT, gson.toJson(loginInfor))
-                editor.commit()
+//                val loginInfor: LoginInfor = data?.getSerializableExtra(LOGIN_SUCCESS) as LoginInfor
+//                editor.putString(LOGIN_FORGOT, gson.toJson(loginInfor))
+//                editor.commit()
+                tabs.getTabAt(mainAdapter.count / 2)?.select()
+                //mainAdapter.setUpData(index)
             }
         }
     }

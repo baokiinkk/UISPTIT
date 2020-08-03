@@ -1,5 +1,6 @@
 package com.baokiin.uisptit.ui.schedule
 
+import android.util.Log
 import com.baokiin.uisptit.MainActivity
 import com.baokiin.uisptit.ui.base.BaseFragment
 import com.baokiin.uisptit.R
@@ -14,6 +15,6 @@ class ScheduleFragment : BaseFragment<ScheduleViewModel, FragmentScheduleBinding
     }
 
     override fun callBack() {
-
+        Log.d("Choose Fragment", "Schedule Fragment")
     }
 }

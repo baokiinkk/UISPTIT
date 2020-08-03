@@ -1,5 +1,6 @@
 package com.baokiin.uisptit.ui.option
 
+import android.util.Log
 import com.baokiin.uisptit.MainActivity
 import com.baokiin.uisptit.ui.base.BaseFragment
 import com.baokiin.uisptit.R
@@ -13,6 +14,6 @@ class OptionFragment : BaseFragment<OptionViewModel, FragmentOptionBinding>(), M
     }
 
     override fun callBack() {
-
+        Log.d("Choose Fragment", "Option Fragment")
     }
 }
