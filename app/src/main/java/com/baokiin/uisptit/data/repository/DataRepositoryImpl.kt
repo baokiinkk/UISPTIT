@@ -26,7 +26,7 @@ class DataRepositoryImpl(var network: HttpUis, var dao:AppDao) :
     override fun isLogin(loginInfor: LoginInfor, islogin: (Boolean) -> Unit) {
         this.list = network.login(loginInfor)
         if (list!!.isNotEmpty()) {
-            postMarkToSQl(loginInfor)
+            postMarkToSQl()
             islogin(true)
         } else {
             throw DataRepository.LoginException()
@@ -34,8 +34,7 @@ class DataRepositoryImpl(var network: HttpUis, var dao:AppDao) :
 
 
     }
-    override fun postMarkToSQl(loginInfor: LoginInfor) {
-        this.list = network.login(loginInfor)
+    override fun postMarkToSQl() {
         GlobalScope.launch(Dispatchers.IO) {
             var x = xuLiDiem(list!!.get("Diem")!!)
             dao.deleteMark()

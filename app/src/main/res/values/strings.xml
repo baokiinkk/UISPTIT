@@ -5,18 +5,18 @@
     <string name="nav_header_title">Android Studio</string>
     <string name="nav_header_subtitle">android.studio@android.com</string>
     <string name="nav_header_desc">Navigation header</string>
-    <string name="action_settings">Settings</string>
+    <string name="action_settings">Cài đặt</string>
     <string name="title_activity_main">MainActivity</string>
-    <string name="login">Login</string>
-    <string name="password">Password</string>
-    <string name="username">Username</string>
-    <string name="login_false">Wrong username or password</string>
+    <string name="login">Đăng nhập</string>
+    <string name="password">Mật khẩu</string>
+    <string name="username">Tài khoản</string>
+    <string name="login_false">Sai tài khoản hoặc mật khẩu</string>
     <string name="title_activity_main2">MainActivity</string>
 
-    <string name="menu_info">Info</string>
-    <string name="menu_exam_schedule">Exam Schedule</string>
-    <string name="menu_mark">Mark</string>
-    <string name="menu_schedule">Schedule</string>
-    <string name="menu_option">Option</string>
+    <string name="menu_info">Thông tin</string>
+    <string name="menu_exam_schedule">lịch thi</string>
+    <string name="menu_mark">Điểm</string>
+    <string name="menu_schedule">TKB</string>
+    <string name="menu_option">Cài đặt</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

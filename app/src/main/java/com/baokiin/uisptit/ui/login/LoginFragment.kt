@@ -5,6 +5,7 @@ import android.content.SharedPreferences
 import android.text.Editable
 import android.util.Log
 import android.view.View
+import android.view.WindowManager
 import android.view.inputmethod.InputMethodManager
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.doAfterTextChanged
@@ -39,6 +40,7 @@ class LoginFragment : BaseFragment<LoginViewModel, FragmentLoginBinding>() {
     }
     private val loginAction: View.OnClickListener by lazy {
         View.OnClickListener {
+            Log.d("quocbaokiin","Dang nhap")
             // Tạo delay ở
             loginInfor.username = baseBinding.usernameEt.editText?.text.toString()
             loginInfor.password = baseBinding.passwordEt.editText?.text.toString()

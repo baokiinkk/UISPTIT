@@ -24,6 +24,8 @@
             android:background="#FFF"
             android:layout_gravity="bottom"
             app:tabIndicatorGravity="top"
-            app:tabMode="auto"/>
+            app:tabMode="auto"
+            >
+        </com.google.android.material.tabs.TabLayout>
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>

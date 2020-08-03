@@ -36,11 +36,11 @@ class StartActivity : BaseActivity<ActivityStartBinding>(), LoginFragment.LoginC
     }
 
     override fun onBackPressed() {
-        try {
-            (my_nav_host_fragment?.childFragmentManager?.fragments?.get(0) as LoginFragment)
-            finishAffinity()
-        }catch (e: Exception){
-            super.onBackPressed()
-        }
+//        try {
+//            (my_nav_host_fragment?.childFragmentManager?.fragments?.get(0) as LoginFragment)
+//            finishAffinity()
+//        }catch (e: Exception){
+//            super.onBackPressed()
+//        }
     }
 }

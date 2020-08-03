@@ -5,17 +5,38 @@
     <data>
 
     </data>
-
-    <FrameLayout
+    <TableLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.schedule.ScheduleFragment">
+        android:collapseColumns="*"
+        >
+        <TableRow>
 
-        <!-- TODO: Update blank fragment layout -->
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="Schedule" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="TKB"
+                android:gravity="center"
+                android:layout_weight="1"
+                />
+        </TableRow>
+        <TableRow>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="asdawdwa"
+                android:layout_weight="1"
+                android:gravity="center"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="adawdwa"
+                android:layout_weight="1"
+                android:gravity="center"
+                />
+        </TableRow>
 
-    </FrameLayout>
+
+    </TableLayout>
 </layout>
