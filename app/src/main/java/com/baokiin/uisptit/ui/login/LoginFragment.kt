@@ -11,10 +11,10 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.doAfterTextChanged
 import androidx.lifecycle.Observer
 import com.baokiin.uisptit.MainActivity
-import com.baokiin.uisptit.data.db.LoginInfor
-import com.baokiin.uisptit.ui.base.BaseFragment
 import com.baokiin.uisptit.R
+import com.baokiin.uisptit.data.db.LoginInfor
 import com.baokiin.uisptit.databinding.FragmentLoginBinding
+import com.baokiin.uisptit.ui.base.BaseFragment
 import com.google.gson.Gson
 import org.koin.android.ext.android.get
 
@@ -74,6 +74,7 @@ class LoginFragment : BaseFragment<LoginViewModel, FragmentLoginBinding>() {
 
     override fun setUpViews() {
         loginInfor = get()
+        activity?.window?.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_UNCHANGED or WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE)
         baseBinding.loginButton.setOnClickListener(loginAction)
         baseBinding.usernameEt.editText?.doAfterTextChanged(changeInput)
         baseBinding.passwordEt.editText?.doAfterTextChanged(changeInput)
