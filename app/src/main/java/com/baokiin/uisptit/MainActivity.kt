@@ -37,29 +37,6 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
         Gson()
     }
 
-    private val tabs: TabLayout by lazy {
-        baseViewBinding.tabs
-    }
-
-    private val mainAdapter: MainTabsAdapter by lazy {
-        MainTabsAdapter(supportFragmentManager)
-    }
-
-    private val setUpData: TabLayout.OnTabSelectedListener by lazy {
-        object : TabLayout.OnTabSelectedListener {
-            override fun onTabReselected(tab: TabLayout.Tab?) {
-
-            }
-
-            override fun onTabUnselected(tab: TabLayout.Tab?) {
-
-            }
-
-            override fun onTabSelected(tab: TabLayout.Tab?) {
-                tab?.position?.let { mainAdapter.setUpData(it) }
-            }
-        }
-    }
 
 //    private val navController : NavController by lazy {
 //        findNavController(R.id.nav_host_fragment)
@@ -83,9 +60,6 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
         //    R.id.navigation_home, R.id.navigation_dashboard, R.id.navigation_notifications))
         //setupActionBarWithNavController(navController, appBarConfiguration)
         // navView.setupWithNavController(navController)
-        baseViewBinding.viewPager.adapter = mainAdapter
-        tabs.setupWithViewPager(baseViewBinding.viewPager)
-        tabs.addOnTabSelectedListener(setUpData)
     }
 
     @Suppress("CAST_NEVER_SUCCEEDS")
@@ -100,7 +74,6 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
 //                val loginInfor: LoginInfor = data?.getSerializableExtra(LOGIN_SUCCESS) as LoginInfor
 //                editor.putString(LOGIN_FORGOT, gson.toJson(loginInfor))
 //                editor.commit()
-                tabs.getTabAt(mainAdapter.count / 2)?.select()
                 //mainAdapter.setUpData(index)
             }
         }

@@ -9,25 +9,97 @@
         android:id="@+id/navigation_infor"
         android:name="com.baokiin.uisptit.ui.info.InfoFragment"
         android:label="@string/menu_info"
-        tools:layout="@layout/fragment_info" />
+        tools:layout="@layout/fragment_info" >
+        <action
+            android:id="@+id/to_mark"
+            app:destination="@id/navigation_mark"
+            app:enterAnim="@transition/slide_in_right"
+            app:exitAnim="@transition/slide_out_left"
+            app:popEnterAnim="@transition/slide_in_left"
+            app:popExitAnim="@transition/slide_out_right"
+            />
+        <action
+            android:id="@+id/to_exam"
+            app:destination="@id/navigation_exam_schedule"
+            app:enterAnim="@transition/slide_in_right"
+            app:exitAnim="@transition/slide_out_left"
+            app:popEnterAnim="@transition/slide_in_left"
+            app:popExitAnim="@transition/slide_out_right"
+            />
+        <action
+            android:id="@+id/to_option"
+            app:destination="@id/navigation_option"
+            app:enterAnim="@transition/slide_in_right"
+            app:exitAnim="@transition/slide_out_left"
+            app:popEnterAnim="@transition/slide_in_left"
+            app:popExitAnim="@transition/slide_out_right"
+            />
+        <action
+            android:id="@+id/to_schedule"
+            app:destination="@id/navigation_schedule"
+            app:enterAnim="@transition/slide_in_right"
+            app:exitAnim="@transition/slide_out_left"
+            app:popEnterAnim="@transition/slide_in_left"
+            app:popExitAnim="@transition/slide_out_right"
+            />
+    </fragment>
     <fragment
         android:id="@+id/navigation_mark"
         android:name="com.baokiin.uisptit.ui.mark.MarkFragment"
         android:label="@string/menu_exam_schedule"
-        tools:layout="@layout/fragment_mark" />
+        tools:layout="@layout/fragment_mark" >
+        <action
+            android:id="@+id/action_navigation_mark_to_navigation_infor"
+            app:destination="@id/navigation_infor"
+            app:enterAnim="@transition/slide_in_right"
+            app:exitAnim="@transition/slide_out_left"
+            app:popEnterAnim="@transition/slide_in_left"
+            app:popExitAnim="@transition/slide_out_right"
+            app:popUpTo="@id/navigation_infor" />
+    </fragment>
     <fragment
         android:id="@+id/navigation_exam_schedule"
         android:name="com.baokiin.uisptit.ui.examschedule.ExamScheduleFragment"
         android:label="@string/menu_mark"
-        tools:layout="@layout/fragment_exam_schedule" />
+        tools:layout="@layout/fragment_exam_schedule" >
+        <action
+            android:id="@+id/action_navigation_exam_schedule_to_navigation_infor"
+            app:destination="@id/navigation_infor"
+            app:enterAnim="@transition/slide_in_right"
+            app:exitAnim="@transition/slide_out_left"
+            app:popEnterAnim="@transition/slide_in_left"
+            app:popExitAnim="@transition/slide_out_right"
+            app:popUpTo="@id/navigation_infor"
+            />
+    </fragment>
     <fragment
         android:id="@+id/navigation_schedule"
         android:name="com.baokiin.uisptit.ui.schedule.ScheduleFragment"
         android:label="fragment_schedule"
-        tools:layout="@layout/fragment_schedule" />
+        tools:layout="@layout/fragment_schedule" >
+        <action
+            android:id="@+id/action_navigation_schedule_to_navigation_infor"
+            app:destination="@id/navigation_infor"
+            app:enterAnim="@transition/slide_in_right"
+            app:exitAnim="@transition/slide_out_left"
+            app:popEnterAnim="@transition/slide_in_left"
+            app:popExitAnim="@transition/slide_out_right"
+            app:popUpTo="@id/navigation_infor"
+            />
+    </fragment>
     <fragment
         android:id="@+id/navigation_option"
         android:name="com.baokiin.uisptit.ui.option.OptionFragment"
         android:label="fragment_option"
-        tools:layout="@layout/fragment_option" />
+        tools:layout="@layout/fragment_option" >
+        <action
+            android:id="@+id/action_navigation_option_to_navigation_infor"
+            app:destination="@id/navigation_infor"
+            app:enterAnim="@transition/slide_in_right"
+            app:exitAnim="@transition/slide_out_left"
+            app:popEnterAnim="@transition/slide_in_left"
+            app:popExitAnim="@transition/slide_out_right"
+            app:popUpTo="@id/navigation_infor"
+            />
+    </fragment>
 </navigation>
