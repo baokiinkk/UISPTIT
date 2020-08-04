@@ -17,6 +17,7 @@ import org.jsoup.Jsoup
 
 class HttpUis( var context: Context)  {
      fun login(loginInfor: LoginInfor) : MutableMap<String,String>  {
+         Log.d("tncnhan", "start request")
          val list :MutableMap<String,String> = mutableMapOf()
          val cookieJars: ClearableCookieJar =
             PersistentCookieJar(SetCookieCache(), SharedPrefsCookiePersistor(context))
@@ -38,7 +39,7 @@ class HttpUis( var context: Context)  {
 
          var response = client.newCall(request).execute()
          if(response.priorResponse() == null) return mutableMapOf()
-
+         Log.d("tncnhan", "login done")
 
          //Diem
          request = Request.Builder()
@@ -60,7 +61,7 @@ class HttpUis( var context: Context)  {
 
          response = client.newCall(request).execute()
          list["Diem"] = response.body().string()
-
+         Log.d("tncnhan", "diem done")
          //Lich thi
          request = Request.Builder()
              .url("http://uis.ptithcm.edu.vn/Default.aspx?page=xemlichthi")
@@ -70,7 +71,7 @@ class HttpUis( var context: Context)  {
              Log.d("tncnhan", "null")
          response = client.newCall(request).execute()
          list["LichThi"] = response.body().string()
-
+         Log.d("tncnhan", "lich thi done")
          // TKB
          request = Request.Builder()
              .url("http://uis.ptithcm.edu.vn/Default.aspx?page=thoikhoabieu")
@@ -80,6 +81,7 @@ class HttpUis( var context: Context)  {
          val res = response.body().string()
          responseHtml = Jsoup.parse(res)
          list["TuanHoc"] = res
+         Log.d("tncnhan", "tuan hoc done")
 //         val weeks = responseHtml.select("#ctl00_ContentPlaceHolder1_ctl00_ddlTuan>option")
 //         for(x in weeks) {
 //             Log.d("tncnhan", x.text())
@@ -98,11 +100,9 @@ class HttpUis( var context: Context)  {
              .post(formGetSchedule)
              .build()
          response = client.newCall(request).execute()
-         responseHtml = Jsoup.parse(client.newCall(request).execute().body().string())
-//         val elements = responseHtml.select("table.body-table td")
-//         for(x in elements)
-//            //Log.d("tncnhan", x.text())
+
          list["TKB"] = response.body().string()
+         Log.d("tncnhan", "tkb done")
         return list
     }
 

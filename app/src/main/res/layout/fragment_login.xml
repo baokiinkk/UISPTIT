@@ -10,7 +10,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/backround"
+        android:background="@drawable/gradient_background"
         tools:context=".ui.LoginActivity">
 
         <com.google.android.material.textfield.TextInputLayout
@@ -25,11 +25,11 @@
             android:focusable="auto"
             android:inputType="textPersonName"
             android:singleLine="true"
-            app:boxCornerRadiusTopStart="45dp"
-            app:boxCornerRadiusTopEnd="45dp"
+            android:textColorHint="@color/my_color"
             app:boxCornerRadiusBottomEnd="45dp"
             app:boxCornerRadiusBottomStart="45dp"
-            android:textColorHint="@color/my_color"
+            app:boxCornerRadiusTopEnd="45dp"
+            app:boxCornerRadiusTopStart="45dp"
             app:boxStrokeColor="@color/colorPink"
             app:layout_constraintBottom_toTopOf="@+id/password_et"
             app:layout_constraintEnd_toEndOf="parent"
@@ -42,13 +42,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@drawable/backround_button"
-                android:hint="@string/username"
-                android:singleLine="true"
-                android:textColor="#fff"
                 android:drawableStart="@drawable/icon_account"
                 android:drawablePadding="10dp"
-                android:textColorHint="#F6E6E6"
-                android:textCursorDrawable="@drawable/custom_cursor" />
+                android:hint="@string/username"
+                android:singleLine="true"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+                android:textColor="#fff"
+                android:textColorHint="@color/design_default_color_background"
+                android:textCursorDrawable="@color/design_default_color_background" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -65,11 +66,12 @@
             android:singleLine="true"
             android:textColorHint="@color/my_color"
             app:boxBackgroundMode="outline"
-            app:boxStrokeColor="@color/colorPink"
-            app:boxCornerRadiusTopStart="45dp"
-            app:boxCornerRadiusTopEnd="45dp"
             app:boxCornerRadiusBottomEnd="45dp"
             app:boxCornerRadiusBottomStart="45dp"
+            app:boxCornerRadiusTopEnd="45dp"
+            app:boxCornerRadiusTopStart="45dp"
+            app:boxStrokeColor="@color/colorPink"
+            app:counterTextColor="@color/design_default_color_background"
             app:layout_constraintBottom_toTopOf="@+id/error_tv"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
@@ -82,13 +84,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@drawable/backround_button"
+                android:drawableStart="@drawable/key_icon"
+                android:drawablePadding="10dp"
                 android:inputType="textPassword"
                 android:singleLine="true"
                 android:textColor="#fff"
-                android:textColorHint="#EA2121"
-                android:drawablePadding="10dp"
-                android:drawableStart="@drawable/key_icon"
-                android:textCursorDrawable="@drawable/custom_cursor" />
+                android:textColorHint="@color/design_default_color_background"
+                android:textCursorDrawable="@color/design_default_color_background" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.button.MaterialButton
@@ -98,20 +100,22 @@
             android:layout_height="48dp"
             android:layout_marginStart="32dp"
             android:layout_marginEnd="32dp"
-            android:layout_marginBottom="50dp"
-            android:background="@drawable/backround_button"
+            android:layout_marginBottom="16dp"
+            android:background="#00FFFFFF"
             android:text="@string/login"
             android:textAllCaps="false"
-            android:textColor="#FF0E90"
+            android:textColor="@color/application_background"
             android:textStyle="bold"
+            app:backgroundTint="#FFFFFF"
+            app:backgroundTintMode="src_in"
             app:cornerRadius="20dp"
             app:iconTint="#000000"
             app:layout_constraintBottom_toTopOf="@+id/textView4"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.521"
             app:layout_constraintStart_toStartOf="parent"
-            app:rippleColor="@color/colorPink"
-            app:strokeColor="#FF0E90" />
+            app:rippleColor="@color/colorGray"
+            app:strokeColor="#FFFFFF" />
 
         <TextView
             android:id="@+id/error_tv"
@@ -119,9 +123,9 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="50dp"
             android:layout_marginEnd="50dp"
-            android:layout_marginBottom="40dp"
+            android:layout_marginBottom="8dp"
             android:gravity="center"
-            android:textColor="#FF0000"
+            android:textColor="#B30000"
             app:layout_constraintBottom_toTopOf="@+id/login_button"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
@@ -132,8 +136,8 @@
             android:layout_height="200dp"
             android:layout_marginStart="50dp"
             android:layout_marginEnd="50dp"
-            android:layout_marginBottom="150dp"
-            android:src="@drawable/a"
+            android:layout_marginBottom="100dp"
+            android:src="@drawable/logo"
             app:layout_constraintBottom_toTopOf="@+id/username_et"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
