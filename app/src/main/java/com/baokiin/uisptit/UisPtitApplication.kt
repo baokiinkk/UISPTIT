@@ -19,13 +19,14 @@ class UisPtitApplication : Application() {
             modules(listOf(
                 HttpUis,
                 dataBase,
-                loginRepositoryDi,
+                appdaoModule,
                 markUseCaseDi,
-                loginUseCaseDi,
                 markViewModelDi,
-                inforViewModelDi,
+                loginUseCaseDi,
                 loginViewModelDi,
-                appdaoModule
+                loginRepositoryDi,
+                inforViewModelDi,
+                inforUseCaseDi
             ))
         }
     }

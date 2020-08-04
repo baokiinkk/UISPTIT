@@ -14,7 +14,7 @@ val loginViewModelDi: Module = module {
 }
 
 val inforViewModelDi: Module = module {
-    viewModel { InfoViewModel() }
+    viewModel { InfoViewModel(get()) }
 }
 
 val markViewModelDi: Module = module {

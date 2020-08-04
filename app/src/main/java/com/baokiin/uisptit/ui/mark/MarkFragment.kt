@@ -13,10 +13,6 @@ class MarkFragment : BaseFragment<MarkViewModel, FragmentMarkBinding>(), MainAct
     override fun getLayoutRes(): Int = R.layout.fragment_mark
 
     override fun setUpViews() {
-
-    }
-
-    override fun callBack() {
         baseViewModel.getData("120192020")
         baseViewModel.listData.observe(viewLifecycleOwner, Observer {
             if (it != null) {
@@ -25,5 +21,10 @@ class MarkFragment : BaseFragment<MarkViewModel, FragmentMarkBinding>(), MainAct
                 }
             }
         })
+    }
+
+    override fun callBack() {
+
+
     }
 }

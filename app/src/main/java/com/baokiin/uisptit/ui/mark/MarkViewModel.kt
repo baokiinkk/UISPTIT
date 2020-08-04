@@ -20,9 +20,4 @@ class MarkViewModel(private val markUseCase: MarkUseCase) : ViewModel() {
             }
         }
     }
-    fun postDataToSQL(){
-        viewModelScope.launch {
-            markUseCase.postDatatoSQL()
-        }
-    }
 }
