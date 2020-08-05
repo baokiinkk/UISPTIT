@@ -78,30 +78,58 @@
 
         </androidx.cardview.widget.CardView>
 
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardTTC"
+            android:layout_width="0dp"
+            android:layout_height="200dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="20dp"
+            app:cardCornerRadius="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtChung">
+
+        </androidx.cardview.widget.CardView>
+
         <TextView
             android:id="@+id/txtTKB"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/cardDimenLeft"
-            android:layout_marginTop="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="30dp"
             android:text="Thời khóa biểu"
             android:textAllCaps="false"
             android:textColor="#000"
             android:textSize="@dimen/sizeTextCard"
             android:textStyle="normal"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/title"/>
+            app:layout_constraintTop_toBottomOf="@+id/cardTTC" />
+
+        <TextView
+            android:id="@+id/txtChung"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="40dp"
+            android:text="Chung"
+            android:textAllCaps="false"
+            android:textColor="#000"
+            android:textSize="@dimen/sizeTextCard"
+            android:textStyle="normal"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/title" />
 
         <TextView
             android:id="@+id/txtDiem"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/cardDimenLeft"
-            android:textSize="@dimen/sizeTextCard"
+            android:layout_marginStart="20dp"
             android:layout_marginTop="30dp"
             android:text="Điểm thi"
             android:textAllCaps="false"
             android:textColor="#000"
+            android:textSize="@dimen/sizeTextCard"
             android:textStyle="normal"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/cardTKB" />

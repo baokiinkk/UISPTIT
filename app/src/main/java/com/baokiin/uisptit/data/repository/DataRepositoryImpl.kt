@@ -22,7 +22,7 @@ class DataRepositoryImpl(var network: HttpUis, var dao:AppDao) :
 
     @Throws(DataRepository.LoginException::class)
     override fun isLogin(name:String,pass:String, islogin: (Boolean) -> Unit) {
-        GlobalScope.launch {
+        GlobalScope.launch (Dispatchers.IO){
            list = network.login(name,pass)
             if (list!!.isNotEmpty()) {
                 postToSQl()
@@ -86,7 +86,6 @@ class DataRepositoryImpl(var network: HttpUis, var dao:AppDao) :
             }
 
             val inforUser = xuLiThongTin(list!!.get("LichThi")!!)
-            dao.deleteInforUser()
             dao.addInforUser(InfoUser(inforUser[0],inforUser[1],inforUser[2],inforUser[3],inforUser[4],inforUser[5],
                 inforUser[6],inforUser[7],inforUser[8]))
 
@@ -94,19 +93,20 @@ class DataRepositoryImpl(var network: HttpUis, var dao:AppDao) :
     }
 
     override fun addLogin(name: String, pass: String) {
-        GlobalScope.launch {
+        GlobalScope.launch(Dispatchers.IO){
             dao.addUser(LoginInfor(name,pass))
         }
     }
 
     override fun deleteLogin() {
-        GlobalScope.launch {
+        GlobalScope.launch(Dispatchers.IO){
             dao.deleteLogin()
+            dao.deleteInforUser()
         }
     }
 
     override fun getDataDiem( hk:String,getdata: (MutableList<Mark>) -> Unit) {
-        GlobalScope.launch {
+        GlobalScope.launch(Dispatchers.IO){
             val markHK:MutableList<Mark>
             if(hk.equals(""))
                 markHK= dao.getMark()
@@ -116,7 +116,7 @@ class DataRepositoryImpl(var network: HttpUis, var dao:AppDao) :
     }
 
     override fun getDataSemester(hk: String, getdata: (MutableList<SemesterMark>) -> Unit) {
-        GlobalScope.launch {
+        GlobalScope.launch(Dispatchers.IO){
             val markHK:MutableList<SemesterMark>
             if(hk.equals(""))
                 markHK= dao.getSemester()
@@ -126,7 +126,7 @@ class DataRepositoryImpl(var network: HttpUis, var dao:AppDao) :
     }
 
     override fun getInforUser(data: (InfoUser) -> Unit) {
-        GlobalScope.launch {
+        GlobalScope.launch(Dispatchers.Default){
             val datadao = dao.getInforUser()
             data(datadao)
         }

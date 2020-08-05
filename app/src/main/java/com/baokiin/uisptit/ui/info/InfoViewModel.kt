@@ -11,19 +11,19 @@ import kotlinx.coroutines.launch
 
 class InfoViewModel(private val repo: DataRepository) : ViewModel() {
     val listData:MutableLiveData<MutableList<Mark>?> = MutableLiveData(null)
-     val title:MutableLiveData<String> = MutableLiveData("")
+     val title:MutableLiveData<String?> = MutableLiveData(null)
     fun getData(hk:String){
-        viewModelScope.launch {
+        viewModelScope.launch(){
             repo.getDataDiem(hk){
                 listData.postValue(it)
             }
+
         }
     }
-    fun getInfor(){
+    fun get(){
         viewModelScope.launch {
             repo.getInforUser {
                 title.postValue(xuLiTen(it.ten))
-                Log.d("quocbaokiin",xuLiTen(it.ten))
             }
         }
     }
