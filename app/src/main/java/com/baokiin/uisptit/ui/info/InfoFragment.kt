@@ -24,6 +24,7 @@ class InfoFragment : Fragment(){
         bd.lifecycleOwner = this
         bd.viewmodel = viewModel
         viewModel.getData("220192020")
+        viewModel.getInfor()
 
         val adapter = AdapterMark(){
 
@@ -48,4 +49,5 @@ class InfoFragment : Fragment(){
         }
         return bd.root
     }
+
 }

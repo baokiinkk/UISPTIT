@@ -36,7 +36,7 @@
                 android:layout_marginStart="500dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginEnd="500dp"
-                android:text="Chào bạn ..."
+                android:text="@{viewmodel.title}"
                 android:textColor="#E30808"
                 android:textSize="20sp"
                 app:layout_constraintEnd_toEndOf="parent"

@@ -24,7 +24,6 @@ class UisPtitApplication : Application() {
                 markViewModelDi,
                 loginRepositoryDi,
                 inforViewModelDi,
-                inforUseCaseDi,
                 helloModuleDi,
                 loginModuleDi,
                 loginUseCase

@@ -10,8 +10,5 @@ class MarkUseCaseImpl(override val repo: DataRepository) : MarkUseCase {
         }
     }
 
-    override fun postDatatoSQL() {
-            repo.postMarkToSQl()
-    }
 
 }

@@ -1,11 +1,10 @@
 package com.baokiin.uis.data.repository.login
 
 import android.annotation.SuppressLint
+import android.util.Log
 import com.baokiin.uis.data.api.HttpUis
 import com.baokiin.uisptit.data.db.AppDao
-import com.baokiin.uisptit.data.db.model.LoginInfor
-import com.baokiin.uisptit.data.db.model.Mark
-import com.baokiin.uisptit.data.db.model.SemesterMark
+import com.baokiin.uisptit.data.db.model.*
 import com.baokiin.uisptit.data.repository.DataRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
@@ -26,40 +25,70 @@ class DataRepositoryImpl(var network: HttpUis, var dao:AppDao) :
         GlobalScope.launch {
            list = network.login(name,pass)
             if (list!!.isNotEmpty()) {
-                postMarkToSQl()
+                postToSQl()
                 islogin(true)
             } else {
                 islogin(false)
             }
         }
     }
-    override fun postMarkToSQl() {
+    override fun postToSQl() {
         GlobalScope.launch(Dispatchers.IO) {
-            var x = xuLiDiem(list!!.get("Diem")!!)
+            var mark = xuLiDiem(list!!.get("Diem")!!)
             dao.deleteMark()
-            for (i in x)
-                dao.addMark(Mark(0,i[0],i[2],i[3],i[4],i[5],i[6],i[7],i[8],i[9],i[10],
-                    i[11],i[12],i[13],i[14],i[15],i[16],i[17],i[18],i[19],i[20]))
+            for (i in mark)
+                dao.addMark(
+                    Mark(
+                        0, i[0], i[2], i[3], i[4], i[5], i[6], i[7], i[8], i[9], i[10],
+                        i[11], i[12], i[13], i[14], i[15], i[16], i[17], i[18], i[19], i[20]
+                    )
+                )
 
 
-//                val y = xuliLichThi(list!!.get("Diem")!!)
-//                for(i in y){
-//                    dao.addSemester(SemesterMark(i[0],i[1].toFloat(),i[2].toFloat(),i[3].toFloat(),
-//                    i[4].toFloat(),i[5].toInt(),i[6].toInt()))
-//                }
+            val semester = xuLiDiemTongKet(list!!.get("Diem")!!)
+            dao.deleteSemester()
+            for (i in semester) {
+                dao.addSemester(
+                    SemesterMark(
+                        i[0], i[1].toFloat(), i[2].toFloat(), i[3].toFloat(),
+                        i[4].toFloat(), i[5].toInt(), i[6].toInt()
+                    )
+                )
+            }
 
-            // trả về list môn học để đổ vào SQL, có dạng: [472906202005072020, 5, 1, Cấu trúc dữ liệu và giải thuật, 2A08]
-            // 472906202005072020 -> mã tuần -> tuần 47 từ 29-06-2020 đến 05-07-2020
-            // 5 -> thứ 5
-            // 1 -> buổi sáng / 2 là buổi chiều
-            // Cấu trúc dữ liệu và giải thuật -> tên
-            // 2A08 -> phòng
-//                var x = xuLiTKB(xuLiMonHoc(list!!.get("TKB")!!), xuLiTuanHoc(list!!.get("TuanHoc")!!))
-//                Log.d("tncnhan", "sizeTKB:" + x.size.toString())
-//                for( i in x)
-//                {
-//                    Log.d("tncnhan",i.toString())
-//                }
+
+            val tkb = xuLiTKB(xuLiMonHoc(list!!.get("TKB")!!), xuLiTuanHoc(list!!.get("TuanHoc")!!))
+            dao.deleteTimeTable()
+            for (i in tkb) {
+                dao.addTimeTable(
+                    TimeTable(0, i[0], i[1], i[2], i[3], i[4])
+                )
+            }
+
+            val exam = xuliLichThi(list!!.get("LichThi")!!)
+            dao.deleteExam()
+            for (i in exam) {
+                dao.addExamTimeTable(
+                    ExamTimetable(
+                        0,
+                        i[0],
+                        i[1],
+                        i[2],
+                        i[3],
+                        i[4],
+                        i[5],
+                        i[6].toInt(),
+                        i[7].toInt(),
+                        i[8],
+                        i[9]
+                    )
+                )
+            }
+
+            val inforUser = xuLiThongTin(list!!.get("LichThi")!!)
+            dao.deleteInforUser()
+            dao.addInforUser(InfoUser(inforUser[0],inforUser[1],inforUser[2],inforUser[3],inforUser[4],inforUser[5],
+                inforUser[6],inforUser[7],inforUser[8]))
 
         }
     }
@@ -93,6 +122,13 @@ class DataRepositoryImpl(var network: HttpUis, var dao:AppDao) :
                 markHK= dao.getSemester()
             else markHK = dao.getSemesterHK(hk)
             getdata(markHK)
+        }
+    }
+
+    override fun getInforUser(data: (InfoUser) -> Unit) {
+        GlobalScope.launch {
+            val datadao = dao.getInforUser()
+            data(datadao)
         }
     }
 
