@@ -1,6 +1,8 @@
 package com.baokiin.uis.data.repository.login
 
 import android.annotation.SuppressLint
+import android.content.Context
+import android.content.SharedPreferences
 import com.baokiin.uis.data.api.HttpUis
 import com.baokiin.uisptit.data.db.AppDao
 import com.baokiin.uisptit.data.db.model.LoginInfor
@@ -15,7 +17,7 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 
-class DataRepositoryImpl(var network: HttpUis, var dao:AppDao) :
+class DataRepositoryImpl(var network: HttpUis, var dao:AppDao, var context: Context) :
     DataRepository {
     private var list: MutableMap<String, String>? = null
     // private lateinit var loginInfor: LoginInfor
@@ -33,7 +35,7 @@ class DataRepositoryImpl(var network: HttpUis, var dao:AppDao) :
             }
         }
     }
-    override fun postMarkToSQl() {
+     override fun postMarkToSQl() {
         GlobalScope.launch(Dispatchers.IO) {
             var x = xuLiDiem(list!!.get("Diem")!!)
             dao.deleteMark()
@@ -64,9 +66,19 @@ class DataRepositoryImpl(var network: HttpUis, var dao:AppDao) :
         }
     }
 
+
+
+
+
     override fun addLogin(name: String, pass: String) {
         GlobalScope.launch {
             dao.addUser(LoginInfor(name,pass))
+            var sharePref = context.getSharedPreferences("Setting", Context.MODE_PRIVATE)
+            var editor = sharePref.edit()
+            editor.putString("username", name)
+            editor.putString("password", pass)
+            editor.putString("name", "test")
+            editor.commit()
         }
     }
 
@@ -97,7 +109,7 @@ class DataRepositoryImpl(var network: HttpUis, var dao:AppDao) :
     }
 
     @SuppressLint("SimpleDateFormat")
-    fun toDate(str:String): java.util.Date {
+    fun toDate(str:String): Date {
         val sdf =
             SimpleDateFormat("dd/MM/yyyy")
         val d = sdf.parse(str)
@@ -136,7 +148,7 @@ class DataRepositoryImpl(var network: HttpUis, var dao:AppDao) :
         {
             res.add(x.text())
         }
-        for(i in 1..res.size-1 step 2){
+        for(i in 1 until res.size step 2){
             temp.add(res[i])
         }
         return temp

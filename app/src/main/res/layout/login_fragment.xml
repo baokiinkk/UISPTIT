@@ -95,7 +95,7 @@
             android:background="#00FFFFFF"
             android:text="@string/login"
             android:textAllCaps="false"
-            android:textColor="@color/application_background"
+            android:textColor="@color/login"
             android:textStyle="bold"
             app:backgroundTint="#FFFFFF"
             app:backgroundTintMode="src_in"

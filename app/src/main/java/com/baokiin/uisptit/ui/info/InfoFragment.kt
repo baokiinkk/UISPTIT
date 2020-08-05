@@ -1,6 +1,6 @@
 package com.baokiin.uisptit.ui.info
+import android.content.Context
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,6 +13,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.baokiin.uisptit.R
 import com.baokiin.uisptit.databinding.FragmentInfoBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
+
+
 class InfoFragment : Fragment(){
     val viewModel: InfoViewModel by viewModel<InfoViewModel>()
     override fun onCreateView(
@@ -37,6 +39,7 @@ class InfoFragment : Fragment(){
                    Toast.makeText(context,adapter.itemCount.toString(),Toast.LENGTH_LONG).show()
                }
         })
+
         bd.cardTKB.setOnClickListener {
             findNavController().navigate(R.id.to_schedule)
         }

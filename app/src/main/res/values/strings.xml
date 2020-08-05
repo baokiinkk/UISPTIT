@@ -13,6 +13,7 @@
     <string name="login_false">Sai tài khoản hoặc mật khẩu</string>
     <string name="title_activity_main2">MainActivity</string>
 
+    <string name="hello">Chào </string>
     <string name="menu_info">Thông tin</string>
     <string name="menu_exam_schedule">lịch thi</string>
     <string name="menu_mark">Điểm</string>
