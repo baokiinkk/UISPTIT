@@ -7,18 +7,20 @@
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Cài đặt</string>
     <string name="title_activity_main">MainActivity</string>
-    <string name="login">Đăng nhập</string>
-    <string name="password">Mật khẩu</string>
-    <string name="username">Tài khoản</string>
-    <string name="login_false">Sai tài khoản hoặc mật khẩu</string>
+    <string name="login">Đăng Nhập</string>
+    <string name="password">Mật Khẩu</string>
+    <string name="username">Tài Khoản</string>
+    <string name="login_false">Sai tài khoản hoặc mật khẩu!</string>
     <string name="title_activity_main2">MainActivity</string>
+    <string name="logoDescription">Logo</string>
 
     <string name="hello">Chào </string>
-    <string name="menu_info">Thông tin</string>
-    <string name="menu_exam_schedule">lịch thi</string>
+    <string name="menu_info">Thông Tin</string>
+    <string name="menu_exam_schedule">Lịch Thi</string>
     <string name="menu_mark">Điểm</string>
     <string name="menu_schedule">TKB</string>
-    <string name="menu_option">Cài đặt</string>
+    <string name="menu_option">Cài Đặt</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="policy">Bằng cách Đăng Nhập, bạn đồng ý với chính sách bảo mật của chúng tôi.</string>
     <string name="todo">TODO</string>
 </resources>
