@@ -6,7 +6,7 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.baokiin.uisptit.data.db.model.*
 
-@Database(entities = [Mark::class, SemesterMark::class,ExamTimetable::class,TimeTable::class,LoginInfor::class], version = 1)
+@Database(entities = [Mark::class, SemesterMark::class,ExamTimetable::class,TimeTable::class,LoginInfor::class,InfoUser::class], version = 1)
 abstract class AppDatabase: RoomDatabase() {
 
     abstract fun appDao(): AppDao // bat buoc co

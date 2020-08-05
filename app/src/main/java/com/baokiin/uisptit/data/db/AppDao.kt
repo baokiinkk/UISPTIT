@@ -22,6 +22,9 @@ interface AppDao {
     @Insert(onConflict = OnConflictStrategy.IGNORE) // khi trung thi bo qua
     suspend fun addUser(login: LoginInfor)
 
+    @Insert(onConflict = OnConflictStrategy.IGNORE) // khi trung thi bo qua
+    suspend fun addInforUser(login: InfoUser)
+
 
 //    // delete
     @Delete
@@ -58,8 +61,19 @@ interface AppDao {
     @Query("select * from LoginInfor")
     suspend fun getLogin():MutableList<LoginInfor>
 
+    @Query("select * from InfoUser")
+    suspend fun getInforUser():InfoUser
+
     @Query("DELETE  from Mark")
     suspend fun deleteMark()
+    @Query("DELETE  from ExamTimetable")
+    suspend fun deleteExam()
+    @Query("DELETE  from SemesterMark")
+    suspend fun deleteSemester()
+    @Query("DELETE  from TimeTable")
+    suspend fun deleteTimeTable()
+    @Query("DELETE  from InfoUser")
+    suspend fun deleteInforUser()
 //
 //    @Query("select * from Score")
 //    suspend fun getScore(): Score
