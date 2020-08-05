@@ -34,7 +34,7 @@ class InfoViewModel(private val repo: DataRepository) : ViewModel() {
                 break
             res += name[i]
         }
-
+    //
         return res.reversed()
     }
 }
