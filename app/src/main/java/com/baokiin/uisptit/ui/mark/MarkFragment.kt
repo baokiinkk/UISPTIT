@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import com.baokiin.uisptit.R
 import com.baokiin.uisptit.databinding.FragmentMarkBinding
 
@@ -21,6 +22,8 @@ class MarkFragment :Fragment() {
             DataBindingUtil.inflate(inflater, R.layout.fragment_mark,container,false)
         bd.lifecycleOwner=this
         bd.viewmodel=viewModel
+
+
         return bd.root
     }
 }

@@ -9,6 +9,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.baokiin.uisptit.R
 import com.baokiin.uisptit.databinding.FragmentInfoBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -22,22 +23,25 @@ class InfoFragment : Fragment(){
             DataBindingUtil.inflate(inflater, R.layout.fragment_info, container, false)
         bd.lifecycleOwner = this
         bd.viewmodel = viewModel
-        viewModel.getData("120192020")
+        viewModel.getData("220192020")
 
         val adapter = AdapterMark(){
 
         }
-        Toast.makeText(context,adapter.itemCount.toString(),Toast.LENGTH_LONG).show()
+
         bd.recycleViewDiem.adapter = adapter
+        bd.recycleViewDiem.layoutManager = LinearLayoutManager(context)
         viewModel.listData.observe(viewLifecycleOwner, Observer {
-            if(it != null){
-                for(i in it)
-                    Log.d("quocbaokiin",i.toString())
-                adapter.submitList(it)
-            }
+               it.let {
+                   adapter.submitList(it)
+                   Toast.makeText(context,adapter.itemCount.toString(),Toast.LENGTH_LONG).show()
+               }
         })
         bd.cardTKB.setOnClickListener {
             findNavController().navigate(R.id.to_schedule)
+        }
+        bd.cardDiem.setOnClickListener {
+            findNavController().navigate(R.id.to_mark)
         }
         bd.button.setOnClickListener {
             findNavController().navigate(R.id.info_to_login)
