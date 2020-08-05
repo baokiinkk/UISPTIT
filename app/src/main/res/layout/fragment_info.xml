@@ -20,8 +20,9 @@
 
         <LinearLayout
             android:id="@+id/title"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_width="408dp"
+            android:layout_height="64dp"
+            android:background="#FFFFFF"
             android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -33,7 +34,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="20dp"
-                android:fontFamily="sans-serif-thin"
+                android:fontFamily="@font/roboto_thin"
                 android:text="@string/hello"
                 android:textColor="#000000"
                 android:textSize="@dimen/sizeTextTitle" />
@@ -46,6 +47,7 @@
                 android:layout_marginTop="20dp"
                 android:fontFamily="sans-serif-condensed-medium"
                 android:textColor="#000000"
+                android:text="@{viewmodel.title}"
                 android:textSize="@dimen/sizeTextTitle" />
 
             <TextView

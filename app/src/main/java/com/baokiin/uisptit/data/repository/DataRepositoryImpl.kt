@@ -177,6 +177,8 @@ class DataRepositoryImpl(var network: HttpUis, var dao:AppDao) :
         }
         return temp
     }
+
+
     fun xuLiDiemTongKet(htmlFile : String) : MutableList<MutableList<String>>{
         val doc = Jsoup.parse(htmlFile)
         val noiDung = doc.select("div#ctl00_ContentPlaceHolder1_ctl00_div1 tr.title-hk-diem span.Label,tr.row-diemTK span.Label")

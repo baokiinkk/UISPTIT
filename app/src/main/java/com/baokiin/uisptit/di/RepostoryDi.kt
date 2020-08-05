@@ -8,5 +8,5 @@ import org.koin.core.module.Module
 import org.koin.dsl.module
 
 val loginRepositoryDi: Module = module {
-    single<DataRepository> { DataRepositoryImpl(get(),get(), androidApplication()) }
+    single<DataRepository> { DataRepositoryImpl(get(),get()) }
 }

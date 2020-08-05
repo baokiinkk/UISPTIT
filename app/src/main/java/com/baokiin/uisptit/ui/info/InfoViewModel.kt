@@ -34,7 +34,8 @@ class InfoViewModel(private val repo: DataRepository) : ViewModel() {
                 break
             res += name[i]
         }
-    //
-        return res.reversed()
+        res = res.reversed().toLowerCase()
+        res = res.capitalize()
+        return res
     }
 }
