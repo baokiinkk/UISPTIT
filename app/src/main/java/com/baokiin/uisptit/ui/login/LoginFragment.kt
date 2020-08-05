@@ -1,12 +1,13 @@
 package com.baokiin.uisptit.ui.login
 
+import android.app.Dialog
 import android.os.Bundle
-import androidx.fragment.app.Fragment
+import android.view.KeyEvent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.baokiin.uisptit.R
@@ -41,6 +42,20 @@ class LoginFragment : Fragment() {
         })
 
         return bd.root
+    }
+    override fun onResume() {
+        super.onResume()
+        if (view == null) {
+            return
+        }
+        requireView().isFocusableInTouchMode = true
+        requireView().requestFocus()
+        requireView().setOnKeyListener { v, keyCode, event ->
+            if (event.action === KeyEvent.ACTION_UP && keyCode == KeyEvent.KEYCODE_BACK) {
+                requireActivity().finish()
+                true
+            } else false
+        }
     }
 
 }

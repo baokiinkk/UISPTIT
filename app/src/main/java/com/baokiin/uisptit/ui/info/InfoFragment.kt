@@ -1,6 +1,7 @@
 package com.baokiin.uisptit.ui.info
 import android.content.Context
 import android.os.Bundle
+import android.view.KeyEvent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -47,6 +48,20 @@ class InfoFragment : Fragment(){
             findNavController().navigate(R.id.info_to_login)
         }
         return bd.root
+    }
+    override fun onResume() {
+        super.onResume()
+        if (view == null) {
+            return
+        }
+        requireView().isFocusableInTouchMode = true
+        requireView().requestFocus()
+        requireView().setOnKeyListener { v, keyCode, event ->
+            if (event.action === KeyEvent.ACTION_UP && keyCode == KeyEvent.KEYCODE_BACK) {
+                requireActivity().finish()
+                true
+            } else false
+        }
     }
 
 }
