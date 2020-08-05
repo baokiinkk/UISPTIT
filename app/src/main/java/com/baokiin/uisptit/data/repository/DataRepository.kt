@@ -15,6 +15,7 @@ interface DataRepository {
     fun getInforUser(data:(InfoUser)->Unit)
     fun addLogin(name:String,pass:String)
     fun deleteLogin()
+    fun deleteData()
     class LoginException: Exception(){
 
     }

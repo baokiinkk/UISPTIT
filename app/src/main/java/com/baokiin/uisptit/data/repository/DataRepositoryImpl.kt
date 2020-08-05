@@ -25,13 +25,11 @@ class DataRepositoryImpl(var network: HttpUis, var dao:AppDao) :
         GlobalScope.launch (Dispatchers.IO){
            list = network.login(name,pass)
             if (list!!.isNotEmpty()) {
-                dao.deleteInforUser()
                 val inforUser = xuLiThongTin(list!!.get("LichThi")!!)
                 dao.addInforUser(InfoUser(inforUser[0],inforUser[1],inforUser[2],inforUser[3],inforUser[4],inforUser[5],
                         inforUser[6],inforUser[7],inforUser[8]))
 
                 var mark = xuLiDiem(list!!.get("Diem")!!)
-                dao.deleteMark()
                 for (i in mark)
                     dao.addMark(
                             Mark(
@@ -42,7 +40,6 @@ class DataRepositoryImpl(var network: HttpUis, var dao:AppDao) :
 
 
                 val semester = xuLiDiemTongKet(list!!.get("Diem")!!)
-                dao.deleteSemester()
                 for (i in semester) {
                     dao.addSemester(
                             SemesterMark(
@@ -54,7 +51,6 @@ class DataRepositoryImpl(var network: HttpUis, var dao:AppDao) :
 
 
                 val tkb = xuLiTKB(xuLiMonHoc(list!!.get("TKB")!!), xuLiTuanHoc(list!!.get("TuanHoc")!!))
-                dao.deleteTimeTable()
                 for (i in tkb) {
                     dao.addTimeTable(
                             TimeTable(0, i[0], i[1], i[2], i[3], i[4])
@@ -62,7 +58,6 @@ class DataRepositoryImpl(var network: HttpUis, var dao:AppDao) :
                 }
 
                 val exam = xuliLichThi(list!!.get("LichThi")!!)
-                dao.deleteExam()
                 for (i in exam) {
                     dao.addExamTimeTable(
                             ExamTimetable(
@@ -97,8 +92,18 @@ class DataRepositoryImpl(var network: HttpUis, var dao:AppDao) :
 
     override fun deleteLogin() {
         GlobalScope.launch(Dispatchers.IO){
-            dao.deleteInforUser()
             dao.deleteLogin()
+            deleteData()
+        }
+    }
+
+    override fun deleteData() {
+        GlobalScope.launch {
+            dao.deleteExam()
+            dao.deleteExamTimeTable()
+            dao.deleteInforUser()
+            dao.deleteMark()
+            dao.deleteTimeTable()
         }
     }
 
