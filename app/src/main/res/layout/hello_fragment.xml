@@ -5,19 +5,18 @@
     <data>
         <variable
             name="viewmodel"
-            type="com.baokiin.uisptit.ui.option.OptionViewModel" />
+            type="com.baokiin.uisptit.ui.hello.HelloViewModel" />
     </data>
 
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.option.OptionFragment">
+        tools:context=".ui.hello.HelloFragment">
 
-        <!-- TODO: Update blank fragment layout -->
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="Option" />
+            android:text="Hello" />
 
     </FrameLayout>
 </layout>

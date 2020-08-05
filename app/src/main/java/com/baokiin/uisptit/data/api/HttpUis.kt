@@ -2,7 +2,7 @@ package com.baokiin.uis.data.api
 
 import android.content.Context
 import android.util.Log
-import com.baokiin.uisptit.data.db.LoginInfor
+import com.baokiin.uisptit.data.db.model.LoginInfor
 import com.franmontiel.persistentcookiejar.ClearableCookieJar
 import com.franmontiel.persistentcookiejar.PersistentCookieJar
 import com.franmontiel.persistentcookiejar.cache.SetCookieCache
@@ -16,7 +16,7 @@ import org.jsoup.Jsoup
 // T muốn là tạo 2 hàm 1 hàm kiểm tra login 1 hàm lấy list điểm nhưng mà t buồn ngủ quá rồi T_T làm hộ nha
 
 class HttpUis( var context: Context)  {
-     fun login(loginInfor: LoginInfor) : MutableMap<String,String>  {
+     fun login(name:String,pass:String) : MutableMap<String,String>  {
          Log.d("tncnhan", "start request")
          val list :MutableMap<String,String> = mutableMapOf()
          val cookieJars: ClearableCookieJar =
@@ -27,8 +27,8 @@ class HttpUis( var context: Context)  {
          val formBody: RequestBody = FormBody.Builder()
             .add("__EVENTTARGET" , "")
             .add("__EVENTARGUMENT" , "")
-            .add("ctl00\$ContentPlaceHolder1\$ctl00\$ucDangNhap\$txtTaiKhoa" , loginInfor.username)
-            .add("ctl00\$ContentPlaceHolder1\$ctl00\$ucDangNhap\$txtMatKhau" , loginInfor.password)
+            .add("ctl00\$ContentPlaceHolder1\$ctl00\$ucDangNhap\$txtTaiKhoa" , name.trim())
+            .add("ctl00\$ContentPlaceHolder1\$ctl00\$ucDangNhap\$txtMatKhau" , pass.trim())
             .add("ctl00\$ContentPlaceHolder1\$ctl00\$ucDangNhap\$btnDangNhap" , "Đăng Nhập")
             .build()
 

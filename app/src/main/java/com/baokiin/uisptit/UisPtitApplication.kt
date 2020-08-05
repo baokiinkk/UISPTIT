@@ -22,11 +22,12 @@ class UisPtitApplication : Application() {
                 appdaoModule,
                 markUseCaseDi,
                 markViewModelDi,
-                loginUseCaseDi,
-                loginViewModelDi,
                 loginRepositoryDi,
                 inforViewModelDi,
-                inforUseCaseDi
+                inforUseCaseDi,
+                helloModuleDi,
+                loginModuleDi,
+                loginUseCase
             ))
         }
     }

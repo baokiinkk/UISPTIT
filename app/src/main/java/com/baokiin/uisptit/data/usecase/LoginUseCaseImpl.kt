@@ -1,22 +1,18 @@
-package com.baokiin.uis.data.usecase
+package com.baokiin.uisptit.data.usecase
 
-import com.baokiin.uisptit.data.db.LoginInfor
-import com.baokiin.uisptit.data.repository.DataRepository
 import com.baokiin.uisptit.data.db.model.Mark
-import com.baokiin.uisptit.data.usecase.LoginUseCase
+import com.baokiin.uisptit.data.repository.DataRepository
 
-class LoginUseCaseImpl(override val repo: DataRepository) : LoginUseCase {
-    @Throws(DataRepository.LoginException::class)
-    override  fun isLogin(loginInfor: LoginInfor, islogin:(Boolean)->Unit){
-        repo.isLogin(loginInfor){
-                islogin(it)
+class LoginUseCaseImpl(override val repo: DataRepository) :LoginUseCase {
+    override fun isLogin(name: String, pass: String, islogin: (Boolean) -> Unit) {
+        repo.isLogin(name,pass){
+            if(it == true)
+                repo.addLogin(name,pass)
+            islogin(it)
         }
     }
 
-    override fun getMark(hk:String,getdata: (MutableList<Mark>) -> Unit) {
-        repo.getDataDiem(hk) {
-            getdata(it)
-        }
+    override fun deleteLogin() {
+        repo.deleteLogin()
     }
-
 }

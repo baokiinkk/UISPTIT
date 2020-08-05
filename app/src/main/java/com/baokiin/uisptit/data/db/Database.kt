@@ -4,12 +4,9 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.baokiin.uisptit.data.db.model.ExamTimetable
-import com.baokiin.uisptit.data.db.model.SemesterMark
-import com.baokiin.uisptit.data.db.model.Mark
-import com.baokiin.uisptit.data.db.model.TimeTable
+import com.baokiin.uisptit.data.db.model.*
 
-@Database(entities = [Mark::class, SemesterMark::class,ExamTimetable::class,TimeTable::class], version = 1)
+@Database(entities = [Mark::class, SemesterMark::class,ExamTimetable::class,TimeTable::class,LoginInfor::class], version = 1)
 abstract class AppDatabase: RoomDatabase() {
 
     abstract fun appDao(): AppDao // bat buoc co

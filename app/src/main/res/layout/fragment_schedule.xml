@@ -3,7 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
+        <variable
+            name="viewmodel"
+            type="com.baokiin.uisptit.ui.schedule.ScheduleViewModel" />
     </data>
     <TableLayout
         android:layout_width="match_parent"

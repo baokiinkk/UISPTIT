@@ -1,6 +1,6 @@
 package com.baokiin.uis.di
 
-import com.baokiin.uisptit.data.db.LoginInfor
+import com.baokiin.uisptit.data.db.model.LoginInfor
 import org.koin.android.ext.koin.androidApplication
 import com.baokiin.uis.data.api.HttpUis
 import com.baokiin.uisptit.data.db.AppDao

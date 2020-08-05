@@ -1,10 +1,7 @@
 package com.baokiin.uisptit.data.db
 
 import androidx.room.*
-import com.baokiin.uisptit.data.db.model.ExamTimetable
-import com.baokiin.uisptit.data.db.model.SemesterMark
-import com.baokiin.uisptit.data.db.model.Mark
-import com.baokiin.uisptit.data.db.model.TimeTable
+import com.baokiin.uisptit.data.db.model.*
 
 @Dao
 interface AppDao {
@@ -21,6 +18,9 @@ interface AppDao {
 
     @Insert(onConflict = OnConflictStrategy.IGNORE) // khi trung thi bo qua
     suspend fun addTimeTable(timetable: TimeTable)
+
+    @Insert(onConflict = OnConflictStrategy.IGNORE) // khi trung thi bo qua
+    suspend fun addUser(login: LoginInfor)
 
 
 //    // delete
@@ -52,6 +52,11 @@ interface AppDao {
     suspend fun getTimeTable(): MutableList<TimeTable>
     @Query("select * from TimeTable Where TimeTable.tuan=:tuan")
     suspend fun getTimeTable(tuan:String): MutableList<TimeTable>
+
+    @Query("DELETE  from LoginInfor")
+    suspend fun deleteLogin()
+    @Query("select * from LoginInfor")
+    suspend fun getLogin():MutableList<LoginInfor>
 
     @Query("DELETE  from Mark")
     suspend fun deleteMark()

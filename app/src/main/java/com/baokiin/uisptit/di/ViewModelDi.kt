@@ -1,5 +1,6 @@
 package com.baokiin.uisptit.di
 
+import com.baokiin.uisptit.ui.hello.HelloViewModel
 import com.baokiin.uisptit.ui.info.InfoViewModel
 import com.baokiin.uisptit.ui.login.LoginViewModel
 import com.baokiin.uisptit.ui.mark.MarkViewModel
@@ -9,14 +10,16 @@ import org.koin.dsl.module
 
 // File này ta sẽ tạo ra các module của tầng ViewModel
 
-val loginViewModelDi: Module = module {
-    viewModel{ LoginViewModel(get()) }
-}
-
 val inforViewModelDi: Module = module {
     viewModel { InfoViewModel(get()) }
 }
 
 val markViewModelDi: Module = module {
     viewModel { MarkViewModel(get()) }
+}
+val helloModuleDi:Module = module {
+    viewModel { HelloViewModel(get()) }
+}
+val loginModuleDi:Module = module {
+    viewModel { LoginViewModel(get()) }
 }

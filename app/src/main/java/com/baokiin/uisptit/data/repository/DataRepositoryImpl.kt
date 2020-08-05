@@ -1,10 +1,9 @@
 package com.baokiin.uis.data.repository.login
 
 import android.annotation.SuppressLint
-import android.util.Log
 import com.baokiin.uis.data.api.HttpUis
 import com.baokiin.uisptit.data.db.AppDao
-import com.baokiin.uisptit.data.db.LoginInfor
+import com.baokiin.uisptit.data.db.model.LoginInfor
 import com.baokiin.uisptit.data.db.model.Mark
 import com.baokiin.uisptit.data.db.model.SemesterMark
 import com.baokiin.uisptit.data.repository.DataRepository
@@ -23,16 +22,16 @@ class DataRepositoryImpl(var network: HttpUis, var dao:AppDao) :
 
 
     @Throws(DataRepository.LoginException::class)
-    override fun isLogin(loginInfor: LoginInfor, islogin: (Boolean) -> Unit) {
-        this.list = network.login(loginInfor)
-        if (list!!.isNotEmpty()) {
-            postMarkToSQl()
-            islogin(true)
-        } else {
-            throw DataRepository.LoginException()
+    override fun isLogin(name:String,pass:String, islogin: (Boolean) -> Unit) {
+        GlobalScope.launch {
+           list = network.login(name,pass)
+            if (list!!.isNotEmpty()) {
+                postMarkToSQl()
+                islogin(true)
+            } else {
+                islogin(false)
+            }
         }
-
-
     }
     override fun postMarkToSQl() {
         GlobalScope.launch(Dispatchers.IO) {
@@ -62,6 +61,18 @@ class DataRepositoryImpl(var network: HttpUis, var dao:AppDao) :
 //                    Log.d("tncnhan",i.toString())
 //                }
 
+        }
+    }
+
+    override fun addLogin(name: String, pass: String) {
+        GlobalScope.launch {
+            dao.addUser(LoginInfor(name,pass))
+        }
+    }
+
+    override fun deleteLogin() {
+        GlobalScope.launch {
+            dao.deleteLogin()
         }
     }
 

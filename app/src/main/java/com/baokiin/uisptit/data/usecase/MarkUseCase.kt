@@ -1,8 +1,6 @@
 package com.baokiin.uisptit.data.usecase
 
-import com.baokiin.uisptit.data.db.LoginInfor
 import com.baokiin.uisptit.data.db.model.Mark
-import com.baokiin.uisptit.data.db.model.SemesterMark
 import com.baokiin.uisptit.data.repository.DataRepository
 
 interface MarkUseCase {
