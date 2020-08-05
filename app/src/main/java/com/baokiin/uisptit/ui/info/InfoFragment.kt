@@ -27,7 +27,7 @@ class InfoFragment : Fragment(){
         bd.viewmodel = viewModel
         viewModel.getData("220192020")
         viewModel.get()
-        val adapter = AdapterMark(){
+        val adapter = AdapterMark {
 
         }
 
@@ -37,11 +37,6 @@ class InfoFragment : Fragment(){
                it.let {
                    adapter.submitList(it)
                }
-        })
-        viewModel.title.observe(viewLifecycleOwner, Observer {
-            it.let {
-                bd.endName.text = it
-            }
         })
         bd.cardTKB.setOnClickListener {
             findNavController().navigate(R.id.to_schedule)

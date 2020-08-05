@@ -34,6 +34,11 @@ class DataRepositoryImpl(var network: HttpUis, var dao:AppDao) :
     }
     override fun postToSQl() {
         GlobalScope.launch(Dispatchers.IO) {
+
+            val inforUser = xuLiThongTin(list!!.get("LichThi")!!)
+            dao.addInforUser(InfoUser(inforUser[0],inforUser[1],inforUser[2],inforUser[3],inforUser[4],inforUser[5],
+                inforUser[6],inforUser[7],inforUser[8]))
+
             var mark = xuLiDiem(list!!.get("Diem")!!)
             dao.deleteMark()
             for (i in mark)
@@ -85,9 +90,7 @@ class DataRepositoryImpl(var network: HttpUis, var dao:AppDao) :
                 )
             }
 
-            val inforUser = xuLiThongTin(list!!.get("LichThi")!!)
-            dao.addInforUser(InfoUser(inforUser[0],inforUser[1],inforUser[2],inforUser[3],inforUser[4],inforUser[5],
-                inforUser[6],inforUser[7],inforUser[8]))
+
 
         }
     }
@@ -128,6 +131,9 @@ class DataRepositoryImpl(var network: HttpUis, var dao:AppDao) :
     override fun getInforUser(data: (InfoUser) -> Unit) {
         GlobalScope.launch(Dispatchers.Default){
             val datadao = dao.getInforUser()
+            Log.d("tncnhan", "test")
+            if(datadao == null)
+            Log.d("tncnhan", "null")
             data(datadao)
         }
     }
@@ -223,7 +229,7 @@ class DataRepositoryImpl(var network: HttpUis, var dao:AppDao) :
             } else {
                 if (cnt < 20) {
                     result.add(x)
-                    cnt++;
+                    cnt++
                 } else {
                     result.add(x)
                     res.add(result)
