@@ -13,7 +13,6 @@ interface DataRepository {
     fun getDataDiem(hk:String,getdata:(MutableList<Mark>)->Unit)
     fun getDataSemester(hk:String,getdata:(MutableList<SemesterMark>)->Unit)
     fun getInforUser(data:(InfoUser)->Unit)
-    fun postToSQl()
     fun addLogin(name:String,pass:String)
     fun deleteLogin()
     class LoginException: Exception(){

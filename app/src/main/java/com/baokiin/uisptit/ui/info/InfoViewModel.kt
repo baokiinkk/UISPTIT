@@ -17,14 +17,10 @@ class InfoViewModel(private val repo: DataRepository) : ViewModel() {
             repo.getDataDiem(hk){
                 listData.postValue(it)
             }
-
-        }
-    }
-    fun get(){
-        viewModelScope.launch {
             repo.getInforUser {
                 title.postValue(xuLiTen(it.ten))
             }
+
         }
     }
     fun xuLiTen(name : String) : String{

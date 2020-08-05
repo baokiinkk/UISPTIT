@@ -25,72 +25,69 @@ class DataRepositoryImpl(var network: HttpUis, var dao:AppDao) :
         GlobalScope.launch (Dispatchers.IO){
            list = network.login(name,pass)
             if (list!!.isNotEmpty()) {
-                postToSQl()
+                dao.deleteInforUser()
+                val inforUser = xuLiThongTin(list!!.get("LichThi")!!)
+                dao.addInforUser(InfoUser(inforUser[0],inforUser[1],inforUser[2],inforUser[3],inforUser[4],inforUser[5],
+                        inforUser[6],inforUser[7],inforUser[8]))
+
+                var mark = xuLiDiem(list!!.get("Diem")!!)
+                dao.deleteMark()
+                for (i in mark)
+                    dao.addMark(
+                            Mark(
+                                    0, i[0], i[2], i[3], i[4], i[5], i[6], i[7], i[8], i[9], i[10],
+                                    i[11], i[12], i[13], i[14], i[15], i[16], i[17], i[18], i[19], i[20]
+                            )
+                    )
+
+
+                val semester = xuLiDiemTongKet(list!!.get("Diem")!!)
+                dao.deleteSemester()
+                for (i in semester) {
+                    dao.addSemester(
+                            SemesterMark(
+                                    i[0], i[1].toFloat(), i[2].toFloat(), i[3].toFloat(),
+                                    i[4].toFloat(), i[5].toInt(), i[6].toInt()
+                            )
+                    )
+                }
+
+
+                val tkb = xuLiTKB(xuLiMonHoc(list!!.get("TKB")!!), xuLiTuanHoc(list!!.get("TuanHoc")!!))
+                dao.deleteTimeTable()
+                for (i in tkb) {
+                    dao.addTimeTable(
+                            TimeTable(0, i[0], i[1], i[2], i[3], i[4])
+                    )
+                }
+
+                val exam = xuliLichThi(list!!.get("LichThi")!!)
+                dao.deleteExam()
+                for (i in exam) {
+                    dao.addExamTimeTable(
+                            ExamTimetable(
+                                    0,
+                                    i[0],
+                                    i[1],
+                                    i[2],
+                                    i[3],
+                                    i[4],
+                                    i[5],
+                                    i[6].toInt(),
+                                    i[7].toInt(),
+                                    i[8],
+                                    i[9]
+                            )
+                    )
+                }
+
                 islogin(true)
             } else {
                 islogin(false)
             }
         }
     }
-    override fun postToSQl() {
-        GlobalScope.launch(Dispatchers.IO) {
-            var mark = xuLiDiem(list!!.get("Diem")!!)
-            dao.deleteMark()
-            for (i in mark)
-                dao.addMark(
-                    Mark(
-                        0, i[0], i[2], i[3], i[4], i[5], i[6], i[7], i[8], i[9], i[10],
-                        i[11], i[12], i[13], i[14], i[15], i[16], i[17], i[18], i[19], i[20]
-                    )
-                )
 
-
-            val semester = xuLiDiemTongKet(list!!.get("Diem")!!)
-            dao.deleteSemester()
-            for (i in semester) {
-                dao.addSemester(
-                    SemesterMark(
-                        i[0], i[1].toFloat(), i[2].toFloat(), i[3].toFloat(),
-                        i[4].toFloat(), i[5].toInt(), i[6].toInt()
-                    )
-                )
-            }
-
-
-            val tkb = xuLiTKB(xuLiMonHoc(list!!.get("TKB")!!), xuLiTuanHoc(list!!.get("TuanHoc")!!))
-            dao.deleteTimeTable()
-            for (i in tkb) {
-                dao.addTimeTable(
-                    TimeTable(0, i[0], i[1], i[2], i[3], i[4])
-                )
-            }
-
-            val exam = xuliLichThi(list!!.get("LichThi")!!)
-            dao.deleteExam()
-            for (i in exam) {
-                dao.addExamTimeTable(
-                    ExamTimetable(
-                        0,
-                        i[0],
-                        i[1],
-                        i[2],
-                        i[3],
-                        i[4],
-                        i[5],
-                        i[6].toInt(),
-                        i[7].toInt(),
-                        i[8],
-                        i[9]
-                    )
-                )
-            }
-
-            val inforUser = xuLiThongTin(list!!.get("LichThi")!!)
-            dao.addInforUser(InfoUser(inforUser[0],inforUser[1],inforUser[2],inforUser[3],inforUser[4],inforUser[5],
-                inforUser[6],inforUser[7],inforUser[8]))
-
-        }
-    }
 
     override fun addLogin(name: String, pass: String) {
         GlobalScope.launch(Dispatchers.IO){
@@ -100,8 +97,8 @@ class DataRepositoryImpl(var network: HttpUis, var dao:AppDao) :
 
     override fun deleteLogin() {
         GlobalScope.launch(Dispatchers.IO){
-            dao.deleteLogin()
             dao.deleteInforUser()
+            dao.deleteLogin()
         }
     }
 
