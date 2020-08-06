@@ -2,6 +2,7 @@ package com.baokiin.uis.data.api
 
 import android.content.Context
 import android.util.Log
+import android.widget.Toast
 import com.baokiin.uisptit.data.db.model.LoginInfor
 import com.franmontiel.persistentcookiejar.ClearableCookieJar
 import com.franmontiel.persistentcookiejar.PersistentCookieJar
@@ -28,7 +29,9 @@ class HttpUis( var context: Context)  {
              .writeTimeout(5, TimeUnit.SECONDS)
              .readTimeout(5, TimeUnit.SECONDS)
             .build()
-         val formBody: RequestBody = FormBody.Builder()
+
+         //LOGIN =============
+         var formBody: RequestBody = FormBody.Builder()
             .add("__EVENTTARGET" , "")
             .add("__EVENTARGUMENT" , "")
             .add("ctl00\$ContentPlaceHolder1\$ctl00\$ucDangNhap\$txtTaiKhoa" , name.trim())
@@ -43,16 +46,16 @@ class HttpUis( var context: Context)  {
 
          var response = client.newCall(request).execute()
          if(response.priorResponse() == null) return mutableMapOf()
-         Log.d("tncnhan", "login done")
 
-         //Diem
+
+         // DIEM ==============
          request = Request.Builder()
             .url("http://uis.ptithcm.edu.vn/default.aspx?page=xemdiemthi")
             .get()
             .build()
          var responseHtml = Jsoup.parse(client.newCall(request).execute().body().string())
          var viewState = responseHtml.select("#__VIEWSTATE").attr("value")
-         val formGetMark: RequestBody = FormBody.Builder()
+         formBody = FormBody.Builder()
              .add("__EVENTTARGET" , "ctl00\$ContentPlaceHolder1\$ctl00\$lnkChangeview2")
              .add("__EVENTARGUMENT" , "")
              .add("__VIEWSTATE", viewState)
@@ -60,13 +63,14 @@ class HttpUis( var context: Context)  {
              .build()
          request = Request.Builder()
              .url("http://uis.ptithcm.edu.vn/default.aspx?page=xemdiemthi")
-             .post(formGetMark)
+             .post(formBody)
              .build()
 
          response = client.newCall(request).execute()
          list["Diem"] = response.body().string()
-         Log.d("tncnhan", "diem done")
-         //Lich thi
+
+
+         // LICH THI =============
          request = Request.Builder()
              .url("http://uis.ptithcm.edu.vn/Default.aspx?page=xemlichthi")
              .get()
@@ -75,23 +79,22 @@ class HttpUis( var context: Context)  {
              Log.d("tncnhan", "null")
          response = client.newCall(request).execute()
          list["LichThi"] = response.body().string()
-         Log.d("tncnhan", "lich thi done")
-         // TKB
+
+
+         // TUAN HOC =================
          request = Request.Builder()
              .url("http://uis.ptithcm.edu.vn/Default.aspx?page=thoikhoabieu")
              .get()
              .build()
          response = client.newCall(request).execute()
          val res = response.body().string()
-         responseHtml = Jsoup.parse(res)
          list["TuanHoc"] = res
-         Log.d("tncnhan", "tuan hoc done")
-//         val weeks = responseHtml.select("#ctl00_ContentPlaceHolder1_ctl00_ddlTuan>option")
-//         for(x in weeks) {
-//             Log.d("tncnhan", x.text())
-//         }
+
+
+         // TKB ==================
+         responseHtml = Jsoup.parse(res)
          viewState = responseHtml.select("#__VIEWSTATE").attr("value")
-         val formGetSchedule: RequestBody = FormBody.Builder()
+         formBody = FormBody.Builder()
              .add("__EVENTTARGET" , "ctl00\$ContentPlaceHolder1\$ctl00\$rad_ThuTiet")
              .add("__EVENTARGUMENT" , "")
              .add("__VIEWSTATE", viewState)
@@ -101,12 +104,27 @@ class HttpUis( var context: Context)  {
              .build()
          request = Request.Builder()
              .url("http://uis.ptithcm.edu.vn/Default.aspx?page=thoikhoabieu&sta=1")
-             .post(formGetSchedule)
+             .post(formBody)
              .build()
          response = client.newCall(request).execute()
 
          list["TKB"] = response.body().string()
-         Log.d("tncnhan", "tkb done")
+
+
+         // LOG OUT ================
+         formBody = FormBody.Builder()
+         .add("__EVENTTARGET" , "ctl00\$Header1\$ucLogout\$lbtnLogOut")
+             .add("__EVENTARGUMENT" , "")
+             .add("__VIEWSTATEGENERATOR", "CA0B0334")
+             .build()
+
+         request = Request.Builder()
+             .url("http://uis.ptithcm.edu.vn/default.aspx")
+             .post(formBody)
+             .build()
+
+         client.newCall(request).execute()
+
         return list
     }
 
