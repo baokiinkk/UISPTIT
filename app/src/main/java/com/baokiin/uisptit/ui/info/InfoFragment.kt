@@ -1,5 +1,6 @@
 package com.baokiin.uisptit.ui.info
 import android.content.Context
+import android.content.SharedPreferences
 import android.graphics.Color
 import android.net.ConnectivityManager
 import android.net.NetworkInfo
@@ -21,6 +22,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class InfoFragment : Fragment(){
     val viewModel: InfoViewModel by viewModel<InfoViewModel>()
+    lateinit var sp: SharedPreferences
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -32,6 +34,7 @@ class InfoFragment : Fragment(){
             DataBindingUtil.inflate(inflater, R.layout.fragment_info, container, false)
         bd.lifecycleOwner = this
         bd.viewmodel = viewModel
+        sp = requireActivity().getSharedPreferences("Login", Context.MODE_PRIVATE)
         viewModel.getData("220192020")
         val adapter = AdapterMark {
 
@@ -52,6 +55,7 @@ class InfoFragment : Fragment(){
         }
         bd.button.setOnClickListener {
             viewModel.deleteLogin()
+            sp.edit().clear().apply()
             findNavController().navigate(R.id.info_to_login)
         }
 
