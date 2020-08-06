@@ -30,6 +30,7 @@ class DataRepositoryImpl(var network: HttpUis, var dao:AppDao) :
                 dao.deleteInforUser()
                 dao.deleteMark()
                 dao.deleteTimeTable()
+                dao.deleteSemester()
 
                 val inforUser = xuLiThongTin(list!!.get("LichThi")!!)
                 dao.addInforUser(InfoUser(inforUser[0],inforUser[1],inforUser[2],inforUser[3],inforUser[4],inforUser[5],
@@ -47,12 +48,15 @@ class DataRepositoryImpl(var network: HttpUis, var dao:AppDao) :
 
                 val semester = xuLiDiemTongKet(list!!.get("Diem")!!)
                 for (i in semester) {
+                    Log.d("quocbaokiin",i.toString())
                     dao.addSemester(
                             SemesterMark(
                                     i[0], i[1].toFloat(), i[2].toFloat(), i[3].toFloat(),
                                     i[4].toFloat(), i[5].toInt(), i[6].toInt()
                             )
+
                     )
+
                 }
 
 
@@ -112,13 +116,9 @@ class DataRepositoryImpl(var network: HttpUis, var dao:AppDao) :
         }
     }
 
-    override fun getDataSemester(hk: String, getdata: (MutableList<SemesterMark>) -> Unit) {
+    override fun getDataSemester( getdata: (MutableList<SemesterMark>) -> Unit) {
         GlobalScope.launch(Dispatchers.IO){
-            val markHK:MutableList<SemesterMark>
-            if(hk.equals(""))
-                markHK= dao.getSemester()
-            else markHK = dao.getSemesterHK(hk)
-            getdata(markHK)
+            getdata(dao.getSemester())
         }
     }
 
@@ -195,9 +195,15 @@ class DataRepositoryImpl(var network: HttpUis, var dao:AppDao) :
         for(i in 0..res.size-1){
             val j = i%13
             if (j%2 == 0)
-                row.add(res[i])
+            {
+                if(j == 0)
+                    row.add(getDigits(res[i]))
+                else
+                    row.add(res[i])
+            }
             if(j == 12){
                 temp.add(row)
+                row = mutableListOf()
             }
         }
 

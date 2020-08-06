@@ -25,7 +25,8 @@ class UisPtitApplication : Application() {
                 loginRepositoryDi,
                 inforViewModelDi,
                 loginModuleDi,
-                loginUseCase
+                loginUseCase,
+                optionViewModelDi
             ))
         }
     }

@@ -103,4 +103,13 @@ dependencies {
     implementation 'com.github.franmontiel:PersistentCookieJar:v1.0.1'
     implementation 'org.riversun:okhttp3-cookie-helper:1.0.0'
     implementation 'com.google.code.gson:gson:2.8.6'
+
+    // Charts
+    implementation 'com.diogobernardino:williamchart:3.7.1'
+
+// Tooltips
+    implementation 'com.diogobernardino.williamchart:tooltip-slider:3.7.1'
+    implementation 'com.diogobernardino.williamchart:tooltip-points:3.7.1'
+
+    implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
 }

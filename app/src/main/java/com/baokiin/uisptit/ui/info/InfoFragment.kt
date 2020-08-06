@@ -5,6 +5,7 @@ import android.graphics.Color
 import android.net.ConnectivityManager
 import android.net.NetworkInfo
 import android.os.Bundle
+import android.util.Log
 import android.view.KeyEvent
 import android.view.LayoutInflater
 import android.view.View
@@ -17,12 +18,18 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.baokiin.uisptit.R
 import com.baokiin.uisptit.databinding.FragmentInfoBinding
+import com.github.mikephil.charting.components.AxisBase
+import com.github.mikephil.charting.data.Entry
+import com.github.mikephil.charting.data.LineData
+import com.github.mikephil.charting.data.LineDataSet
+import com.github.mikephil.charting.formatter.ValueFormatter
+import com.github.mikephil.charting.interfaces.datasets.ILineDataSet
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
 class InfoFragment : Fragment(){
     val viewModel: InfoViewModel by viewModel<InfoViewModel>()
-    lateinit var sp: SharedPreferences
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -34,7 +41,7 @@ class InfoFragment : Fragment(){
             DataBindingUtil.inflate(inflater, R.layout.fragment_info, container, false)
         bd.lifecycleOwner = this
         bd.viewmodel = viewModel
-        sp = requireActivity().getSharedPreferences("Login", Context.MODE_PRIVATE)
+
         viewModel.getData("220192020")
         val adapter = AdapterMark {
 
@@ -53,10 +60,8 @@ class InfoFragment : Fragment(){
         bd.cardDiem.setOnClickListener {
             findNavController().navigate(R.id.to_mark)
         }
-        bd.button.setOnClickListener {
-            viewModel.deleteLogin()
-            sp.edit().clear().apply()
-            findNavController().navigate(R.id.info_to_login)
+        bd.btnOption.setOnClickListener {
+            findNavController().navigate(R.id.to_option)
         }
 
         bd.fresh.setWaveRGBColor(3,218,197)
@@ -80,6 +85,41 @@ class InfoFragment : Fragment(){
             )
         }
 
+        viewModel.listSemester.observe(viewLifecycleOwner, Observer {
+            if(it != null) {
+                Log.d("quocbaokiin",it.toString())
+                val entries = ArrayList<Entry>()
+                for(i in 0 until it.size){
+                    entries.add(Entry(i.toFloat(),it[i].gpa4))
+                }
+                val hocki = ArrayList<String>()
+                for(i in 0 until it.size){
+                    hocki.add(it[i].semester)
+                }
+
+                val formatter: ValueFormatter =
+                    object : ValueFormatter() {
+                        override fun getAxisLabel(value: Float, axis: AxisBase): String {
+                            return hocki[value.toInt()]
+                        }
+                    }
+
+                val xAxis = bd.linechart.xAxis
+                xAxis.setGranularity(1f)
+                xAxis.labelRotationAngle = -45f
+                xAxis.valueFormatter = formatter
+                val dataset = LineDataSet(entries, "Điểm Tích Lũy")
+                val data: ArrayList<ILineDataSet> = ArrayList()
+                data.add(dataset)
+                val lineData: LineData = LineData(data)
+                bd.linechart.axisRight.isEnabled = false
+                bd.linechart.data = lineData
+                bd.linechart.invalidate()
+            }
+        })
+
+
+
         return bd.root
     }
     override fun onResume() {
@@ -98,3 +138,4 @@ class InfoFragment : Fragment(){
     }
 
 }
+

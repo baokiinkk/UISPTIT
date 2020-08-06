@@ -42,9 +42,6 @@
             app:popEnterAnim="@transition/slide_in_left"
             app:popExitAnim="@transition/slide_out_right"
             />
-        <action
-            android:id="@+id/info_to_login"
-            app:destination="@id/loginFragment" />
     </fragment>
     <fragment
         android:id="@+id/navigation_mark"
@@ -104,6 +101,9 @@
             app:popExitAnim="@transition/slide_out_right"
             app:popUpTo="@id/navigation_infor"
             />
+        <action
+            android:id="@+id/op_to_log"
+            app:destination="@id/loginFragment" />
     </fragment>
     <fragment
         android:id="@+id/loginFragment"

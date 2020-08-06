@@ -25,12 +25,14 @@
 
         <LinearLayout
             android:id="@+id/title"
-            android:layout_width="408dp"
+            android:layout_width="0dp"
             android:layout_height="64dp"
+            android:layout_marginEnd="10dp"
             android:background="@color/appBackgroundWhite"
             android:orientation="horizontal"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/btnOption"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
             tools:ignore="MissingConstraints">
 
             <TextView
@@ -67,6 +69,7 @@
                 android:textColor="#000000"
                 android:textSize="@dimen/sizeTextTitle" />
 
+
         </LinearLayout>
 
         <androidx.cardview.widget.CardView
@@ -97,7 +100,11 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/title">
-
+            <com.github.mikephil.charting.charts.LineChart
+                android:id="@+id/linechart"
+                android:layout_marginTop="18dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
         </androidx.cardview.widget.CardView>
 
         <TextView
@@ -139,8 +146,10 @@
             android:layout_marginStart="20dp"
             android:layout_marginTop="5dp"
             android:layout_marginEnd="20dp"
-            app:cardElevation="@dimen/shadow"
+            android:layout_marginBottom="20dp"
             app:cardCornerRadius="20dp"
+            app:cardElevation="@dimen/shadow"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/txtDiem">
@@ -224,20 +233,15 @@
 
         </androidx.cardview.widget.CardView>
 
-
-        <Button
-            android:id="@+id/button"
+        <TextView
+            android:id="@+id/btnOption"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="10dp"
-            android:text="Đăng xuất"
-            app:backgroundTint="@color/colorAccent"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            android:background="@drawable/option"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/cardDiem"
-            tools:ignore="MissingConstraints" />
+            app:layout_constraintTop_toTopOf="parent" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
