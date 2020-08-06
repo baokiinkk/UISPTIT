@@ -1,5 +1,7 @@
 package com.baokiin.uisptit.ui.info
+import android.annotation.SuppressLint
 import android.content.Context
+import android.content.SharedPreferences
 import android.net.ConnectivityManager
 import android.net.NetworkInfo
 import android.os.Bundle
@@ -11,6 +13,7 @@ import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
+import androidx.navigation.NavDirections
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.baokiin.uisptit.R
@@ -20,6 +23,8 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class InfoFragment : Fragment(){
     val viewModel: InfoViewModel by viewModel<InfoViewModel>()
+    lateinit var sp: SharedPreferences
+    @SuppressLint("CommitPrefEdits")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -31,6 +36,7 @@ class InfoFragment : Fragment(){
             DataBindingUtil.inflate(inflater, R.layout.fragment_info, container, false)
         bd.lifecycleOwner = this
         bd.viewmodel = viewModel
+        sp = requireActivity().getSharedPreferences("Login", Context.MODE_PRIVATE)
         viewModel.getData("220192020")
         val adapter = AdapterMark(){
 
@@ -51,7 +57,11 @@ class InfoFragment : Fragment(){
         }
         bd.button.setOnClickListener {
             viewModel.deleteLogin()
+            val ssp = sp.edit()
+            ssp.clear()
+            ssp.apply()
             findNavController().navigate(R.id.info_to_login)
+
         }
 
         bd.fresh.setWaveRGBColor(3,218,197)
