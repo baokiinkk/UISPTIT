@@ -7,5 +7,6 @@ interface LoginUseCase {
 
     val repo : DataRepository
     fun isLogin(name:String,pass:String,islogin:(Boolean)->Unit)
+    fun getLogin(bool:(Boolean)->Unit)
     fun deleteLogin()
 }

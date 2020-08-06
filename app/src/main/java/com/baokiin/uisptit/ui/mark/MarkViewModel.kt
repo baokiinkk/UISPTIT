@@ -12,10 +12,8 @@ class MarkViewModel(private val markUseCase: MarkUseCase) : ViewModel() {
 
 
     fun getData(hk:String){
-        viewModelScope.launch {
             markUseCase.getMark(hk){
                 listData.postValue(it)
             }
         }
-    }
 }

@@ -25,6 +25,12 @@ class DataRepositoryImpl(var network: HttpUis, var dao:AppDao) :
         GlobalScope.launch (Dispatchers.IO){
            list = network.login(name,pass)
             if (list!!.isNotEmpty()) {
+                dao.deleteExam()
+                dao.deleteExamTimeTable()
+                dao.deleteInforUser()
+                dao.deleteMark()
+                dao.deleteTimeTable()
+
                 val inforUser = xuLiThongTin(list!!.get("LichThi")!!)
                 dao.addInforUser(InfoUser(inforUser[0],inforUser[1],inforUser[2],inforUser[3],inforUser[4],inforUser[5],
                         inforUser[6],inforUser[7],inforUser[8]))
@@ -93,17 +99,6 @@ class DataRepositoryImpl(var network: HttpUis, var dao:AppDao) :
     override fun deleteLogin() {
         GlobalScope.launch(Dispatchers.IO){
             dao.deleteLogin()
-            deleteData()
-        }
-    }
-
-    override fun deleteData() {
-        GlobalScope.launch {
-            dao.deleteExam()
-            dao.deleteExamTimeTable()
-            dao.deleteInforUser()
-            dao.deleteMark()
-            dao.deleteTimeTable()
         }
     }
 
@@ -131,6 +126,12 @@ class DataRepositoryImpl(var network: HttpUis, var dao:AppDao) :
         GlobalScope.launch(Dispatchers.Default){
             val datadao = dao.getInforUser()
             data(datadao)
+        }
+    }
+
+    override fun getLogin(data: (MutableList<LoginInfor>) -> Unit) {
+        GlobalScope.launch {
+            data(dao.getLogin())
         }
     }
 

@@ -13,9 +13,9 @@ interface DataRepository {
     fun getDataDiem(hk:String,getdata:(MutableList<Mark>)->Unit)
     fun getDataSemester(hk:String,getdata:(MutableList<SemesterMark>)->Unit)
     fun getInforUser(data:(InfoUser)->Unit)
+    fun getLogin(data: (MutableList<LoginInfor>) -> Unit)
     fun addLogin(name:String,pass:String)
     fun deleteLogin()
-    fun deleteData()
     class LoginException: Exception(){
 
     }

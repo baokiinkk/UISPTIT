@@ -1,6 +1,5 @@
 package com.baokiin.uisptit.di
 
-import com.baokiin.uisptit.ui.hello.HelloViewModel
 import com.baokiin.uisptit.ui.info.InfoViewModel
 import com.baokiin.uisptit.ui.login.LoginViewModel
 import com.baokiin.uisptit.ui.mark.MarkViewModel
@@ -16,9 +15,6 @@ val inforViewModelDi: Module = module {
 
 val markViewModelDi: Module = module {
     viewModel { MarkViewModel(get()) }
-}
-val helloModuleDi:Module = module {
-    viewModel { HelloViewModel(get()) }
 }
 val loginModuleDi:Module = module {
     viewModel { LoginViewModel(get()) }

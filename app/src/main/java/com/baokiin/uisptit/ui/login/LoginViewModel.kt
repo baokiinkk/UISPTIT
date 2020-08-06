@@ -8,14 +8,19 @@ import kotlinx.coroutines.launch
 
 class LoginViewModel(val usecase:LoginUseCase) : ViewModel() {
     val bool:MutableLiveData<Boolean?> = MutableLiveData(null)
+    val isUser:MutableLiveData<Boolean?> = MutableLiveData(null)
     fun check(name:String,pass:String){
-        viewModelScope.launch(){
             usecase.isLogin(name,pass){
                 bool.postValue(it)
             }
-        }
+
     }
-    fun deleteLogin(){
-        usecase.deleteLogin()
+    fun isUser(){
+
+            usecase.getLogin {
+                isUser.postValue(it)
+            }
+
     }
+
 }

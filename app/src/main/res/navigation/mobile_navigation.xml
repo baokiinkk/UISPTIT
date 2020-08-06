@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@id/helloFragment">
+    app:startDestination="@id/loginFragment">
 
     <fragment
         android:id="@+id/navigation_infor"
@@ -104,19 +104,6 @@
             app:popExitAnim="@transition/slide_out_right"
             app:popUpTo="@id/navigation_infor"
             />
-    </fragment>
-    <fragment
-        android:id="@+id/helloFragment"
-        android:name="com.baokiin.uisptit.ui.hello.HelloFragment"
-        android:label="hello_fragment"
-        tools:layout="@layout/hello_fragment" >
-        <action
-            android:id="@+id/to_login"
-            app:destination="@id/loginFragment"
-            app:popUpTo="@id/helloFragment" />
-        <action
-            android:id="@+id/login_to_infor"
-            app:destination="@id/navigation_infor" />
     </fragment>
     <fragment
         android:id="@+id/loginFragment"

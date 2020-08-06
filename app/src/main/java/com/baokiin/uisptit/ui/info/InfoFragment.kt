@@ -1,5 +1,7 @@
 package com.baokiin.uisptit.ui.info
 import android.content.Context
+import android.net.ConnectivityManager
+import android.net.NetworkInfo
 import android.os.Bundle
 import android.view.KeyEvent
 import android.view.LayoutInflater
@@ -22,6 +24,9 @@ class InfoFragment : Fragment(){
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        val cm: ConnectivityManager? = activity?.getSystemService(Context.CONNECTIVITY_SERVICE ) as ConnectivityManager?
+        val activeNetwork: NetworkInfo? = cm?.activeNetworkInfo
+        val isConnected: Boolean = activeNetwork?.isConnectedOrConnecting == true
         val bd: FragmentInfoBinding =
             DataBindingUtil.inflate(inflater, R.layout.fragment_info, container, false)
         bd.lifecycleOwner = this
@@ -45,8 +50,28 @@ class InfoFragment : Fragment(){
             findNavController().navigate(R.id.to_mark)
         }
         bd.button.setOnClickListener {
+            viewModel.deleteLogin()
             findNavController().navigate(R.id.info_to_login)
         }
+
+        bd.fresh.setWaveRGBColor(3,218,197)
+        bd.fresh.setOnRefreshListener {
+            bd.fresh.postDelayed(
+                Runnable {
+                    if(isConnected ==true) {
+                        viewModel.reload()
+                        viewModel.getData("220192020")
+                        Toast.makeText(context, "Cập nhật thành công", Toast.LENGTH_SHORT).show()
+                    }
+                    else
+                    {
+                        viewModel.getData("220192020")
+                        Toast.makeText(context,"thiết bị đang offline,đã reload lại dữ liệu",Toast.LENGTH_SHORT).show()
+                    }
+                    bd.fresh.setRefreshing(false) }, 2000
+            )
+        }
+
         return bd.root
     }
     override fun onResume() {

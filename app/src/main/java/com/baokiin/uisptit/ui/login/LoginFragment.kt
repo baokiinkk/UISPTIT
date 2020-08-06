@@ -24,14 +24,17 @@ class LoginFragment : Fragment() {
             DataBindingUtil.inflate(inflater, R.layout.login_fragment, container, false)
         bd.lifecycleOwner = this
         bd.viewmodel = viewModel
+        viewModel.isUser()
 
-        viewModel.deleteLogin()
+        viewModel.isUser.observe(viewLifecycleOwner, Observer {
+            if(it == true)
+                findNavController().navigate(R.id.login_to_infor)
+        })
 
         bd.loginButton.setOnClickListener {
             viewModel.check(bd.usernameEt.editText?.text.toString(),bd.passwordEt.editText?.text.toString())
 
         }
-
         viewModel.bool.observe(viewLifecycleOwner, Observer {
             if(it == true){
                 findNavController().navigate(R.id.login_to_infor)

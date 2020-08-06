@@ -12,6 +12,7 @@ import okhttp3.OkHttpClient
 import okhttp3.Request
 import okhttp3.RequestBody
 import org.jsoup.Jsoup
+import java.util.concurrent.TimeUnit
 
 // T muốn là tạo 2 hàm 1 hàm kiểm tra login 1 hàm lấy list điểm nhưng mà t buồn ngủ quá rồi T_T làm hộ nha
 
@@ -23,6 +24,9 @@ class HttpUis( var context: Context)  {
             PersistentCookieJar(SetCookieCache(), SharedPrefsCookiePersistor(context))
          var client = OkHttpClient().newBuilder()
             .cookieJar(cookieJars)
+             .connectTimeout(5, TimeUnit.SECONDS)
+             .writeTimeout(5, TimeUnit.SECONDS)
+             .readTimeout(5, TimeUnit.SECONDS)
             .build()
          val formBody: RequestBody = FormBody.Builder()
             .add("__EVENTTARGET" , "")
