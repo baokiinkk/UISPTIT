@@ -128,12 +128,11 @@
             android:layout_marginStart="50dp"
             android:layout_marginEnd="50dp"
             android:layout_marginBottom="100dp"
+            android:contentDescription="@string/logoDescription"
             android:src="@drawable/logo"
             app:layout_constraintBottom_toTopOf="@+id/username_et"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            android:contentDescription="@string/logoDescription" />
+            app:layout_constraintStart_toStartOf="parent" />
 
         <TextView
             android:id="@+id/textView4"
