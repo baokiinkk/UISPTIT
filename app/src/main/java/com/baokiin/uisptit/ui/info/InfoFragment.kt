@@ -1,5 +1,6 @@
 package com.baokiin.uisptit.ui.info
 import android.content.Context
+import android.graphics.Color
 import android.net.ConnectivityManager
 import android.net.NetworkInfo
 import android.os.Bundle
@@ -32,7 +33,7 @@ class InfoFragment : Fragment(){
         bd.lifecycleOwner = this
         bd.viewmodel = viewModel
         viewModel.getData("220192020")
-        val adapter = AdapterMark(){
+        val adapter = AdapterMark {
 
         }
 
@@ -55,20 +56,23 @@ class InfoFragment : Fragment(){
         }
 
         bd.fresh.setWaveRGBColor(3,218,197)
+        bd.fresh.setColorSchemeColors(Color.WHITE)
+        bd.fresh.setShadowRadius(0)
         bd.fresh.setOnRefreshListener {
             bd.fresh.postDelayed(
                 Runnable {
-                    if(isConnected ==true) {
+                    if(isConnected) {
                         viewModel.reload()
                         viewModel.getData("220192020")
-                        Toast.makeText(context, "Cập nhật thành công", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(context, "Cập nhật thành công!", Toast.LENGTH_SHORT).show()
                     }
                     else
                     {
                         viewModel.getData("220192020")
-                        Toast.makeText(context,"thiết bị đang offline,đã reload lại dữ liệu",Toast.LENGTH_SHORT).show()
+                        Toast.makeText(context,"Không kết nối được!",Toast.LENGTH_SHORT).show()
                     }
-                    bd.fresh.setRefreshing(false) }, 2000
+                    bd.fresh.isRefreshing = false
+                }, 2000
             )
         }
 
