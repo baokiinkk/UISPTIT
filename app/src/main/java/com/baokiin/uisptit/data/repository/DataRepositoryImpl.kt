@@ -12,6 +12,7 @@ import kotlinx.coroutines.launch
 import org.jsoup.Jsoup
 import java.text.SimpleDateFormat
 import java.util.*
+import kotlin.collections.MutableMap.MutableEntry
 
 
 class DataRepositoryImpl(var network: HttpUis, var dao:AppDao) :
@@ -207,6 +208,7 @@ class DataRepositoryImpl(var network: HttpUis, var dao:AppDao) :
             }
         }
 
+
         return temp
     }
     fun xuLiDiem(htmlFile: String): MutableList<MutableList<String>> {
@@ -232,7 +234,7 @@ class DataRepositoryImpl(var network: HttpUis, var dao:AppDao) :
             } else {
                 if (cnt < 20) {
                     result.add(x)
-                    cnt++;
+                    cnt++
                 } else {
                     result.add(x)
                     res.add(result)

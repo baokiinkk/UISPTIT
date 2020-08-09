@@ -61,17 +61,17 @@ class LoginFragment : Fragment(){
             viewModel.check(username_et.editText?.text.toString(),password_et.editText?.text.toString())
         }
 
-        val span = SpannableString("Bằng cách Đăng Nhập, bạn đồng ý với chính sách bảo mật của chúng tôi.")
-        span.setSpan(RelativeSizeSpan(1.3f),36,54,0)
-        span.setSpan(UnderlineSpan(),36,54,0)
-        span.setSpan(StyleSpan(Typeface.BOLD),36,54,0)
+        val span = SpannableString("Bằng cách Đăng Nhập, bạn đồng ý với Chính sách Quyền riêng tư của chúng tôi.")
+        span.setSpan(RelativeSizeSpan(1.0f),36,61,0)
+        span.setSpan(UnderlineSpan(),36,61,0)
+        span.setSpan(StyleSpan(Typeface.BOLD),36,61,0)
         span.setSpan(object :ClickableSpan(){
             override fun onClick(widget: View) {
                 findNavController().navigate(R.id.to_link)
             }
-        },36,54,0)
+        },36,61,0)
         textView4.movementMethod = LinkMovementMethod.getInstance()
-        textView4.setText(span)
+        textView4.text = span
     }
 
     override fun onResume() {
