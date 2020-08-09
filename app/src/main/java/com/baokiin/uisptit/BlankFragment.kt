@@ -22,7 +22,7 @@ class BlankFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         link.webViewClient = WebViewClient()
-        link.loadUrl("http://uis.ptithcm.edu.vn/")
+        link.loadUrl("https://itmc-ptithcm.github.io/UISpolicy.html")
     }
 
 }
