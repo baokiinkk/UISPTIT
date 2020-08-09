@@ -24,6 +24,7 @@ import com.github.mikephil.charting.data.LineData
 import com.github.mikephil.charting.data.LineDataSet
 import com.github.mikephil.charting.formatter.ValueFormatter
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet
+import kotlinx.android.synthetic.main.fragment_info.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
@@ -34,19 +35,13 @@ class InfoFragment : Fragment(){
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val cm: ConnectivityManager? = activity?.getSystemService(Context.CONNECTIVITY_SERVICE ) as ConnectivityManager?
-        val activeNetwork: NetworkInfo? = cm?.activeNetworkInfo
-        val isConnected: Boolean = activeNetwork?.isConnectedOrConnecting == true
         val bd: FragmentInfoBinding =
             DataBindingUtil.inflate(inflater, R.layout.fragment_info, container, false)
         bd.lifecycleOwner = this
         bd.viewmodel = viewModel
 
         viewModel.getData("220192020")
-        val adapter = AdapterMark {
-
-        }
-
+        val adapter = AdapterMark()
         bd.recycleViewDiem.adapter = adapter
         bd.recycleViewDiem.layoutManager = LinearLayoutManager(context)
         viewModel.listData.observe(viewLifecycleOwner, Observer {
@@ -54,36 +49,6 @@ class InfoFragment : Fragment(){
                    adapter.submitList(it)
                }
         })
-        bd.cardTKB.setOnClickListener {
-            findNavController().navigate(R.id.to_schedule)
-        }
-        bd.cardDiem.setOnClickListener {
-            findNavController().navigate(R.id.to_mark)
-        }
-        bd.btnOption.setOnClickListener {
-            findNavController().navigate(R.id.to_option)
-        }
-
-        bd.fresh.setWaveRGBColor(3,218,197)
-        bd.fresh.setColorSchemeColors(Color.WHITE)
-        bd.fresh.setShadowRadius(0)
-        bd.fresh.setOnRefreshListener {
-            bd.fresh.postDelayed(
-                Runnable {
-                    if(isConnected) {
-                        viewModel.reload()
-                        viewModel.getData("220192020")
-                        Toast.makeText(context, "Cập nhật thành công!", Toast.LENGTH_SHORT).show()
-                    }
-                    else
-                    {
-                        viewModel.getData("220192020")
-                        Toast.makeText(context,"Không kết nối được!",Toast.LENGTH_SHORT).show()
-                    }
-                    bd.fresh.isRefreshing = false
-                }, 2000
-            )
-        }
 
         viewModel.listSemester.observe(viewLifecycleOwner, Observer {
             if(it != null) {
@@ -121,6 +86,45 @@ class InfoFragment : Fragment(){
 
 
         return bd.root
+    }
+
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        super.onCreate(savedInstanceState)
+        cardTKB.setOnClickListener {
+            findNavController().navigate(R.id.to_schedule)
+        }
+        cardDiem.setOnClickListener {
+            findNavController().navigate(R.id.to_mark)
+        }
+        btnOption.setOnClickListener {
+            findNavController().navigate(R.id.to_option)
+        }
+
+        val cm: ConnectivityManager? = activity?.getSystemService(Context.CONNECTIVITY_SERVICE ) as ConnectivityManager?
+        val activeNetwork: NetworkInfo? = cm?.activeNetworkInfo
+        val isConnected: Boolean = activeNetwork?.isConnectedOrConnecting == true
+        fresh.setWaveRGBColor(3,218,197)
+        fresh.setColorSchemeColors(Color.WHITE)
+        fresh.setShadowRadius(0)
+        fresh.setOnRefreshListener {
+            fresh.postDelayed(
+                Runnable {
+                    if(isConnected) {
+                        viewModel.reload()
+                        viewModel.getData("220192020")
+                        Toast.makeText(context, "Cập nhật thành công!", Toast.LENGTH_SHORT).show()
+                    }
+                    else
+                    {
+                        viewModel.getData("220192020")
+                        Toast.makeText(context,"Không kết nối được!",Toast.LENGTH_SHORT).show()
+                    }
+                    fresh.isRefreshing = false
+                }, 2000
+            )
+        }
     }
     override fun onResume() {
         super.onResume()

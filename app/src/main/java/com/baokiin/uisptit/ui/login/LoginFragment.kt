@@ -4,7 +4,11 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Context.MODE_PRIVATE
 import android.content.SharedPreferences
+import android.graphics.Typeface
 import android.os.Bundle
+import android.text.SpannableString
+import android.text.method.LinkMovementMethod
+import android.text.style.*
 import android.view.KeyEvent
 import android.view.LayoutInflater
 import android.view.View
@@ -17,6 +21,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.baokiin.uisptit.R
 import com.baokiin.uisptit.databinding.LoginFragmentBinding
+import kotlinx.android.synthetic.main.login_fragment.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class LoginFragment : Fragment(){
@@ -35,10 +40,7 @@ class LoginFragment : Fragment(){
         if(sp.getBoolean("login",false))
             findNavController().navigate(R.id.login_to_infor)
 
-        bd.loginButton.setOnClickListener {
-            viewModel.check(bd.usernameEt.editText?.text.toString(),bd.passwordEt.editText?.text.toString())
 
-        }
         viewModel.bool.observe(viewLifecycleOwner, Observer {
             if(it == true){
                 findNavController().navigate(R.id.login_to_infor)
@@ -51,6 +53,27 @@ class LoginFragment : Fragment(){
 
         return bd.root
     }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+       login_button.setOnClickListener {
+            viewModel.check(username_et.editText?.text.toString(),password_et.editText?.text.toString())
+        }
+
+        val span = SpannableString("Bằng cách Đăng Nhập, bạn đồng ý với chính sách bảo mật của chúng tôi.")
+        span.setSpan(RelativeSizeSpan(1.3f),36,54,0)
+        span.setSpan(UnderlineSpan(),36,54,0)
+        span.setSpan(StyleSpan(Typeface.BOLD),36,54,0)
+        span.setSpan(object :ClickableSpan(){
+            override fun onClick(widget: View) {
+                findNavController().navigate(R.id.to_link)
+            }
+        },36,54,0)
+        textView4.movementMethod = LinkMovementMethod.getInstance()
+        textView4.setText(span)
+    }
+
     override fun onResume() {
         super.onResume()
         if (view == null) {
