@@ -26,11 +26,16 @@ import com.github.mikephil.charting.formatter.ValueFormatter
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet
 import kotlinx.android.synthetic.main.fragment_info.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import java.text.DateFormat
+import java.text.SimpleDateFormat
+import java.time.LocalDateTime
+import java.util.*
+import kotlin.collections.ArrayList
 
 
 class InfoFragment : Fragment(){
     val viewModel: InfoViewModel by viewModel<InfoViewModel>()
-
+    lateinit var currentTime: Date
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -44,6 +49,8 @@ class InfoFragment : Fragment(){
         val adapter = AdapterMark()
         bd.recycleViewDiem.adapter = adapter
         bd.recycleViewDiem.layoutManager = LinearLayoutManager(context)
+        currentTime = Calendar.getInstance().time
+        bd.txtBuoi.text = getBuoi()
         viewModel.listData.observe(viewLifecycleOwner, Observer {
                it.let {
                    adapter.submitList(it)
@@ -52,7 +59,6 @@ class InfoFragment : Fragment(){
 
         viewModel.listSemester.observe(viewLifecycleOwner, Observer {
             if(it != null) {
-                Log.d("quocbaokiin",it.toString())
                 val entries = ArrayList<Entry>()
                 for(i in 0 until it.size){
                     entries.add(Entry(i.toFloat(),it[i].gpa4))
@@ -114,6 +120,8 @@ class InfoFragment : Fragment(){
                     if(isConnected) {
                         viewModel.reload()
                         viewModel.getData("220192020")
+                        val sdf = SimpleDateFormat("HH:mm dd/MM/yy")
+                        txtTime.text = "Cập nhật lúc: "+sdf.format(currentTime).toString()
                         Toast.makeText(context, "Cập nhật thành công!", Toast.LENGTH_SHORT).show()
                     }
                     else
@@ -139,6 +147,19 @@ class InfoFragment : Fragment(){
                 true
             } else false
         }
+    }
+
+    fun getBuoi() :String{
+        val sdf = SimpleDateFormat("HH")
+        val hour = sdf.format(currentTime).toInt()
+        if(hour < 12 )
+            return "Chúc ngày mới tốt lành!"
+        else if(hour < 15)
+            return "Chúc buổi trưa vui vẻ!"
+        else if(hour < 19)
+            return "Chúc buổi chiều mát mẻ!"
+        else
+            return "Chúc buổi tối ...!"
     }
 
 }

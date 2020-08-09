@@ -101,17 +101,15 @@
                     android:layout_height="wrap_content">
 
                     <TextView
-                        android:id="@+id/txtCPA"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:gravity="center"
-                        android:text="@{String.valueOf(viewmodel.listSemester.get(viewmodel.listSemester.size()-1).gpa4)}"
+                        android:text="2.6"
                         android:textColor="@color/colorAccent"
                         android:textSize="@dimen/textSizeMark" />
 
                     <TextView
-                        android:id="@+id/txtTCTL"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -121,7 +119,6 @@
                         android:textSize="@dimen/textSizeMark" />
 
                     <TextView
-                        android:id="@+id/txtAA"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"

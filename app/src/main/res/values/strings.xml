@@ -24,7 +24,7 @@
     <string name="policy">Bằng cách Đăng Nhập, bạn đồng ý với chính sách bảo mật của chúng tôi.</string>
 
     // info
-    <string name="thoi_khoa_bieu">Thời Khóa Biểu</string>
+    <string name="thoi_khoa_bieu">Lịch Học</string>
     <string name="thong_tin_chung">Thông Tin Chung</string>
     <string name="diem_thi">Điểm Thi</string>
     <string name="mon">Môn</string>
@@ -33,5 +33,6 @@
     <string name="ket_qua">Kết Quả</string>
 
     <string name="todo">TODO</string>
-    <string name="end_name">!</string>
+    <string name="end_name">,</string>
+    <string name="lịch_thi">Lịch Thi</string>
 </resources>
