@@ -9,4 +9,6 @@
     <color name="login">#0C8E9F</color>
     <color name="bright_red">#FF6E63</color>
     <color name="appBackgroundWhite">#FDFFFF</color>
+    <color name="infoBackground">#E1FBF9</color>
+    <color name="titleBackground">#FFF</color>
 </resources>
