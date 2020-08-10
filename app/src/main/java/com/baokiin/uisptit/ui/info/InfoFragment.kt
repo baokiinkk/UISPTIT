@@ -50,6 +50,8 @@ class InfoFragment : Fragment(){
         bd.recycleViewDiem.adapter = adapter
         bd.recycleViewDiem.layoutManager = LinearLayoutManager(context)
         currentTime = Calendar.getInstance().time
+        val sdf = SimpleDateFormat("HH:mm dd/MM/yy")
+        bd.txtTime.text = "Cập nhật lúc: "+sdf.format(currentTime).toString()
         bd.txtBuoi.text = getBuoi()
         viewModel.listData.observe(viewLifecycleOwner, Observer {
                it.let {
@@ -76,7 +78,7 @@ class InfoFragment : Fragment(){
                     }
 
                 val xAxis = bd.linechart.xAxis
-                xAxis.setGranularity(1f)
+                xAxis.granularity = 1f
                 xAxis.labelRotationAngle = -45f
                 xAxis.valueFormatter = formatter
                 val dataset = LineDataSet(entries, "Điểm Tích Lũy")
@@ -120,6 +122,7 @@ class InfoFragment : Fragment(){
                     if(isConnected) {
                         viewModel.reload()
                         viewModel.getData("220192020")
+                        currentTime = Calendar.getInstance().time
                         val sdf = SimpleDateFormat("HH:mm dd/MM/yy")
                         txtTime.text = "Cập nhật lúc: "+sdf.format(currentTime).toString()
                         Toast.makeText(context, "Cập nhật thành công!", Toast.LENGTH_SHORT).show()

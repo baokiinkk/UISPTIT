@@ -10,6 +10,7 @@
             />
     </data>
     <jp.co.recruit_lifestyle.android.widget.WaveSwipeRefreshLayout
+        android:outlineAmbientShadowColor="@color/colorAccent"
         android:id="@+id/fresh"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -34,16 +35,16 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
+
             <TextView
                 android:id="@+id/btnOption"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="16dp"
                 android:layout_marginEnd="20dp"
                 android:background="@drawable/option"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
-
 
             <TextView
                 android:id="@+id/txtTitle"
@@ -88,7 +89,7 @@
                 android:id="@+id/tableLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="30dp"
                 android:layout_marginBottom="20dp"
                 android:collapseColumns="*"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -105,6 +106,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
+                        android:fontFamily="sans-serif-medium"
                         android:gravity="center"
                         android:text="@{String.valueOf(viewmodel.listSemester.get(viewmodel.listSemester.size()-1).gpa4)}"
                         android:textColor="@color/colorAccent"
@@ -115,6 +117,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
+                        android:fontFamily="sans-serif-medium"
                         android:gravity="center"
                         android:text="70"
                         android:textColor="@color/colorAccent"
@@ -125,6 +128,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
+                        android:fontFamily="sans-serif-medium"
                         android:gravity="center"
                         android:text="30"
                         android:textColor="@color/colorAccent"
@@ -165,6 +169,7 @@
                 android:layout_marginStart="20dp"
                 android:paddingStart="2dp"
                 android:fontFamily="sans-serif-light"
+                android:textSize="@dimen/sizeTextTitleHint"
                 android:text="chào buổi sáng"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/txtTitle" />
@@ -178,8 +183,9 @@
             android:layout_marginStart="20dp"
             android:layout_marginTop="5dp"
             android:layout_marginEnd="20dp"
-            app:cardElevation="@dimen/shadow"
+            app:cardBackgroundColor="@color/colorAccent"
             app:cardCornerRadius="20dp"
+            app:cardElevation="@dimen/shadow"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
