@@ -32,6 +32,24 @@ class DataRepositoryImpl(var network: HttpUis, var dao:AppDao) :
                 dao.deleteMark()
                 dao.deleteTimeTable()
                 dao.deleteSemester()
+                val exam = xuliLichThi(list!!.get("LichThi")!!)
+                for (i in exam) {
+                    dao.addExamTimeTable(
+                        ExamTimetable(
+                            0,
+                            i[0],
+                            i[1],
+                            i[2],
+                            i[3],
+                            i[4],
+                            i[5],
+                            i[6].toInt(),
+                            i[7].toInt(),
+                            i[8],
+                            i[9]
+                        )
+                    )
+                }
 
                 val inforUser = xuLiThongTin(list!!.get("LichThi")!!)
                 dao.addInforUser(InfoUser(inforUser[0],inforUser[1],inforUser[2],inforUser[3],inforUser[4],inforUser[5],
@@ -49,7 +67,6 @@ class DataRepositoryImpl(var network: HttpUis, var dao:AppDao) :
 
                 val semester = xuLiDiemTongKet(list!!.get("Diem")!!)
                 for (i in semester) {
-                    Log.d("quocbaokiin",i.toString())
                     dao.addSemester(
                             SemesterMark(
                                     i[0], i[1].toFloat(), i[2].toFloat(), i[3].toFloat(),
@@ -65,25 +82,6 @@ class DataRepositoryImpl(var network: HttpUis, var dao:AppDao) :
                 for (i in tkb) {
                     dao.addTimeTable(
                             TimeTable(0, i[0], i[1], i[2], i[3], i[4])
-                    )
-                }
-
-                val exam = xuliLichThi(list!!.get("LichThi")!!)
-                for (i in exam) {
-                    dao.addExamTimeTable(
-                            ExamTimetable(
-                                    0,
-                                    i[0],
-                                    i[1],
-                                    i[2],
-                                    i[3],
-                                    i[4],
-                                    i[5],
-                                    i[6].toInt(),
-                                    i[7].toInt(),
-                                    i[8],
-                                    i[9]
-                            )
                     )
                 }
 
@@ -117,9 +115,21 @@ class DataRepositoryImpl(var network: HttpUis, var dao:AppDao) :
         }
     }
 
+    override fun getCNTAA(data: (Int) -> Unit) {
+        GlobalScope.launch {
+            data(dao.getCNTAA())
+        }
+    }
+
     override fun getDataSemester( getdata: (MutableList<SemesterMark>) -> Unit) {
         GlobalScope.launch(Dispatchers.IO){
             getdata(dao.getSemester())
+        }
+    }
+
+    override fun getExam(data: (MutableList<ExamTimetable>) -> Unit) {
+        GlobalScope.launch {
+            data(dao.getExamTimeTable())
         }
     }
 
@@ -156,14 +166,13 @@ class DataRepositoryImpl(var network: HttpUis, var dao:AppDao) :
         for(i in 0 until res.size){
             val j = i%12
             if (j == 0) continue
-            row.add(getDigits(res[i]))
+            row.add(res[i])
             if(j == 11){
                 temp.add(row)
                 row = mutableListOf()
             }
 
         }
-
         return temp
     }
 

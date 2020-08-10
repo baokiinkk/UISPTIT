@@ -6,6 +6,7 @@ import android.content.Context.MODE_PRIVATE
 import android.content.SharedPreferences
 import android.graphics.Typeface
 import android.os.Bundle
+import android.os.Handler
 import android.text.SpannableString
 import android.text.method.LinkMovementMethod
 import android.text.style.*
@@ -22,6 +23,9 @@ import androidx.navigation.fragment.navArgs
 import com.baokiin.uisptit.R
 import com.baokiin.uisptit.databinding.LoginFragmentBinding
 import kotlinx.android.synthetic.main.login_fragment.*
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class LoginFragment : Fragment(){
@@ -43,14 +47,15 @@ class LoginFragment : Fragment(){
 
         viewModel.bool.observe(viewLifecycleOwner, Observer {
             if(it == true){
-                findNavController().navigate(R.id.login_to_infor)
+                spin_kit.visibility = View.GONE
                 sp.edit().putBoolean("login",true).apply()
+                findNavController().navigate(R.id.login_to_infor)
             }
             else if(it == false){
+                spin_kit.visibility = View.GONE
                 bd.errorTv.text = "Sai tài khoản hoặc mật khẩu"
             }
         })
-
         return bd.root
     }
 
@@ -59,7 +64,8 @@ class LoginFragment : Fragment(){
 
        login_button.setOnClickListener {
             viewModel.check(username_et.editText?.text.toString(),password_et.editText?.text.toString())
-        }
+           spin_kit.visibility = View.VISIBLE
+       }
 
         val span = SpannableString("Bằng cách Đăng Nhập, bạn đồng ý với Chính sách Quyền riêng tư của chúng tôi.")
         span.setSpan(RelativeSizeSpan(1.0f),36,61,0)

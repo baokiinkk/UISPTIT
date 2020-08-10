@@ -47,18 +47,34 @@ class InfoFragment : Fragment(){
 
         viewModel.getData("220192020")
         val adapter = AdapterMark()
+        val adapterExam = AdapterExam()
+
         bd.recycleViewDiem.adapter = adapter
         bd.recycleViewDiem.layoutManager = LinearLayoutManager(context)
+
+
+        bd.recycleExam.adapter = adapterExam
+        bd.recycleExam.layoutManager = LinearLayoutManager(context)
         currentTime = Calendar.getInstance().time
         val sdf = SimpleDateFormat("HH:mm dd/MM/yy")
         bd.txtTime.text = "Cập nhật lúc: "+sdf.format(currentTime).toString()
         bd.txtBuoi.text = getBuoi()
         viewModel.listData.observe(viewLifecycleOwner, Observer {
-               it.let {
+               if(it != null) {
+                   var dem =0
+                   bd.txtAA.text = dem.toString()
                    adapter.submitList(it)
                }
         })
+        viewModel.listExam.observe(viewLifecycleOwner, Observer {
+            if(it != null){
+                if(!it.isEmpty()) {
+                    adapterExam.submitList(it)
+                    bd.trong.visibility = View.GONE
+                }
+            }
 
+        })
         viewModel.listSemester.observe(viewLifecycleOwner, Observer {
             if(it != null) {
                 val entries = ArrayList<Entry>()

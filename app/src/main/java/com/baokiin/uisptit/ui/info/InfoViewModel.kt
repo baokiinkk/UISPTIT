@@ -2,6 +2,7 @@ package com.baokiin.uisptit.ui.info
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.baokiin.uisptit.data.db.model.ExamTimetable
 import com.baokiin.uisptit.data.db.model.LoginInfor
 import com.baokiin.uisptit.data.db.model.Mark
 import com.baokiin.uisptit.data.db.model.SemesterMark
@@ -9,11 +10,12 @@ import com.baokiin.uisptit.data.repository.DataRepository
 
 class InfoViewModel(private val repo: DataRepository) : ViewModel() {
     val listData:MutableLiveData<MutableList<Mark>?> = MutableLiveData(null)
-     val title:MutableLiveData<String?> = MutableLiveData(null)
+    val title:MutableLiveData<String?> = MutableLiveData(null)
     val bool:MutableLiveData<Boolean?> = MutableLiveData(null)
     val login:MutableLiveData<LoginInfor?> = MutableLiveData(null)
     val listSemester:MutableLiveData<MutableList<SemesterMark>?> = MutableLiveData(null)
-
+    val CNTAA:MutableLiveData<Int?> = MutableLiveData(null)
+    val listExam:MutableLiveData<MutableList<ExamTimetable>?> = MutableLiveData(null)
     fun getData(hk:String){
             repo.getDataDiem(hk){
                 listData.postValue(it)
@@ -23,7 +25,13 @@ class InfoViewModel(private val repo: DataRepository) : ViewModel() {
             }
             repo.getDataSemester {
                 listSemester.postValue(it)
-        }
+            }
+            repo.getCNTAA {
+                CNTAA.postValue(it)
+            }
+            repo.getExam {
+                listExam.postValue(it)
+            }
     }
     fun reload() {
             repo.getLogin {

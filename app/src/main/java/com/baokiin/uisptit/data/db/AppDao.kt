@@ -40,6 +40,8 @@ interface AppDao {
 //    //query
     @Query("select * from Mark Where Mark.semester=:hocki")
     suspend fun getMarkHK(hocki:String): MutableList<Mark>
+    @Query("select count(Mark.TKCH) from Mark Where Mark.TKCH='A' or Mark.TKCH='A+'")
+    suspend fun getCNTAA(): Int
     @Query("select * from Mark ")
     suspend fun getMark(): MutableList<Mark>
 
