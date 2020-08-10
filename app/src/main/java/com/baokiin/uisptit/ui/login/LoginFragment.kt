@@ -22,6 +22,8 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.baokiin.uisptit.R
 import com.baokiin.uisptit.databinding.LoginFragmentBinding
+import com.github.ybq.android.spinkit.sprite.Sprite
+import com.github.ybq.android.spinkit.style.*
 import kotlinx.android.synthetic.main.login_fragment.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
@@ -47,7 +49,6 @@ class LoginFragment : Fragment(){
 
         viewModel.bool.observe(viewLifecycleOwner, Observer {
             if(it == true){
-                spin_kit.visibility = View.GONE
                 sp.edit().putBoolean("login",true).apply()
                 findNavController().navigate(R.id.login_to_infor)
             }
@@ -65,6 +66,7 @@ class LoginFragment : Fragment(){
        login_button.setOnClickListener {
             viewModel.check(username_et.editText?.text.toString(),password_et.editText?.text.toString())
            spin_kit.visibility = View.VISIBLE
+           spin.setIndeterminateDrawable(returnSprite())
        }
 
         val span = SpannableString("Bằng cách Đăng Nhập, bạn đồng ý với Chính sách Quyền riêng tư của chúng tôi.")
@@ -93,6 +95,17 @@ class LoginFragment : Fragment(){
                 true
             } else false
         }
+    }
+    fun returnSprite() : Sprite {
+        var list:MutableList<Sprite> = mutableListOf()
+        list.add(DoubleBounce())
+        list.add(ChasingDots())
+        list.add(Wave())
+        list.add(ThreeBounce())
+        list.add(Circle())
+        val rnds = (0 .. 4).random()
+        Toast.makeText(context,rnds.toString(),Toast.LENGTH_SHORT).show()
+        return list[rnds]
     }
 
 

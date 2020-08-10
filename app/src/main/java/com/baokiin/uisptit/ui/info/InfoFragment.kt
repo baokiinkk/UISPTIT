@@ -36,6 +36,7 @@ import kotlin.collections.ArrayList
 class InfoFragment : Fragment(){
     val viewModel: InfoViewModel by viewModel<InfoViewModel>()
     lateinit var currentTime: Date
+    lateinit var sp:SharedPreferences
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -44,7 +45,7 @@ class InfoFragment : Fragment(){
             DataBindingUtil.inflate(inflater, R.layout.fragment_info, container, false)
         bd.lifecycleOwner = this
         bd.viewmodel = viewModel
-
+        sp = requireActivity().getSharedPreferences("Login", Context.MODE_PRIVATE)
         viewModel.getData("220192020")
         val adapter = AdapterMark()
         val adapterExam = AdapterExam()
@@ -57,7 +58,8 @@ class InfoFragment : Fragment(){
         bd.recycleExam.layoutManager = LinearLayoutManager(context)
         currentTime = Calendar.getInstance().time
         val sdf = SimpleDateFormat("HH:mm dd/MM/yy")
-        bd.txtTime.text = "Cập nhật lúc: "+sdf.format(currentTime).toString()
+        bd.txtTime.text = sp.getString("updateTime","dev")
+        Log.d("quocbaokiin",sp.all.toString())
         bd.txtBuoi.text = getBuoi()
         viewModel.listData.observe(viewLifecycleOwner, Observer {
                if(it != null) {
@@ -138,9 +140,13 @@ class InfoFragment : Fragment(){
                     if(isConnected) {
                         viewModel.reload()
                         viewModel.getData("220192020")
+
                         currentTime = Calendar.getInstance().time
                         val sdf = SimpleDateFormat("HH:mm dd/MM/yy")
-                        txtTime.text = "Cập nhật lúc: "+sdf.format(currentTime).toString()
+                        val str = "Cập nhật lúc: "+sdf.format(currentTime).toString()
+                        sp.edit().putString("updateTime",str).commit()
+                        txtTime.text = str
+
                         Toast.makeText(context, "Cập nhật thành công!", Toast.LENGTH_SHORT).show()
                     }
                     else
