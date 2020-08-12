@@ -14,7 +14,7 @@ class InfoViewModel(private val repo: DataRepository) : ViewModel() {
     val bool:MutableLiveData<Boolean?> = MutableLiveData(null)
     val login:MutableLiveData<LoginInfor?> = MutableLiveData(null)
     val listSemester:MutableLiveData<MutableList<SemesterMark>?> = MutableLiveData(null)
-    val CNTAA:MutableLiveData<Int?> = MutableLiveData(null)
+    val CNTAA:MutableLiveData<Int> = MutableLiveData(0)
     val listExam:MutableLiveData<MutableList<ExamTimetable>?> = MutableLiveData(null)
     fun getData(hk:String){
             repo.getDataDiem(hk){

@@ -66,8 +66,6 @@ class InfoFragment : Fragment(){
         bd.txtBuoi.text = getBuoi()
         viewModel.listData.observe(viewLifecycleOwner, Observer {
                if(it != null) {
-                   var dem =0
-                   bd.txtAA.text = dem.toString()
                    adapter.submitList(it)
                }
         })
@@ -144,7 +142,19 @@ class InfoFragment : Fragment(){
 
             }
         })
-
+        viewModel.bool.observe(viewLifecycleOwner, Observer {
+            if(it == true){
+                viewModel.getData("220192020")
+                currentTime = Calendar.getInstance().time
+                val sdf = SimpleDateFormat("HH:mm dd/MM/yy")
+                val str = "Cập nhật lúc: "+sdf.format(currentTime).toString()
+                sp.edit().putString("updateTime",str).commit()
+                txtTime.text = str
+                Toast.makeText(context, "Cập nhật thành công!", Toast.LENGTH_SHORT).show()
+                viewModel.bool.postValue(false)
+                fresh.isRefreshing = false
+            }
+        })
 
 
         return bd.root
@@ -164,35 +174,21 @@ class InfoFragment : Fragment(){
             findNavController().navigate(R.id.to_option)
         }
 
-        val cm: ConnectivityManager? = activity?.getSystemService(Context.CONNECTIVITY_SERVICE ) as ConnectivityManager?
-        val activeNetwork: NetworkInfo? = cm?.activeNetworkInfo
-        val isConnected: Boolean = activeNetwork?.isConnectedOrConnecting == true
+
         fresh.setWaveRGBColor(3,218,197)
         fresh.setColorSchemeColors(Color.WHITE)
         fresh.setShadowRadius(0)
         fresh.setOnRefreshListener {
-            fresh.postDelayed(
-                Runnable {
-                    if(isConnected) {
-                        viewModel.reload()
-                        viewModel.getData("220192020")
+            val cm: ConnectivityManager? = activity?.getSystemService(Context.CONNECTIVITY_SERVICE ) as ConnectivityManager?
+            val activeNetwork: NetworkInfo? = cm?.activeNetworkInfo
+            val isConnected: Boolean = activeNetwork?.isConnectedOrConnecting == true
+            if(isConnected)
+                viewModel.reload()
+            else {
+                Toast.makeText(context, "Không kết nối được!", Toast.LENGTH_SHORT).show()
+                fresh.isRefreshing = false
+            }
 
-                        currentTime = Calendar.getInstance().time
-                        val sdf = SimpleDateFormat("HH:mm dd/MM/yy")
-                        val str = "Cập nhật lúc: "+sdf.format(currentTime).toString()
-                        sp.edit().putString("updateTime",str).commit()
-                        txtTime.text = str
-
-                        Toast.makeText(context, "Cập nhật thành công!", Toast.LENGTH_SHORT).show()
-                    }
-                    else
-                    {
-                        viewModel.getData("220192020")
-                        Toast.makeText(context,"Không kết nối được!",Toast.LENGTH_SHORT).show()
-                    }
-                    fresh.isRefreshing = false
-                }, 2000
-            )
         }
     }
     override fun onResume() {
