@@ -210,7 +210,7 @@
                 android:id="@+id/linechart"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="#B0F3D4"
+                android:background="#FFFFFF"
                 />
         </androidx.cardview.widget.CardView>
 

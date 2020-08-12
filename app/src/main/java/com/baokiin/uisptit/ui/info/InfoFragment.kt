@@ -5,12 +5,13 @@ import android.graphics.Color
 import android.net.ConnectivityManager
 import android.net.NetworkInfo
 import android.os.Bundle
+import android.util.Log
 import android.view.KeyEvent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import android.widget.Toast
-import androidx.core.view.get
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -20,21 +21,19 @@ import com.baokiin.uisptit.R
 import com.baokiin.uisptit.databinding.FragmentInfoBinding
 import com.github.mikephil.charting.components.AxisBase
 import com.github.mikephil.charting.components.Description
+import com.github.mikephil.charting.components.MarkerView
+import com.github.mikephil.charting.components.XAxis
 import com.github.mikephil.charting.data.Entry
 import com.github.mikephil.charting.data.LineData
 import com.github.mikephil.charting.data.LineDataSet
 import com.github.mikephil.charting.formatter.ValueFormatter
+import com.github.mikephil.charting.highlight.Highlight
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet
 import kotlinx.android.synthetic.main.fragment_info.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
-import java.text.DateFormat
 import java.text.SimpleDateFormat
-import java.time.LocalDateTime
 import java.util.*
 import kotlin.collections.ArrayList
-import kotlin.math.ceil
-import kotlin.math.round
-import kotlin.math.roundToLong
 
 
 class InfoFragment : Fragment(){
@@ -86,11 +85,8 @@ class InfoFragment : Fragment(){
                 }
                 val hocki = ArrayList<String>()
                 for(i in 0 until it.size){
-                    var x = it[i].semester[0].toString()
-                    for(i in 1 until it[i].semester.length step 4) {
-                        x += '/'
-                        x+=it[i].semester.substring(i,i+4)
-                    }
+                    val tmp = it[i].semester
+                    var x = tmp.substring(0, 1) + "-" + tmp.substring(3, 5) + "/" + tmp.substring(7, 9)
                     hocki.add(x)
                 }
 
@@ -101,26 +97,30 @@ class InfoFragment : Fragment(){
                         }
                     }
 
-                val formatterLeft: ValueFormatter =
-                    object : ValueFormatter() {
-                        override fun getAxisLabel(value: Float, axis: AxisBase): String {
-                            axis.setLabelCount(4,true)
-                            val v:Double = value.toDouble()
-                            return (round( v * 10.0) /10.0).toString()
-                        }
-                    }
+//                val formatterLeft: ValueFormatter =
+//                    object : ValueFormatter() {
+//                        override fun getAxisLabel(value: Float, axis: AxisBase): String {
+//                            axis.setLabelCount(4,true)
+//                            val v:Double = value.toDouble()
+//                            return (round( v * 10.0) /10.0).toString()
+//                        }
+//                    }
 
                 val xAxis = bd.linechart.xAxis
-                xAxis.granularity = 1f
-                xAxis.labelRotationAngle = -45f
-                xAxis.valueFormatter = formatter
 
+
+                xAxis.labelRotationAngle = 90f
+                xAxis.valueFormatter = formatter
+                xAxis.position = XAxis.XAxisPosition.BOTTOM
                 val yAxisL = bd.linechart.axisLeft
-                yAxisL.valueFormatter = formatterLeft
+                yAxisL.mAxisMaximum = 4.0f
+                xAxis.granularity = 0.5f
+                //yAxisL.valueFormatter = formatterLeft
 
                 val dataset = LineDataSet(entries, "Điểm Tích Lũy")
                 dataset.lineWidth = 3f
-                dataset.valueTextColor = Color.BLUE
+                dataset.valueTextColor = Color.BLACK
+                dataset.color = Color.CYAN
                 val data: ArrayList<ILineDataSet> = ArrayList()
                 data.add(dataset)
                 val lineData: LineData = LineData(data)
@@ -132,14 +132,20 @@ class InfoFragment : Fragment(){
                 val legend = bd.linechart.legend
                 legend.textSize = 15f
 
+
                 bd.linechart.axisRight.isEnabled = false
                 bd.linechart.data = lineData
                 bd.linechart.setDrawBorders(true)
-                bd.linechart.setBorderColor(Color.RED)
-                bd.linechart.setBorderWidth(2f)
+                bd.linechart.setBorderColor(Color.BLACK)
+                bd.linechart.setBorderWidth(1f)
                 bd.linechart.description = des
                 bd.linechart.invalidate()
-
+                bd.linechart.setPinchZoom(false)
+                bd.linechart.isDoubleTapToZoomEnabled = false
+                bd.linechart.setTouchEnabled(true)
+                bd.linechart.isHighlightPerDragEnabled = true
+                val mv = CustomMarkerView(context, R.layout.axis_label, hocki)
+                bd.linechart.marker = mv
             }
         })
         viewModel.bool.observe(viewLifecycleOwner, Observer {
@@ -219,5 +225,37 @@ class InfoFragment : Fragment(){
             return "Chúc buổi tối ...!"
     }
 
+    fun copyStr(str : String) : String{
+        val res = str
+        return res
+    }
+
+    class CustomMarkerView(context: Context?, layoutResource: Int, private val listLabel : MutableList<String>) :
+        MarkerView(context, layoutResource) {
+        private val tvContent: TextView = findViewById<TextView>(R.id.tvContent)
+
+        // callbacks everytime the MarkerView is redrawn, can be used to update the
+        // content (user-interface)
+        override fun refreshContent(
+            e: Entry,
+            highlight: Highlight?
+        ) {
+            //Log.d("tncnhan", e.describeContents().toString())
+            tvContent.text = listLabel[e.x.toInt()] // set the entry-value as the display text
+            super.refreshContent(e, highlight)
+        }
+
+        override fun getX(): Float {
+            return (-(width / 2)).toFloat()
+        }
+
+
+        override fun getY(): Float {
+            return (-height).toFloat()
+        }
+
+    }
+
 }
+
 

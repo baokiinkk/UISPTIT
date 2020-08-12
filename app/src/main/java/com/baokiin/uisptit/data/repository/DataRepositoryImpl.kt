@@ -202,7 +202,7 @@ class DataRepositoryImpl(var network: HttpUis, var dao:AppDao) :
         }
         var temp = mutableListOf<MutableList<String>>()
         var row : MutableList<String> = mutableListOf()
-        for(i in 0..res.size-1){
+        for(i in 0 until res.size){
             val j = i%13
             if (j%2 == 0)
             {
