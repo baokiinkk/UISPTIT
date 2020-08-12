@@ -25,9 +25,9 @@ class HttpUis( var context: Context)  {
             PersistentCookieJar(SetCookieCache(), SharedPrefsCookiePersistor(context))
          var client = OkHttpClient().newBuilder()
             .cookieJar(cookieJars)
-             .connectTimeout(5, TimeUnit.SECONDS)
-             .writeTimeout(5, TimeUnit.SECONDS)
-             .readTimeout(5, TimeUnit.SECONDS)
+             .connectTimeout(10, TimeUnit.SECONDS)
+             .writeTimeout(10, TimeUnit.SECONDS)
+             .readTimeout(10, TimeUnit.SECONDS)
             .build()
 
          //LOGIN =============

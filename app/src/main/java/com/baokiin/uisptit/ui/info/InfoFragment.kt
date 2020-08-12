@@ -5,12 +5,12 @@ import android.graphics.Color
 import android.net.ConnectivityManager
 import android.net.NetworkInfo
 import android.os.Bundle
-import android.util.Log
 import android.view.KeyEvent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.view.get
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -19,6 +19,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.baokiin.uisptit.R
 import com.baokiin.uisptit.databinding.FragmentInfoBinding
 import com.github.mikephil.charting.components.AxisBase
+import com.github.mikephil.charting.components.Description
 import com.github.mikephil.charting.data.Entry
 import com.github.mikephil.charting.data.LineData
 import com.github.mikephil.charting.data.LineDataSet
@@ -31,6 +32,9 @@ import java.text.SimpleDateFormat
 import java.time.LocalDateTime
 import java.util.*
 import kotlin.collections.ArrayList
+import kotlin.math.ceil
+import kotlin.math.round
+import kotlin.math.roundToLong
 
 
 class InfoFragment : Fragment(){
@@ -59,7 +63,6 @@ class InfoFragment : Fragment(){
         currentTime = Calendar.getInstance().time
         val sdf = SimpleDateFormat("HH:mm dd/MM/yy")
         bd.txtTime.text = sp.getString("updateTime","dev")
-        Log.d("quocbaokiin",sp.all.toString())
         bd.txtBuoi.text = getBuoi()
         viewModel.listData.observe(viewLifecycleOwner, Observer {
                if(it != null) {
@@ -81,11 +84,16 @@ class InfoFragment : Fragment(){
             if(it != null) {
                 val entries = ArrayList<Entry>()
                 for(i in 0 until it.size){
-                    entries.add(Entry(i.toFloat(),it[i].gpa4))
+                    entries.add(Entry(i.toFloat(), it[i].gpa4))
                 }
                 val hocki = ArrayList<String>()
                 for(i in 0 until it.size){
-                    hocki.add(it[i].semester)
+                    var x = it[i].semester[0].toString()
+                    for(i in 1 until it[i].semester.length step 4) {
+                        x += '/'
+                        x+=it[i].semester.substring(i,i+4)
+                    }
+                    hocki.add(x)
                 }
 
                 val formatter: ValueFormatter =
@@ -95,17 +103,45 @@ class InfoFragment : Fragment(){
                         }
                     }
 
+                val formatterLeft: ValueFormatter =
+                    object : ValueFormatter() {
+                        override fun getAxisLabel(value: Float, axis: AxisBase): String {
+                            axis.setLabelCount(4,true)
+                            val v:Double = value.toDouble()
+                            return (round( v * 10.0) /10.0).toString()
+                        }
+                    }
+
                 val xAxis = bd.linechart.xAxis
                 xAxis.granularity = 1f
                 xAxis.labelRotationAngle = -45f
                 xAxis.valueFormatter = formatter
+
+                val yAxisL = bd.linechart.axisLeft
+                yAxisL.valueFormatter = formatterLeft
+
                 val dataset = LineDataSet(entries, "Điểm Tích Lũy")
+                dataset.lineWidth = 3f
+                dataset.valueTextColor = Color.BLUE
                 val data: ArrayList<ILineDataSet> = ArrayList()
                 data.add(dataset)
                 val lineData: LineData = LineData(data)
+
+                val des = Description()
+                des.text =""
+                des.textSize=1f
+
+                val legend = bd.linechart.legend
+                legend.textSize = 15f
+
                 bd.linechart.axisRight.isEnabled = false
                 bd.linechart.data = lineData
+                bd.linechart.setDrawBorders(true)
+                bd.linechart.setBorderColor(Color.RED)
+                bd.linechart.setBorderWidth(2f)
+                bd.linechart.description = des
                 bd.linechart.invalidate()
+
             }
         })
 

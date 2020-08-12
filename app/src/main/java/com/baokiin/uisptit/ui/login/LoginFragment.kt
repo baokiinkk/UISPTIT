@@ -104,7 +104,6 @@ class LoginFragment : Fragment(){
         list.add(ThreeBounce())
         list.add(Circle())
         val rnds = (0 .. 4).random()
-        Toast.makeText(context,rnds.toString(),Toast.LENGTH_SHORT).show()
         return list[rnds]
     }
 
