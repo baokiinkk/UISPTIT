@@ -127,7 +127,8 @@ class InfoFragment : Fragment(){
                 bd.linechart.setScaleEnabled(false)
                 bd.linechart.isDoubleTapToZoomEnabled = false
                 bd.linechart.setTouchEnabled(true)
-                bd.linechart.isHighlightPerDragEnabled = true
+                bd.linechart.isHighlightPerDragEnabled = false
+                bd.linechart.isHighlightPerTapEnabled = true
                 val mv = CustomMarkerView(context, R.layout.axis_label, hocki,bd.linechart.width, bd.linechart.height)
                 bd.linechart.marker = mv
                 bd.linechart.invalidate()
