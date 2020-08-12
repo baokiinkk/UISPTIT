@@ -1,15 +1,21 @@
 package com.baokiin.uisptit.ui.info
 
-import android.util.Log
+import android.content.Context
+import android.graphics.Canvas
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.baokiin.uisptit.R
 import com.baokiin.uisptit.data.db.model.ExamTimetable
-import com.baokiin.uisptit.data.db.model.Mark
 import com.baokiin.uisptit.databinding.ItemExamBinding
-import com.baokiin.uisptit.databinding.ItemMarkInforBinding
+import com.github.mikephil.charting.components.MarkerView
+import com.github.mikephil.charting.data.Entry
+import com.github.mikephil.charting.highlight.Highlight
+import com.github.mikephil.charting.utils.MPPointF
+
 
 class AdapterExam() :ListAdapter<ExamTimetable,AdapterExam.ViewHodel>(ExamDIff()) {
 
@@ -48,4 +54,35 @@ override fun areItemsTheSame(oldItem: ExamTimetable, newItem: ExamTimetable): Bo
         return oldItem == newItem
     }
 
+}
+class CustomMarkerView(context: Context?, layoutResource: Int, private val listLabel : MutableList<String>,val widthCard:Int) :
+    MarkerView(context, layoutResource) {
+    private val tvContent: TextView = findViewById<TextView>(R.id.tvContent)
+
+    // callbacks everytime the MarkerView is redrawn, can be used to update the
+    // content (user-interface)
+    override fun refreshContent(
+        e: Entry,
+        highlight: Highlight?
+    ) {
+        //Log.d("tncnhan", e.describeContents().toString())
+        tvContent.text = "Kì "+listLabel[e.x.toInt()] // set the entry-value as the display text
+        super.refreshContent(e, highlight)
+    }
+    override fun getOffset(): MPPointF? {
+        return MPPointF((-(width / 2)).toFloat(), (-height).toFloat())
+    }
+    override fun draw(canvas: Canvas, posx: Float, posy: Float) {
+        // Check marker position and update offsets.
+        var posx = posx
+        val w = width
+        if (widthCard - posx - w < w) {
+            posx -= w.toFloat()
+        }
+
+        // translate to the correct position and draw
+        canvas.translate(posx, posy)
+        draw(canvas)
+        canvas.translate(-posx, -posy)
+    }
 }

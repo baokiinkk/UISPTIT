@@ -19,10 +19,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.baokiin.uisptit.R
 import com.baokiin.uisptit.databinding.FragmentInfoBinding
-import com.github.mikephil.charting.components.AxisBase
-import com.github.mikephil.charting.components.Description
-import com.github.mikephil.charting.components.MarkerView
-import com.github.mikephil.charting.components.XAxis
+import com.github.mikephil.charting.components.*
 import com.github.mikephil.charting.data.Entry
 import com.github.mikephil.charting.data.LineData
 import com.github.mikephil.charting.data.LineDataSet
@@ -44,15 +41,18 @@ class InfoFragment : Fragment(){
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        val cm: ConnectivityManager? = activity?.getSystemService(Context.CONNECTIVITY_SERVICE ) as ConnectivityManager?
+        val activeNetwork: NetworkInfo? = cm?.activeNetworkInfo
+        val isConnected: Boolean = activeNetwork?.isConnectedOrConnecting == true
+
         val bd: FragmentInfoBinding =
             DataBindingUtil.inflate(inflater, R.layout.fragment_info, container, false)
         bd.lifecycleOwner = this
         bd.viewmodel = viewModel
-        sp = requireActivity().getSharedPreferences("Login", Context.MODE_PRIVATE)
         viewModel.getData("220192020")
+        sp = requireActivity().getSharedPreferences("Login", Context.MODE_PRIVATE)
         val adapter = AdapterMark()
         val adapterExam = AdapterExam()
-
         bd.recycleViewDiem.adapter = adapter
         bd.recycleViewDiem.layoutManager = LinearLayoutManager(context)
 
@@ -61,7 +61,7 @@ class InfoFragment : Fragment(){
         bd.recycleExam.layoutManager = LinearLayoutManager(context)
         currentTime = Calendar.getInstance().time
         val sdf = SimpleDateFormat("HH:mm dd/MM/yy")
-        bd.txtTime.text = sp.getString("updateTime","dev")
+        bd.txtTime.text = sp.getString("updateTime","")
         bd.txtBuoi.text = getBuoi()
         viewModel.listData.observe(viewLifecycleOwner, Observer {
                if(it != null) {
@@ -82,6 +82,7 @@ class InfoFragment : Fragment(){
                 val entries = ArrayList<Entry>()
                 for(i in 0 until it.size){
                     entries.add(Entry(i.toFloat(), it[i].gpa4))
+                    Log.d("quocbaokiin",entries[0].y.toString())
                 }
                 val hocki = ArrayList<String>()
                 for(i in 0 until it.size){
@@ -90,33 +91,15 @@ class InfoFragment : Fragment(){
                     hocki.add(x)
                 }
 
-                val formatter: ValueFormatter =
-                    object : ValueFormatter() {
-                        override fun getAxisLabel(value: Float, axis: AxisBase): String {
-                            return hocki[value.toInt()]
-                        }
-                    }
-
-//                val formatterLeft: ValueFormatter =
-//                    object : ValueFormatter() {
-//                        override fun getAxisLabel(value: Float, axis: AxisBase): String {
-//                            axis.setLabelCount(4,true)
-//                            val v:Double = value.toDouble()
-//                            return (round( v * 10.0) /10.0).toString()
-//                        }
-//                    }
 
                 val xAxis = bd.linechart.xAxis
-
-
-                xAxis.labelRotationAngle = 90f
-                xAxis.valueFormatter = formatter
-                xAxis.position = XAxis.XAxisPosition.BOTTOM
+                xAxis.granularity = 1f
+                xAxis.setDrawLabels(false)
                 val yAxisL = bd.linechart.axisLeft
                 yAxisL.mAxisMaximum = 4.0f
-                xAxis.granularity = 0.5f
-                //yAxisL.valueFormatter = formatterLeft
-
+                yAxisL.spaceTop = 0.1f
+                yAxisL.spaceBottom = 0.1f
+                yAxisL.granularity = 0.1f
                 val dataset = LineDataSet(entries, "Điểm Tích Lũy")
                 dataset.lineWidth = 3f
                 dataset.valueTextColor = Color.BLACK
@@ -130,8 +113,10 @@ class InfoFragment : Fragment(){
                 des.textSize=1f
 
                 val legend = bd.linechart.legend
-                legend.textSize = 15f
-
+                legend.form = Legend.LegendForm.CIRCLE
+                legend.xEntrySpace = 10f
+                legend.textSize = 10f
+                legend.textColor = Color.RED
 
                 bd.linechart.axisRight.isEnabled = false
                 bd.linechart.data = lineData
@@ -139,13 +124,13 @@ class InfoFragment : Fragment(){
                 bd.linechart.setBorderColor(Color.BLACK)
                 bd.linechart.setBorderWidth(1f)
                 bd.linechart.description = des
-                bd.linechart.invalidate()
                 bd.linechart.setPinchZoom(false)
                 bd.linechart.isDoubleTapToZoomEnabled = false
                 bd.linechart.setTouchEnabled(true)
                 bd.linechart.isHighlightPerDragEnabled = true
-                val mv = CustomMarkerView(context, R.layout.axis_label, hocki)
+                val mv = CustomMarkerView(context, R.layout.axis_label, hocki,bd.cardTTC.width)
                 bd.linechart.marker = mv
+                bd.linechart.invalidate()
             }
         })
         viewModel.bool.observe(viewLifecycleOwner, Observer {
@@ -225,36 +210,6 @@ class InfoFragment : Fragment(){
             return "Chúc buổi tối ...!"
     }
 
-    fun copyStr(str : String) : String{
-        val res = str
-        return res
-    }
-
-    class CustomMarkerView(context: Context?, layoutResource: Int, private val listLabel : MutableList<String>) :
-        MarkerView(context, layoutResource) {
-        private val tvContent: TextView = findViewById<TextView>(R.id.tvContent)
-
-        // callbacks everytime the MarkerView is redrawn, can be used to update the
-        // content (user-interface)
-        override fun refreshContent(
-            e: Entry,
-            highlight: Highlight?
-        ) {
-            //Log.d("tncnhan", e.describeContents().toString())
-            tvContent.text = listLabel[e.x.toInt()] // set the entry-value as the display text
-            super.refreshContent(e, highlight)
-        }
-
-        override fun getX(): Float {
-            return (-(width / 2)).toFloat()
-        }
-
-
-        override fun getY(): Float {
-            return (-height).toFloat()
-        }
-
-    }
 
 }
 
