@@ -17,7 +17,7 @@ import com.github.mikephil.charting.highlight.Highlight
 import com.github.mikephil.charting.utils.MPPointF
 
 
-class AdapterExam() :ListAdapter<ExamTimetable,AdapterExam.ViewHodel>(ExamDIff()) {
+class AdapterExam :ListAdapter<ExamTimetable,AdapterExam.ViewHodel>(ExamDIff()) {
 
     class ViewHodel(val binding:ItemExamBinding) : RecyclerView.ViewHolder(binding.root) {
         companion object {
@@ -55,7 +55,7 @@ override fun areItemsTheSame(oldItem: ExamTimetable, newItem: ExamTimetable): Bo
     }
 
 }
-class CustomMarkerView(context: Context?, layoutResource: Int, private val listLabel : MutableList<String>,val widthCard:Int) :
+class CustomMarkerView(context: Context?, layoutResource: Int, private val listLabel : MutableList<String>,val widthCard:Int, val heightCard:Int) :
     MarkerView(context, layoutResource) {
     private val tvContent: TextView = findViewById<TextView>(R.id.tvContent)
 
@@ -69,16 +69,19 @@ class CustomMarkerView(context: Context?, layoutResource: Int, private val listL
         tvContent.text = "Kì "+listLabel[e.x.toInt()] // set the entry-value as the display text
         super.refreshContent(e, highlight)
     }
-    override fun getOffset(): MPPointF? {
-        return MPPointF((-(width / 2)).toFloat(), (-height).toFloat())
-    }
+//    override fun getOffset(): MPPointF? {
+//        return MPPointF((-(width / 2)).toFloat(), (-height).toFloat())
+//    }
     override fun draw(canvas: Canvas, posx: Float, posy: Float) {
         // Check marker position and update offsets.
         var posx = posx
+        var posy = posy
         val w = width
-        if (widthCard - posx - w < w) {
-            posx -= w.toFloat()
-        }
+        val h = height
+        if (posx + w/2 > widthCard) posx -= w
+        else if (posx >= w/2) posx -= w/2
+
+        if (posy + height > heightCard) posy -= 1.5f*h
 
         // translate to the correct position and draw
         canvas.translate(posx, posy)

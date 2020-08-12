@@ -124,11 +124,11 @@ class InfoFragment : Fragment(){
                 bd.linechart.setBorderColor(Color.BLACK)
                 bd.linechart.setBorderWidth(1f)
                 bd.linechart.description = des
-                bd.linechart.setPinchZoom(false)
+                bd.linechart.setScaleEnabled(false)
                 bd.linechart.isDoubleTapToZoomEnabled = false
                 bd.linechart.setTouchEnabled(true)
                 bd.linechart.isHighlightPerDragEnabled = true
-                val mv = CustomMarkerView(context, R.layout.axis_label, hocki,bd.cardTTC.width)
+                val mv = CustomMarkerView(context, R.layout.axis_label, hocki,bd.linechart.width, bd.linechart.height)
                 bd.linechart.marker = mv
                 bd.linechart.invalidate()
             }
