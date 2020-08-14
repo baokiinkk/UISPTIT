@@ -5,7 +5,6 @@ import android.graphics.Color
 import android.net.ConnectivityManager
 import android.net.NetworkInfo
 import android.os.Bundle
-import android.util.Log
 import android.view.KeyEvent
 import android.view.LayoutInflater
 import android.view.View
@@ -82,7 +81,6 @@ class InfoFragment : Fragment(){
                 val entries = ArrayList<Entry>()
                 for(i in 0 until it.size){
                     entries.add(Entry(i.toFloat(), it[i].gpa4))
-                    Log.d("quocbaokiin",entries[0].y.toString())
                 }
                 val hocki = ArrayList<String>()
                 for(i in 0 until it.size){

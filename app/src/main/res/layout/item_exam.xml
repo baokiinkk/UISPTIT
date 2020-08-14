@@ -39,7 +39,7 @@
                     android:layout_marginTop="5dp"
                     android:layout_marginEnd="50dp"
                     android:layout_marginBottom="5dp"
-                    android:gravity="center"
+                    android:gravity="center|left"
                     android:text="@{data.tenMon}"
                     android:textColor="#000"
                     android:textStyle="bold"
