@@ -8,19 +8,12 @@
             name="data"
             type="com.baokiin.uisptit.data.db.model.Mark" />
     </data>
-    <androidx.cardview.widget.CardView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:cardCornerRadius="10dp"
-        android:layout_marginBottom="10dp"
-        >
         <TableLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/colorRow"
+            android:background="@drawable/item_backround"
             android:layout_marginStart="10dp"
             android:layout_marginEnd="10dp"
-            android:layout_marginBottom="10dp"
             android:layout_marginTop="10dp"
             android:collapseColumns="*"
             >
@@ -31,6 +24,9 @@
                     android:layout_height="wrap_content"
                     android:text="@{data.objectName}"
                     android:gravity="start"
+                    android:paddingStart="10dp"
+                    android:paddingBottom="5dp"
+                    android:paddingTop="5dp"
                     android:layout_gravity="center"
                     android:layout_weight="3"
                     android:textColor="#000"
@@ -71,7 +67,5 @@
             </TableRow>
 
         </TableLayout>
-
-    </androidx.cardview.widget.CardView>
 
 </layout>

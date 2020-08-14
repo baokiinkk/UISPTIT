@@ -270,6 +270,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="20dp"
+                    android:layout_marginTop="5dp"
                     android:layout_marginEnd="20dp"
                     android:collapseColumns="*"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -379,100 +380,99 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/txtLichThi" >
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-            <androidx.constraintlayout.widget.ConstraintLayout
+            <TableLayout
+                android:id="@+id/ten"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="10dp"
+                android:collapseColumns="*"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
 
-                <TextView
-                    android:id="@+id/txtMon"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
+                <TableRow>
+
+                    <TextView
+                        android:id="@+id/TenMon"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="3"
+                        android:gravity="center"
+                        android:text="Môn Học"
+                        android:textColor="#000"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/Diem"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="Ngày"
+                        android:textColor="#000"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/ketQ"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="Phòng"
+                        android:textColor="#000"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/ketQuCh"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="Tiết Thi"
+                        android:textColor="#000"
+                        android:textStyle="bold" />
+                </TableRow>
+
+            </TableLayout>
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/ten">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recycleExam"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
                     android:layout_marginStart="10dp"
                     android:layout_marginTop="10dp"
-                    android:layout_marginEnd="50dp"
-                    android:gravity="center"
-                    android:text="Môn Học"
-                    android:textColor="#000"
-                    android:textStyle="bold"
-                    app:layout_constraintEnd_toStartOf="@+id/txtNgay"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginBottom="10dp" />
 
                 <TextView
-                    android:id="@+id/txtNgay"
+                    android:id="@+id/trong"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="500dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginEnd="500dp"
+                    android:layout_gravity="center"
                     android:gravity="center"
-                    android:text="Ngày"
+                    android:text="Trống"
                     android:textColor="#000"
-                    android:textStyle="bold"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.45"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <TextView
-                    android:id="@+id/txtStart"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginEnd="20dp"
-                    android:gravity="center"
-                    android:text="Tiết thi"
-                    android:textColor="#000"
-                    android:textStyle="bold"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <TextView
-                    android:id="@+id/txtphong"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="500dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginEnd="500dp"
-                    android:gravity="center"
-                    android:text="Phòng"
-                    android:textColor="#000"
-                    android:textStyle="bold"
-                    app:layout_constraintEnd_toStartOf="@+id/txtStart"
-                    app:layout_constraintHorizontal_bias="0.49"
-                    app:layout_constraintStart_toEndOf="@+id/txtNgay"
-                    app:layout_constraintTop_toTopOf="parent" />
-                <FrameLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/txtMon"
-                    >
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/recycleExam"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginStart="10dp"
-                        android:layout_marginTop="10dp"
-                        android:layout_marginEnd="10dp"
-                        android:layout_marginBottom="10dp"
-                        />
-                    <TextView
-                        android:id="@+id/trong"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Trống"
-                        android:textColor="#000"
-                        android:textSize="20sp"
-                        android:gravity="center"
-                        android:layout_gravity="center"
-                        />
-                </FrameLayout>
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
+                    android:textSize="20sp" />
+            </FrameLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.cardview.widget.CardView>
 
 

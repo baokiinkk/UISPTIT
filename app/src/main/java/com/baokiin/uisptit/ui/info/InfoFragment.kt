@@ -49,9 +49,12 @@ class InfoFragment : Fragment(){
         bd.lifecycleOwner = this
         bd.viewmodel = viewModel
         viewModel.getData("220192020")
-        sp = requireActivity().getSharedPreferences("Login", Context.MODE_PRIVATE)
-        val adapter = AdapterMark()
         val adapterExam = AdapterExam()
+        sp = requireActivity().getSharedPreferences("Login", Context.MODE_PRIVATE)
+        val adapter = AdapterMark(){
+            findNavController().navigate(R.id.to_mark)
+        }
+
         bd.recycleViewDiem.adapter = adapter
         bd.recycleViewDiem.layoutManager = LinearLayoutManager(context)
 
@@ -163,7 +166,9 @@ class InfoFragment : Fragment(){
         btnOption.setOnClickListener {
             findNavController().navigate(R.id.to_option)
         }
-
+        recycleViewDiem.setOnClickListener {
+            findNavController().navigate(R.id.to_mark)
+        }
 
         fresh.setWaveRGBColor(3,218,197)
         fresh.setColorSchemeColors(Color.WHITE)
