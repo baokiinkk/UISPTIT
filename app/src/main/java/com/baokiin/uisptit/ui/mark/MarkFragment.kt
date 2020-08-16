@@ -1,5 +1,6 @@
 package com.baokiin.uisptit.ui.mark
 
+import android.content.pm.ActivityInfo
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -9,6 +10,8 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.baokiin.uisptit.R
+import com.baokiin.uisptit.data.db.model.ListMark
+import com.baokiin.uisptit.data.db.model.Mark
 import com.baokiin.uisptit.databinding.FragmentMarkBinding
 import com.baokiin.uisptit.ui.info.AdapterMark
 
@@ -24,13 +27,30 @@ class MarkFragment :Fragment() {
             DataBindingUtil.inflate(inflater, R.layout.fragment_mark,container,false)
         bd.lifecycleOwner=this
         bd.viewmodel=viewModel
-        viewModel.getData("220192020")
-        val adapter = AdapterMark(){}
-        bd.recycleViewDiem.adapter = adapter
-        bd.recycleViewDiem.layoutManager = LinearLayoutManager(context)
+//        requireActivity().requestedOrientation  = ActivityInfo.SCREEN_ORIENTATION_SENSOR_LANDSCAPE
+        viewModel.getData("")
+        val adapter = Adapter()
+        bd.viewpager?.adapter = adapter
         viewModel.listData.observe(viewLifecycleOwner, Observer {
             it?.let {
-                adapter.submitList(it)
+                val list:MutableList<ListMark> = mutableListOf()
+                var tmp: MutableList<Mark> = mutableListOf()
+                var str = it[0].semester
+                tmp.add(it[0])
+                for(i in 1..it.size-1){
+                    if(it[i].semester.equals(str)){
+                        tmp.add(it[i])
+                        if(i == it.size-1)
+                            list.add(ListMark(str,tmp))
+                    }
+                    else{
+                        list.add(ListMark(str,tmp))
+                        tmp = mutableListOf()
+                        tmp.add(it[i])
+                        str = it[i].semester
+                    }
+                }
+                adapter.submitList(list)
             }
         })
         return bd.root

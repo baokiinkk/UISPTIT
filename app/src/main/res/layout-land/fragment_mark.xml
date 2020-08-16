@@ -18,12 +18,14 @@
         <androidx.cardview.widget.CardView
             android:id="@+id/cardDiem"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             android:layout_marginStart="20dp"
             android:layout_marginTop="50dp"
             android:layout_marginEnd="20dp"
+            android:layout_marginBottom="10dp"
             app:cardCornerRadius="20dp"
             app:cardElevation="@dimen/shadow"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
@@ -32,226 +34,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
-                <TableLayout
-                    android:id="@+id/tenMon"
+                <androidx.viewpager2.widget.ViewPager2
+                    android:id="@+id/viewpager"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginEnd="20dp"
-                    android:collapseColumns="*"
+                    android:layout_height="match_parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent">
-
-                    <TableRow>
-                        <TextView
-                            android:id="@+id/maMon"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:layout_weight="1"
-                            android:gravity="center"
-                            android:text="Mã Môn"
-                            android:textColor="#000"
-                            android:textStyle="bold" />
-                        <TextView
-                            android:id="@+id/Mon"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:layout_weight="4"
-                            android:gravity="center"
-                            android:text="Tên Môn"
-                            android:textColor="#000"
-                            android:textStyle="bold" />
-                        <TextView
-                            android:id="@+id/tinChi"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:layout_weight="1"
-                            android:gravity="center"
-                            android:text="Tín Chỉ"
-                            android:textColor="#000"
-                            android:textStyle="bold" />
-                        <TextView
-                            android:id="@+id/PercentCC"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:layout_weight="1"
-                            android:gravity="center"
-                            android:text="%  CC"
-                            android:textColor="#000"
-                            android:textStyle="bold" />
-                        <TextView
-                            android:id="@+id/PercentKT"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:layout_weight="1"
-                            android:gravity="center"
-                            android:text="%   KT"
-                            android:textColor="#000"
-                            android:textStyle="bold" />
-                        <TextView
-                            android:id="@+id/PercentTH"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:layout_weight="1"
-                            android:gravity="center"
-                            android:text="%   TH"
-                            android:textColor="#000"
-                            android:textStyle="bold" />
-                        <TextView
-                            android:id="@+id/PercentSe"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:layout_weight="1"
-                            android:gravity="center"
-                            android:text="%   Se"
-                            android:textColor="#000"
-                            android:textStyle="bold" />
-                        <TextView
-                            android:id="@+id/PercentThi"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:layout_weight="1"
-                            android:gravity="center"
-                            android:text="%   Thi"
-                            android:textColor="#000"
-                            android:textStyle="bold" />
-                        <TextView
-                            android:id="@+id/CC"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:layout_weight="1"
-                            android:gravity="center"
-                            android:text="Điểm CC"
-                            android:textColor="#000"
-                            android:textStyle="bold" />
-                        <TextView
-                            android:id="@+id/KT"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:layout_weight="1"
-                            android:gravity="center"
-                            android:text="Điểm KT"
-                            android:textColor="#000"
-                            android:textStyle="bold" />
-                        <TextView
-                            android:id="@+id/TH"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:layout_weight="1"
-                            android:gravity="center"
-                            android:text="Điểm TH"
-                            android:textColor="#000"
-                            android:textStyle="bold" />
-                        <TextView
-                            android:id="@+id/Se"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:layout_weight="1"
-                            android:gravity="center"
-                            android:text="Điểm Se"
-                            android:textColor="#000"
-                            android:textStyle="bold" />
-                        <TextView
-                            android:id="@+id/Thi1"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:layout_weight="1"
-                            android:gravity="center"
-                            android:text="Thi L1"
-                            android:textColor="#000"
-                            android:textStyle="bold" />
-                        <TextView
-                            android:id="@+id/Thi2"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:layout_weight="1"
-                            android:gravity="center"
-                            android:text="Thi L2"
-                            android:textColor="#000"
-                            android:textStyle="bold" />
-                        <TextView
-                            android:id="@+id/Thi3"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:layout_weight="1"
-                            android:gravity="center"
-                            android:text="Thi L3"
-                            android:textColor="#000"
-                            android:textStyle="bold" />
-                        <TextView
-                            android:id="@+id/TK10"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:layout_weight="1"
-                            android:gravity="center"
-                            android:text="TK 10"
-                            android:textColor="#000"
-                            android:textStyle="bold" />
-                        <TextView
-                            android:id="@+id/TKChu"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:layout_weight="1"
-                            android:gravity="center"
-                            android:text="TK CH"
-                            android:textColor="#000"
-                            android:textStyle="bold" />
-                        <TextView
-                            android:id="@+id/KQ1"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:layout_weight="1"
-                            android:gravity="center"
-                            android:text="KQ   1"
-                            android:textColor="#000"
-                            android:textStyle="bold" />
-                        <TextView
-                            android:id="@+id/KQ"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:layout_weight="1"
-                            android:gravity="center"
-                            android:text="KQ"
-                            android:textColor="#000"
-                            android:textStyle="bold" />
-
-                    </TableRow>
-
-                </TableLayout>
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/recycleViewDiem"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginEnd="10dp"
-                    android:layout_marginBottom="10dp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/tenMon" />
+                    app:layout_constraintTop_toTopOf="parent" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
         </androidx.cardview.widget.CardView>

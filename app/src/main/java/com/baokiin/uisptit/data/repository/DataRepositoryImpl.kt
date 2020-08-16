@@ -67,6 +67,7 @@ class DataRepositoryImpl(var network: HttpUis, var dao:AppDao) :
 
                 val semester = xuLiDiemTongKet(list!!.get("Diem")!!)
                 for (i in semester) {
+                    Log.d("quocbaokiin",i.toString())
                     dao.addSemester(
                             SemesterMark(
                                     i[0], i[1].toFloat(), i[2].toFloat(), i[3].toFloat(),
