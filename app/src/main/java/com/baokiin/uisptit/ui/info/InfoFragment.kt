@@ -1,8 +1,10 @@
 package com.baokiin.uisptit.ui.info
+
 import android.content.Context
 import android.content.SharedPreferences
 import android.content.pm.ActivityInfo
 import android.graphics.Color
+import android.graphics.drawable.Drawable
 import android.net.ConnectivityManager
 import android.net.NetworkInfo
 import android.os.Bundle
@@ -10,8 +12,8 @@ import android.view.KeyEvent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import android.widget.Toast
+import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -19,18 +21,20 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.baokiin.uisptit.R
 import com.baokiin.uisptit.databinding.FragmentInfoBinding
-import com.github.mikephil.charting.animation.Easing
-import com.github.mikephil.charting.components.*
+import com.github.mikephil.charting.components.Description
+import com.github.mikephil.charting.components.Legend
+import com.github.mikephil.charting.components.XAxis
 import com.github.mikephil.charting.data.Entry
 import com.github.mikephil.charting.data.LineData
 import com.github.mikephil.charting.data.LineDataSet
+import com.github.mikephil.charting.formatter.IFillFormatter
 import com.github.mikephil.charting.formatter.ValueFormatter
-import com.github.mikephil.charting.highlight.Highlight
+import com.github.mikephil.charting.interfaces.dataprovider.LineDataProvider
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet
+import com.github.mikephil.charting.utils.Utils
 import kotlinx.android.synthetic.main.fragment_info.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.text.DecimalFormat
-
 import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.ArrayList
@@ -108,18 +112,46 @@ class InfoFragment : Fragment(){
                 val xAxis = bd.linechart.xAxis
                 xAxis.granularity = 1f
                 xAxis.setDrawLabels(false)
+                xAxis.setDrawGridLines(false)
+                xAxis.position = XAxis.XAxisPosition.BOTTOM
                 val yAxisL = bd.linechart.axisLeft
+                yAxisL.setDrawGridLines(false)
                 yAxisL.mAxisMaximum = 4.0f
-                yAxisL.spaceTop = 0.1f
-                yAxisL.spaceBottom = 0.1f
                 yAxisL.granularity = 0.1f
                 val dataset = LineDataSet(entries, "Điểm Tích Lũy")
-                dataset.lineWidth = 4f
+                dataset.setDrawFilled(true)
+                dataset.fillColor = Color.rgb(99, 80, 200)
+                dataset.lineWidth = 3f
                 dataset.valueFormatter = dataValueFormatter()
                 dataset.valueTextSize = 8f
+                dataset.circleRadius = 6f
+                dataset.circleHoleRadius = 3f
                 dataset.cubicIntensity = 10f
                 dataset.valueTextColor = Color.BLACK
-                dataset.color = Color.CYAN
+                dataset.color = Color.rgb(99, 80, 200)
+                dataset.setCircleColor(Color.rgb(99, 80, 200))
+
+                dataset.fillFormatter = object : IFillFormatter {
+                    override fun getFillLinePosition(
+                        dataSet: ILineDataSet?,
+                        dataProvider: LineDataProvider?
+                    ): Float {
+                        return bd.linechart.axisLeft.axisMinimum
+                    }
+                }
+
+                // set color of filled area
+
+                // set color of filled area
+                if (Utils.getSDKInt() >= 18) {
+                    // drawables only supported on api level 18 and above
+                    val drawable: Drawable? =
+                        context?.let { it1 -> ContextCompat.getDrawable(it1, R.drawable.fade_graph) }
+                    dataset.fillDrawable = drawable
+                } else {
+                    dataset.fillColor = Color.rgb(99, 80, 200)
+                }
+
                 val data: ArrayList<ILineDataSet> = ArrayList()
                 data.add(dataset)
                 val lineData: LineData = LineData(data)
@@ -130,21 +162,21 @@ class InfoFragment : Fragment(){
                 val legend = bd.linechart.legend
                 legend.form = Legend.LegendForm.CIRCLE
                 legend.textSize = 13f
-                legend.textColor = Color.RED
+                legend.textColor = Color.rgb(99, 80, 200)
 
 
                 bd.linechart.axisRight.isEnabled = false
                 bd.linechart.data = lineData
-                bd.linechart.setDrawBorders(true)
-                bd.linechart.setBorderColor(Color.BLACK)
-                bd.linechart.setBorderWidth(1f)
+                bd.linechart.setDrawBorders(false)
+//                bd.linechart.setBorderColor(Color.BLACK)
+//                bd.linechart.setBorderWidth(1f)
                 bd.linechart.description = des
                 bd.linechart.setScaleEnabled(false)
                 bd.linechart.isDoubleTapToZoomEnabled = false
                 bd.linechart.setTouchEnabled(true)
                 bd.linechart.isHighlightPerDragEnabled = false
                 bd.linechart.isHighlightPerTapEnabled = true
-                bd.linechart.animateX(1000)
+                bd.linechart.animateX(500)
                 val mv = CustomMarkerView(context, R.layout.axis_label, hocki,bd.linechart.width, bd.linechart.height)
                 bd.linechart.marker = mv
                 bd.linechart.invalidate()
@@ -185,7 +217,7 @@ class InfoFragment : Fragment(){
             findNavController().navigate(R.id.to_mark)
         }
 
-        fresh.setWaveRGBColor(3,218,197)
+        fresh.setWaveRGBColor(99,80,200)
         fresh.setColorSchemeColors(Color.WHITE)
         fresh.setShadowRadius(0)
         fresh.setOnRefreshListener {
@@ -226,7 +258,7 @@ class InfoFragment : Fragment(){
         else if(hour < 19)
             return "Chúc buổi chiều mát mẻ!"
         else
-            return "Chúc buổi tối ...!"
+            return "Chúc buổi tối như cc!"
     }
 
 

@@ -1,14 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="colorPrimary">#FFFFFF</color>
-    <color name="colorPrimaryDark">#03DAC5</color>
-    <color name="colorAccent">#03DAC5</color>
+    <!-- <color name="colorPrimaryDark">#03DAC5</color> -->
+    <color name="colorPrimaryDark">#6356C8</color>
+    <color name="colorAccent">#6356C8</color>
     <color name="colorRow">#410B0A0A</color>
     <color name="colorPink">#FF0E90</color>
     <color name="colorGray">#3F3F3F</color>
     <color name="login">#0C8E9F</color>
     <color name="bright_red">#FF6E63</color>
     <color name="appBackgroundWhite">#FDFFFF</color>
-    <color name="infoBackground">#E1FBF9</color>
+    <color name="infoBackground">#F5F5FA</color>
+<!--    <color name="infoBackground">#E1FBF9</color>-->
     <color name="titleBackground">#FFF</color>
+    <color name="titleText">#FFF</color>
+    <color name="colorMark">#000000</color>
+    <color name="colorHintMark">#6356C8</color>
 </resources>

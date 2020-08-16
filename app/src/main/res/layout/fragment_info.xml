@@ -59,7 +59,7 @@
                     android:layout_marginTop="10dp"
                     android:fontFamily="sans-serif-thin"
                     android:text="@string/hello"
-                    android:textColor="#000000"
+                    android:textColor="@color/titleText"
                     android:textSize="@dimen/sizeTextTitle"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -72,7 +72,7 @@
                     android:layout_marginTop="10dp"
                     android:fontFamily="sans-serif-light"
                     android:text="@{viewmodel.title}"
-                    android:textColor="#000000"
+                    android:textColor="@color/titleText"
                     android:textSize="@dimen/sizeTextTitle"
                     android:textStyle="bold"
                     app:layout_constraintStart_toEndOf="@+id/txtTitle"
@@ -85,7 +85,7 @@
                     android:layout_marginTop="10dp"
                     android:fontFamily="sans-serif-thin"
                     android:text="@string/end_name"
-                    android:textColor="#000000"
+                    android:textColor="@color/titleText"
                     android:textSize="@dimen/sizeTextTitle"
                     app:layout_constraintStart_toEndOf="@+id/textName"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -100,6 +100,7 @@
                     android:paddingStart="2dp"
                     android:text="chào buổi sáng"
                     android:textSize="@dimen/sizeTextTitleHint"
+                    android:textColor="@color/titleText"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/txtTitle" />
 
@@ -122,18 +123,19 @@
 
                     <TableRow
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
+                        android:layout_height="wrap_content"
+                        android:paddingTop="@dimen/paddingMark">
 
                         <TextView
                             android:id="@+id/txtCPA"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:fontFamily="sans-serif-medium"
-                            android:gravity="center"
                             android:background="@color/appBackgroundWhite"
+                            android:fontFamily="sans-serif-black"
+                            android:gravity="center"
                             android:text="@{String.valueOf(viewmodel.listSemester.get(viewmodel.listSemester.size()-1).gpa4)}"
-                            android:textColor="@color/colorAccent"
+                            android:textColor="@color/colorMark"
                             android:textSize="@dimen/textSizeMark" />
 
                         <TextView
@@ -141,10 +143,10 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:fontFamily="sans-serif-medium"
+                            android:fontFamily="sans-serif-black"
                             android:gravity="center"
                             android:text="@{String.valueOf(viewmodel.listSemester.get(viewmodel.listSemester.size()-1).creditsAccumulated)}"
-                            android:textColor="@color/colorAccent"
+                            android:textColor="@color/colorMark"
                             android:textSize="@dimen/textSizeMark" />
 
                         <TextView
@@ -152,38 +154,48 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:fontFamily="sans-serif-medium"
+                            android:fontFamily="sans-serif-black"
                             android:gravity="center"
                             android:text="@{String.valueOf(viewmodel.CNTAA)}"
-                            android:textColor="@color/colorAccent"
+                            android:textColor="@color/colorMark"
                             android:textSize="@dimen/textSizeMark" />
 
                     </TableRow>
 
                     <TableRow
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
+                        android:layout_height="wrap_content"
+                        android:paddingBottom="@dimen/paddingMark">
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
+                            android:fontFamily="sans-serif-medium"
                             android:gravity="center"
-                            android:text="CPA" />
+                            android:textSize="@dimen/textSizeMarkHint"
+                            android:text="CPA"
+                            android:textColor="@color/colorHintMark" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
+                            android:fontFamily="sans-serif-medium"
                             android:gravity="center"
-                            android:text="TCTL" />
+                            android:text="TCTL"
+                            android:textSize="@dimen/textSizeMarkHint"
+                            android:textColor="@color/colorHintMark" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
+                            android:fontFamily="sans-serif-medium"
                             android:gravity="center"
-                            android:text="A/A+" />
+                            android:text="A/A+"
+                            android:textSize="@dimen/textSizeMarkHint"
+                            android:textColor="@color/colorHintMark" />
                     </TableRow>
                 </TableLayout>
             </androidx.cardview.widget.CardView>
@@ -321,8 +333,6 @@
                 android:id="@+id/linechart"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
                 android:background="#FFFFFF" />
         </androidx.cardview.widget.CardView>
 

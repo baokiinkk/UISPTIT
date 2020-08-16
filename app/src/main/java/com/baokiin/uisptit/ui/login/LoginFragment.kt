@@ -1,6 +1,7 @@
 package com.baokiin.uisptit.ui.login
 
 import android.annotation.SuppressLint
+import android.app.Activity
 import android.content.Context
 import android.content.Context.MODE_PRIVATE
 import android.content.SharedPreferences
@@ -14,6 +15,7 @@ import android.view.KeyEvent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
@@ -66,6 +68,7 @@ class LoginFragment : Fragment(){
        login_button.setOnClickListener {
             viewModel.check(username_et.editText?.text.toString(),password_et.editText?.text.toString())
            spin_kit.visibility = View.VISIBLE
+           hideKeyboard()
            spin.setIndeterminateDrawable(returnSprite())
        }
 
@@ -106,7 +109,16 @@ class LoginFragment : Fragment(){
         val rnds = (0 .. 4).random()
         return list[rnds]
     }
+    fun Fragment.hideKeyboard() {
+        view?.let { activity?.hideKeyboard(it) }
+    }
 
-
+    fun Activity.hideKeyboard() {
+        hideKeyboard(currentFocus ?: View(this))
+    }
+    fun Context.hideKeyboard(view: View) {
+        val inputMethodManager = getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
+        inputMethodManager.hideSoftInputFromWindow(view.windowToken, 0)
+    }
 
 }
