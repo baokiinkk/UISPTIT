@@ -81,6 +81,7 @@ class DataRepositoryImpl(var network: HttpUis, var dao:AppDao) :
 
                 val tkb = xuLiTKB(xuLiMonHoc(list!!.get("TKB")!!), xuLiTuanHoc(list!!.get("TuanHoc")!!))
                 for (i in tkb) {
+                    Log.d("tncnhan", "tkb" + i.toString())
                     dao.addTimeTable(
                             TimeTable(0, i[0], i[1], i[2], i[3], i[4])
                     )
@@ -199,7 +200,8 @@ class DataRepositoryImpl(var network: HttpUis, var dao:AppDao) :
         var res = mutableListOf<String>()
         for(x in noiDung )
         {
-            res.add(x.text())
+            if (!isBaoLuu(x.text()))
+                res.add(x.text())
         }
         var temp = mutableListOf<MutableList<String>>()
         var row : MutableList<String> = mutableListOf()
@@ -214,6 +216,7 @@ class DataRepositoryImpl(var network: HttpUis, var dao:AppDao) :
             }
             if(j == 12){
                 temp.add(row)
+                Log.d("tncnhan", row.toString())
                 row = mutableListOf()
             }
         }
@@ -241,7 +244,12 @@ class DataRepositoryImpl(var network: HttpUis, var dao:AppDao) :
                 hk = getDigits(x)
                 result[0]=(hk)
 
-            } else {
+            }
+            else if (isBaoLuu(x)){
+                hk = "baoLuu"
+                result[0]=(hk)
+            }
+            else {
                 if (cnt < 20) {
                     result.add(x)
                     cnt++
@@ -300,8 +308,8 @@ class DataRepositoryImpl(var network: HttpUis, var dao:AppDao) :
                     row = mutableListOf()
                     row.add(week)
                     row.add(thuTuNgay(obj[8]))
-                    if(obj[9] == "1") row.add("1")
-                    else    row.add("2")
+                    if(obj[9] == "0") row.add("0")
+                    else    row.add("1")
                     row.add(obj[1])
                     row.add(obj[11])
                     res.add(row)
@@ -339,6 +347,7 @@ class DataRepositoryImpl(var network: HttpUis, var dao:AppDao) :
         {
             res.add(getDigits(x.text()))
         }
+        Log.d("tncnhan", res.toString())
         return res
     }
 
@@ -362,6 +371,19 @@ class DataRepositoryImpl(var network: HttpUis, var dao:AppDao) :
         else {
             for (i in hocki.indices) {
                 if (hocki[i] != name[i])
+                    return false
+            }
+            return true
+        }
+    }
+
+    private fun isBaoLuu(name: String): Boolean {
+        val baoluu = "Điểm bảo"
+        if (name.length <= baoluu.length)
+            return false
+        else {
+            for (i in baoluu.indices) {
+                if (baoluu[i] != name[i])
                     return false
             }
             return true

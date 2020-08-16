@@ -30,8 +30,34 @@ class HttpUis( var context: Context)  {
              .readTimeout(10, TimeUnit.SECONDS)
             .build()
 
+         //check CAPCHA
+         var request: Request = Request.Builder()
+             .url("http://uis.ptithcm.edu.vn/default.aspx")
+             .get()
+             .build()
+         var response = client.newCall(request).execute()
+         var responseHtml = Jsoup.parse(response.body().string())
+         val capcha = responseHtml.getElementById("ctl00_ContentPlaceHolder1_ctl00_lblCapcha")
+         //Log.d("tncnhan", "capcha: " + capcha.text())
+         if (capcha != null){
+             var viewState = responseHtml.select("#__VIEWSTATE").attr("value")
+             var formBody = FormBody.Builder()
+                 .add("__VIEWSTATE", viewState)
+                 .add("__VIEWSTATEGENERATOR", "CA0B0334")
+                 .add("ctl00\$ContentPlaceHolder1\$ctl00\$txtCaptcha", capcha.text())
+                 .add("ctl00\$ContentPlaceHolder1\$ctl00\$btnXacNhan", "Vào website")
+                 .build()
+             request = Request.Builder()
+                 .url("http://uis.ptithcm.edu.vn/default.aspx?page=xemdiemthi")
+                 .post(formBody)
+                 .build()
+             client.newCall(request).execute()
+         }
+
+         //==================================================
+
          //LOGIN =============
-         var formBody: RequestBody = FormBody.Builder()
+         var formBody  = FormBody.Builder()
             .add("__EVENTTARGET" , "")
             .add("__EVENTARGUMENT" , "")
             .add("ctl00\$ContentPlaceHolder1\$ctl00\$ucDangNhap\$txtTaiKhoa" , name.trim())
@@ -39,12 +65,12 @@ class HttpUis( var context: Context)  {
             .add("ctl00\$ContentPlaceHolder1\$ctl00\$ucDangNhap\$btnDangNhap" , "Đăng Nhập")
             .build()
 
-         var request: Request = Request.Builder()
+         request = Request.Builder()
             .url("http://uis.ptithcm.edu.vn/default.aspx")
             .post(formBody)
             .build()
 
-         var response = client.newCall(request).execute()
+         response = client.newCall(request).execute()
          if(response.priorResponse() == null) return mutableMapOf()
 
 
@@ -53,7 +79,7 @@ class HttpUis( var context: Context)  {
             .url("http://uis.ptithcm.edu.vn/default.aspx?page=xemdiemthi")
             .get()
             .build()
-         var responseHtml = Jsoup.parse(client.newCall(request).execute().body().string())
+         responseHtml = Jsoup.parse(client.newCall(request).execute().body().string())
          var viewState = responseHtml.select("#__VIEWSTATE").attr("value")
          formBody = FormBody.Builder()
              .add("__EVENTTARGET" , "ctl00\$ContentPlaceHolder1\$ctl00\$lnkChangeview2")
@@ -81,6 +107,22 @@ class HttpUis( var context: Context)  {
          list["LichThi"] = response.body().string()
 
 
+         // Test tuần học cũ
+         formBody = FormBody.Builder()
+             .add("__EVENTTARGET" , "ctl00\$ContentPlaceHolder1\$ctl00\$ddlChonNHHK")
+             .add("__EVENTARGUMENT" , "")
+             .add("__VIEWSTATEGENERATOR", "CA0B0334")
+             .add("ctl00\$ContentPlaceHolder1\$ctl00\$ddlChonNHHK", "20192")
+             .add("ctl00\$ContentPlaceHolder1\$ctl00\$ddlLoai", "rad_MonHoc")
+             .build()
+         request = Request.Builder()
+             .url("http://uis.ptithcm.edu.vn/Default.aspx?page=thoikhoabieu")
+             .post(formBody)
+             .build()
+         client.newCall(request).execute()
+
+
+         //============================
          // TUAN HOC =================
          request = Request.Builder()
              .url("http://uis.ptithcm.edu.vn/Default.aspx?page=thoikhoabieu")

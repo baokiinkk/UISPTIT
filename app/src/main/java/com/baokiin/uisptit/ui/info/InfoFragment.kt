@@ -19,6 +19,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.baokiin.uisptit.R
 import com.baokiin.uisptit.databinding.FragmentInfoBinding
+import com.github.mikephil.charting.animation.Easing
 import com.github.mikephil.charting.components.*
 import com.github.mikephil.charting.data.Entry
 import com.github.mikephil.charting.data.LineData
@@ -28,6 +29,8 @@ import com.github.mikephil.charting.highlight.Highlight
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet
 import kotlinx.android.synthetic.main.fragment_info.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import java.text.DecimalFormat
+
 import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.ArrayList
@@ -52,7 +55,7 @@ class InfoFragment : Fragment(){
         viewModel.getData("220192020")
         val adapterExam = AdapterExam()
         sp = requireActivity().getSharedPreferences("Login", Context.MODE_PRIVATE)
-        val adapter = AdapterMark(){
+        val adapter = AdapterMark {
             findNavController().navigate(R.id.to_mark)
         }
 
@@ -93,6 +96,14 @@ class InfoFragment : Fragment(){
                     hocki.add(x)
                 }
 
+                class dataValueFormatter : ValueFormatter() {
+                    private val format = DecimalFormat("###,##0.0")
+
+                    // override this for e.g. LineChart or ScatterChart
+                    override fun getPointLabel(entry: Entry?): String {
+                        return format.format(entry?.y)
+                    }
+                }
 
                 val xAxis = bd.linechart.xAxis
                 xAxis.granularity = 1f
@@ -103,7 +114,10 @@ class InfoFragment : Fragment(){
                 yAxisL.spaceBottom = 0.1f
                 yAxisL.granularity = 0.1f
                 val dataset = LineDataSet(entries, "Điểm Tích Lũy")
-                dataset.lineWidth = 3f
+                dataset.lineWidth = 4f
+                dataset.valueFormatter = dataValueFormatter()
+                dataset.valueTextSize = 8f
+                dataset.cubicIntensity = 10f
                 dataset.valueTextColor = Color.BLACK
                 dataset.color = Color.CYAN
                 val data: ArrayList<ILineDataSet> = ArrayList()
@@ -112,13 +126,12 @@ class InfoFragment : Fragment(){
 
                 val des = Description()
                 des.text =""
-                des.textSize=1f
 
                 val legend = bd.linechart.legend
                 legend.form = Legend.LegendForm.CIRCLE
-                legend.xEntrySpace = 10f
-                legend.textSize = 10f
+                legend.textSize = 13f
                 legend.textColor = Color.RED
+
 
                 bd.linechart.axisRight.isEnabled = false
                 bd.linechart.data = lineData
@@ -131,6 +144,7 @@ class InfoFragment : Fragment(){
                 bd.linechart.setTouchEnabled(true)
                 bd.linechart.isHighlightPerDragEnabled = false
                 bd.linechart.isHighlightPerTapEnabled = true
+                bd.linechart.animateX(1000)
                 val mv = CustomMarkerView(context, R.layout.axis_label, hocki,bd.linechart.width, bd.linechart.height)
                 bd.linechart.marker = mv
                 bd.linechart.invalidate()

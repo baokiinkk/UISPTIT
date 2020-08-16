@@ -31,21 +31,22 @@ class MarkFragment :Fragment() {
 //        requireActivity().requestedOrientation  = ActivityInfo.SCREEN_ORIENTATION_SENSOR_LANDSCAPE
         viewModel.getData("")
         val adapter = Adapter()
-        bd.viewpager?.adapter = adapter
+        bd.viewpager.adapter = adapter
         viewModel.listData.observe(viewLifecycleOwner, Observer {
             it?.let {
                 val list:MutableList<ListMark> = mutableListOf()
                 var tmp: MutableList<Mark> = mutableListOf()
-                var str = it[0].semester
+                var str = it[0].semester.toString()
+
                 tmp.add(it[0])
                 for(i in 1..it.size-1){
                     if(it[i].semester.equals(str)){
                         tmp.add(it[i])
                         if(i == it.size-1)
-                            list.add(ListMark(str,tmp))
+                            list.add(ListMark(decodeSemester(str),tmp))
                     }
                     else{
-                        list.add(ListMark(str,tmp))
+                        list.add(ListMark(decodeSemester(str),tmp))
                         tmp = mutableListOf()
                         tmp.add(it[i])
                         str = it[i].semester
@@ -67,6 +68,15 @@ class MarkFragment :Fragment() {
                 requireActivity().requestedOrientation  = ActivityInfo.SCREEN_ORIENTATION_SENSOR_LANDSCAPE
             else
                 requireActivity().requestedOrientation  = ActivityInfo.SCREEN_ORIENTATION_SENSOR_PORTRAIT
+        }
+    }
+
+    fun decodeSemester(str : String) : String{
+        if (str.equals("baoLuu")){
+            return "Điểm Bảo Lưu"
+        }
+        else{
+            return "Học kỳ " + str.substring(0, 1) + " - Năm học " + str.substring(1, 5) + "-" + str.substring(5, 9)
         }
     }
 }
