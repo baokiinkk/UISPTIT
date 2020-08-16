@@ -123,9 +123,13 @@ class DataRepositoryImpl(var network: HttpUis, var dao:AppDao) :
         }
     }
 
-    override fun getDataSemester( getdata: (MutableList<SemesterMark>) -> Unit) {
+    override fun getDataSemester(hk: String, getdata: (MutableList<SemesterMark>) -> Unit) {
         GlobalScope.launch(Dispatchers.IO){
-            getdata(dao.getSemester())
+            val markHK:MutableList<SemesterMark>
+            if(hk.equals(""))
+                markHK= dao.getSemester()
+            else markHK = dao.getSemesterHK(hk)
+            getdata(markHK)
         }
     }
 

@@ -23,7 +23,7 @@ class InfoViewModel(private val repo: DataRepository) : ViewModel() {
             repo.getInforUser {
                 title.postValue(xuLiTen(it.ten))
             }
-            repo.getDataSemester {
+            repo.getDataSemester("") {
                 listSemester.postValue(it)
             }
             repo.getCNTAA {

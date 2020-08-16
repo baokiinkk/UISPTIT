@@ -20,6 +20,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MarkFragment :Fragment() {
     val viewModel: MarkViewModel by viewModel<MarkViewModel>()
+    lateinit var list:MutableList<ListMark>
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -30,29 +31,35 @@ class MarkFragment :Fragment() {
         bd.viewmodel=viewModel
 //        requireActivity().requestedOrientation  = ActivityInfo.SCREEN_ORIENTATION_SENSOR_LANDSCAPE
         viewModel.getData("")
+        viewModel.getDataSemester("")
         val adapter = Adapter()
         bd.viewpager.adapter = adapter
-        viewModel.listData.observe(viewLifecycleOwner, Observer {
-            it?.let {
-                val list:MutableList<ListMark> = mutableListOf()
-                var tmp: MutableList<Mark> = mutableListOf()
-                var str = it[0].semester.toString()
+        viewModel.listData.observe(viewLifecycleOwner, Observer { mark->
+            mark?.let {
+                viewModel.listDataSemester.observe(viewLifecycleOwner, Observer {
+                    it?.let {
+                        list = mutableListOf()
+                        var tmp: MutableList<Mark> = mutableListOf()
+                        var str = mark[0].semester
+                        var j = 0
+                        tmp.add(mark[0])
+                        for (i in 1..mark.size - 1) {
+                            if (mark[i].semester.equals(str)) {
+                                tmp.add(mark[i])
+                                if (i == mark.size - 1)
+                                    list.add(ListMark(decodeSemester(str), tmp, it[j]))
+                            } else {
+                                list.add(ListMark(decodeSemester(str), tmp,it[j]))
+                                j++
+                                tmp = mutableListOf()
+                                tmp.add(mark[i])
+                                str = mark[i].semester
+                            }
+                        }
+                        adapter.submitList(list)
+                    }
+                })
 
-                tmp.add(it[0])
-                for(i in 1..it.size-1){
-                    if(it[i].semester.equals(str)){
-                        tmp.add(it[i])
-                        if(i == it.size-1)
-                            list.add(ListMark(decodeSemester(str),tmp))
-                    }
-                    else{
-                        list.add(ListMark(decodeSemester(str),tmp))
-                        tmp = mutableListOf()
-                        tmp.add(it[i])
-                        str = it[i].semester
-                    }
-                }
-                adapter.submitList(list)
             }
         })
 
