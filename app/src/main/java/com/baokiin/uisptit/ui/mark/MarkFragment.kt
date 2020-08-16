@@ -14,6 +14,7 @@ import com.baokiin.uisptit.data.db.model.ListMark
 import com.baokiin.uisptit.data.db.model.Mark
 import com.baokiin.uisptit.databinding.FragmentMarkBinding
 import com.baokiin.uisptit.ui.info.AdapterMark
+import kotlinx.android.synthetic.main.fragment_mark.*
 
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -53,6 +54,19 @@ class MarkFragment :Fragment() {
                 adapter.submitList(list)
             }
         })
+
+
         return bd.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        btnXoay.setOnClickListener {
+            if(requireActivity().requestedOrientation == ActivityInfo.SCREEN_ORIENTATION_SENSOR_PORTRAIT)
+                requireActivity().requestedOrientation  = ActivityInfo.SCREEN_ORIENTATION_SENSOR_LANDSCAPE
+            else
+                requireActivity().requestedOrientation  = ActivityInfo.SCREEN_ORIENTATION_SENSOR_PORTRAIT
+        }
     }
 }
