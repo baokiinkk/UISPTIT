@@ -37,9 +37,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="150dp"
                 android:background="@drawable/title_shape"
-
                 >
-
 
                 <TextView
                     android:id="@+id/btnOption"
@@ -105,100 +103,133 @@
                     app:layout_constraintTop_toBottomOf="@+id/txtTitle" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
-
-            <androidx.cardview.widget.CardView
+            <TableLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="100dp"
                 android:layout_marginStart="50dp"
                 android:layout_marginTop="100dp"
                 android:layout_marginEnd="50dp"
-                android:background="#fff"
-                app:cardCornerRadius="20dp">
-
-                <TableLayout
-                    android:id="@+id/tableLayout"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:collapseColumns="*">
-
-                    <TableRow
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:paddingTop="@dimen/paddingMark">
+                android:padding="1dp"
+                android:background="@drawable/white_backround"
+                >
+                <TableRow>
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/constraintLayout"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="@drawable/backround_white"
+                        >
 
                         <TextView
                             android:id="@+id/txtCPA"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:background="@color/appBackgroundWhite"
+                            android:layout_marginTop="500dp"
+                            android:layout_marginBottom="500dp"
                             android:fontFamily="sans-serif-black"
-                            android:gravity="center"
-                            android:text="@{String.valueOf(viewmodel.listSemester.get(viewmodel.listSemester.size()-1).gpa4)}"
+                            android:text="2.1"
                             android:textColor="@color/colorMark"
-                            android:textSize="@dimen/textSizeMark" />
+                            android:textSize="@dimen/textSizeMark"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintVertical_bias="0.51" />
 
                         <TextView
-                            android:id="@+id/txtTCTL"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:fontFamily="sans-serif-black"
-                            android:gravity="center"
-                            android:text="@{String.valueOf(viewmodel.listSemester.get(viewmodel.listSemester.size()-1).creditsAccumulated)}"
-                            android:textColor="@color/colorMark"
-                            android:textSize="@dimen/textSizeMark" />
+                            android:layout_marginTop="5dp"
+                            android:fontFamily="sans-serif-medium"
+                            android:text="CPA"
+                            android:textColor="@color/colorHintMark"
+                            android:textSize="@dimen/textSizeMarkHint"
+                            app:layout_constraintEnd_toEndOf="@+id/txtCPA"
+                            app:layout_constraintStart_toStartOf="@+id/txtCPA"
+                            app:layout_constraintTop_toBottomOf="@+id/txtCPA" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="@drawable/backround_white"
+                        >
+
+                    <TextView
+                        android:id="@+id/txtTCTL"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="500dp"
+                        android:layout_marginBottom="500dp"
+                        android:fontFamily="sans-serif-black"
+                        android:text="87"
+                        android:textColor="@color/colorMark"
+                        android:textSize="@dimen/textSizeMark"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.51" />
+
+                    <TextView
+                        android:id="@+id/textView16"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:fontFamily="sans-serif-medium"
+                        android:text="TCTL"
+                        android:textColor="@color/colorHintMark"
+                        android:textSize="@dimen/textSizeMarkHint"
+                        app:layout_constraintEnd_toEndOf="@+id/txtTCTL"
+                        app:layout_constraintStart_toStartOf="@+id/txtTCTL"
+                        app:layout_constraintTop_toBottomOf="@+id/txtTCTL" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/constraintLayout3"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+
+                        >
 
                         <TextView
                             android:id="@+id/txtAA"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_weight="1"
+                            android:layout_marginTop="500dp"
+                            android:layout_marginBottom="500dp"
                             android:fontFamily="sans-serif-black"
-                            android:gravity="center"
-                            android:text="@{String.valueOf(viewmodel.CNTAA)}"
+                            android:text="8"
                             android:textColor="@color/colorMark"
-                            android:textSize="@dimen/textSizeMark" />
-
-                    </TableRow>
-
-                    <TableRow
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:paddingBottom="@dimen/paddingMark">
+                            android:textSize="@dimen/textSizeMark"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintVertical_bias="0.51" />
 
                         <TextView
+                            android:id="@+id/textView15"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_weight="1"
+                            android:layout_marginTop="5dp"
                             android:fontFamily="sans-serif-medium"
-                            android:gravity="center"
-                            android:textSize="@dimen/textSizeMarkHint"
-                            android:text="CPA"
-                            android:textColor="@color/colorHintMark" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:fontFamily="sans-serif-medium"
-                            android:gravity="center"
-                            android:text="TCTL"
-                            android:textSize="@dimen/textSizeMarkHint"
-                            android:textColor="@color/colorHintMark" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:fontFamily="sans-serif-medium"
-                            android:gravity="center"
                             android:text="A/A+"
+                            android:textColor="@color/colorHintMark"
                             android:textSize="@dimen/textSizeMarkHint"
-                            android:textColor="@color/colorHintMark" />
-                    </TableRow>
-                </TableLayout>
-            </androidx.cardview.widget.CardView>
+                            app:layout_constraintEnd_toEndOf="@+id/txtAA"
+                            app:layout_constraintStart_toStartOf="@+id/txtAA"
+                            app:layout_constraintTop_toBottomOf="@+id/txtAA" />
+
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </TableRow>
+            </TableLayout>
+
 
 
         </FrameLayout>
@@ -209,7 +240,7 @@
             android:layout_width="0dp"
             android:layout_height="250dp"
             android:layout_marginStart="20dp"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="5dp"
             android:layout_marginEnd="20dp"
             app:cardBackgroundColor="@color/colorAccent"
             app:cardCornerRadius="20dp"
@@ -217,7 +248,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/cardTTC">
+            app:layout_constraintTop_toBottomOf="@+id/txtTKB">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
@@ -231,7 +262,7 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/txtTKB">
+                    app:layout_constraintTop_toTopOf="parent">
 
                     <TableRow
                         android:layout_width="0dp"
@@ -299,21 +330,6 @@
 
                 </TableLayout>
 
-                <TextView
-                    android:id="@+id/txtTKB"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="sans-serif-medium"
-                    android:text="@string/thoi_khoa_bieu"
-                    android:textAllCaps="false"
-                    android:textColor="#000"
-                    android:textSize="@dimen/sizeTextCard"
-                    android:textStyle="normal"
-                    android:paddingStart="20dp"
-                    android:background="#FFEB3B"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.cardview.widget.CardView>
 
@@ -336,22 +352,68 @@
                 android:background="#FFFFFF" />
         </androidx.cardview.widget.CardView>
 
+        <TextView
+            android:id="@+id/txtTKB"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:fontFamily="sans-serif-medium"
+            android:paddingStart="20dp"
+            android:text="@string/thoi_khoa_bieu"
+            android:textAllCaps="false"
+            android:textColor="#000"
+            android:textSize="@dimen/sizeTextCard"
+            android:textStyle="normal"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cardTTC" />
+
+        <TextView
+            android:id="@+id/txtLichThi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:fontFamily="sans-serif-medium"
+            android:text="@string/lịch_thi"
+            android:textAllCaps="false"
+            android:textColor="#000"
+            android:textSize="@dimen/sizeTextCard"
+            android:textStyle="normal"
+
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cardTKB" />
+
+        <TextView
+            android:id="@+id/txtDiem"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:fontFamily="sans-serif-medium"
+            android:text="@string/diem_thi"
+            android:textAllCaps="false"
+            android:textColor="#000"
+            android:textSize="@dimen/sizeTextCard"
+            android:textStyle="normal"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cardLichThi" />
 
         <androidx.cardview.widget.CardView
             android:id="@+id/cardDiem"
             android:layout_width="0dp"
             android:layout_height="250dp"
             android:layout_marginStart="20dp"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="5dp"
             android:layout_marginEnd="20dp"
             android:layout_marginBottom="20dp"
+            app:cardBackgroundColor="@color/colorAccent"
             app:cardCornerRadius="20dp"
             app:cardElevation="@dimen/shadow"
-            app:cardBackgroundColor="@color/colorAccent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/cardLichThi">
+            app:layout_constraintTop_toBottomOf="@+id/txtDiem">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
@@ -367,7 +429,7 @@
                     android:collapseColumns="*"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/txtDiem">
+                    app:layout_constraintTop_toTopOf="parent">
 
                     <TableRow>
 
@@ -431,20 +493,6 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/tenMon" />
 
-                <TextView
-                    android:id="@+id/txtDiem"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginTop="10dp"
-                    android:fontFamily="sans-serif-medium"
-                    android:text="@string/diem_thi"
-                    android:textAllCaps="false"
-                    android:textColor="#000"
-                    android:textSize="@dimen/sizeTextCard"
-                    android:textStyle="normal"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
         </androidx.cardview.widget.CardView>
@@ -465,14 +513,14 @@
             android:layout_width="match_parent"
             android:layout_height="250dp"
             android:layout_marginStart="20dp"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="5dp"
             android:layout_marginEnd="20dp"
+            app:cardBackgroundColor="@color/colorAccent"
             app:cardCornerRadius="20dp"
             app:cardElevation="@dimen/shadow"
-            app:cardBackgroundColor="@color/colorAccent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/cardTKB">
+            app:layout_constraintTop_toBottomOf="@+id/txtLichThi">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
@@ -488,7 +536,7 @@
                     android:collapseColumns="*"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/txtLichThi">
+                    app:layout_constraintTop_toTopOf="parent">
 
                     <TableRow>
 
@@ -568,20 +616,6 @@
 
                 </FrameLayout>
 
-                <TextView
-                    android:id="@+id/txtLichThi"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginTop="10dp"
-                    android:fontFamily="sans-serif-medium"
-                    android:text="@string/lịch_thi"
-                    android:textAllCaps="false"
-                    android:textColor="#000"
-                    android:textSize="@dimen/sizeTextCard"
-                    android:textStyle="normal"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.cardview.widget.CardView>
 

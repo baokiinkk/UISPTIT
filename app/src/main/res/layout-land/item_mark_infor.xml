@@ -13,6 +13,7 @@
         android:layout_height="wrap_content"
         android:background="@drawable/item_backround"
         android:layout_marginTop="10dp"
+        android:paddingStart="10dp"
         android:collapseColumns="*"
         >
         <TableRow>

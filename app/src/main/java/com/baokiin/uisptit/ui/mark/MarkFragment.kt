@@ -2,6 +2,7 @@ package com.baokiin.uisptit.ui.mark
 
 import android.content.pm.ActivityInfo
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,14 +13,17 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.baokiin.uisptit.R
 import com.baokiin.uisptit.data.db.model.ListMark
 import com.baokiin.uisptit.data.db.model.Mark
+import com.baokiin.uisptit.data.db.model.SemesterMark
 import com.baokiin.uisptit.databinding.FragmentMarkBinding
 import com.baokiin.uisptit.ui.info.AdapterMark
+import com.google.android.material.tabs.TabLayoutMediator
 import kotlinx.android.synthetic.main.fragment_mark.*
 
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MarkFragment :Fragment() {
     val viewModel: MarkViewModel by viewModel<MarkViewModel>()
+    var tabLayoutMediator:TabLayoutMediator? = null
     lateinit var list:MutableList<ListMark>
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -40,16 +44,20 @@ class MarkFragment :Fragment() {
                     it?.let {
                         list = mutableListOf()
                         var tmp: MutableList<Mark> = mutableListOf()
+                        var tmpSemester:MutableList<SemesterMark> = mutableListOf()
                         var str = mark[0].semester
+                        if(str.equals("baoLuu"))
+                            tmpSemester.add( SemesterMark("",0f,0f,0f,0f,0,0))
                         var j = 0
+                        tmpSemester.addAll(it)
                         tmp.add(mark[0])
                         for (i in 1..mark.size - 1) {
                             if (mark[i].semester.equals(str)) {
                                 tmp.add(mark[i])
                                 if (i == mark.size - 1)
-                                    list.add(ListMark(decodeSemester(str), tmp, it[j]))
+                                    list.add(ListMark(decodeSemester(str), tmp, tmpSemester[j]))
                             } else {
-                                list.add(ListMark(decodeSemester(str), tmp,it[j]))
+                                list.add(ListMark(decodeSemester(str), tmp,tmpSemester[j]))
                                 j++
                                 tmp = mutableListOf()
                                 tmp.add(mark[i])
@@ -76,6 +84,14 @@ class MarkFragment :Fragment() {
             else
                 requireActivity().requestedOrientation  = ActivityInfo.SCREEN_ORIENTATION_SENSOR_PORTRAIT
         }
+        tabLayoutMediator = TabLayoutMediator(
+            tabLayout,
+            viewpager,
+            TabLayoutMediator.TabConfigurationStrategy { tab, position ->
+                tab.text = (position + 1).toString()
+            }
+        )
+        tabLayoutMediator!!.attach()
     }
 
     fun decodeSemester(str : String) : String{
