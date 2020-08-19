@@ -67,7 +67,6 @@ class DataRepositoryImpl(var network: HttpUis, var dao:AppDao) :
 
                 val semester = xuLiDiemTongKet(list!!.get("Diem")!!)
                 for (i in semester) {
-                    Log.d("quocbaokiin",i.toString())
                     dao.addSemester(
                             SemesterMark(
                                     i[0], i[1].toFloat(), i[2].toFloat(), i[3].toFloat(),
@@ -81,7 +80,6 @@ class DataRepositoryImpl(var network: HttpUis, var dao:AppDao) :
 
                 val tkb = xuLiTKB(xuLiMonHoc(list!!.get("TKB")!!), xuLiTuanHoc(list!!.get("TuanHoc")!!))
                 for (i in tkb) {
-                    Log.d("tncnhan", "tkb" + i.toString())
                     dao.addTimeTable(
                             TimeTable(0, i[0], i[1], i[2], i[3], i[4])
                     )
@@ -220,7 +218,6 @@ class DataRepositoryImpl(var network: HttpUis, var dao:AppDao) :
             }
             if(j == 12){
                 temp.add(row)
-                Log.d("tncnhan", row.toString())
                 row = mutableListOf()
             }
         }
@@ -351,7 +348,6 @@ class DataRepositoryImpl(var network: HttpUis, var dao:AppDao) :
         {
             res.add(getDigits(x.text()))
         }
-        Log.d("tncnhan", res.toString())
         return res
     }
 

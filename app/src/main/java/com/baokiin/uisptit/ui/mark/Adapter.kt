@@ -1,6 +1,5 @@
 package com.baokiin.uisptit.ui.mark
 import android.annotation.SuppressLint
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
@@ -8,7 +7,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.baokiin.uisptit.data.db.model.ListMark
-import com.baokiin.uisptit.data.db.model.Mark
 import com.baokiin.uisptit.databinding.ItemMarkBinding
 import com.baokiin.uisptit.databinding.ItemMarkInforBinding
 import com.baokiin.uisptit.ui.info.AdapterMark

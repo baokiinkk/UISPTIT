@@ -1,5 +1,6 @@
 package com.baokiin.uisptit.di
 
+import com.baokiin.uisptit.ui.examschedule.ExamScheduleViewModel
 import com.baokiin.uisptit.ui.info.InfoViewModel
 import com.baokiin.uisptit.ui.login.LoginViewModel
 import com.baokiin.uisptit.ui.mark.MarkViewModel
@@ -22,4 +23,7 @@ val markViewModelDi: Module = module {
 }
 val loginModuleDi:Module = module {
     viewModel { LoginViewModel(get()) }
+}
+val examModuleDi:Module = module {
+    viewModel { ExamScheduleViewModel(get()) }
 }

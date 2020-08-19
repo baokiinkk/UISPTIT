@@ -63,8 +63,8 @@ class InfoFragment : Fragment(){
             findNavController().navigate(R.id.to_mark)
         }
 
-        bd.recycleViewDiem.adapter = adapter
-        bd.recycleViewDiem.layoutManager = LinearLayoutManager(context)
+        bd.recycleView.adapter = adapter
+        bd.recycleView.layoutManager = LinearLayoutManager(context)
 
 
         bd.recycleExam.adapter = adapterExam
@@ -204,17 +204,23 @@ class InfoFragment : Fragment(){
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         super.onCreate(savedInstanceState)
-        cardTKB.setOnClickListener {
+        tableLayout.setOnClickListener {
             findNavController().navigate(R.id.to_schedule)
         }
         cardDiem.setOnClickListener {
             findNavController().navigate(R.id.to_mark)
         }
+        cardLichThi.setOnClickListener {
+            findNavController().navigate(R.id.to_exam)
+        }
         btnOption.setOnClickListener {
             findNavController().navigate(R.id.to_option)
         }
-        recycleViewDiem.setOnClickListener {
+        recycleView.setOnClickListener {
             findNavController().navigate(R.id.to_mark)
+        }
+        frame.setOnClickListener {
+            findNavController().navigate(R.id.to_exam)
         }
 
         fresh.setWaveRGBColor(99,80,200)

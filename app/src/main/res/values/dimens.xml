@@ -10,4 +10,5 @@
     <dimen name="textSizeMark">30sp</dimen>
     <dimen name="textSizeMarkHint">10sp</dimen>
     <dimen name="paddingMark">15dp</dimen>
+    <dimen name="cardTitle">20dp</dimen>
 </resources>
