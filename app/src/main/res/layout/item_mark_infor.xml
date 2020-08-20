@@ -19,30 +19,32 @@
             android:collapseColumns="*"
             >
             <TableRow>
+
                 <TextView
                     android:id="@+id/tenMon"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:text="@{data.objectName}"
-                    android:gravity="start"
-                    android:paddingStart="10dp"
-                    android:paddingBottom="5dp"
-                    android:paddingTop="5dp"
                     android:layout_gravity="center"
                     android:layout_weight="3"
-                    android:textColor="#000"
-                    android:textStyle="bold"
-                    />
+                    android:fontFamily="sans-serif-medium"
+                    android:gravity="start"
+                    android:paddingStart="10dp"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"
+                    android:text="@{data.objectName}"
+                    android:textColor="@color/diemCacMon" />
                 <TextView
                     android:id="@+id/DiemThi"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+
                     android:text="@{data.thi1}"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:layout_gravity="center"
-                    android:textColor="#000"
-                    android:textStyle="bold"
+                    android:textColor="@color/diemCacMon"
+                    android:textStyle="normal"
+                    android:fontFamily="sans-serif-medium"
                     />
                 <TextView
                     android:id="@+id/ketQua"
@@ -52,8 +54,9 @@
                     android:gravity="center"
                     android:layout_gravity="center"
                     android:text="@{data.tk10}"
-                    android:textColor="#000"
-                    android:textStyle="bold"
+                    android:textColor="@color/diemCacMon"
+                    android:textStyle="normal"
+                    android:fontFamily="sans-serif-medium"
                     />
                 <TextView
                     android:id="@+id/ketQuaChu"
@@ -63,8 +66,10 @@
                     android:layout_gravity="center"
                     android:text="@{data.TKCH}"
                     android:layout_weight="1"
-                    android:textColor="#000"
-                    android:textStyle="bold" />
+                    android:textColor="@color/diemCacMon"
+                    android:textStyle="normal"
+                    android:fontFamily="sans-serif-medium"
+                    />
             </TableRow>
 
         </TableLayout>

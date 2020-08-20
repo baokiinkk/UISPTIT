@@ -4,7 +4,8 @@
     <!-- <color name="colorPrimaryDark">#03DAC5</color> -->
     <color name="colorPrimaryDark">#6356C8</color>
     <color name="colorAccent">#6356C8</color>
-    <color name="colorRow">#410B0A0A</color>
+    <color name="colorRow">#BFB7FA</color>
+<!--    <color name="colorRow">#412C2828</color>-->
     <color name="colorPink">#FF0E90</color>
     <color name="colorGray">#3F3F3F</color>
     <color name="login">#0C8E9F</color>
@@ -16,4 +17,11 @@
     <color name="titleText">#FFF</color>
     <color name="colorMark">#000000</color>
     <color name="colorHintMark">#6356C8</color>
+    <color name="backgroundTomorrow">#FFFFFF</color>
+    <color name="textTomorrow">#6356C8</color>
+    <color name="hockiTitle">#6356C8</color>
+    <color name="diemCacMon">#2B293A</color>
+    <color name="diemCacMonTitle">#FFFFFF</color>
+    <color name="lichThiTitle">#6356C8</color>
+
 </resources>

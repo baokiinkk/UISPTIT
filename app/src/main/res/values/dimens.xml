@@ -2,13 +2,25 @@
     <!-- Default screen margins, per the Android Design guidelines. -->
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
-    <dimen name="sizeTextTitle">30sp</dimen>
-    <dimen name="sizeTextTitleHint">15sp</dimen>
-    <dimen name="sizeTextCard">17sp</dimen>
+
     <dimen name="cardDimenLeft">40dp</dimen>
-    <dimen name="shadow">5dp</dimen>
-    <dimen name="textSizeMark">30sp</dimen>
-    <dimen name="textSizeMarkHint">10sp</dimen>
-    <dimen name="paddingMark">15dp</dimen>
-    <dimen name="cardTitle">20dp</dimen>
+    <dimen name="shadow">5dp</dimen> <!-- độ rộng của bóng -->
+    <dimen name="paddingMark">15dp</dimen><!-- -->
+    <dimen name="cardTitle">40dp</dimen><!-- khoảng cách từ lề đến tiêu đề cardview-->
+    <dimen name="cardRange">30dp</dimen><!-- khoảng cách giữa các card-->
+
+
+
+    <dimen name="sizeTextTitle">30sp</dimen><!-- size câu chào-->
+    <dimen name="sizeTextTitleHint">15sp</dimen> <!-- câu chúc -->
+    <dimen name="sizeTextCard">20sp</dimen><!-- tiêu đề của mỗi card view ở info-->
+    <dimen name="textSizeMark">30sp</dimen><!-- 3 thông số ở thanh title-->
+    <dimen name="textSizeMarkHint">10sp</dimen><!-- dòng giải thích 3 thông số trên -->
+
+
+    <dimen name="sizeMarkInCard">10sp</dimen><!-- Font các tiêu đề cột điểm-->
+    <dimen name="sizeRowMark">10sp</dimen><!-- Font các cột điểm -->
+    <dimen name="sizeHKMark">17sp</dimen><!-- Font học kì -->
+    <!-- -->
+
 </resources>
