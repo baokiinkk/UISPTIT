@@ -80,6 +80,7 @@ class DataRepositoryImpl(var network: HttpUis, var dao:AppDao) :
 
                 val tkb = xuLiTKB(xuLiMonHoc(list!!.get("TKB")!!), xuLiTuanHoc(list!!.get("TuanHoc")!!))
                 for (i in tkb) {
+                    //Log.d("tncnhan", i.toString())
                     dao.addTimeTable(
                             TimeTable(0, i[0], i[1], i[2], i[3], i[4])
                     )
@@ -309,7 +310,7 @@ class DataRepositoryImpl(var network: HttpUis, var dao:AppDao) :
                     row = mutableListOf()
                     row.add(week)
                     row.add(thuTuNgay(obj[8]))
-                    if(obj[9] == "0") row.add("0")
+                    if(obj[9] == "1") row.add("0")
                     else    row.add("1")
                     row.add(obj[1])
                     row.add(obj[11])
@@ -335,8 +336,7 @@ class DataRepositoryImpl(var network: HttpUis, var dao:AppDao) :
         val strDay = stringWeek.substring(2,4) + "/" + stringWeek.substring(4,6) + "/" + stringWeek.substring(6,10)
         //Log.d("tncnhan", strDay)
         val day = toDate(strDay)
-        //Log.d("tncnhan", dates[0].toString() + "_" + day.toString() + "_" + dates[1].toString())
-        return (day.before(dates[1]) && (day.after(dates[0]) || day.after(dates[0])))
+        return (day.before(dates[1]) && (day.after(dates[0]) || day.equals(dates[0])))
     }
 
     // trả về list mã tuần học có trong kì học đó

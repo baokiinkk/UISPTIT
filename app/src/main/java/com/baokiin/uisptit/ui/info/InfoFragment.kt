@@ -1,5 +1,6 @@
 package com.baokiin.uisptit.ui.info
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.SharedPreferences
 import android.content.pm.ActivityInfo
@@ -8,6 +9,7 @@ import android.graphics.drawable.Drawable
 import android.net.ConnectivityManager
 import android.net.NetworkInfo
 import android.os.Bundle
+import android.util.Log
 import android.view.KeyEvent
 import android.view.LayoutInflater
 import android.view.View
@@ -32,12 +34,15 @@ import com.github.mikephil.charting.formatter.ValueFormatter
 import com.github.mikephil.charting.interfaces.dataprovider.LineDataProvider
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet
 import com.github.mikephil.charting.utils.Utils
+import kotlinx.android.synthetic.main.fragment_exam_schedule.*
 import kotlinx.android.synthetic.main.fragment_info.*
+import kotlinx.android.synthetic.main.fragment_info.recycleView
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.text.DecimalFormat
 import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.ArrayList
+import kotlin.time.days
 
 
 class InfoFragment : Fragment(){
@@ -176,7 +181,6 @@ class InfoFragment : Fragment(){
                 bd.linechart.setTouchEnabled(true)
                 bd.linechart.isHighlightPerDragEnabled = false
                 bd.linechart.isHighlightPerTapEnabled = true
-                bd.linechart.animateX(500)
                 val mv = CustomMarkerView(context, R.layout.axis_label, hocki,bd.linechart.width, bd.linechart.height)
                 bd.linechart.marker = mv
                 bd.linechart.invalidate()
@@ -223,6 +227,7 @@ class InfoFragment : Fragment(){
             findNavController().navigate(R.id.to_exam)
         }
 
+
         fresh.setWaveRGBColor(99,80,200)
         fresh.setColorSchemeColors(Color.WHITE)
         fresh.setShadowRadius(0)
@@ -266,6 +271,46 @@ class InfoFragment : Fragment(){
         else
             return "Chúc buổi tối như cc!"
     }
+
+
+    fun getTKBNgay(day : Date, tkb : MutableList<MutableList<String>>) : MutableList<MutableList<String>>{
+        var res = mutableListOf<MutableList<String>>()
+        var row = mutableListOf<String>()
+        row.add("Trống")
+        res.add(row)
+        res.add(row)
+        for (i in tkb){
+            val dates = getDate(i[0])
+            if (day.before(dates[1]) && (day.after(dates[0]) || day.equals(dates[0]))){
+                Log.d("tncnhan", (day.time-dates[0].time).toString())
+                if (((day.time-dates[0].time) / (1000*60*60*24)).toString().equals(i[1])){
+                    row = mutableListOf()
+                    row.add(i[3])
+                    row.add(i[4])
+                    res[i[2].toInt()] = row
+                }
+            }
+        }
+        return res
+    }
+
+    fun getDate(stringDate : String) : MutableList<Date>{
+        val startDate = stringDate.substring(1, 11)
+        val endDate = stringDate.substring(13, 23)
+        var res = mutableListOf<Date>()
+        res.add(toDate(startDate))
+        res.add(toDate(endDate))
+        return res
+    }
+
+    @SuppressLint("SimpleDateFormat")
+    fun toDate(str:String): Date {
+        val sdf =
+            SimpleDateFormat("dd/MM/yyyy")
+        val d = sdf.parse(str)
+        return d
+    }
+
 
 
 }

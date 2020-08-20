@@ -15,7 +15,6 @@ import okhttp3.RequestBody
 import org.jsoup.Jsoup
 import java.util.concurrent.TimeUnit
 
-// T muốn là tạo 2 hàm 1 hàm kiểm tra login 1 hàm lấy list điểm nhưng mà t buồn ngủ quá rồi T_T làm hộ nha
 
 class HttpUis( var context: Context)  {
      fun login(name:String,pass:String) : MutableMap<String,String>  {
