@@ -5,6 +5,7 @@ import com.baokiin.uisptit.ui.info.InfoViewModel
 import com.baokiin.uisptit.ui.login.LoginViewModel
 import com.baokiin.uisptit.ui.mark.MarkViewModel
 import com.baokiin.uisptit.ui.option.OptionViewModel
+import com.baokiin.uisptit.ui.schedule.ScheduleViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.core.module.Module
 import org.koin.dsl.module
@@ -26,4 +27,7 @@ val loginModuleDi:Module = module {
 }
 val examModuleDi:Module = module {
     viewModel { ExamScheduleViewModel(get()) }
+}
+val timeTableModuleDi:Module = module {
+    viewModel { ScheduleViewModel(get()) }
 }

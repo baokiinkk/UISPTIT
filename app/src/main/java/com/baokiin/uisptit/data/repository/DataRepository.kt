@@ -13,6 +13,7 @@ interface DataRepository {
     fun getExam(data: (MutableList<ExamTimetable>) -> Unit)
     fun getInforUser(data:(InfoUser)->Unit)
     fun getLogin(data: (MutableList<LoginInfor>) -> Unit)
+    fun getTimeTable(data:(MutableList<TimeTable>)->Unit)
     fun addLogin(name:String,pass:String)
     fun deleteLogin()
     class LoginException: Exception(){

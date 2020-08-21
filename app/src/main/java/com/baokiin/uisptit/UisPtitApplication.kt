@@ -28,7 +28,9 @@ class UisPtitApplication : Application() {
                 loginUseCase,
                 optionViewModelDi,
                 examUseCaseDi,
-                examModuleDi
+                examModuleDi,
+                timeTableModuleDi,
+                TimeTableUseCase
             ))
         }
     }

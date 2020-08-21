@@ -14,3 +14,6 @@ val examUseCaseDi: Module = module {
 val loginUseCase:Module = module {
     single<LoginUseCase> {LoginUseCaseImpl(get())}
 }
+val TimeTableUseCase:Module = module {
+    single<TimeTableUseCase> {TimeTableUseCaseImpl(get())}
+}

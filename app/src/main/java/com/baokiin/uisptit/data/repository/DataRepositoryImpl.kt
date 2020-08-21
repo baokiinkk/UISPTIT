@@ -80,7 +80,7 @@ class DataRepositoryImpl(var network: HttpUis, var dao:AppDao) :
 
                 val tkb = xuLiTKB(xuLiMonHoc(list!!.get("TKB")!!), xuLiTuanHoc(list!!.get("TuanHoc")!!))
                 for (i in tkb) {
-                    //Log.d("tncnhan", i.toString())
+                    Log.d("quocbaokiin", i.toString())
                     dao.addTimeTable(
                             TimeTable(0, i[0], i[1], i[2], i[3], i[4])
                     )
@@ -148,6 +148,12 @@ class DataRepositoryImpl(var network: HttpUis, var dao:AppDao) :
     override fun getLogin(data: (MutableList<LoginInfor>) -> Unit) {
         GlobalScope.launch {
             data(dao.getLogin())
+        }
+    }
+
+    override fun getTimeTable(data: (MutableList<TimeTable>) -> Unit) {
+        GlobalScope.launch {
+            data(dao.getTimeTable())
         }
     }
 

@@ -22,6 +22,7 @@ import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.baokiin.uisptit.R
+import com.baokiin.uisptit.data.db.model.TimeTable
 import com.baokiin.uisptit.databinding.FragmentInfoBinding
 import com.github.mikephil.charting.components.Description
 import com.github.mikephil.charting.components.Legend
@@ -34,15 +35,12 @@ import com.github.mikephil.charting.formatter.ValueFormatter
 import com.github.mikephil.charting.interfaces.dataprovider.LineDataProvider
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet
 import com.github.mikephil.charting.utils.Utils
-import kotlinx.android.synthetic.main.fragment_exam_schedule.*
 import kotlinx.android.synthetic.main.fragment_info.*
-import kotlinx.android.synthetic.main.fragment_info.recycleView
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.text.DecimalFormat
 import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.ArrayList
-import kotlin.time.days
 
 
 class InfoFragment : Fragment(){
@@ -199,8 +197,18 @@ class InfoFragment : Fragment(){
                 fresh.isRefreshing = false
             }
         })
+        viewModel.dataTimeTableTime.observe(viewLifecycleOwner, Observer {
+            it?.let {
 
+                val dateStr = "07/09/2020"
 
+                val curFormater =
+                    SimpleDateFormat("dd/MM/yyyy")
+                val dateObj = curFormater.parse(dateStr)
+                val tmp = getTKBNgay(dateObj,it)
+                Log.d("quocbaokiin",tmp.toString())
+            }
+        })
         return bd.root
     }
 
@@ -273,30 +281,31 @@ class InfoFragment : Fragment(){
     }
 
 
-    fun getTKBNgay(day : Date, tkb : MutableList<MutableList<String>>) : MutableList<MutableList<String>>{
+    fun getTKBNgay(day : Date, tkb : MutableList<TimeTable>) : MutableList<MutableList<String>>{
         var res = mutableListOf<MutableList<String>>()
         var row = mutableListOf<String>()
         row.add("Trống")
         res.add(row)
         res.add(row)
         for (i in tkb){
-            val dates = getDate(i[0])
+            val dates = getDate(i.tuan)
             if (day.before(dates[1]) && (day.after(dates[0]) || day.equals(dates[0]))){
                 Log.d("tncnhan", (day.time-dates[0].time).toString())
-                if (((day.time-dates[0].time) / (1000*60*60*24)).toString().equals(i[1])){
+                if (((day.time-dates[0].time) / (1000*60*60*24)).toString().equals(i.thu)){
                     row = mutableListOf()
-                    row.add(i[3])
-                    row.add(i[4])
-                    res[i[2].toInt()] = row
+                    row.add(i.tenMon)
+                    row.add(i.phong)
+                    res[i.buoi.toInt()] = row
                 }
             }
         }
         return res
     }
-
     fun getDate(stringDate : String) : MutableList<Date>{
-        val startDate = stringDate.substring(1, 11)
-        val endDate = stringDate.substring(13, 23)
+        var startDate = stringDate.substring(2,10)
+        startDate = startDate.substring(0,2)+"/"+startDate.substring(2,4)+"/"+startDate.substring(4,8)
+        var endDate = stringDate.substring(10, 18)
+        endDate = endDate.substring(0,2)+"/"+endDate.substring(2,4)+"/"+endDate.substring(4,8)
         var res = mutableListOf<Date>()
         res.add(toDate(startDate))
         res.add(toDate(endDate))
