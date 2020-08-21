@@ -13,7 +13,7 @@
 
     <dimen name="sizeTextTitle">30sp</dimen><!-- size câu chào-->
     <dimen name="sizeTextTitleHint">15sp</dimen> <!-- câu chúc -->
-    <dimen name="sizeTextCard">20sp</dimen><!-- tiêu đề của mỗi card view ở info-->
+    <dimen name="sizeTextCard">17sp</dimen><!-- tiêu đề của mỗi card view ở info-->
     <dimen name="textSizeMark">30sp</dimen><!-- 3 thông số ở thanh title-->
     <dimen name="textSizeMarkHint">10sp</dimen><!-- dòng giải thích 3 thông số trên -->
 

@@ -16,12 +16,14 @@
     <color name="titleBackground">#FFF</color>
     <color name="titleText">#FFF</color>
     <color name="colorMark">#000000</color>
-    <color name="colorHintMark">#6356C8</color>
+    <color name="colorHintMark">@color/colorAccent</color>
     <color name="backgroundTomorrow">#FFFFFF</color>
-    <color name="textTomorrow">#6356C8</color>
-    <color name="hockiTitle">#6356C8</color>
+    <color name="textTomorrow">@color/colorAccent</color>
+    <color name="hockiTitle">@color/colorAccent</color>
     <color name="diemCacMon">#2B293A</color>
     <color name="diemCacMonTitle">#FFFFFF</color>
-    <color name="lichThiTitle">#6356C8</color>
+    <color name="lichThiTitle">@color/colorAccent</color>
+    <color name="cardTitle">#535050</color>
+
 
 </resources>

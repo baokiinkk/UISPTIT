@@ -16,7 +16,7 @@
 
     <string name="hello">Chào </string>
     <string name="menu_info">Thông Tin</string>
-    <string name="menu_exam_schedule">Lịch Thi</string>
+    <string name="menu_exam_schedule">Lịch thi</string>
     <string name="menu_mark">Điểm</string>
     <string name="menu_schedule">TKB</string>
     <string name="menu_option">Cài Đặt</string>
@@ -24,6 +24,7 @@
     <string name="policy">Bằng cách Đăng Nhập, bạn đồng ý với chính sách bảo mật của chúng tôi.</string>
 
     // info
+    <string name="DTL">Điểm tích lũy</string>
     <string name="thoi_khoa_bieu">Hôm Nay</string>
     <string name="thong_tin_chung">Thông Tin Chung</string>
     <string name="diem_thi">Điểm Thi</string>

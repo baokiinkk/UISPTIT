@@ -39,6 +39,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="150dp"
                 android:background="@drawable/title_shape"
+                android:elevation="@dimen/shadow"
                 >
 
                 <TextView
@@ -113,6 +114,7 @@
                 android:layout_marginEnd="50dp"
                 android:padding="1dp"
                 android:background="@drawable/white_backround"
+                android:elevation="@dimen/shadow"
                 >
                 <TableRow>
                     <androidx.constraintlayout.widget.ConstraintLayout
@@ -473,17 +475,33 @@
 
         </TableLayout>
 
+        <TextView
+            android:id="@+id/txtDTL"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/cardTitle"
+            android:layout_marginTop="28dp"
+            android:fontFamily="sans-serif-black"
+            android:text="@string/DTL"
+            android:textAllCaps="false"
+            android:textColor="@color/cardTitle"
+            android:textSize="@dimen/sizeTextCard"
+            android:textStyle="normal"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/frameLayout" />
+
         <androidx.cardview.widget.CardView
             android:id="@+id/cardTTC"
             android:layout_width="0dp"
             android:layout_height="250dp"
             android:layout_marginStart="20dp"
+            android:layout_marginTop="10dp"
             android:layout_marginEnd="20dp"
             app:cardCornerRadius="20dp"
             app:cardElevation="@dimen/shadow"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txtTime">
+            app:layout_constraintTop_toBottomOf="@+id/txtDTL">
 
             <com.github.mikephil.charting.charts.LineChart
                 android:id="@+id/linechart"
@@ -501,7 +519,7 @@
             android:fontFamily="sans-serif-black"
             android:text="@string/thoi_khoa_bieu"
             android:textAllCaps="false"
-            android:textColor="#000"
+            android:textColor="@color/cardTitle"
             android:textSize="@dimen/sizeTextCard"
             android:textStyle="normal"
             app:layout_constraintStart_toStartOf="parent"
@@ -516,7 +534,7 @@
             android:fontFamily="sans-serif-black"
             android:text="@string/thoi_khoa_bieu2"
             android:textAllCaps="false"
-            android:textColor="#000"
+            android:textColor="@color/cardTitle"
             android:textSize="@dimen/sizeTextCard"
             android:textStyle="normal"
             app:layout_constraintEnd_toEndOf="parent"
@@ -531,7 +549,7 @@
             android:fontFamily="sans-serif-black"
             android:text="@string/lịch_thi"
             android:textAllCaps="false"
-            android:textColor="#000"
+            android:textColor="@color/cardTitle"
             android:textSize="@dimen/sizeTextCard"
 
             android:textStyle="normal"
@@ -547,7 +565,7 @@
             android:fontFamily="sans-serif-black"
             android:text="@string/diem_thi"
             android:textAllCaps="false"
-            android:textColor="#000"
+            android:textColor="@color/cardTitle"
             android:textSize="@dimen/sizeTextCard"
             android:textStyle="normal"
             app:layout_constraintStart_toStartOf="parent"
@@ -651,16 +669,17 @@
 
         </androidx.cardview.widget.CardView>
 
+
         <TextView
             android:id="@+id/txtTime"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="40dp"
+            android:layout_marginEnd="@dimen/cardTitle"
+            android:layout_marginBottom="10dp"
             android:text="Cập nhật lúc 23h35"
             android:textSize="10sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/frameLayout" />
+            app:layout_constraintBottom_toTopOf="@+id/cardTTC"
+            app:layout_constraintEnd_toEndOf="parent" />
 
         <androidx.cardview.widget.CardView
             android:id="@+id/cardLichThi"

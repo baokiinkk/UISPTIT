@@ -158,12 +158,10 @@ class InfoFragment : Fragment(){
                 data.add(dataset)
                 val lineData: LineData = LineData(data)
                 val des = Description()
-                des.text ="Điểm Tích Lũy"
+                des.text =""
 
                 val legend = bd.linechart.legend
-                legend.form = Legend.LegendForm.CIRCLE
-                legend.textSize = 13f
-                legend.textColor = Color.rgb(99, 80, 200)
+                legend.isEnabled = false
 
 
                 bd.linechart.axisRight.isEnabled = false
