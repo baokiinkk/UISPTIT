@@ -290,8 +290,7 @@ class InfoFragment : Fragment(){
         for (i in tkb){
             val dates = getDate(i.tuan)
             if (day.before(dates[1]) && (day.after(dates[0]) || day.equals(dates[0]))){
-                Log.d("tncnhan", (day.time-dates[0].time).toString())
-                if (((day.time-dates[0].time) / (1000*60*60*24)).toString().equals(i.thu)){
+                if (((day.time-dates[0].time) / (1000*60*60*24)+2) == i.thu.toLong()){
                     row = mutableListOf()
                     row.add(i.tenMon)
                     row.add(i.phong)
