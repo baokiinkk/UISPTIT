@@ -9,7 +9,6 @@ import android.graphics.drawable.Drawable
 import android.net.ConnectivityManager
 import android.net.NetworkInfo
 import android.os.Bundle
-import android.util.Log
 import android.view.KeyEvent
 import android.view.LayoutInflater
 import android.view.View
@@ -158,9 +157,8 @@ class InfoFragment : Fragment(){
                 val data: ArrayList<ILineDataSet> = ArrayList()
                 data.add(dataset)
                 val lineData: LineData = LineData(data)
-
                 val des = Description()
-                des.text =""
+                des.text ="Điểm Tích Lũy"
 
                 val legend = bd.linechart.legend
                 legend.form = Legend.LegendForm.CIRCLE

@@ -4,7 +4,7 @@
     <dimen name="activity_vertical_margin">16dp</dimen>
 
     <dimen name="cardDimenLeft">40dp</dimen>
-    <dimen name="shadow">5dp</dimen> <!-- độ rộng của bóng -->
+    <dimen name="shadow">2dp</dimen> <!-- độ rộng của bóng -->
     <dimen name="paddingMark">15dp</dimen><!-- -->
     <dimen name="cardTitle">40dp</dimen><!-- khoảng cách từ lề đến tiêu đề cardview-->
     <dimen name="cardRange">30dp</dimen><!-- khoảng cách giữa các card-->
@@ -18,7 +18,7 @@
     <dimen name="textSizeMarkHint">10sp</dimen><!-- dòng giải thích 3 thông số trên -->
 
 
-    <dimen name="sizeMarkInCard">10sp</dimen><!-- Font các tiêu đề cột điểm-->
+    <dimen name="sizeMarkInCard">12sp</dimen><!-- Font các tiêu đề cột điểm-->
     <dimen name="sizeRowMark">10sp</dimen><!-- Font các cột điểm -->
     <dimen name="sizeHKMark">17sp</dimen><!-- Font học kì -->
     <!-- -->

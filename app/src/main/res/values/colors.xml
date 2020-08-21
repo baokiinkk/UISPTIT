@@ -4,7 +4,7 @@
     <!-- <color name="colorPrimaryDark">#03DAC5</color> -->
     <color name="colorPrimaryDark">#6356C8</color>
     <color name="colorAccent">#6356C8</color>
-    <color name="colorRow">#BFB7FA</color>
+    <color name="colorRow">#B2E3DFFF</color>
 <!--    <color name="colorRow">#412C2828</color>-->
     <color name="colorPink">#FF0E90</color>
     <color name="colorGray">#3F3F3F</color>
