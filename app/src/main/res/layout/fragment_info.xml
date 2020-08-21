@@ -271,7 +271,6 @@
                             android:layout_height="wrap_content"
                             android:layout_marginStart="20dp"
                             android:layout_marginTop="10dp"
-                            android:text="2E01"
                             android:textColor="#fff"
                             android:textSize="30sp"
                             app:layout_constraintStart_toStartOf="parent"
@@ -279,15 +278,21 @@
 
                         <TextView
                             android:id="@+id/txtMon1"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
                             android:layout_marginStart="20dp"
+                            android:layout_marginTop="5dp"
+                            android:layout_marginEnd="20dp"
                             android:layout_marginBottom="10dp"
-                            android:text="Cấu trúc dữ liệu và giải thuật"
-                            android:textSize="10sp"
+                            android:ellipsize="end"
+                            android:maxLines="1"
                             android:textColor="#fff"
+                            android:textSize="10sp"
                             app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintStart_toStartOf="parent" />
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.0"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/txtP1" />
 
                         <TextView
                             android:layout_width="40dp"
@@ -319,7 +324,6 @@
                             android:layout_height="wrap_content"
                             android:layout_marginStart="20dp"
                             android:layout_marginTop="10dp"
-                            android:text="2E01"
                             android:textColor="@color/textTomorrow"
                             android:textSize="30sp"
                             app:layout_constraintStart_toStartOf="parent"
@@ -327,15 +331,21 @@
 
                         <TextView
                             android:id="@+id/txtMon3"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
                             android:layout_marginStart="20dp"
+                            android:layout_marginTop="5dp"
+                            android:layout_marginEnd="20dp"
                             android:layout_marginBottom="10dp"
-                            android:text="Cấu trúc dữ liệu và giải thuật"
+                            android:ellipsize="end"
+                            android:maxLines="1"
                             android:textColor="@color/textTomorrow"
                             android:textSize="10sp"
                             app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintStart_toStartOf="parent" />
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.0"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/txtP3" />
 
                         <TextView
                             android:layout_width="40dp"
@@ -372,7 +382,6 @@
                             android:layout_height="wrap_content"
                             android:layout_marginStart="20dp"
                             android:layout_marginTop="10dp"
-                            android:text="2E01"
                             android:textColor="#fff"
                             android:textSize="30sp"
                             app:layout_constraintStart_toStartOf="parent"
@@ -380,15 +389,21 @@
 
                         <TextView
                             android:id="@+id/txtMon2"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
                             android:layout_marginStart="20dp"
+                            android:layout_marginTop="5dp"
+                            android:layout_marginEnd="20dp"
                             android:layout_marginBottom="10dp"
-                            android:text="Cấu trúc dữ liệu và giải thuật"
+                            android:ellipsize="end"
+                            android:maxLines="1"
                             android:textColor="#fff"
                             android:textSize="10sp"
                             app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintStart_toStartOf="parent" />
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.0"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/txtP2" />
 
                         <TextView
                             android:layout_width="40dp"
@@ -415,28 +430,33 @@
                         >
 
                         <TextView
-                            android:id="@+id/textView18"
+                            android:id="@+id/txtP4"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="20dp"
                             android:layout_marginTop="10dp"
-                            android:text="2E01"
                             android:textColor="@color/textTomorrow"
                             android:textSize="30sp"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
 
                         <TextView
-                            android:id="@+id/textView17"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:id="@+id/txtMon4"
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
                             android:layout_marginStart="20dp"
+                            android:layout_marginTop="5dp"
+                            android:layout_marginEnd="20dp"
                             android:layout_marginBottom="10dp"
-                            android:text="Cấu trúc dữ liệu và giải thuật"
+                            android:ellipsize="end"
+                            android:maxLines="1"
                             android:textColor="@color/textTomorrow"
                             android:textSize="10sp"
                             app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintStart_toStartOf="parent" />
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.0"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/txtP4" />
 
                         <TextView
                             android:id="@+id/textView19"

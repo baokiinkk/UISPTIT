@@ -204,9 +204,26 @@ class InfoFragment : Fragment(){
 
                 val curFormater =
                     SimpleDateFormat("dd/MM/yyyy")
-                val dateObj = curFormater.parse(dateStr)
-                val tmp = getTKBNgay(dateObj,it)
-                Log.d("quocbaokiin",tmp.toString())
+                var dateObj = curFormater.parse(dateStr)
+                var tmp = getTKBNgay(dateObj,it)
+                bd.txtP1.text  = tmp[0][0]
+                if(tmp[0].size > 1){
+                    bd.txtMon1.text = tmp[0][1]
+                }
+                bd.txtP2.text = tmp[1][0]
+                if(tmp[1].size > 1)
+                    bd.txtMon2.text = tmp[1][1]
+
+                dateObj.time += 1000*60*60*24
+                tmp = getTKBNgay(dateObj,it)
+                bd.txtP3.text  = tmp[0][0]
+                if(tmp[0].size > 1){
+                    bd.txtMon3.text = tmp[0][1]
+                }
+                bd.txtP4.text = tmp[1][0]
+                if(tmp[1].size > 1)
+                    bd.txtMon4.text = tmp[1][1]
+
             }
         })
         return bd.root
@@ -292,8 +309,8 @@ class InfoFragment : Fragment(){
             if (day.before(dates[1]) && (day.after(dates[0]) || day.equals(dates[0]))){
                 if (((day.time-dates[0].time) / (1000*60*60*24)+2) == i.thu.toLong()){
                     row = mutableListOf()
-                    row.add(i.tenMon)
                     row.add(i.phong)
+                    row.add(i.tenMon)
                     res[i.buoi.toInt()] = row
                 }
             }
