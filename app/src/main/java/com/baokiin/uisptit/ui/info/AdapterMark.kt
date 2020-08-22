@@ -23,6 +23,7 @@ class AdapterMark(val click:() -> Unit  ) :ListAdapter<Mark,AdapterMark.ViewHode
             binding.data=item
             binding.executePendingBindings()
             click?.let {click->
+
                 itemView.setOnClickListener {
                     click()
                 }

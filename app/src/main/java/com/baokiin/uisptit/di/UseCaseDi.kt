@@ -17,3 +17,6 @@ val loginUseCase:Module = module {
 val TimeTableUseCase:Module = module {
     single<TimeTableUseCase> {TimeTableUseCaseImpl(get())}
 }
+val OptionUseCase:Module = module {
+    single<OptionUseCase> {OptionUsecaseImpl(get())}
+}

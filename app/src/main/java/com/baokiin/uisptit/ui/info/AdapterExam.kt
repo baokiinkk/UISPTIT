@@ -17,7 +17,7 @@ import com.github.mikephil.charting.highlight.Highlight
 import com.github.mikephil.charting.utils.MPPointF
 
 
-class AdapterExam :ListAdapter<ExamTimetable,AdapterExam.ViewHodel>(ExamDIff()) {
+class AdapterExam(val onClick:()->Unit) :ListAdapter<ExamTimetable,AdapterExam.ViewHodel>(ExamDIff()) {
 
     class ViewHodel(val binding:ItemExamBinding) : RecyclerView.ViewHolder(binding.root) {
         companion object {
@@ -27,9 +27,14 @@ class AdapterExam :ListAdapter<ExamTimetable,AdapterExam.ViewHodel>(ExamDIff()) 
                 return ViewHodel(binding)
             }
         }
-        fun bind(item:ExamTimetable)
+        fun bind(item:ExamTimetable,onClick: (() -> Unit)? = null)
         {
             binding.data=item
+            onClick?.let {
+                itemView.setOnClickListener {
+                    onClick()
+                }
+            }
             binding.executePendingBindings()
 
         }
@@ -41,7 +46,7 @@ class AdapterExam :ListAdapter<ExamTimetable,AdapterExam.ViewHodel>(ExamDIff()) 
     }
 
     override fun onBindViewHolder(holder: AdapterExam.ViewHodel, position: Int) {
-        holder.bind(getItem(position))
+        holder.bind(getItem(position),onClick)
     }
 }
 

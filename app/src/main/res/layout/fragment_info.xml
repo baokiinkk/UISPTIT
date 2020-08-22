@@ -14,7 +14,7 @@
         android:id="@+id/fresh"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        >
+        tools:targetApi="p">
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -40,7 +40,7 @@
                 android:layout_height="150dp"
                 android:background="@drawable/title_shape"
                 android:elevation="@dimen/shadow"
-                >
+                tools:targetApi="lollipop">
 
                 <TextView
                     android:id="@+id/btnOption"
@@ -99,11 +99,12 @@
                     android:layout_marginStart="20dp"
                     android:fontFamily="sans-serif-light"
                     android:paddingStart="2dp"
-                    android:text="chào buổi sáng"
+                    android:text="@string/chao"
                     android:textSize="@dimen/sizeTextTitleHint"
                     android:textColor="@color/titleText"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/txtTitle" />
+                    app:layout_constraintTop_toBottomOf="@+id/txtTitle"
+                    tools:ignore="RtlSymmetry" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
             <TableLayout
@@ -116,7 +117,7 @@
                 android:background="@drawable/white_backround"
                 android:elevation="@dimen/shadow"
                 >
-                <TableRow>
+                <TableRow tools:ignore="UselessParent">
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:id="@+id/constraintLayout"
                         android:layout_width="0dp"
@@ -146,7 +147,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="5dp"
                             android:fontFamily="sans-serif-medium"
-                            android:text="CPA"
+                            android:text="@string/cpa"
                             android:textColor="@color/colorHintMark"
                             android:textSize="@dimen/textSizeMarkHint"
                             app:layout_constraintEnd_toEndOf="@+id/txtCPA"
@@ -184,7 +185,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
                         android:fontFamily="sans-serif-medium"
-                        android:text="TCTL"
+                        android:text="@string/tctl"
                         android:textColor="@color/colorHintMark"
                         android:textSize="@dimen/textSizeMarkHint"
                         app:layout_constraintEnd_toEndOf="@+id/txtTCTL"
@@ -223,7 +224,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="5dp"
                             android:fontFamily="sans-serif-medium"
-                            android:text="A/A+"
+                            android:text="@string/a_a"
                             android:textColor="@color/colorHintMark"
                             android:textSize="@dimen/textSizeMarkHint"
                             app:layout_constraintEnd_toEndOf="@+id/txtAA"
@@ -281,7 +282,7 @@
                         <TextView
                             android:id="@+id/txtMon1"
                             android:layout_width="0dp"
-                            android:layout_height="0dp"
+                            android:layout_height="wrap_content"
                             android:layout_marginStart="20dp"
                             android:layout_marginTop="5dp"
                             android:layout_marginEnd="20dp"
@@ -289,7 +290,7 @@
                             android:ellipsize="end"
                             android:maxLines="1"
                             android:textColor="#fff"
-                            android:textSize="10sp"
+                            android:textSize="@dimen/sizeTenMonTkb_infor"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintHorizontal_bias="0.0"
@@ -334,7 +335,7 @@
                         <TextView
                             android:id="@+id/txtMon3"
                             android:layout_width="0dp"
-                            android:layout_height="0dp"
+                            android:layout_height="wrap_content"
                             android:layout_marginStart="20dp"
                             android:layout_marginTop="5dp"
                             android:layout_marginEnd="20dp"
@@ -342,7 +343,7 @@
                             android:ellipsize="end"
                             android:maxLines="1"
                             android:textColor="@color/textTomorrow"
-                            android:textSize="10sp"
+                            android:textSize="@dimen/sizeTenMonTkb_infor"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintHorizontal_bias="0.0"
@@ -392,7 +393,7 @@
                         <TextView
                             android:id="@+id/txtMon2"
                             android:layout_width="0dp"
-                            android:layout_height="0dp"
+                            android:layout_height="wrap_content"
                             android:layout_marginStart="20dp"
                             android:layout_marginTop="5dp"
                             android:layout_marginEnd="20dp"
@@ -400,7 +401,7 @@
                             android:ellipsize="end"
                             android:maxLines="1"
                             android:textColor="#fff"
-                            android:textSize="10sp"
+                            android:textSize="@dimen/sizeTenMonTkb_infor"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintHorizontal_bias="0.0"
@@ -445,7 +446,7 @@
                         <TextView
                             android:id="@+id/txtMon4"
                             android:layout_width="0dp"
-                            android:layout_height="0dp"
+                            android:layout_height="wrap_content"
                             android:layout_marginStart="20dp"
                             android:layout_marginTop="5dp"
                             android:layout_marginEnd="20dp"
@@ -453,7 +454,7 @@
                             android:ellipsize="end"
                             android:maxLines="1"
                             android:textColor="@color/textTomorrow"
-                            android:textSize="10sp"
+                            android:textSize="@dimen/sizeTenMonTkb_infor"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintHorizontal_bias="0.0"
@@ -588,6 +589,7 @@
             app:layout_constraintTop_toBottomOf="@+id/txtDiem">
 
             <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/contrainMark"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
@@ -603,7 +605,7 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent">
 
-                    <TableRow>
+                    <TableRow tools:ignore="UselessParent">
 
                         <TextView
                             android:id="@+id/Mon"
@@ -612,9 +614,10 @@
                             android:layout_gravity="center"
                             android:layout_weight="3"
                             android:gravity="center"
-                            android:text="Môn Học"
+                            android:text="@string/ten_mon"
                             android:textColor="@color/diemCacMonTitle"
-                            android:textStyle="bold" />
+                            android:textStyle="bold"
+                             />
 
                         <TextView
                             android:id="@+id/DiemThi"
@@ -623,9 +626,10 @@
                             android:layout_gravity="center"
                             android:layout_weight="1"
                             android:gravity="center"
-                            android:text="Thi"
+                            android:text="@string/thi"
                             android:textColor="@color/diemCacMonTitle"
-                            android:textStyle="bold" />
+                            android:textStyle="bold"
+                             />
 
                         <TextView
                             android:id="@+id/ketQua"
@@ -634,9 +638,10 @@
                             android:layout_gravity="center"
                             android:layout_weight="1"
                             android:gravity="center"
-                            android:text="Tổng"
+                            android:text="@string/tong"
                             android:textColor="@color/diemCacMonTitle"
-                            android:textStyle="bold" />
+                            android:textStyle="bold"
+                             />
 
                         <TextView
                             android:id="@+id/ketQuaChu"
@@ -645,9 +650,10 @@
                             android:layout_gravity="center"
                             android:layout_weight="1"
                             android:gravity="center"
-                            android:text="Kết Quả"
+                            android:text="@string/ket_qua"
                             android:textColor="@color/diemCacMonTitle"
-                            android:textStyle="bold" />
+                            android:textStyle="bold"
+                             />
                     </TableRow>
 
                 </TableLayout>
@@ -676,10 +682,10 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="@dimen/cardTitle"
             android:layout_marginBottom="10dp"
-            android:text="Cập nhật lúc 23h35"
             android:textSize="10sp"
             app:layout_constraintBottom_toTopOf="@+id/cardTTC"
-            app:layout_constraintEnd_toEndOf="parent" />
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:ignore="SmallSp" />
 
         <androidx.cardview.widget.CardView
             android:id="@+id/cardLichThi"
@@ -711,7 +717,7 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent">
 
-                    <TableRow>
+                    <TableRow tools:ignore="UselessParent">
 
                         <TextView
                             android:id="@+id/TenMon"
@@ -720,9 +726,10 @@
                             android:layout_gravity="center"
                             android:layout_weight="3"
                             android:gravity="center"
-                            android:text="Môn Học"
+                            android:text="@string/ten_mon"
                             android:textColor="@color/hockiTitle"
-                            android:textStyle="bold" />
+                            android:textStyle="bold"
+                             />
 
                         <TextView
                             android:id="@+id/Diem"
@@ -731,9 +738,10 @@
                             android:layout_gravity="center"
                             android:layout_weight="1"
                             android:gravity="center"
-                            android:text="Ngày"
+                            android:text="@string/ng_y_thi"
                             android:textColor="@color/hockiTitle"
-                            android:textStyle="bold" />
+                            android:textStyle="bold"
+                             />
 
                         <TextView
                             android:id="@+id/ketQ"
@@ -742,9 +750,10 @@
                             android:layout_gravity="center"
                             android:layout_weight="1"
                             android:gravity="center"
-                            android:text="Phòng"
+                            android:text="@string/ph_ng"
                             android:textColor="@color/hockiTitle"
-                            android:textStyle="bold" />
+                            android:textStyle="bold"
+                             />
 
                         <TextView
                             android:id="@+id/ketQuCh"
@@ -753,9 +762,10 @@
                             android:layout_gravity="center"
                             android:layout_weight="1"
                             android:gravity="center"
-                            android:text="Tiết Thi"
+                            android:text="Tiết"
                             android:textColor="@color/hockiTitle"
-                            android:textStyle="bold" />
+                            android:textStyle="bold"
+                            tools:ignore="HardcodedText" />
                     </TableRow>
 
                 </TableLayout>
@@ -772,7 +782,7 @@
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/recycleExam"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        android:layout_height="wrap_content"
                         android:layout_marginStart="10dp"
                         android:layout_marginTop="10dp"
                         android:layout_marginEnd="10dp"
@@ -780,14 +790,15 @@
 
                     <TextView
                         android:id="@+id/trong"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
                         android:layout_gravity="center"
-                        android:gravity="center"
                         android:fontFamily="sans-serif-black"
+                        android:gravity="center"
                         android:text="Trống"
                         android:textColor="@color/hockiTitle"
-                        android:textSize="20sp" />
+                        android:textSize="20sp"
+                        tools:ignore="HardcodedText" />
 
                 </FrameLayout>
 

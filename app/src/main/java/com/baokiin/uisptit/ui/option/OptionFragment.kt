@@ -8,9 +8,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.baokiin.uisptit.R
 import com.baokiin.uisptit.databinding.FragmentOptionBinding
+import kotlinx.android.synthetic.main.fragment_option.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
@@ -24,13 +26,26 @@ class OptionFragment : Fragment(){
         val bd: FragmentOptionBinding =
             DataBindingUtil.inflate(inflater, R.layout.fragment_option,container,false)
         bd.lifecycleOwner=this
-        //bd.viewmodel=viewModel
+        bd.data=viewModel
+        viewModel.getData()
         sp = requireActivity().getSharedPreferences("Login", Context.MODE_PRIVATE)
-        bd.button.setOnClickListener {
+
+        viewModel.data.observe(viewLifecycleOwner, Observer {
+            it?.let {
+                bd.viewmodel = it
+            }
+        })
+
+        return bd.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        button.setOnClickListener {
             viewModel.deleteLogin()
             sp.edit().clear().apply()
             findNavController().navigate(R.id.op_to_log)
         }
-        return bd.root
     }
 }

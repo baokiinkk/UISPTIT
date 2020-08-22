@@ -40,49 +40,56 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="2"
                     android:gravity="center"
-                    android:text="THỨ HAI" />
+                    android:text="THỨ HAI"
+                    tools:ignore="HardcodedText" />
 
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="2"
                     android:gravity="center"
-                    android:text="THỨ BA" />
+                    android:text="THỨ BA"
+                    tools:ignore="HardcodedText" />
 
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="2"
                     android:gravity="center"
-                    android:text="THỨ TƯ" />
+                    android:text="THỨ TƯ"
+                    tools:ignore="HardcodedText" />
 
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="2"
                     android:gravity="center"
-                    android:text="THỨ NĂM" />
+                    android:text="THỨ NĂM"
+                    tools:ignore="HardcodedText" />
 
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="2"
                     android:gravity="center"
-                    android:text="THỨ SÁU" />
+                    android:text="THỨ SÁU"
+                    tools:ignore="HardcodedText" />
 
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="2"
                     android:gravity="center"
-                    android:text="THỨ BẢY" />
+                    android:text="THỨ BẢY"
+                    tools:ignore="HardcodedText" />
 
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="2"
                     android:gravity="center"
-                    android:text="CHỦ NHẬT" />
+                    android:text="CHỦ NHẬT"
+                    tools:ignore="HardcodedText" />
 
             </TableRow>
 
@@ -108,7 +115,8 @@
                             android:layout_height="match_parent"
                             android:layout_weight="1"
                             android:gravity="center"
-                            android:text="Tiết 1" />
+                            android:text="Tiết 1"
+                            tools:ignore="HardcodedText" />
                     </TableRow>
 
                     <TableRow
@@ -121,7 +129,8 @@
                             android:layout_height="match_parent"
                             android:layout_weight="1"
                             android:gravity="center"
-                            android:text="Tiết 2" />
+                            android:text="Tiết 2"
+                            tools:ignore="HardcodedText" />
                     </TableRow>
 
                     <TableRow
@@ -134,7 +143,8 @@
                             android:layout_height="match_parent"
                             android:layout_weight="1"
                             android:gravity="center"
-                            android:text="Tiết 3" />
+                            android:text="Tiết 3"
+                            tools:ignore="HardcodedText" />
                     </TableRow>
 
                     <TableRow
@@ -147,7 +157,8 @@
                             android:layout_height="match_parent"
                             android:layout_weight="1"
                             android:gravity="center"
-                            android:text="Tiết 4" />
+                            android:text="Tiết 4"
+                            tools:ignore="HardcodedText" />
                     </TableRow>
 
                     <TableRow
@@ -160,7 +171,8 @@
                             android:layout_height="match_parent"
                             android:layout_weight="1"
                             android:gravity="center"
-                            android:text="Tiết 5" />
+                            android:text="Tiết 5"
+                            tools:ignore="HardcodedText" />
                     </TableRow>
                 </TableLayout>
 
@@ -490,7 +502,8 @@
                             android:layout_height="match_parent"
                             android:layout_weight="1"
                             android:gravity="center"
-                            android:text="Tiết 6" />
+                            android:text="Tiết 6"
+                            tools:ignore="HardcodedText" />
                     </TableRow>
 
                     <TableRow
@@ -503,7 +516,8 @@
                             android:layout_height="match_parent"
                             android:layout_weight="1"
                             android:gravity="center"
-                            android:text="Tiết 7" />
+                            android:text="Tiết 7"
+                            tools:ignore="HardcodedText" />
                     </TableRow>
 
                     <TableRow
@@ -516,7 +530,8 @@
                             android:layout_height="match_parent"
                             android:layout_weight="1"
                             android:gravity="center"
-                            android:text="Tiết 8" />
+                            android:text="Tiết 8"
+                            tools:ignore="HardcodedText" />
                     </TableRow>
 
                     <TableRow
@@ -529,7 +544,8 @@
                             android:layout_height="match_parent"
                             android:layout_weight="1"
                             android:gravity="center"
-                            android:text="Tiết 9" />
+                            android:text="Tiết 9"
+                            tools:ignore="HardcodedText" />
                     </TableRow>
 
                     <TableRow
@@ -542,7 +558,8 @@
                             android:layout_height="match_parent"
                             android:layout_weight="1"
                             android:gravity="center"
-                            android:text="Tiết 10" />
+                            android:text="Tiết 10"
+                            tools:ignore="HardcodedText" />
                     </TableRow>
                 </TableLayout>
 
@@ -688,7 +705,8 @@
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent">
+                        android:layout_height="match_parent"
+                        tools:ignore="TooManyViews">
 
                         <TextView
                             android:id="@+id/txtTenT5C"

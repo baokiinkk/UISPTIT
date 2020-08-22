@@ -25,7 +25,8 @@
                 android:paddingStart="10dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="RtlSymmetry">
 
                 <TableRow>
 
@@ -36,7 +37,7 @@
                         android:layout_gravity="center"
                         android:layout_weight="1"
                         android:gravity="center"
-                        android:text="Mã Môn"
+                        android:text="@string/ma_mon"
                         android:textColor="#000"
                         android:textStyle="bold" />
 
@@ -47,7 +48,7 @@
                         android:layout_gravity="center"
                         android:layout_weight="2"
                         android:gravity="center"
-                        android:text="Tên Môn"
+                        android:text="@string/ten_mon"
                         android:textColor="#000"
                         android:textStyle="bold" />
 
@@ -58,7 +59,7 @@
                         android:layout_gravity="center"
                         android:layout_weight="1"
                         android:gravity="center"
-                        android:text="Ghép Thi"
+                        android:text="@string/ghep_thi"
                         android:textColor="#000"
                         android:textStyle="bold" />
 
@@ -69,7 +70,7 @@
                         android:layout_gravity="center"
                         android:layout_weight="1"
                         android:gravity="center"
-                        android:text="Tổ Thi"
+                        android:text="@string/t_thi"
                         android:textColor="#000"
                         android:textStyle="bold" />
 
@@ -80,7 +81,7 @@
                         android:layout_gravity="center"
                         android:layout_weight="1"
                         android:gravity="center"
-                        android:text="Số Lượng"
+                        android:text="@string/s_l_ng"
                         android:textColor="#000"
                         android:textStyle="bold" />
 
@@ -91,7 +92,7 @@
                         android:layout_gravity="center"
                         android:layout_weight="1"
                         android:gravity="center"
-                        android:text="Ngày Thi"
+                        android:text="@string/ng_y_thi"
                         android:textColor="#000"
                         android:textStyle="bold" />
 
@@ -102,7 +103,7 @@
                         android:layout_gravity="center"
                         android:layout_weight="1"
                         android:gravity="center"
-                        android:text="Bắt Đầu"
+                        android:text="@string/b_t_u"
                         android:textColor="#000"
                         android:textStyle="bold" />
 
@@ -113,7 +114,7 @@
                         android:layout_gravity="center"
                         android:layout_weight="1"
                         android:gravity="center"
-                        android:text="Số Tiết"
+                        android:text="@string/s_ti_t"
                         android:textColor="#000"
                         android:textStyle="bold" />
 
@@ -124,7 +125,7 @@
                         android:layout_gravity="center"
                         android:layout_weight="1"
                         android:gravity="center"
-                        android:text="Phòng"
+                        android:text="@string/ph_ng"
                         android:textColor="#000"
                         android:textStyle="bold" />
 
@@ -135,7 +136,7 @@
                         android:layout_gravity="center"
                         android:layout_weight="1"
                         android:gravity="center"
-                        android:text="Ghi Chú"
+                        android:text="@string/ghi_ch"
                         android:textColor="#000"
                         android:textStyle="bold" />
 

@@ -31,7 +31,7 @@ class ExamScheduleFragment :Fragment(){
         bd.lifecycleOwner=this
         bd.viewmodel= viewModel
         viewModel.getData()
-        adapter = AdapterExam()
+        adapter = AdapterExam{}
         bd.recycleView.layoutManager = LinearLayoutManager(context)
         bd.recycleView.adapter = adapter
         viewModel.listExamTime.observe(viewLifecycleOwner, Observer {

@@ -20,7 +20,8 @@
 
     <dimen name="sizeMarkInCard">12sp</dimen><!-- Font các tiêu đề cột điểm-->
     <dimen name="sizeRowMark">10sp</dimen><!-- Font các cột điểm -->
-    <dimen name="sizeHKMark">17sp</dimen><!-- Font học kì -->
+    <dimen name="sizeHKMark">17sp</dimen>
+    <dimen name="sizeTenMonTkb_infor">15sp</dimen><!-- size ten môn tkb  -->
     <!-- -->
 
 </resources>

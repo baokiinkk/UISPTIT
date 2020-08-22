@@ -59,7 +59,9 @@ class InfoFragment : Fragment(){
         bd.lifecycleOwner = this
         bd.viewmodel = viewModel
         viewModel.getData("220192020")
-        val adapterExam = AdapterExam()
+        val adapterExam = AdapterExam{
+            findNavController().navigate(R.id.to_exam)
+        }
         sp = requireActivity().getSharedPreferences("Login", Context.MODE_PRIVATE)
         val adapter = AdapterMark {
             findNavController().navigate(R.id.to_mark)
@@ -196,7 +198,7 @@ class InfoFragment : Fragment(){
         viewModel.dataTimeTableTime.observe(viewLifecycleOwner, Observer {
             it?.let {
 
-                val dateStr = "07/09/2020"
+                val dateStr = "10/09/2020"
 
                 val curFormater =
                     SimpleDateFormat("dd/MM/yyyy")
@@ -241,10 +243,10 @@ class InfoFragment : Fragment(){
         btnOption.setOnClickListener {
             findNavController().navigate(R.id.to_option)
         }
-        recycleView.setOnClickListener {
-            findNavController().navigate(R.id.to_mark)
-        }
         frame.setOnClickListener {
+            findNavController().navigate(R.id.to_exam)
+        }
+        trong.setOnClickListener {
             findNavController().navigate(R.id.to_exam)
         }
 
