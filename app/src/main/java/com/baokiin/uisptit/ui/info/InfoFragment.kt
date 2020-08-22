@@ -1,3 +1,5 @@
+@file:Suppress("DEPRECATION")
+
 package com.baokiin.uisptit.ui.info
 
 import android.annotation.SuppressLint
@@ -24,14 +26,12 @@ import com.baokiin.uisptit.R
 import com.baokiin.uisptit.data.db.model.TimeTable
 import com.baokiin.uisptit.databinding.FragmentInfoBinding
 import com.github.mikephil.charting.components.Description
-import com.github.mikephil.charting.components.Legend
 import com.github.mikephil.charting.components.XAxis
 import com.github.mikephil.charting.data.Entry
 import com.github.mikephil.charting.data.LineData
 import com.github.mikephil.charting.data.LineDataSet
 import com.github.mikephil.charting.formatter.IFillFormatter
 import com.github.mikephil.charting.formatter.ValueFormatter
-import com.github.mikephil.charting.interfaces.dataprovider.LineDataProvider
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet
 import com.github.mikephil.charting.utils.Utils
 import kotlinx.android.synthetic.main.fragment_info.*
@@ -42,17 +42,18 @@ import java.util.*
 import kotlin.collections.ArrayList
 
 
+@Suppress("NULLABILITY_MISMATCH_BASED_ON_JAVA_ANNOTATIONS",
+    "RECEIVER_NULLABILITY_MISMATCH_BASED_ON_JAVA_ANNOTATIONS", "DEPRECATED_IDENTITY_EQUALS"
+)
 class InfoFragment : Fragment(){
-    val viewModel: InfoViewModel by viewModel<InfoViewModel>()
-    lateinit var currentTime: Date
-    lateinit var sp:SharedPreferences
+    private val viewModel: InfoViewModel by viewModel()
+    private lateinit var currentTime: Date
+    private lateinit var sp:SharedPreferences
+    @SuppressLint("SimpleDateFormat")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val cm: ConnectivityManager? = activity?.getSystemService(Context.CONNECTIVITY_SERVICE ) as ConnectivityManager?
-        val activeNetwork: NetworkInfo? = cm?.activeNetworkInfo
-        val isConnected: Boolean = activeNetwork?.isConnectedOrConnecting == true
         requireActivity().requestedOrientation  = ActivityInfo.SCREEN_ORIENTATION_SENSOR_PORTRAIT
         val bd: FragmentInfoBinding =
             DataBindingUtil.inflate(inflater, R.layout.fragment_info, container, false)
@@ -74,7 +75,6 @@ class InfoFragment : Fragment(){
         bd.recycleExam.adapter = adapterExam
         bd.recycleExam.layoutManager = LinearLayoutManager(context)
         currentTime = Calendar.getInstance().time
-        val sdf = SimpleDateFormat("HH:mm dd/MM/yy")
         bd.txtTime.text = sp.getString("updateTime","")
         bd.txtBuoi.text = getBuoi()
         viewModel.listData.observe(viewLifecycleOwner, Observer {
@@ -84,7 +84,7 @@ class InfoFragment : Fragment(){
         })
         viewModel.listExam.observe(viewLifecycleOwner, Observer {
             if(it != null){
-                if(!it.isEmpty()) {
+                if(it.isNotEmpty()) {
                     adapterExam.submitList(it)
                     bd.trong.visibility = View.GONE
                 }
@@ -100,11 +100,11 @@ class InfoFragment : Fragment(){
                 val hocki = ArrayList<String>()
                 for(i in 0 until it.size){
                     val tmp = it[i].semester
-                    var x = tmp.substring(0, 1) + "-" + tmp.substring(3, 5) + "/" + tmp.substring(7, 9)
+                    val x = tmp.substring(0, 1) + "-" + tmp.substring(3, 5) + "/" + tmp.substring(7, 9)
                     hocki.add(x)
                 }
 
-                class dataValueFormatter : ValueFormatter() {
+                class DataValueFormatter : ValueFormatter() {
                     private val format = DecimalFormat("###,##0.0")
 
                     // override this for e.g. LineChart or ScatterChart
@@ -126,7 +126,7 @@ class InfoFragment : Fragment(){
                 dataset.setDrawFilled(true)
                 dataset.fillColor = Color.rgb(99, 80, 200)
                 dataset.lineWidth = 3f
-                dataset.valueFormatter = dataValueFormatter()
+                dataset.valueFormatter = DataValueFormatter()
                 dataset.valueTextSize = 8f
                 dataset.circleRadius = 6f
                 dataset.circleHoleRadius = 3f
@@ -135,14 +135,8 @@ class InfoFragment : Fragment(){
                 dataset.color = Color.rgb(99, 80, 200)
                 dataset.setCircleColor(Color.rgb(99, 80, 200))
 
-                dataset.fillFormatter = object : IFillFormatter {
-                    override fun getFillLinePosition(
-                        dataSet: ILineDataSet?,
-                        dataProvider: LineDataProvider?
-                    ): Float {
-                        return bd.linechart.axisLeft.axisMinimum
-                    }
-                }
+                dataset.fillFormatter =
+                    IFillFormatter { _, _ -> bd.linechart.axisLeft.axisMinimum }
 
                 // set color of filled area
 
@@ -158,7 +152,7 @@ class InfoFragment : Fragment(){
 
                 val data: ArrayList<ILineDataSet> = ArrayList()
                 data.add(dataset)
-                val lineData: LineData = LineData(data)
+                val lineData = LineData(data)
                 val des = Description()
                 des.text =""
 
@@ -188,7 +182,7 @@ class InfoFragment : Fragment(){
                 currentTime = Calendar.getInstance().time
                 val sdf = SimpleDateFormat("HH:mm dd/MM/yy")
                 val str = "Cập nhật lúc: "+sdf.format(currentTime).toString()
-                sp.edit().putString("updateTime",str).commit()
+                sp.edit().putString("updateTime",str).apply()
                 txtTime.text = str
                 Toast.makeText(context, "Cập nhật thành công!", Toast.LENGTH_SHORT).show()
                 viewModel.bool.postValue(false)
@@ -202,7 +196,7 @@ class InfoFragment : Fragment(){
 
                 val curFormater =
                     SimpleDateFormat("dd/MM/yyyy")
-                var dateObj = curFormater.parse(dateStr)
+                val dateObj = curFormater.parse(dateStr)
                 var tmp = getTKBNgay(dateObj,it)
                 bd.txtP1.text  = tmp[0][0]
                 if(tmp[0].size > 1){
@@ -274,7 +268,7 @@ class InfoFragment : Fragment(){
         }
         requireView().isFocusableInTouchMode = true
         requireView().requestFocus()
-        requireView().setOnKeyListener { v, keyCode, event ->
+        requireView().setOnKeyListener { _, keyCode, event ->
             if (event.action === KeyEvent.ACTION_UP && keyCode == KeyEvent.KEYCODE_BACK) {
                 requireActivity().finish()
                 true
@@ -282,29 +276,30 @@ class InfoFragment : Fragment(){
         }
     }
 
+    @SuppressLint("SimpleDateFormat")
     fun getBuoi() :String{
         val sdf = SimpleDateFormat("HH")
         val hour = sdf.format(currentTime).toInt()
-        if(hour < 12 )
-            return "Chúc ngày mới tốt lành!"
+        return if(hour < 12 )
+            "Chúc ngày mới tốt lành!"
         else if(hour < 15)
-            return "Chúc buổi trưa vui vẻ!"
+            "Chúc buổi trưa vui vẻ!"
         else if(hour < 19)
-            return "Chúc buổi chiều mát mẻ!"
+            "Chúc buổi chiều mát mẻ!"
         else
-            return "Chúc buổi tối như cc!"
+            "Chúc buổi tối như cc!"
     }
 
 
-    fun getTKBNgay(day : Date, tkb : MutableList<TimeTable>) : MutableList<MutableList<String>>{
-        var res = mutableListOf<MutableList<String>>()
+    private fun getTKBNgay(day : Date, tkb : MutableList<TimeTable>) : MutableList<MutableList<String>>{
+        val res = mutableListOf<MutableList<String>>()
         var row = mutableListOf<String>()
         row.add("Trống")
         res.add(row)
         res.add(row)
         for (i in tkb){
             val dates = getDate(i.tuan)
-            if (day.before(dates[1]) && (day.after(dates[0]) || day.equals(dates[0]))){
+            if (day.before(dates[1]) && (day.after(dates[0]) || day == dates[0])){
                 if (((day.time-dates[0].time) / (1000*60*60*24)+2) == i.thu.toLong()){
                     row = mutableListOf()
                     row.add(i.phong)
@@ -315,12 +310,12 @@ class InfoFragment : Fragment(){
         }
         return res
     }
-    fun getDate(stringDate : String) : MutableList<Date>{
+    private fun getDate(stringDate : String) : MutableList<Date>{
         var startDate = stringDate.substring(2,10)
         startDate = startDate.substring(0,2)+"/"+startDate.substring(2,4)+"/"+startDate.substring(4,8)
         var endDate = stringDate.substring(10, 18)
         endDate = endDate.substring(0,2)+"/"+endDate.substring(2,4)+"/"+endDate.substring(4,8)
-        var res = mutableListOf<Date>()
+        val res = mutableListOf<Date>()
         res.add(toDate(startDate))
         res.add(toDate(endDate))
         return res
@@ -330,8 +325,7 @@ class InfoFragment : Fragment(){
     fun toDate(str:String): Date {
         val sdf =
             SimpleDateFormat("dd/MM/yyyy")
-        val d = sdf.parse(str)
-        return d
+        return sdf.parse(str)
     }
 
 

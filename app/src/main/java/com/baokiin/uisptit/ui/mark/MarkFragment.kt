@@ -2,28 +2,25 @@ package com.baokiin.uisptit.ui.mark
 
 import android.content.pm.ActivityInfo
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.baokiin.uisptit.R
 import com.baokiin.uisptit.data.db.model.ListMark
 import com.baokiin.uisptit.data.db.model.Mark
 import com.baokiin.uisptit.data.db.model.SemesterMark
 import com.baokiin.uisptit.databinding.FragmentMarkBinding
-import com.baokiin.uisptit.ui.info.AdapterMark
 import com.google.android.material.tabs.TabLayoutMediator
 import kotlinx.android.synthetic.main.fragment_mark.*
 
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MarkFragment :Fragment() {
-    val viewModel: MarkViewModel by viewModel<MarkViewModel>()
-    var tabLayoutMediator:TabLayoutMediator? = null
+    private val viewModel: MarkViewModel by viewModel()
+    private var tabLayoutMediator:TabLayoutMediator? = null
     lateinit var list:MutableList<ListMark>
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -44,15 +41,15 @@ class MarkFragment :Fragment() {
                     it?.let {
                         list = mutableListOf()
                         var tmp: MutableList<Mark> = mutableListOf()
-                        var tmpSemester:MutableList<SemesterMark> = mutableListOf()
+                        val tmpSemester:MutableList<SemesterMark> = mutableListOf()
                         var str = mark[0].semester
-                        if(str.equals("baoLuu"))
+                        if(str == "baoLuu")
                             tmpSemester.add( SemesterMark("",0f,0f,0f,0f,0,0))
                         var j = 0
                         tmpSemester.addAll(it)
                         tmp.add(mark[0])
-                        for (i in 1..mark.size - 1) {
-                            if (mark[i].semester.equals(str)) {
+                        for (i in 1 until mark.size) {
+                            if (mark[i].semester == str) {
                                 tmp.add(mark[i])
                                 if (i == mark.size - 1)
                                     list.add(ListMark(decodeSemester(str), tmp, tmpSemester[j]))
@@ -94,12 +91,11 @@ class MarkFragment :Fragment() {
         tabLayoutMediator!!.attach()
     }
 
-    fun decodeSemester(str : String) : String{
-        if (str.equals("baoLuu")){
-            return "Điểm Bảo Lưu"
-        }
-        else{
-            return "Học kỳ " + str.substring(0, 1) + " - Năm học " + str.substring(1, 5) + "-" + str.substring(5, 9)
+    private fun decodeSemester(str : String) : String{
+        return if (str == "baoLuu"){
+            "Điểm Bảo Lưu"
+        } else{
+            "Học kỳ " + str.substring(0, 1) + " - Năm học " + str.substring(1, 5) + "-" + str.substring(5, 9)
         }
     }
 }

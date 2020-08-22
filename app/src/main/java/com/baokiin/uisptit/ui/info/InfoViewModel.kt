@@ -1,5 +1,6 @@
 package com.baokiin.uisptit.ui.info
 
+import android.annotation.SuppressLint
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.baokiin.uisptit.data.db.model.*
@@ -11,7 +12,7 @@ class InfoViewModel(private val repo: DataRepository) : ViewModel() {
     val bool:MutableLiveData<Boolean?> = MutableLiveData(null)
     val login:MutableLiveData<LoginInfor?> = MutableLiveData(null)
     val listSemester:MutableLiveData<MutableList<SemesterMark>?> = MutableLiveData(null)
-    val CNTAA:MutableLiveData<Int> = MutableLiveData(0)
+    val cntaa:MutableLiveData<Int> = MutableLiveData(0)
     val listExam:MutableLiveData<MutableList<ExamTimetable>?> = MutableLiveData(null)
     val dataTimeTableTime:MutableLiveData<MutableList<TimeTable> ?> = MutableLiveData(null)
     fun getData(hk:String){
@@ -24,9 +25,7 @@ class InfoViewModel(private val repo: DataRepository) : ViewModel() {
             repo.getDataSemester("") {
                 listSemester.postValue(it)
             }
-            repo.getCNTAA {
-                CNTAA.postValue(it)
-            }
+            repo.getCNTAA(cntaa::postValue)
             repo.getExam {
                 listExam.postValue(it)
             }
@@ -36,13 +35,14 @@ class InfoViewModel(private val repo: DataRepository) : ViewModel() {
 
     }
     fun reload() {
-            repo.getLogin {
-                repo.isLogin(it[0].username, it[0].password) {
+            repo.getLogin { infor ->
+                repo.isLogin(infor[0].username, infor[0].password) {
                     bool.postValue(it)
                 }
             }
     }
-    fun xuLiTen(name : String) : String{
+    @SuppressLint("DefaultLocale")
+    private fun xuLiTen(name : String) : String{
         var res = ""
         for(i in (name.length-1) downTo 0){
             if (name[i] == ' ')

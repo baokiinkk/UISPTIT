@@ -209,7 +209,7 @@
                             android:layout_marginTop="500dp"
                             android:layout_marginBottom="500dp"
                             android:fontFamily="sans-serif-black"
-                            android:text="@{String.valueOf(viewmodel.CNTAA)}"
+                            android:text="@{String.valueOf(viewmodel.cntaa)}"
                             android:textColor="@color/colorMark"
                             android:textSize="@dimen/textSizeMark"
                             app:layout_constraintBottom_toBottomOf="parent"

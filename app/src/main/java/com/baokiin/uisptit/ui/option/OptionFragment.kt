@@ -17,8 +17,8 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
 class OptionFragment : Fragment(){
-    val viewModel: OptionViewModel by viewModel<OptionViewModel>()
-    lateinit var sp: SharedPreferences
+    private val viewModel: OptionViewModel by viewModel()
+    private lateinit var sp: SharedPreferences
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -28,7 +28,7 @@ class OptionFragment : Fragment(){
         bd.lifecycleOwner=this
         bd.data=viewModel
         viewModel.getData()
-        sp = requireActivity().getSharedPreferences("Login", Context.MODE_PRIVATE)
+        this.sp = requireActivity().getSharedPreferences("Login", Context.MODE_PRIVATE)
 
         viewModel.data.observe(viewLifecycleOwner, Observer {
             it?.let {

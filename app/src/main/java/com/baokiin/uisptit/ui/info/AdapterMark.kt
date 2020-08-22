@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.baokiin.uisptit.data.db.model.Mark
 import com.baokiin.uisptit.databinding.ItemMarkInforBinding
 
-class AdapterMark(val click:() -> Unit  ) :ListAdapter<Mark,AdapterMark.ViewHodel>(MyDIff()) {
+class AdapterMark(private val click:() -> Unit  ) :ListAdapter<Mark,AdapterMark.ViewHodel>(MyDIff()) {
 
     class ViewHodel(val binding:ItemMarkInforBinding) : RecyclerView.ViewHolder(binding.root) {
         companion object {
@@ -22,21 +22,20 @@ class AdapterMark(val click:() -> Unit  ) :ListAdapter<Mark,AdapterMark.ViewHode
         {
             binding.data=item
             binding.executePendingBindings()
-            click?.let {click->
-
+            click?.let {
                 itemView.setOnClickListener {
-                    click()
+                    it()
                 }
             }
         }
 
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AdapterMark.ViewHodel {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHodel {
         return ViewHodel.from(parent)
     }
 
-    override fun onBindViewHolder(holder: AdapterMark.ViewHodel, position: Int) {
+    override fun onBindViewHolder(holder: ViewHodel, position: Int) {
         holder.bind(getItem(position),click)
     }
 }

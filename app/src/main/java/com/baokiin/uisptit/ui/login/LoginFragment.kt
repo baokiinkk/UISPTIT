@@ -3,11 +3,9 @@ package com.baokiin.uisptit.ui.login
 import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Context
-import android.content.Context.MODE_PRIVATE
 import android.content.SharedPreferences
 import android.graphics.Typeface
 import android.os.Bundle
-import android.os.Handler
 import android.text.SpannableString
 import android.text.method.LinkMovementMethod
 import android.text.style.*
@@ -16,26 +14,22 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
-import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
-import androidx.navigation.fragment.navArgs
 import com.baokiin.uisptit.R
 import com.baokiin.uisptit.databinding.LoginFragmentBinding
 import com.github.ybq.android.spinkit.sprite.Sprite
 import com.github.ybq.android.spinkit.style.*
 import kotlinx.android.synthetic.main.login_fragment.*
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
+@Suppress("DEPRECATED_IDENTITY_EQUALS")
 class LoginFragment : Fragment(){
-    val viewModel: LoginViewModel by viewModel<LoginViewModel>()
-    lateinit var sp:SharedPreferences
-    @SuppressLint("CommitPrefEdits")
+    private val viewModel: LoginViewModel by viewModel()
+    private lateinit var sp:SharedPreferences
+    @SuppressLint("CommitPrefEdits", "SetTextI18n")
     override fun onCreateView (
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -92,15 +86,15 @@ class LoginFragment : Fragment(){
         }
         requireView().isFocusableInTouchMode = true
         requireView().requestFocus()
-        requireView().setOnKeyListener { v, keyCode, event ->
+        requireView().setOnKeyListener { _, keyCode, event ->
             if (event.action === KeyEvent.ACTION_UP && keyCode == KeyEvent.KEYCODE_BACK) {
                 requireActivity().finish()
                 true
             } else false
         }
     }
-    fun returnSprite() : Sprite {
-        var list:MutableList<Sprite> = mutableListOf()
+    private fun returnSprite() : Sprite {
+        val list:MutableList<Sprite> = mutableListOf()
         list.add(DoubleBounce())
         list.add(ChasingDots())
         list.add(Wave())
@@ -109,14 +103,11 @@ class LoginFragment : Fragment(){
         val rnds = (0 .. 4).random()
         return list[rnds]
     }
-    fun Fragment.hideKeyboard() {
+    private fun Fragment.hideKeyboard() {
         view?.let { activity?.hideKeyboard(it) }
     }
 
-    fun Activity.hideKeyboard() {
-        hideKeyboard(currentFocus ?: View(this))
-    }
-    fun Context.hideKeyboard(view: View) {
+    private fun Context.hideKeyboard(view: View) {
         val inputMethodManager = getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
         inputMethodManager.hideSoftInputFromWindow(view.windowToken, 0)
     }

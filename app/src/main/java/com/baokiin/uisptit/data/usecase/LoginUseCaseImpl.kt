@@ -5,7 +5,7 @@ import com.baokiin.uisptit.data.repository.DataRepository
 class LoginUseCaseImpl(override val repo: DataRepository) :LoginUseCase {
     override fun isLogin(name: String, pass: String, islogin: (Boolean) -> Unit) {
         repo.isLogin(name,pass){
-            if(it == true)
+            if(it)
                 repo.addLogin(name,pass)
             islogin(it)
         }

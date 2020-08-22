@@ -3,7 +3,6 @@ package com.baokiin.uisptit.ui.schedule
 import android.annotation.SuppressLint
 import android.content.pm.ActivityInfo
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -19,8 +18,6 @@ import com.baokiin.uisptit.data.db.model.ListTableTime
 import com.baokiin.uisptit.data.db.model.TimeTable
 import com.baokiin.uisptit.databinding.FragmentScheduleBinding
 import com.google.android.material.tabs.TabLayoutMediator
-import kotlinx.android.synthetic.main.fragment_info.*
-import kotlinx.android.synthetic.main.fragment_mark.*
 import kotlinx.android.synthetic.main.fragment_mark.tabLayout
 import kotlinx.android.synthetic.main.fragment_mark.viewpager
 import kotlinx.android.synthetic.main.fragment_schedule.*

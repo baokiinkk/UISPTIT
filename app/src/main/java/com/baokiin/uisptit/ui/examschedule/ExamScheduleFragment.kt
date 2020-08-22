@@ -19,8 +19,8 @@ import org.threeten.bp.format.DateTimeFormatter
 import java.util.*
 
 class ExamScheduleFragment :Fragment(){
-    val viewModel: ExamScheduleViewModel by viewModel<ExamScheduleViewModel>()
-    lateinit var adapter:AdapterExam
+    private val viewModel: ExamScheduleViewModel by viewModel()
+    private lateinit var adapter:AdapterExam
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -41,7 +41,6 @@ class ExamScheduleFragment :Fragment(){
         })
 
         bd.btnLich.setOnClickListener {
-            val cal = Calendar.getInstance()
             val intent = Intent(Intent.ACTION_EDIT)
             intent.type = "vnd.android.cursor.item/event"
             val listExam = viewModel.listExamTime.value
@@ -59,18 +58,16 @@ class ExamScheduleFragment :Fragment(){
         return bd.root
     }
 
-    fun dateToMillis(stringDate : String) : Long{
+    private fun dateToMillis(stringDate : String) : Long{
         val formatter: DateTimeFormatter = DateTimeFormatter.ofPattern(
             "dd/MM/yyyy", Locale.ROOT
         )
-        val timeInMilliseconds: Long = OffsetDateTime.parse(stringDate, formatter)
+        return OffsetDateTime.parse(stringDate, formatter)
             .toInstant()
             .toEpochMilli()
-        return timeInMilliseconds
     }
 
-    fun beginObj(num : Int) : Long{
-        var res = 7 * 60 * 60 * 1000L
-        return res
+    private fun beginObj(num : Int) : Long{
+        return 7 * 60 * 60 * 1000L
     }
 }

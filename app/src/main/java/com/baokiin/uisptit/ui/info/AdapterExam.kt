@@ -1,5 +1,6 @@
 package com.baokiin.uisptit.ui.info
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.Canvas
 import android.view.LayoutInflater
@@ -14,10 +15,9 @@ import com.baokiin.uisptit.databinding.ItemExamBinding
 import com.github.mikephil.charting.components.MarkerView
 import com.github.mikephil.charting.data.Entry
 import com.github.mikephil.charting.highlight.Highlight
-import com.github.mikephil.charting.utils.MPPointF
 
 
-class AdapterExam(val onClick:()->Unit) :ListAdapter<ExamTimetable,AdapterExam.ViewHodel>(ExamDIff()) {
+class AdapterExam(private val onClick:()->Unit) :ListAdapter<ExamTimetable,AdapterExam.ViewHodel>(ExamDIff()) {
 
     class ViewHodel(val binding:ItemExamBinding) : RecyclerView.ViewHolder(binding.root) {
         companion object {
@@ -41,11 +41,11 @@ class AdapterExam(val onClick:()->Unit) :ListAdapter<ExamTimetable,AdapterExam.V
 
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AdapterExam.ViewHodel {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHodel {
         return ViewHodel.from(parent)
     }
 
-    override fun onBindViewHolder(holder: AdapterExam.ViewHodel, position: Int) {
+    override fun onBindViewHolder(holder: ViewHodel, position: Int) {
         holder.bind(getItem(position),onClick)
     }
 }
@@ -60,12 +60,14 @@ override fun areItemsTheSame(oldItem: ExamTimetable, newItem: ExamTimetable): Bo
     }
 
 }
-class CustomMarkerView(context: Context?, layoutResource: Int, private val listLabel : MutableList<String>,val widthCard:Int, val heightCard:Int) :
+@SuppressLint("ViewConstructor")
+class CustomMarkerView(context: Context?, layoutResource: Int, private val listLabel : MutableList<String>, private val widthCard:Int, private val heightCard:Int) :
     MarkerView(context, layoutResource) {
-    private val tvContent: TextView = findViewById<TextView>(R.id.tvContent)
+    private val tvContent: TextView = findViewById(R.id.tvContent)
 
     // callbacks everytime the MarkerView is redrawn, can be used to update the
     // content (user-interface)
+    @SuppressLint("SetTextI18n")
     override fun refreshContent(
         e: Entry,
         highlight: Highlight?
@@ -77,10 +79,10 @@ class CustomMarkerView(context: Context?, layoutResource: Int, private val listL
 //    override fun getOffset(): MPPointF? {
 //        return MPPointF((-(width / 2)).toFloat(), (-height).toFloat())
 //    }
-    override fun draw(canvas: Canvas, posx: Float, posy: Float) {
+    override fun draw(canvas: Canvas, x: Float, y: Float) {
         // Check marker position and update offsets.
-        var posx = posx
-        var posy = posy
+        var posx = x
+        var posy = y
         val w = width
         val h = height
         if (posx + w/2 > widthCard) posx -= w
