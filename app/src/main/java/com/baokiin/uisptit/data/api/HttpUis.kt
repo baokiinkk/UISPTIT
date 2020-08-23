@@ -106,21 +106,6 @@ class HttpUis( var context: Context)  {
          list["LichThi"] = response.body().string()
 
 
-         // Test tuần học cũ
-         formBody = FormBody.Builder()
-             .add("__EVENTTARGET" , "ctl00\$ContentPlaceHolder1\$ctl00\$ddlChonNHHK")
-             .add("__EVENTARGUMENT" , "")
-             .add("__VIEWSTATEGENERATOR", "CA0B0334")
-             .add("ctl00\$ContentPlaceHolder1\$ctl00\$ddlChonNHHK", "20192")
-             .add("ctl00\$ContentPlaceHolder1\$ctl00\$ddlLoai", "rad_MonHoc")
-             .build()
-         request = Request.Builder()
-             .url("http://uis.ptithcm.edu.vn/Default.aspx?page=thoikhoabieu")
-             .post(formBody)
-             .build()
-         client.newCall(request).execute()
-
-
          //============================
          // TUAN HOC =================
          request = Request.Builder()

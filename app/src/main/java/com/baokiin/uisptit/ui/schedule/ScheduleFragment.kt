@@ -22,13 +22,16 @@ import kotlinx.android.synthetic.main.fragment_mark.tabLayout
 import kotlinx.android.synthetic.main.fragment_mark.viewpager
 import kotlinx.android.synthetic.main.fragment_schedule.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import java.text.SimpleDateFormat
+import java.util.*
 
 
-
+@Suppress("NULLABILITY_MISMATCH_BASED_ON_JAVA_ANNOTATIONS")
 class ScheduleFragment : Fragment() {
     private val viewModel: ScheduleViewModel by viewModel()
     lateinit var list:MutableList<ListTableTime>
     private var tabLayoutMediator:TabLayoutMediator? = null
+    lateinit var dataSpinner:MutableList<String>
     @SuppressLint("Range")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -52,23 +55,22 @@ class ScheduleFragment : Fragment() {
                     list = mutableListOf()
                     var tmp: MutableList<TimeTable> = mutableListOf()
                     var str = it[0].tuan
-                    val dataSpinner:MutableList<String> = mutableListOf()
+                    dataSpinner = mutableListOf()
                     tmp.add(it[0])
-                    var j = 0
                     for (i in 1 until it.size) {
                         if (it[i].tuan == str) {
                             tmp.add(it[i])
-                            if (i == it.size - 1){
-                                list.add(ListTableTime(decodeSemester(str), tmp))
-                                dataSpinner.add(decodeSemester(str))
-                                }
-                        } else {
+                        }
+                        else {
                             list.add(ListTableTime(decodeSemester(str), tmp))
                             dataSpinner.add(decodeSemester(str))
-                            j++
                             tmp = mutableListOf()
                             tmp.add(it[i])
                             str = it[i].tuan
+                        }
+                        if(i == it.size-1){
+                            list.add(ListTableTime(decodeSemester(str), tmp))
+                            dataSpinner.add(decodeSemester(str))
                         }
                     }
                     adapter.submitList(list)
@@ -76,7 +78,7 @@ class ScheduleFragment : Fragment() {
 
                     val spinnerAdapter:ArrayAdapter<String> = ArrayAdapter(requireContext(),android.R.layout.simple_spinner_dropdown_item,dataSpinner)
                     bd.spinner?.adapter = spinnerAdapter
-                    bd.spinner?.setSelection(2)
+                    bd.spinner?.setSelection(getCurrentWeek(dataSpinner))
 
                 }
             }
@@ -117,6 +119,29 @@ class ScheduleFragment : Fragment() {
     }
     private fun decodeSemester(str : String) : String{
         return "Tuần "+ str.substring(0,2)+" Từ "+str.substring(2,4)+"/"+str.substring(4,6)+"/"+str.substring(6,10)+" Đến "+str.substring(10,12)+"/"+str.substring(12,14)+"/"+str.substring(14,18)
+    }
+    private fun getCurrentWeek(data:MutableList<String>) :Int{
+        val date = Date()
+        var firstWeek= true
+        for(i in data){
+            val startDate = toDate(i.substring(11,21))
+            val endDate = toDate(i.substring(26,36))
+            val num = i.substring(5,7)
+            if(firstWeek){
+                firstWeek = false
+                if(date.before(startDate))
+                    return 0
+            }
+            if(date.before(endDate) && (date.after(startDate) || date.equals(startDate)))
+                return (num.toInt())-1
+        }
+        return data.size-1
+    }
+    @SuppressLint("SimpleDateFormat")
+    fun toDate(str:String): Date {
+        val sdf =
+            SimpleDateFormat("dd/MM/yyyy")
+        return sdf.parse(str)
     }
 }
 

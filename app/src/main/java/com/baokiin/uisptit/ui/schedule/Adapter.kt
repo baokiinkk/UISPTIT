@@ -2,6 +2,7 @@ package com.baokiin.uisptit.ui.schedule
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.appcompat.view.menu.MenuView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -24,6 +25,7 @@ class Adapter(private val isClick:(Int)->Unit) :ListAdapter<ListTableTime,Adapte
         fun bind(item:ListTableTime, isClick: ((Int) -> Unit)? = null)
         {
             binding.data=item
+            defaultItem()
             for(i in item.mutableList){
                 if(i.thu == "2"){
                     if(i.buoi == "0") {
@@ -90,6 +92,42 @@ class Adapter(private val isClick:(Int)->Unit) :ListAdapter<ListTableTime,Adapte
                 isClick(adapterPosition)
             }
             binding.executePendingBindings()
+
+        }
+        fun defaultItem(){
+            itemView.txtPT2C.text = ""
+            itemView.txtPT2S.text = ""
+            itemView.txtPT3C.text = ""
+            itemView.txtPT3S.text = ""
+            itemView.txtPT4C.text = ""
+            itemView.txtPT4S.text = ""
+            itemView.txtPT4C.text = ""
+            itemView.txtPT4S.text = ""
+            itemView.txtPT5C.text = ""
+            itemView.txtPT5S.text = ""
+            itemView.txtPT6C.text = ""
+            itemView.txtPT6S.text = ""
+            itemView.txtPT7C.text = ""
+            itemView.txtPT7S.text = ""
+            itemView.txtPT8C.text = ""
+            itemView.txtPT8S.text = ""
+
+            itemView.txtTenT2C.text = ""
+            itemView.txtTenT2S.text = ""
+            itemView.txtTenT3C.text = ""
+            itemView.txtTenT3S.text = ""
+            itemView.txtTenT4C.text = ""
+            itemView.txtTenT4S.text = ""
+            itemView.txtTenT4C.text = ""
+            itemView.txtTenT4S.text = ""
+            itemView.txtTenT5C.text = ""
+            itemView.txtTenT5S.text = ""
+            itemView.txtTenT6C.text = ""
+            itemView.txtTenT6S.text = ""
+            itemView.txtTenT7C.text = ""
+            itemView.txtTenT7S.text = ""
+            itemView.txtTenT8C.text = ""
+            itemView.txtTenT8S.text = ""
 
         }
 

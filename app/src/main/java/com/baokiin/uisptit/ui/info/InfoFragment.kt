@@ -201,13 +201,8 @@ class InfoFragment : Fragment(){
         })
         viewModel.dataTimeTableTime.observe(viewLifecycleOwner, Observer {
             it?.let {
-
-                val dateStr = "10/09/2020"
-
-                val curFormater =
-                    SimpleDateFormat("dd/MM/yyyy")
-                val dateObj = curFormater.parse(dateStr)
-                var tmp = getTKBNgay(dateObj,it)
+                val dateCurrent = Date()
+                var tmp = getTKBNgay(dateCurrent,it)
                 bd.txtP1.text  = tmp[0][0]
                 if(tmp[0].size > 1){
                     bd.txtMon1.text = tmp[0][1]
@@ -216,8 +211,8 @@ class InfoFragment : Fragment(){
                 if(tmp[1].size > 1)
                     bd.txtMon2.text = tmp[1][1]
 
-                dateObj.time += 1000*60*60*24
-                tmp = getTKBNgay(dateObj,it)
+                dateCurrent.time += 1000*60*60*24
+                tmp = getTKBNgay(dateCurrent,it)
                 bd.txtP3.text  = tmp[0][0]
                 if(tmp[0].size > 1){
                     bd.txtMon3.text = tmp[0][1]

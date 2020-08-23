@@ -80,11 +80,11 @@ class DataRepositoryImpl(var network: HttpUis, var dao:AppDao) :
 
                 val tkb = xuLiTKB(xuLiMonHoc(list!!.get("TKB")!!), xuLiTuanHoc(list!!.get("TuanHoc")!!))
                 for (i in tkb) {
-                    Log.d("quocbaokiin", i.toString())
                     dao.addTimeTable(
                             TimeTable(0, i[0], i[1], i[2], i[3], i[4])
                     )
                 }
+
 
                 islogin(true)
             } else {
@@ -153,7 +153,8 @@ class DataRepositoryImpl(var network: HttpUis, var dao:AppDao) :
 
     override fun getTimeTable(data: (MutableList<TimeTable>) -> Unit) {
         GlobalScope.launch {
-            data(dao.getTimeTable())
+            val tmp = dao.getTimeTable();
+            data(tmp)
         }
     }
 
@@ -311,8 +312,10 @@ class DataRepositoryImpl(var network: HttpUis, var dao:AppDao) :
         var res = mutableListOf<MutableList<String>>()
         var row = mutableListOf<String>()
         for (week in listTuan){
+            var emptyWeek = true
             for (obj in listMonHoc){
                 if (checkDate(week,getDate(obj[13]))){
+                    emptyWeek = false
                     row = mutableListOf()
                     row.add(week)
                     row.add(thuTuNgay(obj[8]))
@@ -322,6 +325,15 @@ class DataRepositoryImpl(var network: HttpUis, var dao:AppDao) :
                     row.add(obj[11])
                     res.add(row)
                 }
+            }
+            if(emptyWeek){
+                row = mutableListOf()
+                row.add(week)
+                row.add("")
+                row.add("")
+                row.add("")
+                row.add("")
+                res.add(row)
             }
         }
         return res
