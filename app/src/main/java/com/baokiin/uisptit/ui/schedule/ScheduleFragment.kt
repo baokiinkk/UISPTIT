@@ -26,9 +26,9 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
 class ScheduleFragment : Fragment() {
-    val viewModel: ScheduleViewModel by viewModel<ScheduleViewModel>()
+    private val viewModel: ScheduleViewModel by viewModel()
     lateinit var list:MutableList<ListTableTime>
-    var tabLayoutMediator:TabLayoutMediator? = null
+    private var tabLayoutMediator:TabLayoutMediator? = null
     @SuppressLint("Range")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -47,7 +47,7 @@ class ScheduleFragment : Fragment() {
         viewModel.data.observe(viewLifecycleOwner, Observer {
             it?.let {
                 if (it.size <= 1) {
-                    Toast.makeText(context, "Chưa có lịch thi", Toast.LENGTH_LONG).show()
+                    Toast.makeText(context, "Chưa có thời khóa biểu", Toast.LENGTH_LONG).show()
                 } else {
                     list = mutableListOf()
                     var tmp: MutableList<TimeTable> = mutableListOf()
@@ -55,8 +55,8 @@ class ScheduleFragment : Fragment() {
                     val dataSpinner:MutableList<String> = mutableListOf()
                     tmp.add(it[0])
                     var j = 0
-                    for (i in 1..it.size - 1) {
-                        if (it[i].tuan.equals(str)) {
+                    for (i in 1 until it.size) {
+                        if (it[i].tuan == str) {
                             tmp.add(it[i])
                             if (i == it.size - 1){
                                 list.add(ListTableTime(decodeSemester(str), tmp))
@@ -115,7 +115,7 @@ class ScheduleFragment : Fragment() {
         }
 
     }
-    fun decodeSemester(str : String) : String{
+    private fun decodeSemester(str : String) : String{
         return "Tuần "+ str.substring(0,2)+" Từ "+str.substring(2,4)+"/"+str.substring(4,6)+"/"+str.substring(6,10)+" Đến "+str.substring(10,12)+"/"+str.substring(12,14)+"/"+str.substring(14,18)
     }
 }

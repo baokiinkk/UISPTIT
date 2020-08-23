@@ -14,7 +14,7 @@
     <color name="infoBackground">#F5F5FA</color>
 <!--    <color name="infoBackground">#E1FBF9</color>-->
     <color name="titleBackground">#FFF</color>
-    <color name="titleText">#FFF</color>
+    <color name="titleText">#020202</color>
     <color name="colorMark">#000000</color>
     <color name="colorHintMark">@color/colorAccent</color>
     <color name="backgroundTomorrow">#FFFFFF</color>

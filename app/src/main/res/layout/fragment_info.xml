@@ -26,10 +26,11 @@
         android:background="@color/infoBackground"
         tools:context=".ui.info.InfoFragment">
 
-        <FrameLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/frameLayout"
             android:layout_width="0dp"
-            android:layout_height="200dp"
+            android:layout_height="300dp"
+            android:background="@drawable/title_shape"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
@@ -38,8 +39,11 @@
                 android:id="@+id/title"
                 android:layout_width="match_parent"
                 android:layout_height="150dp"
-                android:background="@drawable/title_shape"
+                android:background="@drawable/title_shape_white"
                 android:elevation="@dimen/shadow"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
                 tools:targetApi="lollipop">
 
                 <TextView
@@ -56,8 +60,8 @@
                     android:id="@+id/txtTitle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginStart="50dp"
+                    android:layout_marginTop="30dp"
                     android:fontFamily="sans-serif-thin"
                     android:text="@string/hello"
                     android:textColor="@color/titleText"
@@ -70,7 +74,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="5dp"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="30dp"
                     android:fontFamily="sans-serif-light"
                     android:text="@{viewmodel.title}"
                     android:textColor="@color/titleText"
@@ -83,7 +87,7 @@
                     android:id="@+id/endName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="30dp"
                     android:fontFamily="sans-serif-thin"
                     android:text="@string/end_name"
                     android:textColor="@color/titleText"
@@ -96,33 +100,41 @@
                     android:id="@+id/txtBuoi"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="20dp"
+                    android:layout_marginStart="50dp"
                     android:fontFamily="sans-serif-light"
                     android:paddingStart="2dp"
                     android:text="@string/chao"
-                    android:textSize="@dimen/sizeTextTitleHint"
                     android:textColor="@color/titleText"
+                    android:textSize="@dimen/sizeTextTitleHint"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/txtTitle"
                     tools:ignore="RtlSymmetry" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
+
             <TableLayout
                 android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:layout_marginStart="50dp"
-                android:layout_marginTop="100dp"
-                android:layout_marginEnd="50dp"
-                android:padding="1dp"
-                android:background="@drawable/white_backround"
+                android:layout_height="0dp"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="30dp"
+                android:layout_marginBottom="20dp"
                 android:elevation="@dimen/shadow"
-                >
+                android:padding="1dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/title">
+
                 <TableRow tools:ignore="UselessParent">
+
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:id="@+id/constraintLayout"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
+                        android:layout_margin="10dp"
+                        android:background="@drawable/backround_white"
 
                         >
 
@@ -159,48 +171,48 @@
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
+                        android:background="@drawable/backround_white"
                         android:layout_weight="1"
-
+                        android:layout_margin="10dp"
                         >
 
-                    <TextView
-                        android:id="@+id/txtTCTL"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="500dp"
-                        android:layout_marginBottom="500dp"
-                        android:fontFamily="sans-serif-black"
-                        android:text="@{String.valueOf(viewmodel.listSemester.get(viewmodel.listSemester.size()-1).creditsAccumulated)}"
-                        android:textColor="@color/colorMark"
-                        android:textSize="@dimen/textSizeMark"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintVertical_bias="0.51" />
+                        <TextView
+                            android:id="@+id/txtTCTL"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="500dp"
+                            android:layout_marginBottom="500dp"
+                            android:fontFamily="sans-serif-black"
+                            android:text="@{String.valueOf(viewmodel.listSemester.get(viewmodel.listSemester.size()-1).creditsAccumulated)}"
+                            android:textColor="@color/colorMark"
+                            android:textSize="@dimen/textSizeMark"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintVertical_bias="0.51" />
 
-                    <TextView
-                        android:id="@+id/textView16"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
-                        android:fontFamily="sans-serif-medium"
-                        android:text="@string/tctl"
-                        android:textColor="@color/colorHintMark"
-                        android:textSize="@dimen/textSizeMarkHint"
-                        app:layout_constraintEnd_toEndOf="@+id/txtTCTL"
-                        app:layout_constraintStart_toStartOf="@+id/txtTCTL"
-                        app:layout_constraintTop_toBottomOf="@+id/txtTCTL" />
-                </androidx.constraintlayout.widget.ConstraintLayout>
+                        <TextView
+                            android:id="@+id/textView16"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:fontFamily="sans-serif-medium"
+                            android:text="@string/tctl"
+                            android:textColor="@color/colorHintMark"
+                            android:textSize="@dimen/textSizeMarkHint"
+                            app:layout_constraintEnd_toEndOf="@+id/txtTCTL"
+                            app:layout_constraintStart_toStartOf="@+id/txtTCTL"
+                            app:layout_constraintTop_toBottomOf="@+id/txtTCTL" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:id="@+id/constraintLayout3"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
-
+                        android:layout_margin="10dp"
                         android:layout_weight="1"
-
-                        >
+                        android:background="@drawable/backround_white">
 
                         <TextView
                             android:id="@+id/txtAA"
@@ -237,8 +249,7 @@
             </TableLayout>
 
 
-
-        </FrameLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <TableLayout
             android:id="@+id/tableLayout"

@@ -62,6 +62,7 @@ class MarkFragment :Fragment() {
                             }
                         }
                         adapter.submitList(list)
+                        bd.viewpager.setCurrentItem(list.size-1,true)
                     }
                 })
 

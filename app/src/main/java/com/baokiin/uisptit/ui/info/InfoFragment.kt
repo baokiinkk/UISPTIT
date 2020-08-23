@@ -23,6 +23,7 @@ import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.baokiin.uisptit.R
+import com.baokiin.uisptit.data.db.model.Mark
 import com.baokiin.uisptit.data.db.model.TimeTable
 import com.baokiin.uisptit.databinding.FragmentInfoBinding
 import com.github.mikephil.charting.components.Description
@@ -59,7 +60,7 @@ class InfoFragment : Fragment(){
             DataBindingUtil.inflate(inflater, R.layout.fragment_info, container, false)
         bd.lifecycleOwner = this
         bd.viewmodel = viewModel
-        viewModel.getData("220192020")
+        viewModel.getData("")
         val adapterExam = AdapterExam{
             findNavController().navigate(R.id.to_exam)
         }
@@ -79,7 +80,16 @@ class InfoFragment : Fragment(){
         bd.txtBuoi.text = getBuoi()
         viewModel.listData.observe(viewLifecycleOwner, Observer {
                if(it != null) {
-                   adapter.submitList(it)
+                   val tmp:MutableList<Mark> = mutableListOf()
+                   val str = it[it.size - 1].semester
+                   tmp.add(it[it.size - 1])
+                   for (i in it.size-2 downTo 0) {
+                       if (it[i].semester == str) {
+                           tmp.add(it[i])
+                       }
+                       else break
+                   }
+                   adapter.submitList(tmp)
                }
         })
         viewModel.listExam.observe(viewLifecycleOwner, Observer {
