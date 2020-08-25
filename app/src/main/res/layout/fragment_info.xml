@@ -26,6 +26,93 @@
         android:background="@color/infoBackground"
         tools:context=".ui.info.InfoFragment">
 
+        <TextView
+            android:id="@+id/txtDTL"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/cardTitle"
+            android:layout_marginTop="28dp"
+            android:fontFamily="sans-serif-black"
+            android:text="@string/DTL"
+            android:textAllCaps="false"
+            android:textColor="@color/cardTitle"
+            android:textSize="@dimen/sizeTextCard"
+            android:textStyle="normal"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/frameLayout" />
+
+        <TextView
+            android:id="@+id/txtTKB"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/cardTitle"
+            android:layout_marginTop="28dp"
+            android:fontFamily="sans-serif-black"
+            android:text="@string/thoi_khoa_bieu"
+            android:textAllCaps="false"
+            android:textColor="@color/cardTitle"
+            android:textSize="@dimen/sizeTextCard"
+            android:textStyle="normal"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cardTTC" />
+
+        <TextView
+            android:id="@+id/txtTKB2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/cardRange"
+            android:layout_marginEnd="@dimen/cardTitle"
+            android:fontFamily="sans-serif-black"
+            android:text="@string/thoi_khoa_bieu2"
+            android:textAllCaps="false"
+            android:textColor="@color/cardTitle"
+            android:textSize="@dimen/sizeTextCard"
+            android:textStyle="normal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cardTTC" />
+
+        <TextView
+            android:id="@+id/txtLichThi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/cardTitle"
+            android:layout_marginTop="@dimen/cardRange"
+            android:fontFamily="sans-serif-black"
+            android:text="@string/lịch_thi"
+            android:textAllCaps="false"
+            android:textColor="@color/cardTitle"
+            android:textSize="@dimen/sizeTextCard"
+
+            android:textStyle="normal"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tableLayout" />
+
+        <TextView
+            android:id="@+id/txtDiem"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/cardTitle"
+            android:layout_marginTop="@dimen/cardRange"
+            android:fontFamily="sans-serif-black"
+            android:text="@string/diem_thi"
+            android:textAllCaps="false"
+            android:textColor="@color/cardTitle"
+            android:textSize="@dimen/sizeTextCard"
+            android:textStyle="normal"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cardLichThi" />
+
+        <TextView
+            android:id="@+id/txtTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/cardTitle"
+            android:layout_marginBottom="10dp"
+            android:textSize="10sp"
+            app:layout_constraintBottom_toTopOf="@+id/cardTTC"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:ignore="SmallSp" />
+
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/frameLayout"
             android:layout_width="0dp"
@@ -132,8 +219,8 @@
                         android:id="@+id/constraintLayout"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:layout_weight="1"
                         android:layout_margin="10dp"
+                        android:layout_weight="1"
                         android:background="@drawable/backround_white"
 
                         >
@@ -146,7 +233,7 @@
                             android:layout_marginBottom="500dp"
                             android:fontFamily="sans-serif-black"
                             android:text="@{String.valueOf(viewmodel.listSemester.get(viewmodel.listSemester.size()-1).gpa4)}"
-                            android:textColor="@color/colorMark"
+                            android:textColor="@android:color/white"
                             android:textSize="@dimen/textSizeMark"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
@@ -160,7 +247,7 @@
                             android:layout_marginTop="5dp"
                             android:fontFamily="sans-serif-medium"
                             android:text="@string/cpa"
-                            android:textColor="@color/colorHintMark"
+                            android:textColor="@android:color/white"
                             android:textSize="@dimen/textSizeMarkHint"
                             app:layout_constraintEnd_toEndOf="@+id/txtCPA"
                             app:layout_constraintStart_toStartOf="@+id/txtCPA"
@@ -171,10 +258,9 @@
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:background="@drawable/backround_white"
-                        android:layout_weight="1"
                         android:layout_margin="10dp"
-                        >
+                        android:layout_weight="1"
+                        android:background="@drawable/backround_white">
 
                         <TextView
                             android:id="@+id/txtTCTL"
@@ -184,7 +270,7 @@
                             android:layout_marginBottom="500dp"
                             android:fontFamily="sans-serif-black"
                             android:text="@{String.valueOf(viewmodel.listSemester.get(viewmodel.listSemester.size()-1).creditsAccumulated)}"
-                            android:textColor="@color/colorMark"
+                            android:textColor="@android:color/white"
                             android:textSize="@dimen/textSizeMark"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
@@ -199,7 +285,7 @@
                             android:layout_marginTop="5dp"
                             android:fontFamily="sans-serif-medium"
                             android:text="@string/tctl"
-                            android:textColor="@color/colorHintMark"
+                            android:textColor="@android:color/white"
                             android:textSize="@dimen/textSizeMarkHint"
                             app:layout_constraintEnd_toEndOf="@+id/txtTCTL"
                             app:layout_constraintStart_toStartOf="@+id/txtTCTL"
@@ -222,7 +308,7 @@
                             android:layout_marginBottom="500dp"
                             android:fontFamily="sans-serif-black"
                             android:text="@{String.valueOf(viewmodel.cntaa)}"
-                            android:textColor="@color/colorMark"
+                            android:textColor="@android:color/white"
                             android:textSize="@dimen/textSizeMark"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
@@ -237,7 +323,7 @@
                             android:layout_marginTop="5dp"
                             android:fontFamily="sans-serif-medium"
                             android:text="@string/a_a"
-                            android:textColor="@color/colorHintMark"
+                            android:textColor="@android:color/white"
                             android:textSize="@dimen/textSizeMarkHint"
                             app:layout_constraintEnd_toEndOf="@+id/txtAA"
                             app:layout_constraintStart_toStartOf="@+id/txtAA"
@@ -250,6 +336,26 @@
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardTTC"
+            android:layout_width="0dp"
+            android:layout_height="250dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="20dp"
+            app:cardCornerRadius="20dp"
+            app:cardElevation="@dimen/shadow"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtDTL">
+
+            <com.github.mikephil.charting.charts.LineChart
+                android:id="@+id/linechart"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#FFFFFF" />
+        </androidx.cardview.widget.CardView>
 
         <TableLayout
             android:id="@+id/tableLayout"
@@ -271,13 +377,14 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_margin="10dp"
-                    app:cardBackgroundColor="@color/colorAccent"
                     android:layout_weight="1"
-                    app:cardElevation="@dimen/shadow"
-                    app:cardCornerRadius="10dp">
+                    app:cardBackgroundColor="@color/colorAccent"
+                    app:cardCornerRadius="10dp"
+                    app:cardElevation="@dimen/shadow">
+
                     <androidx.constraintlayout.widget.ConstraintLayout
-                        android:layout_height="match_parent"
-                        android:layout_width="match_parent">
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
 
                         <TextView
                             android:id="@+id/txtP1"
@@ -324,13 +431,13 @@
                     android:layout_height="match_parent"
                     android:layout_margin="10dp"
                     android:layout_weight="1"
-                    app:cardElevation="@dimen/shadow"
-                    app:cardCornerRadius="10dp">
+                    app:cardCornerRadius="10dp"
+                    app:cardElevation="@dimen/shadow">
+
                     <androidx.constraintlayout.widget.ConstraintLayout
-                        android:layout_height="match_parent"
                         android:layout_width="match_parent"
-                        android:background="@color/backgroundTomorrow"
-                        >
+                        android:layout_height="match_parent"
+                        android:background="@color/backgroundTomorrow">
 
                         <TextView
                             android:id="@+id/txtP3"
@@ -382,13 +489,14 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_margin="10dp"
-                    app:cardBackgroundColor="@color/colorAccent"
                     android:layout_weight="1"
-                    app:cardElevation="@dimen/shadow"
-                    app:cardCornerRadius="10dp">
+                    app:cardBackgroundColor="@color/colorAccent"
+                    app:cardCornerRadius="10dp"
+                    app:cardElevation="@dimen/shadow">
+
                     <androidx.constraintlayout.widget.ConstraintLayout
-                        android:layout_height="match_parent"
-                        android:layout_width="match_parent">
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
 
                         <TextView
                             android:id="@+id/txtP2"
@@ -435,13 +543,13 @@
                     android:layout_height="match_parent"
                     android:layout_margin="10dp"
                     android:layout_weight="1"
-                    app:cardElevation="@dimen/shadow"
-                    app:cardCornerRadius="10dp">
+                    app:cardCornerRadius="10dp"
+                    app:cardElevation="@dimen/shadow">
+
                     <androidx.constraintlayout.widget.ConstraintLayout
-                        android:layout_height="match_parent"
                         android:layout_width="match_parent"
-                        android:background="@color/backgroundTomorrow"
-                        >
+                        android:layout_height="match_parent"
+                        android:background="@color/backgroundTomorrow">
 
                         <TextView
                             android:id="@+id/txtP4"
@@ -487,101 +595,120 @@
 
         </TableLayout>
 
-        <TextView
-            android:id="@+id/txtDTL"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/cardTitle"
-            android:layout_marginTop="28dp"
-            android:fontFamily="sans-serif-black"
-            android:text="@string/DTL"
-            android:textAllCaps="false"
-            android:textColor="@color/cardTitle"
-            android:textSize="@dimen/sizeTextCard"
-            android:textStyle="normal"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/frameLayout" />
-
         <androidx.cardview.widget.CardView
-            android:id="@+id/cardTTC"
-            android:layout_width="0dp"
+            android:id="@+id/cardLichThi"
+            android:layout_width="match_parent"
             android:layout_height="250dp"
             android:layout_marginStart="20dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="5dp"
             android:layout_marginEnd="20dp"
+            app:cardBackgroundColor="#FFF"
             app:cardCornerRadius="20dp"
             app:cardElevation="@dimen/shadow"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txtDTL">
+            app:layout_constraintTop_toBottomOf="@+id/txtLichThi">
 
-            <com.github.mikephil.charting.charts.LineChart
-                android:id="@+id/linechart"
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="#FFFFFF" />
+                android:layout_height="match_parent">
+
+                <TableLayout
+                    android:id="@+id/ten"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:collapseColumns="*"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <TableRow tools:ignore="UselessParent">
+
+                        <TextView
+                            android:id="@+id/TenMon"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_weight="3"
+                            android:gravity="center"
+                            android:text="@string/ten_mon"
+                            android:textColor="@color/hockiTitle"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/Diem"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="@string/ng_y_thi"
+                            android:textColor="@color/hockiTitle"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/ketQ"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="@string/ph_ng"
+                            android:textColor="@color/hockiTitle"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/ketQuCh"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="Tiết"
+                            android:textColor="@color/hockiTitle"
+                            android:textStyle="bold"
+                            tools:ignore="HardcodedText" />
+                    </TableRow>
+
+                </TableLayout>
+
+                <FrameLayout
+                    android:id="@+id/frame"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/ten">
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recycleExam"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginEnd="10dp"
+                        android:layout_marginBottom="10dp" />
+
+                    <TextView
+                        android:id="@+id/trong"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:fontFamily="sans-serif-black"
+                        android:gravity="center"
+                        android:text="Trống"
+                        android:textColor="@color/hockiTitle"
+                        android:textSize="20sp"
+                        tools:ignore="HardcodedText" />
+
+                </FrameLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.cardview.widget.CardView>
-
-        <TextView
-            android:id="@+id/txtTKB"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/cardTitle"
-            android:layout_marginTop="28dp"
-            android:fontFamily="sans-serif-black"
-            android:text="@string/thoi_khoa_bieu"
-            android:textAllCaps="false"
-            android:textColor="@color/cardTitle"
-            android:textSize="@dimen/sizeTextCard"
-            android:textStyle="normal"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/cardTTC" />
-
-        <TextView
-            android:id="@+id/txtTKB2"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/cardRange"
-            android:layout_marginEnd="@dimen/cardTitle"
-            android:fontFamily="sans-serif-black"
-            android:text="@string/thoi_khoa_bieu2"
-            android:textAllCaps="false"
-            android:textColor="@color/cardTitle"
-            android:textSize="@dimen/sizeTextCard"
-            android:textStyle="normal"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/cardTTC" />
-
-        <TextView
-            android:id="@+id/txtLichThi"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/cardTitle"
-            android:layout_marginTop="@dimen/cardRange"
-            android:fontFamily="sans-serif-black"
-            android:text="@string/lịch_thi"
-            android:textAllCaps="false"
-            android:textColor="@color/cardTitle"
-            android:textSize="@dimen/sizeTextCard"
-
-            android:textStyle="normal"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tableLayout" />
-
-        <TextView
-            android:id="@+id/txtDiem"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/cardTitle"
-            android:layout_marginTop="@dimen/cardRange"
-            android:fontFamily="sans-serif-black"
-            android:text="@string/diem_thi"
-            android:textAllCaps="false"
-            android:textColor="@color/cardTitle"
-            android:textSize="@dimen/sizeTextCard"
-            android:textStyle="normal"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/cardLichThi" />
 
         <androidx.cardview.widget.CardView
             android:id="@+id/cardDiem"
@@ -684,136 +811,6 @@
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
-        </androidx.cardview.widget.CardView>
-
-
-        <TextView
-            android:id="@+id/txtTime"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="@dimen/cardTitle"
-            android:layout_marginBottom="10dp"
-            android:textSize="10sp"
-            app:layout_constraintBottom_toTopOf="@+id/cardTTC"
-            app:layout_constraintEnd_toEndOf="parent"
-            tools:ignore="SmallSp" />
-
-        <androidx.cardview.widget.CardView
-            android:id="@+id/cardLichThi"
-            android:layout_width="match_parent"
-            android:layout_height="250dp"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginEnd="20dp"
-            app:cardBackgroundColor="#FFF"
-            app:cardCornerRadius="20dp"
-            app:cardElevation="@dimen/shadow"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txtLichThi">
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <TableLayout
-                    android:id="@+id/ten"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginEnd="10dp"
-                    android:collapseColumns="*"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent">
-
-                    <TableRow tools:ignore="UselessParent">
-
-                        <TextView
-                            android:id="@+id/TenMon"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:layout_weight="3"
-                            android:gravity="center"
-                            android:text="@string/ten_mon"
-                            android:textColor="@color/hockiTitle"
-                            android:textStyle="bold"
-                             />
-
-                        <TextView
-                            android:id="@+id/Diem"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:layout_weight="1"
-                            android:gravity="center"
-                            android:text="@string/ng_y_thi"
-                            android:textColor="@color/hockiTitle"
-                            android:textStyle="bold"
-                             />
-
-                        <TextView
-                            android:id="@+id/ketQ"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:layout_weight="1"
-                            android:gravity="center"
-                            android:text="@string/ph_ng"
-                            android:textColor="@color/hockiTitle"
-                            android:textStyle="bold"
-                             />
-
-                        <TextView
-                            android:id="@+id/ketQuCh"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:layout_weight="1"
-                            android:gravity="center"
-                            android:text="Tiết"
-                            android:textColor="@color/hockiTitle"
-                            android:textStyle="bold"
-                            tools:ignore="HardcodedText" />
-                    </TableRow>
-
-                </TableLayout>
-
-                <FrameLayout
-                    android:id="@+id/frame"
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/ten">
-
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/recycleExam"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="10dp"
-                        android:layout_marginTop="10dp"
-                        android:layout_marginEnd="10dp"
-                        android:layout_marginBottom="10dp" />
-
-                    <TextView
-                        android:id="@+id/trong"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_gravity="center"
-                        android:fontFamily="sans-serif-black"
-                        android:gravity="center"
-                        android:text="Trống"
-                        android:textColor="@color/hockiTitle"
-                        android:textSize="20sp"
-                        tools:ignore="HardcodedText" />
-
-                </FrameLayout>
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.cardview.widget.CardView>
 
 

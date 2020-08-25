@@ -51,9 +51,14 @@ class MarkFragment :Fragment() {
                         for (i in 1 until mark.size) {
                             if (mark[i].semester == str) {
                                 tmp.add(mark[i])
-                                if (i == mark.size - 1)
+                                if (i == mark.size - 1) {
+                                    if(j>=it.size)
+                                        tmpSemester.add( SemesterMark("",0f,0f,0f,0f,0,0))
                                     list.add(ListMark(decodeSemester(str), tmp, tmpSemester[j]))
+                                }
                             } else {
+                                if(j>=it.size)
+                                    tmpSemester.add( SemesterMark("",0f,0f,0f,0f,0,0))
                                 list.add(ListMark(decodeSemester(str), tmp,tmpSemester[j]))
                                 j++
                                 tmp = mutableListOf()

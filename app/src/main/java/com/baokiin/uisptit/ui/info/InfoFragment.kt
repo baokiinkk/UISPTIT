@@ -90,6 +90,7 @@ class InfoFragment : Fragment(){
                        else break
                    }
                    adapter.submitList(tmp)
+                   fresh.isRefreshing = false
                }
         })
         viewModel.listExam.observe(viewLifecycleOwner, Observer {
@@ -188,7 +189,7 @@ class InfoFragment : Fragment(){
         })
         viewModel.bool.observe(viewLifecycleOwner, Observer {
             if(it == true){
-                viewModel.getData("220192020")
+                viewModel.getData("")
                 currentTime = Calendar.getInstance().time
                 val sdf = SimpleDateFormat("HH:mm dd/MM/yy")
                 val str = "Cập nhật lúc: "+sdf.format(currentTime).toString()
@@ -196,7 +197,6 @@ class InfoFragment : Fragment(){
                 txtTime.text = str
                 Toast.makeText(context, "Cập nhật thành công!", Toast.LENGTH_SHORT).show()
                 viewModel.bool.postValue(false)
-                fresh.isRefreshing = false
             }
         })
         viewModel.dataTimeTableTime.observe(viewLifecycleOwner, Observer {
@@ -257,8 +257,9 @@ class InfoFragment : Fragment(){
             val cm: ConnectivityManager? = activity?.getSystemService(Context.CONNECTIVITY_SERVICE ) as ConnectivityManager?
             val activeNetwork: NetworkInfo? = cm?.activeNetworkInfo
             val isConnected: Boolean = activeNetwork?.isConnectedOrConnecting == true
-            if(isConnected)
+            if(isConnected) {
                 viewModel.reload()
+            }
             else {
                 Toast.makeText(context, "Không kết nối được!", Toast.LENGTH_SHORT).show()
                 fresh.isRefreshing = false

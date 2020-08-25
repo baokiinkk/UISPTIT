@@ -2,6 +2,7 @@ package com.baokiin.uisptit.ui.schedule
 
 import android.annotation.SuppressLint
 import android.content.pm.ActivityInfo
+import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -31,7 +32,7 @@ class ScheduleFragment : Fragment() {
     private val viewModel: ScheduleViewModel by viewModel()
     lateinit var list:MutableList<ListTableTime>
     private var tabLayoutMediator:TabLayoutMediator? = null
-    lateinit var dataSpinner:MutableList<String>
+    private lateinit var dataSpinner:MutableList<String>
     @SuppressLint("Range")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -77,8 +78,8 @@ class ScheduleFragment : Fragment() {
 
 
                     val spinnerAdapter:ArrayAdapter<String> = ArrayAdapter(requireContext(),android.R.layout.simple_spinner_dropdown_item,dataSpinner)
-                    bd.spinner?.adapter = spinnerAdapter
-                    bd.spinner?.setSelection(getCurrentWeek(dataSpinner))
+                    bd.spinner.adapter = spinnerAdapter
+                    bd.spinner.setSelection(getCurrentWeek(dataSpinner))
 
                 }
             }
@@ -101,7 +102,7 @@ class ScheduleFragment : Fragment() {
 
         spinner?.onItemSelectedListener = object :OnItemSelectedListener{
             override fun onNothingSelected(parent: AdapterView<*>?) {
-                TODO("Not yet implemented")
+                viewpager.setCurrentItem(0,true)
             }
 
             override fun onItemSelected(
@@ -113,6 +114,15 @@ class ScheduleFragment : Fragment() {
                 viewpager.setCurrentItem(position,true)
             }
 
+
+        }
+
+        fresh_schedule.setWaveRGBColor(99,80,200)
+        fresh_schedule.setColorSchemeColors(Color.WHITE)
+        fresh_schedule.setShadowRadius(0)
+        fresh_schedule.setOnRefreshListener {
+            viewpager.setCurrentItem(getCurrentWeek(dataSpinner))
+            fresh_schedule.isRefreshing = false
 
         }
 
@@ -132,7 +142,7 @@ class ScheduleFragment : Fragment() {
                 if(date.before(startDate))
                     return 0
             }
-            if(date.before(endDate) && (date.after(startDate) || date.equals(startDate)))
+            if(date.before(endDate) && (date.after(startDate) || date == startDate))
                 return (num.toInt())-1
         }
         return data.size-1
