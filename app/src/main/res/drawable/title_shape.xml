@@ -1,8 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shape android:shape="rectangle"
-    xmlns:android="http://schemas.android.com/apk/res/android">
-    <corners
-        android:bottomLeftRadius="40dp"
-        android:bottomRightRadius="40dp"></corners>
-    <solid android:color="@color/colorAccent"></solid>
-</shape>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item >
+        <!-- drawable/circle_card_icon.xml -->
+        <shape
+            android:shape="rectangle">
+            <corners
+                android:bottomLeftRadius="40dp"
+                android:bottomRightRadius="40dp" />
+            <solid android:color="@color/colorAccent" />
+        </shape>
+    </item>
+    <item android:bottom="50dp">
+        <vector xmlns:android="http://schemas.android.com/apk/res/android"
+            android:width="800dp"
+            android:height="600dp"
+            android:viewportWidth="800"
+            android:viewportHeight="600">
+
+            <path
+                android:fillColor="@color/colorAccent"
+                android:pathData="M -1 -1 H 801 V 601 H -1 V -1 Z" />
+            <path
+                android:fillColor="@color/colorAccent"
+                android:pathData="M 0 0 H 100 V 100 H 0 V 0 Z" />
+            <path
+                android:fillColor="#fff"
+                android:fillAlpha="0.5"
+                android:strokeColor="#000"
+                android:strokeAlpha="0.5"
+                android:strokeWidth="1.5"
+                android:pathData="M1011.5,377.45313" />
+            <path
+                android:fillColor="#000"
+                android:fillAlpha="0.5"
+                android:strokeColor="#fff"
+                android:strokeAlpha="0.5"
+                android:strokeWidth="1.5"
+                android:pathData="M57.5,-31.54688l-194.5,2.54688" />
+            <path
+                android:fillColor="#999999"
+                android:fillAlpha="0.15"
+                android:strokeColor="#fff"
+                android:strokeAlpha="0.5"
+                android:strokeWidth="1.5"
+                android:pathData="M189.5,242.45313" />
+            <path
+                android:fillColor="#10076d"
+                android:fillAlpha="0.3"
+                android:strokeColor="#0fffff"
+                android:strokeAlpha="0"
+                android:strokeWidth="1.5"
+                android:pathData="M-66.5,587.45313c247,26 539,2 728,-303c189,-305 192,-402.90626 73.5,-359.45313c-118.5,43.45312 -665.5,40.54688 -724,11c-58.5,-29.54688 -324.5,625.45313 -77.5,651.45313z" />
+        </vector>
+    </item>
+
+</layer-list>

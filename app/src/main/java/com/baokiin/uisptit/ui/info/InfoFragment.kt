@@ -7,16 +7,20 @@ import android.content.Context
 import android.content.SharedPreferences
 import android.content.pm.ActivityInfo
 import android.graphics.Color
+import android.graphics.Outline
 import android.graphics.drawable.Drawable
 import android.net.ConnectivityManager
 import android.net.NetworkInfo
+import android.os.Build
 import android.os.Bundle
-import android.view.KeyEvent
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
+import android.widget.ImageView
 import android.widget.Toast
+import androidx.annotation.RequiresApi
 import androidx.core.content.ContextCompat
+import androidx.core.graphics.blue
+import androidx.core.graphics.green
+import androidx.core.graphics.red
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -102,6 +106,9 @@ class InfoFragment : Fragment(){
             }
 
         })
+
+
+
         viewModel.listSemester.observe(viewLifecycleOwner, Observer {
             if(it != null) {
                 val entries = ArrayList<Entry>()
@@ -143,8 +150,8 @@ class InfoFragment : Fragment(){
                 dataset.circleHoleRadius = 3f
                 dataset.cubicIntensity = 10f
                 dataset.valueTextColor = Color.BLACK
-                dataset.color = Color.rgb(99, 80, 200)
-                dataset.setCircleColor(Color.rgb(99, 80, 200))
+                dataset.color = Color.rgb(74, 146, 246)
+                dataset.setCircleColor(Color.rgb(74, 146, 246))
 
                 dataset.fillFormatter =
                     IFillFormatter { _, _ -> bd.linechart.axisLeft.axisMinimum }
@@ -250,7 +257,7 @@ class InfoFragment : Fragment(){
         }
 
 
-        fresh.setWaveRGBColor(99,80,200)
+        fresh.setWaveRGBColor(91, 86, 243)
         fresh.setColorSchemeColors(Color.WHITE)
         fresh.setShadowRadius(0)
         fresh.setOnRefreshListener {

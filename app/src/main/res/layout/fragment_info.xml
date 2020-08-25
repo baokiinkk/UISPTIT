@@ -119,6 +119,7 @@
             android:layout_height="300dp"
             android:background="@drawable/title_shape"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
@@ -147,9 +148,9 @@
                     android:id="@+id/txtTitle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="50dp"
-                    android:layout_marginTop="30dp"
-                    android:fontFamily="sans-serif-thin"
+                    android:layout_marginStart="40dp"
+                    android:layout_marginTop="40dp"
+                    android:fontFamily="sans-serif-light"
                     android:text="@string/hello"
                     android:textColor="@color/titleText"
                     android:textSize="@dimen/sizeTextTitle"
@@ -161,7 +162,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="5dp"
-                    android:layout_marginTop="30dp"
+                    android:layout_marginTop="40dp"
                     android:fontFamily="sans-serif-light"
                     android:text="@{viewmodel.title}"
                     android:textColor="@color/titleText"
@@ -174,8 +175,8 @@
                     android:id="@+id/endName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="30dp"
-                    android:fontFamily="sans-serif-thin"
+                    android:layout_marginTop="40dp"
+                    android:fontFamily="sans-serif-light"
                     android:text="@string/end_name"
                     android:textColor="@color/titleText"
                     android:textSize="@dimen/sizeTextTitle"
@@ -187,7 +188,7 @@
                     android:id="@+id/txtBuoi"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="50dp"
+                    android:layout_marginStart="40dp"
                     android:fontFamily="sans-serif-light"
                     android:paddingStart="2dp"
                     android:text="@string/chao"
@@ -245,7 +246,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="5dp"
-                            android:fontFamily="sans-serif-medium"
+                            android:fontFamily="sans-serif-light"
                             android:text="@string/cpa"
                             android:textColor="@android:color/white"
                             android:textSize="@dimen/textSizeMarkHint"
@@ -283,7 +284,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="5dp"
-                            android:fontFamily="sans-serif-medium"
+                            android:fontFamily="sans-serif-light"
                             android:text="@string/tctl"
                             android:textColor="@android:color/white"
                             android:textSize="@dimen/textSizeMarkHint"
@@ -321,7 +322,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="5dp"
-                            android:fontFamily="sans-serif-medium"
+                            android:fontFamily="sans-serif-light"
                             android:text="@string/a_a"
                             android:textColor="@android:color/white"
                             android:textSize="@dimen/textSizeMarkHint"
@@ -354,7 +355,7 @@
                 android:id="@+id/linechart"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="#FFFFFF" />
+                android:background="#FFF" />
         </androidx.cardview.widget.CardView>
 
         <TableLayout
@@ -384,7 +385,9 @@
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent">
+                        android:layout_height="match_parent"
+                        android:background="@drawable/day_background"
+                        >
 
                         <TextView
                             android:id="@+id/txtP1"
@@ -496,7 +499,9 @@
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent">
+                        android:layout_height="match_parent"
+                        android:background="@drawable/day_background"
+                        >
 
                         <TextView
                             android:id="@+id/txtP2"
@@ -729,7 +734,9 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/contrainMark"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:background="@drawable/day_background"
+                >
 
                 <TableLayout
                     android:id="@+id/tenMon"
@@ -754,8 +761,7 @@
                             android:gravity="center"
                             android:text="@string/ten_mon"
                             android:textColor="@color/diemCacMonTitle"
-                            android:textStyle="bold"
-                             />
+                            android:textStyle="bold" />
 
                         <TextView
                             android:id="@+id/DiemThi"
@@ -766,8 +772,7 @@
                             android:gravity="center"
                             android:text="@string/thi"
                             android:textColor="@color/diemCacMonTitle"
-                            android:textStyle="bold"
-                             />
+                            android:textStyle="bold" />
 
                         <TextView
                             android:id="@+id/ketQua"
@@ -778,8 +783,7 @@
                             android:gravity="center"
                             android:text="@string/tong"
                             android:textColor="@color/diemCacMonTitle"
-                            android:textStyle="bold"
-                             />
+                            android:textStyle="bold" />
 
                         <TextView
                             android:id="@+id/ketQuaChu"
@@ -790,8 +794,7 @@
                             android:gravity="center"
                             android:text="@string/ket_qua"
                             android:textColor="@color/diemCacMonTitle"
-                            android:textStyle="bold"
-                             />
+                            android:textStyle="bold" />
                     </TableRow>
 
                 </TableLayout>
