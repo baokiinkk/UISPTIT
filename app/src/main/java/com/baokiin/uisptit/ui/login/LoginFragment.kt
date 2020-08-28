@@ -3,11 +3,11 @@ package com.baokiin.uisptit.ui.login
 import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Context
+import android.content.Intent
 import android.content.SharedPreferences
 import android.graphics.Typeface
+import android.net.Uri
 import android.os.Bundle
-import android.os.SystemClock
-import android.provider.Settings
 import android.text.SpannableString
 import android.text.method.LinkMovementMethod
 import android.text.style.*
@@ -25,8 +25,6 @@ import com.baokiin.uisptit.databinding.LoginFragmentBinding
 import com.github.ybq.android.spinkit.sprite.Sprite
 import com.github.ybq.android.spinkit.style.*
 import kotlinx.android.synthetic.main.login_fragment.*
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 @Suppress("DEPRECATED_IDENTITY_EQUALS")
@@ -45,12 +43,7 @@ class LoginFragment : Fragment(){
         sp = requireActivity().getSharedPreferences("Login", Context.MODE_PRIVATE)
         bd.spin.setIndeterminateDrawable(returnSprite())
         if(sp.getBoolean("login",false)){
-
-            GlobalScope.launch {
-                bd.spinKit.visibility = View.VISIBLE
-                SystemClock.sleep(1500)
                 findNavController().navigate(R.id.login_to_infor)
-            }
         }
 
 
@@ -82,7 +75,9 @@ class LoginFragment : Fragment(){
         span.setSpan(StyleSpan(Typeface.BOLD),36,61,0)
         span.setSpan(object :ClickableSpan(){
             override fun onClick(widget: View) {
-                findNavController().navigate(R.id.to_link)
+                var intent: Intent = Intent(Intent.ACTION_VIEW)
+                intent.data= Uri.parse("https://itmc-ptithcm.github.io/UISpolicy.html")
+                startActivity(intent)
             }
         },36,61,0)
         textView4.movementMethod = LinkMovementMethod.getInstance()

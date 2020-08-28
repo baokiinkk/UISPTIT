@@ -15,11 +15,11 @@
     <color name="colorGray">#3F3F3F</color>
     <color name="login">#0C8E9F</color>
     <color name="bright_red">#FF6E63</color>
-    <color name="appBackgroundWhite">#FDFFFF</color>
+    <color name="appBackgroundWhite">#FFFFFF</color>
     <color name="infoBackground">#E9ECFA</color>
 <!--    <color name="infoBackground">#E1FBF9</color>-->
     <color name="titleBackground">#FFF</color>
-    <color name="titleText">#2C2C2C</color>
+    <color name="titleText">#Ffff</color>
     <color name="colorMark">#000000</color>
     <color name="colorHintMark">@color/colorAccent</color>
     <color name="backgroundTomorrow">#FFFFFF</color>
@@ -28,7 +28,7 @@
     <color name="diemCacMon">#FFFFFF</color>
     <color name="diemCacMonTitle">#FFFFFF</color>
     <color name="lichThiTitle">@color/colorAccent</color>
-    <color name="cardTitle">#535050</color>
+    <color name="cardTitle">#fff</color>
 
 
 </resources>

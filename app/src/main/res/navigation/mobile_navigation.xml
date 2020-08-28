@@ -122,17 +122,5 @@
             app:exitAnim="@transition/slide_out_left"
             app:popEnterAnim="@transition/slide_in_left"
             app:popExitAnim="@transition/slide_out_right" />
-        <action
-            android:id="@+id/to_link"
-            app:destination="@id/blankFragment"
-            app:enterAnim="@transition/slide_in_right"
-            app:exitAnim="@transition/slide_out_left"
-            app:popEnterAnim="@transition/slide_in_left"
-            app:popExitAnim="@transition/slide_out_right" />
     </fragment>
-    <fragment
-        android:id="@+id/blankFragment"
-        android:name="com.baokiin.uisptit.BlankFragment"
-        android:label="fragment_blank"
-        tools:layout="@layout/fragment_blank" />
 </navigation>
