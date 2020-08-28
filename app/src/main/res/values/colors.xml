@@ -16,7 +16,7 @@
     <color name="login">#0C8E9F</color>
     <color name="bright_red">#FF6E63</color>
     <color name="appBackgroundWhite">#FDFFFF</color>
-    <color name="infoBackground">#f0f5fa</color>
+    <color name="infoBackground">#E9ECFA</color>
 <!--    <color name="infoBackground">#E1FBF9</color>-->
     <color name="titleBackground">#FFF</color>
     <color name="titleText">#2C2C2C</color>

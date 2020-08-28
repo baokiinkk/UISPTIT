@@ -6,6 +6,8 @@ import android.content.Context
 import android.content.SharedPreferences
 import android.graphics.Typeface
 import android.os.Bundle
+import android.os.SystemClock
+import android.provider.Settings
 import android.text.SpannableString
 import android.text.method.LinkMovementMethod
 import android.text.style.*
@@ -23,6 +25,8 @@ import com.baokiin.uisptit.databinding.LoginFragmentBinding
 import com.github.ybq.android.spinkit.sprite.Sprite
 import com.github.ybq.android.spinkit.style.*
 import kotlinx.android.synthetic.main.login_fragment.*
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 @Suppress("DEPRECATED_IDENTITY_EQUALS")
@@ -39,8 +43,15 @@ class LoginFragment : Fragment(){
         bd.lifecycleOwner = this
         bd.viewmodel = viewModel
         sp = requireActivity().getSharedPreferences("Login", Context.MODE_PRIVATE)
-        if(sp.getBoolean("login",false))
-            findNavController().navigate(R.id.login_to_infor)
+        bd.spin.setIndeterminateDrawable(returnSprite())
+        if(sp.getBoolean("login",false)){
+
+            GlobalScope.launch {
+                bd.spinKit.visibility = View.VISIBLE
+                SystemClock.sleep(1500)
+                findNavController().navigate(R.id.login_to_infor)
+            }
+        }
 
 
         viewModel.bool.observe(viewLifecycleOwner, Observer {
@@ -63,7 +74,6 @@ class LoginFragment : Fragment(){
             viewModel.check(username_et.editText?.text.toString(),password_et.editText?.text.toString())
            spin_kit.visibility = View.VISIBLE
            hideKeyboard()
-           spin.setIndeterminateDrawable(returnSprite())
        }
 
         val span = SpannableString("Bằng cách Đăng Nhập, bạn đồng ý với Chính sách Quyền riêng tư của chúng tôi.")

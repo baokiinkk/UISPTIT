@@ -103,7 +103,12 @@
             />
         <action
             android:id="@+id/op_to_log"
-            app:destination="@id/loginFragment" />
+            app:destination="@id/loginFragment"
+
+            app:enterAnim="@transition/slide_in_left"
+            app:exitAnim="@transition/slide_out_right"
+            app:popEnterAnim="@transition/slide_in_right"
+            app:popExitAnim="@transition/slide_out_left" />
     </fragment>
     <fragment
         android:id="@+id/loginFragment"
@@ -112,10 +117,18 @@
         tools:layout="@layout/login_fragment" >
         <action
             android:id="@+id/login_to_infor"
-            app:destination="@id/navigation_infor" />
+            app:destination="@id/navigation_infor"
+            app:enterAnim="@transition/slide_in_right"
+            app:exitAnim="@transition/slide_out_left"
+            app:popEnterAnim="@transition/slide_in_left"
+            app:popExitAnim="@transition/slide_out_right" />
         <action
             android:id="@+id/to_link"
-            app:destination="@id/blankFragment" />
+            app:destination="@id/blankFragment"
+            app:enterAnim="@transition/slide_in_right"
+            app:exitAnim="@transition/slide_out_left"
+            app:popEnterAnim="@transition/slide_in_left"
+            app:popExitAnim="@transition/slide_out_right" />
     </fragment>
     <fragment
         android:id="@+id/blankFragment"
