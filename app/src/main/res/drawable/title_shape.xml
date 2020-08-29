@@ -47,7 +47,7 @@
             <path
                 android:fillColor="#10076d"
                 android:fillAlpha="0.3"
-                android:strokeColor="#0fffff"
+                android:strokeColor="#000000"
                 android:strokeAlpha="0"
                 android:strokeWidth="1.5"
                 android:pathData="M-66.5,587.45313c247,26 539,2 728,-303c189,-305 192,-402.90626 73.5,-359.45313c-118.5,43.45312 -665.5,40.54688 -724,11c-58.5,-29.54688 -324.5,625.45313 -77.5,651.45313z" />

@@ -4,7 +4,7 @@
     <!-- <color name="colorPrimaryDark">#03DAC5</color> -->
     <color name="colorPrimaryDark">@color/colorAccent</color>
     <color name="colorAccent0">#4642C8</color>
-    <color name="colorAccent">#5b56f3</color>
+    <color name="colorAccent">#7986CB</color>
     <color name="colorAccent2">#00d1ff</color>
     <color name="colorAccent3">#4a92f6</color>
     <color name="colorRow">#B2E3DFFF</color>
@@ -28,7 +28,9 @@
     <color name="diemCacMon">#FFFFFF</color>
     <color name="diemCacMonTitle">#FFFFFF</color>
     <color name="lichThiTitle">@color/colorAccent</color>
-    <color name="cardTitle">#fff</color>
-
+    <color name="cardTitle">#535353</color>
+    <color name="colorTitle1">@color/colorAccent</color>
+    <color name="colorTitle2">#10076d</color>
+    <color name="semiTransparentColor">#40FFFFFF</color>
 
 </resources>

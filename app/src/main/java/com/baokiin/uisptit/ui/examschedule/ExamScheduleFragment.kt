@@ -11,12 +11,11 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.baokiin.uisptit.R
+import com.baokiin.uisptit.data.db.model.ExamTimetable
 import com.baokiin.uisptit.databinding.FragmentExamScheduleBinding
 import com.baokiin.uisptit.ui.info.AdapterExam
 import org.koin.androidx.viewmodel.ext.android.viewModel
-import org.threeten.bp.OffsetDateTime
-import org.threeten.bp.format.DateTimeFormatter
-import java.util.*
+import java.text.SimpleDateFormat
 
 class ExamScheduleFragment :Fragment(){
     private val viewModel: ExamScheduleViewModel by viewModel()
@@ -46,25 +45,29 @@ class ExamScheduleFragment :Fragment(){
             val listExam = viewModel.listExamTime.value
             if (listExam != null) {
                 for(i in listExam) {
-                    val beginTime = dateToMillis(i.ngayThi) + beginObj(i.startTime)
-                    val endTime = beginTime + 4 * 60 * 60 * 1000
-                    intent.putExtra("beginTime", beginTime)
-                    intent.putExtra("endTime", endTime )
-                    intent.putExtra("title", i.phong + " - " + i.tenMon)
-                    startActivity(intent)
+                    addCalendar(i)
                 }
             }
         }
         return bd.root
     }
+    private fun addCalendar(obj : ExamTimetable){
+        val intent = Intent(Intent.ACTION_EDIT)
+        intent.type = "vnd.android.cursor.item/event"
+        val beginTime = dateToMillis(obj.ngayThi) + beginObj(obj.startTime)
+        val endTime = beginTime + 4 * 60 * 60 * 1000
+        intent.putExtra("beginTime", beginTime)
+        intent.putExtra("endTime", endTime )
+        intent.putExtra("description", obj.ghichu)
+        intent.putExtra("title", obj.phong + " - " + obj.tenMon)
+        startActivity(intent)
+    }
+
 
     private fun dateToMillis(stringDate : String) : Long{
-        val formatter: DateTimeFormatter = DateTimeFormatter.ofPattern(
-            "dd/MM/yyyy", Locale.ROOT
-        )
-        return OffsetDateTime.parse(stringDate, formatter)
-            .toInstant()
-            .toEpochMilli()
+        val sdf = SimpleDateFormat("dd/MM/yyyy")
+        val mDate = sdf.parse(stringDate)
+        return mDate.time
     }
 
     private fun beginObj(num : Int) : Long{
