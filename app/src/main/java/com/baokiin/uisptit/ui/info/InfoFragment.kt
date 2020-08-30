@@ -7,20 +7,13 @@ import android.content.Context
 import android.content.SharedPreferences
 import android.content.pm.ActivityInfo
 import android.graphics.Color
-import android.graphics.Outline
 import android.graphics.drawable.Drawable
 import android.net.ConnectivityManager
 import android.net.NetworkInfo
-import android.os.Build
 import android.os.Bundle
 import android.view.*
-import android.widget.ImageView
 import android.widget.Toast
-import androidx.annotation.RequiresApi
 import androidx.core.content.ContextCompat
-import androidx.core.graphics.blue
-import androidx.core.graphics.green
-import androidx.core.graphics.red
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -302,8 +295,7 @@ class InfoFragment : Fragment(){
         else
             "Chúc buổi tối như cc!"
     }
-
-
+    
     private fun getTKBNgay(day : Date, tkb : MutableList<TimeTable>) : MutableList<MutableList<String>>{
         val res = mutableListOf<MutableList<String>>()
         var row = mutableListOf<String>()
@@ -311,13 +303,15 @@ class InfoFragment : Fragment(){
         res.add(row)
         res.add(row)
         for (i in tkb){
-            val dates = getDate(i.tuan)
-            if (day.before(dates[1]) && (day.after(dates[0]) || day == dates[0])){
-                if (((day.time-dates[0].time) / (1000*60*60*24)+2) == i.thu.toLong()){
-                    row = mutableListOf()
-                    row.add(i.phong)
-                    row.add(i.tenMon)
-                    res[i.buoi.toInt()] = row
+            if(i.thu != "") {
+                val dates = getDate(i.tuan)
+                if (day.before(dates[1]) && (day.after(dates[0]) || day == dates[0])) {
+                    if (((day.time - dates[0].time) / (1000 * 60 * 60 * 24) + 2) == i.thu.toLong()) {
+                        row = mutableListOf()
+                        row.add(i.phong)
+                        row.add(i.tenMon)
+                        res[i.buoi.toInt()] = row
+                    }
                 }
             }
         }

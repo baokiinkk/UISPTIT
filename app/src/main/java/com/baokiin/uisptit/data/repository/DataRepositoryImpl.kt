@@ -377,7 +377,7 @@ class DataRepositoryImpl(var network: HttpUis, var dao:AppDao) :
             "Năm" -> 5
             "Sáu" -> 6
             "Bảy" -> 7
-            else -> 0
+            else -> 8
         }
         return res.toString()
     }
