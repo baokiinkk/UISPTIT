@@ -2,13 +2,13 @@
 <resources>
     <color name="colorPrimary">#FFFFFF</color>
     <!-- <color name="colorPrimaryDark">#03DAC5</color> -->
-    <color name="colorPrimaryDark">@color/colorAccent</color>
-    <color name="colorAccent0">#4642C8</color>
-    <color name="colorAccent">#7986CB</color>
+    <color name="colorPrimaryDark">#006CFD</color>
+    <color name="colorAccent0">#006CFD</color>
+    <color name="colorAccent">#4E97F8</color>
     <color name="colorAccent2">#00d1ff</color>
     <color name="colorAccent3">#4a92f6</color>
     <color name="colorRow">#B2E3DFFF</color>
-    <color name="colorRowInfo">#6C67FB</color>
+    <color name="colorRowInfo">#0056C9</color>
 <!--    <color name="colorRow">#412C2828</color>-->
     <color name="colorDataset">@color/colorAccent</color>
     <color name="colorPink">#FF0E90</color>
@@ -24,13 +24,13 @@
     <color name="colorHintMark">@color/colorAccent</color>
     <color name="backgroundTomorrow">#FFFFFF</color>
     <color name="textTomorrow">@color/colorAccent</color>
-    <color name="hockiTitle">@color/colorAccent</color>
+    <color name="hockiTitle">#006CFD</color>
     <color name="diemCacMon">#FFFFFF</color>
     <color name="diemCacMonTitle">#FFFFFF</color>
     <color name="lichThiTitle">@color/colorAccent</color>
     <color name="cardTitle">#535353</color>
     <color name="colorTitle1">@color/colorAccent</color>
     <color name="colorTitle2">#10076d</color>
-    <color name="semiTransparentColor">#40FFFFFF</color>
+    <color name="semiTransparentColor">#fff</color>
 
 </resources>

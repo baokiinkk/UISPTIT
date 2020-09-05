@@ -90,6 +90,7 @@ class InfoFragment : Fragment(){
                    fresh.isRefreshing = false
                }
         })
+
         viewModel.listExam.observe(viewLifecycleOwner, Observer {
             if(it != null){
                 if(it.isNotEmpty()) {
@@ -99,8 +100,6 @@ class InfoFragment : Fragment(){
             }
 
         })
-
-
 
         viewModel.listSemester.observe(viewLifecycleOwner, Observer {
             if(it != null) {
@@ -187,6 +186,7 @@ class InfoFragment : Fragment(){
                 bd.linechart.invalidate()
             }
         })
+
         viewModel.bool.observe(viewLifecycleOwner, Observer {
             if(it == true){
                 viewModel.getData("")
@@ -199,6 +199,7 @@ class InfoFragment : Fragment(){
                 viewModel.bool.postValue(false)
             }
         })
+
         viewModel.dataTimeTableTime.observe(viewLifecycleOwner, Observer {
             it?.let {
                 val dateCurrent = Date()
@@ -250,9 +251,9 @@ class InfoFragment : Fragment(){
         }
 
 
-        fresh.setWaveRGBColor(91, 86, 243)
-        fresh.setColorSchemeColors(Color.WHITE)
-        fresh.setShadowRadius(0)
+        fresh.setWaveRGBColor(235, 246, 242)
+        fresh.setColorSchemeColors(Color.argb(100,0,158,253))
+        fresh.setShadowRadius(1)
         fresh.setOnRefreshListener {
             val cm: ConnectivityManager? = activity?.getSystemService(Context.CONNECTIVITY_SERVICE ) as ConnectivityManager?
             val activeNetwork: NetworkInfo? = cm?.activeNetworkInfo

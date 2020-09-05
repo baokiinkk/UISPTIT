@@ -38,6 +38,7 @@ class AdapterMark(private val click:() -> Unit  ) :ListAdapter<Mark,AdapterMark.
     override fun onBindViewHolder(holder: ViewHodel, position: Int) {
         holder.bind(getItem(position),click)
     }
+
 }
 
 class MyDIff: DiffUtil.ItemCallback<Mark>() {// cung cấp thông tin về cách xác định phần
