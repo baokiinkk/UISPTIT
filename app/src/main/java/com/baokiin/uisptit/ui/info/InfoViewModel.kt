@@ -3,8 +3,11 @@ package com.baokiin.uisptit.ui.info
 import android.annotation.SuppressLint
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.baokiin.uisptit.data.db.model.*
 import com.baokiin.uisptit.data.repository.DataRepository
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 class InfoViewModel(private val repo: DataRepository) : ViewModel() {
     val listData:MutableLiveData<MutableList<Mark>?> = MutableLiveData(null)
@@ -15,8 +18,12 @@ class InfoViewModel(private val repo: DataRepository) : ViewModel() {
     val cntaa:MutableLiveData<Int> = MutableLiveData(0)
     val listExam:MutableLiveData<MutableList<ExamTimetable>?> = MutableLiveData(null)
     val dataTimeTableTime:MutableLiveData<MutableList<TimeTable> ?> = MutableLiveData(null)
-    fun getData(hk:String){
-            repo.getDataDiem(hk){
+    init {
+        getData()
+    }
+    fun getData(){
+        viewModelScope.launch(Dispatchers.IO) {
+            repo.getDataDiem("") {
                 listData.postValue(it)
             }
             repo.getInforUser {
@@ -32,14 +39,16 @@ class InfoViewModel(private val repo: DataRepository) : ViewModel() {
             repo.getTimeTable {
                 dataTimeTableTime.postValue(it)
             }
-
+        }
     }
     fun reload() {
+        viewModelScope.launch(Dispatchers.IO) {
             repo.getLogin { infor ->
                 repo.isLogin(infor[0].username, infor[0].password) {
                     bool.postValue(it)
                 }
             }
+        }
     }
     @SuppressLint("DefaultLocale")
     private fun xuLiTen(name : String) : String{

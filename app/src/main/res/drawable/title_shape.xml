@@ -7,7 +7,7 @@
             <corners
                 android:bottomLeftRadius="30dp"
                 android:bottomRightRadius="30dp" />
-            <solid android:color="@color/colorAccent" />
+            <solid android:color="@color/infoBackground" />
         </shape>
     </item>
     <item android:bottom="50dp">
@@ -18,10 +18,10 @@
             android:viewportHeight="600">
 
             <path
-                android:fillColor="@color/colorAccent"
+                android:fillColor="@color/infoBackground"
                 android:pathData="M -1 -1 H 801 V 601 H -1 V -1 Z" />
             <path
-                android:fillColor="@color/colorAccent"
+                android:fillColor="@color/infoBackground"
                 android:pathData="M 0 0 H 100 V 100 H 0 V 0 Z" />
             <path
                 android:fillColor="#fff"

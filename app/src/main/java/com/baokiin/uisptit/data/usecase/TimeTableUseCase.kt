@@ -5,5 +5,5 @@ import com.baokiin.uisptit.data.repository.DataRepository
 
 interface TimeTableUseCase {
     val repo : DataRepository
-    fun getTimeTable(getdata:(MutableList<TimeTable>) -> Unit)
+    suspend fun getTimeTable(getdata:(MutableList<TimeTable>) -> Unit)
 }

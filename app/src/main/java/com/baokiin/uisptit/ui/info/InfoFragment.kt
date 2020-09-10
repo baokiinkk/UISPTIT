@@ -11,7 +11,11 @@ import android.graphics.drawable.Drawable
 import android.net.ConnectivityManager
 import android.net.NetworkInfo
 import android.os.Bundle
-import android.view.*
+import android.util.Log
+import android.view.KeyEvent
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
@@ -52,16 +56,21 @@ class InfoFragment : Fragment(){
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        requireActivity().requestedOrientation  = ActivityInfo.SCREEN_ORIENTATION_SENSOR_PORTRAIT
+        //requireActivity().requestedOrientation  = ActivityInfo.SCREEN_ORIENTATION_SENSOR_PORTRAIT
         val bd: FragmentInfoBinding =
             DataBindingUtil.inflate(inflater, R.layout.fragment_info, container, false)
         bd.lifecycleOwner = this
         bd.viewmodel = viewModel
-        viewModel.getData("")
+
         val adapterExam = AdapterExam{
-            findNavController().navigate(R.id.to_exam)
+            findNavController().navigate(R.id.to_exam_scher)
         }
         sp = requireActivity().getSharedPreferences("Login", Context.MODE_PRIVATE)
+
+        if(!sp.getBoolean("login",false)){
+            findNavController().navigate(R.id.to_login)
+        }
+
         val adapter = AdapterMark {
             findNavController().navigate(R.id.to_mark)
         }
@@ -76,19 +85,19 @@ class InfoFragment : Fragment(){
         bd.txtTime.text = sp.getString("updateTime","")
         bd.txtBuoi.text = getBuoi()
         viewModel.listData.observe(viewLifecycleOwner, Observer {
-               if(it != null) {
-                   val tmp:MutableList<Mark> = mutableListOf()
-                   val str = it[it.size - 1].semester
-                   tmp.add(it[it.size - 1])
-                   for (i in it.size-2 downTo 0) {
-                       if (it[i].semester == str) {
-                           tmp.add(it[i])
-                       }
-                       else break
-                   }
-                   adapter.submitList(tmp)
-                   fresh.isRefreshing = false
-               }
+            if(it != null) {
+                val tmp:MutableList<Mark> = mutableListOf()
+                val str = it[it.size - 1].semester
+                tmp.add(it[it.size - 1])
+                for (i in it.size-2 downTo 0) {
+                    if (it[i].semester == str) {
+                        tmp.add(it[i])
+                    }
+                    else break
+                }
+                adapter.submitList(tmp)
+                fresh.isRefreshing = false
+            }
         })
 
         viewModel.listExam.observe(viewLifecycleOwner, Observer {
@@ -189,7 +198,7 @@ class InfoFragment : Fragment(){
 
         viewModel.bool.observe(viewLifecycleOwner, Observer {
             if(it == true){
-                viewModel.getData("")
+                viewModel.getData()
                 currentTime = Calendar.getInstance().time
                 val sdf = SimpleDateFormat("HH:mm dd/MM/yy")
                 val str = "Cập nhật lúc: "+sdf.format(currentTime).toString()
@@ -224,6 +233,7 @@ class InfoFragment : Fragment(){
 
             }
         })
+
         return bd.root
     }
 
@@ -231,29 +241,29 @@ class InfoFragment : Fragment(){
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         super.onCreate(savedInstanceState)
+
         tableLayout.setOnClickListener {
-            findNavController().navigate(R.id.to_schedule)
+            findNavController().navigate(R.id.to_scher)
         }
         cardDiem.setOnClickListener {
             findNavController().navigate(R.id.to_mark)
         }
         cardLichThi.setOnClickListener {
-            findNavController().navigate(R.id.to_exam)
+            findNavController().navigate(R.id.to_exam_scher)
         }
         btnOption.setOnClickListener {
             findNavController().navigate(R.id.to_option)
         }
         frame.setOnClickListener {
-            findNavController().navigate(R.id.to_exam)
+            findNavController().navigate(R.id.to_exam_scher)
         }
         trong.setOnClickListener {
-            findNavController().navigate(R.id.to_exam)
+            findNavController().navigate(R.id.to_exam_scher)
         }
 
-
-        fresh.setWaveRGBColor(235, 246, 242)
-        fresh.setColorSchemeColors(Color.argb(100,0,158,253))
-        fresh.setShadowRadius(1)
+        fresh.setWaveRGBColor(37,44,63)
+        fresh.setShadowRadius(0)
+        fresh.setColorSchemeColors(Color.WHITE)
         fresh.setOnRefreshListener {
             val cm: ConnectivityManager? = activity?.getSystemService(Context.CONNECTIVITY_SERVICE ) as ConnectivityManager?
             val activeNetwork: NetworkInfo? = cm?.activeNetworkInfo
@@ -265,7 +275,6 @@ class InfoFragment : Fragment(){
                 Toast.makeText(context, "Không kết nối được!", Toast.LENGTH_SHORT).show()
                 fresh.isRefreshing = false
             }
-
         }
     }
     override fun onResume() {
@@ -294,9 +303,9 @@ class InfoFragment : Fragment(){
         else if(hour < 19)
             "Chúc buổi chiều mát mẻ!"
         else
-            "Chúc buổi tối như cc!"
+            "Chúc buổi tối như con cac!"
     }
-    
+
     private fun getTKBNgay(day : Date, tkb : MutableList<TimeTable>) : MutableList<MutableList<String>>{
         val res = mutableListOf<MutableList<String>>()
         var row = mutableListOf<String>()

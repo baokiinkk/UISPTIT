@@ -11,13 +11,13 @@
     </data>
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:background="@color/colorRow"
+        android:background="@color/cardBackground"
         android:layout_height="match_parent">
 
         <TableLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="80dp"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="20dp"
             android:layout_marginBottom="20dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -27,83 +27,96 @@
             <TableRow
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
-                >
+                android:layout_marginBottom="10dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
+                    android:textColor="@color/textToday"
+                    />
 
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1" />
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="10dp"
                     android:layout_weight="2"
                     android:gravity="center"
-                    android:text="THỨ HAI"
+                    android:text="THỨ\nHAI"
+                    android:textColor="@color/textToday"
                     tools:ignore="HardcodedText" />
 
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginEnd="10dp"
                     android:layout_weight="2"
                     android:gravity="center"
-                    android:text="THỨ BA"
+                    android:text="THỨ\nBA"
+                    android:textColor="@color/textToday"
                     tools:ignore="HardcodedText" />
 
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginEnd="10dp"
                     android:layout_weight="2"
                     android:gravity="center"
-                    android:text="THỨ TƯ"
+                    android:text="THỨ\nTƯ"
+                    android:textColor="@color/textToday"
                     tools:ignore="HardcodedText" />
 
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginEnd="10dp"
                     android:layout_weight="2"
                     android:gravity="center"
-                    android:text="THỨ NĂM"
+                    android:text="THỨ\nNĂM"
+                    android:textColor="@color/textToday"
                     tools:ignore="HardcodedText" />
 
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginEnd="10dp"
                     android:layout_weight="2"
                     android:gravity="center"
-                    android:text="THỨ SÁU"
+                    android:text="THỨ\nSÁU"
+                    android:textColor="@color/textToday"
                     tools:ignore="HardcodedText" />
 
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginEnd="10dp"
                     android:layout_weight="2"
                     android:gravity="center"
-                    android:text="THỨ BẢY"
+                    android:text="THỨ\nBẢY"
+                    android:textColor="@color/textToday"
                     tools:ignore="HardcodedText" />
 
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginEnd="10dp"
                     android:layout_weight="2"
                     android:gravity="center"
-                    android:text="CHỦ NHẬT"
+                    android:text="CHỦ\nNHẬT"
+                    android:textColor="@color/textToday"
                     tools:ignore="HardcodedText" />
 
             </TableRow>
 
             <TableRow
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="3"
-                android:layout_marginBottom="10dp"
-                >
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp">
 
                 <TableLayout
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="1">
+                    android:layout_weight="2">
 
                     <TableRow
                         android:layout_width="wrap_content"
@@ -116,6 +129,7 @@
                             android:layout_weight="1"
                             android:gravity="center"
                             android:text="Tiết 1"
+                            android:textColor="@color/textToday"
                             tools:ignore="HardcodedText" />
                     </TableRow>
 
@@ -129,6 +143,7 @@
                             android:layout_height="match_parent"
                             android:layout_weight="1"
                             android:gravity="center"
+                            android:textColor="@color/textToday"
                             android:text="Tiết 2"
                             tools:ignore="HardcodedText" />
                     </TableRow>
@@ -143,6 +158,7 @@
                             android:layout_height="match_parent"
                             android:layout_weight="1"
                             android:gravity="center"
+                            android:textColor="@color/textToday"
                             android:text="Tiết 3"
                             tools:ignore="HardcodedText" />
                     </TableRow>
@@ -157,6 +173,7 @@
                             android:layout_height="match_parent"
                             android:layout_weight="1"
                             android:gravity="center"
+                            android:textColor="@color/textToday"
                             android:text="Tiết 4"
                             tools:ignore="HardcodedText" />
                     </TableRow>
@@ -171,6 +188,7 @@
                             android:layout_height="match_parent"
                             android:layout_weight="1"
                             android:gravity="center"
+                            android:textColor="@color/textToday"
                             android:text="Tiết 5"
                             tools:ignore="HardcodedText" />
                     </TableRow>
@@ -180,26 +198,31 @@
                 <androidx.cardview.widget.CardView
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="2"
                     android:layout_marginEnd="10dp"
-                    app:cardCornerRadius="20dp"
-                    android:gravity="center">
+                    android:layout_weight="2"
+                    android:gravity="center"
+                    app:cardBackgroundColor="@color/infoBackground"
+                    app:cardCornerRadius="20dp">
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent">
+                        android:layout_height="match_parent"
+                        android:background="@drawable/day_background"
+                        >
 
                         <TextView
                             android:id="@+id/txtTenT2S"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="5dp"
+                            android:layout_marginTop="10dp"
                             android:layout_marginEnd="5dp"
                             android:gravity="center|start"
-                            android:textColor="@color/colorAccent"
+                            android:textColor="@color/textTomorrow"
                             android:textSize="12sp"
-                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintBottom_toTopOf="@+id/txtPT2S"
                             app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.5"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent"
                             app:layout_constraintVertical_bias="0.41000003" />
@@ -211,10 +234,12 @@
                             android:layout_marginStart="5dp"
                             android:layout_marginTop="2dp"
                             android:layout_marginEnd="5dp"
-                            android:textColor="@color/colorAccent"
+                            android:layout_marginBottom="10dp"
+                            android:textColor="@color/textTomorrow"
                             android:textSize="12sp"
+                            app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintHorizontal_bias="0.0"
+                            app:layout_constraintHorizontal_bias="0.5"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@+id/txtTenT2S" />
 
@@ -224,26 +249,31 @@
                 <androidx.cardview.widget.CardView
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="2"
                     android:layout_marginEnd="10dp"
-                    app:cardCornerRadius="20dp"
-                    android:gravity="center">
+                    android:layout_weight="2"
+                    android:gravity="center"
+                    app:cardBackgroundColor="@color/infoBackground"
+                    app:cardCornerRadius="20dp">
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent">
+                        android:layout_height="match_parent"
+                        android:background="@drawable/tomorrow_background"
+                        >
 
                         <TextView
                             android:id="@+id/txtTenT3S"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="5dp"
+                            android:layout_marginTop="10dp"
                             android:layout_marginEnd="5dp"
                             android:gravity="center|start"
-                            android:textColor="@color/colorAccent"
+                            android:textColor="@color/textTomorrow"
                             android:textSize="12sp"
-                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintBottom_toTopOf="@+id/txtPT3S"
                             app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.5"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent"
                             app:layout_constraintVertical_bias="0.41000003" />
@@ -255,10 +285,13 @@
                             android:layout_marginStart="5dp"
                             android:layout_marginTop="2dp"
                             android:layout_marginEnd="5dp"
+                            android:layout_marginBottom="10dp"
                             android:text=""
-                            android:textColor="@color/colorAccent"
+                            android:textColor="@color/textTomorrow"
                             android:textSize="12sp"
+                            app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.5"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@+id/txtTenT3S" />
 
@@ -268,26 +301,31 @@
                 <androidx.cardview.widget.CardView
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="2"
                     android:layout_marginEnd="10dp"
-                    app:cardCornerRadius="20dp"
-                    android:gravity="center">
+                    android:layout_weight="2"
+                    android:gravity="center"
+                    app:cardBackgroundColor="@color/infoBackground"
+                    app:cardCornerRadius="20dp">
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent">
+                        android:layout_height="match_parent"
+                        android:background="@drawable/tomorrow_background"
+                        >
 
                         <TextView
                             android:id="@+id/txtTenT4S"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="5dp"
+                            android:layout_marginTop="10dp"
                             android:layout_marginEnd="5dp"
                             android:gravity="center|start"
-                            android:textColor="@color/colorAccent"
+                            android:textColor="@color/textTomorrow"
                             android:textSize="12sp"
-                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintBottom_toTopOf="@+id/txtPT4S"
                             app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.5"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent"
                             app:layout_constraintVertical_bias="0.41000003" />
@@ -299,9 +337,12 @@
                             android:layout_marginStart="5dp"
                             android:layout_marginTop="2dp"
                             android:layout_marginEnd="5dp"
-                            android:textColor="@color/colorAccent"
+                            android:layout_marginBottom="10dp"
+                            android:textColor="@color/textTomorrow"
                             android:textSize="12sp"
+                            app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.5"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@+id/txtTenT4S" />
 
@@ -311,26 +352,31 @@
                 <androidx.cardview.widget.CardView
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="2"
                     android:layout_marginEnd="10dp"
-                    app:cardCornerRadius="20dp"
-                    android:gravity="center">
+                    android:layout_weight="2"
+                    android:gravity="center"
+                    app:cardBackgroundColor="@color/infoBackground"
+                    app:cardCornerRadius="20dp">
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent">
+                        android:layout_height="match_parent"
+                        android:background="@drawable/tomorrow_background"
+                        >
 
                         <TextView
                             android:id="@+id/txtTenT5S"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="5dp"
+                            android:layout_marginTop="10dp"
                             android:layout_marginEnd="5dp"
                             android:gravity="center|start"
-                            android:textColor="@color/colorAccent"
+                            android:textColor="@color/textTomorrow"
                             android:textSize="12sp"
-                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintBottom_toTopOf="@+id/txtPT5S"
                             app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.5"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent"
                             app:layout_constraintVertical_bias="0.41000003" />
@@ -342,9 +388,12 @@
                             android:layout_marginStart="5dp"
                             android:layout_marginTop="2dp"
                             android:layout_marginEnd="5dp"
-                            android:textColor="@color/colorAccent"
+                            android:layout_marginBottom="10dp"
+                            android:textColor="@color/textTomorrow"
                             android:textSize="12sp"
+                            app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.5"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@+id/txtTenT5S" />
 
@@ -354,26 +403,31 @@
                 <androidx.cardview.widget.CardView
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="2"
                     android:layout_marginEnd="10dp"
-                    app:cardCornerRadius="20dp"
-                    android:gravity="center">
+                    android:layout_weight="2"
+                    android:gravity="center"
+                    app:cardBackgroundColor="@color/infoBackground"
+                    app:cardCornerRadius="20dp">
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent">
+                        android:layout_height="match_parent"
+                        android:background="@drawable/tomorrow_background"
+                        >
 
                         <TextView
                             android:id="@+id/txtTenT6S"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="5dp"
+                            android:layout_marginTop="10dp"
                             android:layout_marginEnd="5dp"
                             android:gravity="center|start"
-                            android:textColor="@color/colorAccent"
+                            android:textColor="@color/textTomorrow"
                             android:textSize="12sp"
-                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintBottom_toTopOf="@+id/txtPT6S"
                             app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.5"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent"
                             app:layout_constraintVertical_bias="0.41000003" />
@@ -385,9 +439,12 @@
                             android:layout_marginStart="5dp"
                             android:layout_marginTop="2dp"
                             android:layout_marginEnd="5dp"
-                            android:textColor="@color/colorAccent"
+                            android:layout_marginBottom="10dp"
+                            android:textColor="@color/textTomorrow"
                             android:textSize="12sp"
+                            app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.5"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@+id/txtTenT6S" />
 
@@ -397,26 +454,31 @@
                 <androidx.cardview.widget.CardView
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="2"
                     android:layout_marginEnd="10dp"
-                    app:cardCornerRadius="20dp"
-                    android:gravity="center">
+                    android:layout_weight="2"
+                    android:gravity="center"
+                    app:cardBackgroundColor="@color/infoBackground"
+                    app:cardCornerRadius="20dp">
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent">
+                        android:layout_height="match_parent"
+                        android:background="@drawable/tomorrow_background"
+                        >
 
                         <TextView
                             android:id="@+id/txtTenT7S"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="5dp"
+                            android:layout_marginTop="10dp"
                             android:layout_marginEnd="5dp"
                             android:gravity="center|start"
-                            android:textColor="@color/colorAccent"
+                            android:textColor="@color/textTomorrow"
                             android:textSize="12sp"
-                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintBottom_toTopOf="@+id/txtPT7S"
                             app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.5"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent"
                             app:layout_constraintVertical_bias="0.41000003" />
@@ -428,9 +490,12 @@
                             android:layout_marginStart="5dp"
                             android:layout_marginTop="2dp"
                             android:layout_marginEnd="5dp"
-                            android:textColor="@color/colorAccent"
+                            android:layout_marginBottom="10dp"
+                            android:textColor="@color/textTomorrow"
                             android:textSize="12sp"
+                            app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.5"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@+id/txtTenT7S" />
 
@@ -440,26 +505,31 @@
                 <androidx.cardview.widget.CardView
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="2"
                     android:layout_marginEnd="10dp"
-                    app:cardCornerRadius="20dp"
-                    android:gravity="center">
+                    android:layout_weight="2"
+                    android:gravity="center"
+                    app:cardBackgroundColor="@color/infoBackground"
+                    app:cardCornerRadius="20dp">
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent">
+                        android:layout_height="match_parent"
+                        android:background="@drawable/tomorrow_background"
+                        >
 
                         <TextView
                             android:id="@+id/txtTenT8S"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="5dp"
+                            android:layout_marginTop="10dp"
                             android:layout_marginEnd="5dp"
                             android:gravity="center|start"
-                            android:textColor="@color/colorAccent"
+                            android:textColor="@color/textTomorrow"
                             android:textSize="12sp"
-                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintBottom_toTopOf="@+id/txtPT8S"
                             app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.5"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent"
                             app:layout_constraintVertical_bias="0.39" />
@@ -471,9 +541,12 @@
                             android:layout_marginStart="5dp"
                             android:layout_marginTop="2dp"
                             android:layout_marginEnd="5dp"
-                            android:textColor="@color/colorAccent"
+                            android:layout_marginBottom="10dp"
+                            android:textColor="@color/textTomorrow"
                             android:textSize="12sp"
+                            app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.5"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@+id/txtTenT8S" />
 
@@ -484,13 +557,12 @@
 
             <TableRow
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="3">
+                android:layout_height="wrap_content">
 
                 <TableLayout
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="1">
+                    android:layout_weight="2">
 
                     <TableRow
                         android:layout_width="wrap_content"
@@ -503,6 +575,7 @@
                             android:layout_weight="1"
                             android:gravity="center"
                             android:text="Tiết 6"
+                            android:textColor="@color/textToday"
                             tools:ignore="HardcodedText" />
                     </TableRow>
 
@@ -517,6 +590,7 @@
                             android:layout_weight="1"
                             android:gravity="center"
                             android:text="Tiết 7"
+                            android:textColor="@color/textToday"
                             tools:ignore="HardcodedText" />
                     </TableRow>
 
@@ -531,6 +605,7 @@
                             android:layout_weight="1"
                             android:gravity="center"
                             android:text="Tiết 8"
+                            android:textColor="@color/textToday"
                             tools:ignore="HardcodedText" />
                     </TableRow>
 
@@ -545,6 +620,7 @@
                             android:layout_weight="1"
                             android:gravity="center"
                             android:text="Tiết 9"
+                            android:textColor="@color/textToday"
                             tools:ignore="HardcodedText" />
                     </TableRow>
 
@@ -559,6 +635,7 @@
                             android:layout_weight="1"
                             android:gravity="center"
                             android:text="Tiết 10"
+                            android:textColor="@color/textToday"
                             tools:ignore="HardcodedText" />
                     </TableRow>
                 </TableLayout>
@@ -567,26 +644,31 @@
                 <androidx.cardview.widget.CardView
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="2"
                     android:layout_marginEnd="10dp"
-                    app:cardCornerRadius="20dp"
-                    android:gravity="center">
+                    android:layout_weight="2"
+                    android:gravity="center"
+                    app:cardBackgroundColor="@color/infoBackground"
+                    app:cardCornerRadius="20dp">
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent">
+                        android:layout_height="match_parent"
+                        android:background="@drawable/tomorrow_background"
+                        >
 
                         <TextView
                             android:id="@+id/txtTenT2C"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="5dp"
+                            android:layout_marginTop="10dp"
                             android:layout_marginEnd="5dp"
                             android:gravity="center|start"
-                            android:textColor="@color/colorAccent"
+                            android:textColor="@color/textTomorrow"
                             android:textSize="12sp"
-                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintBottom_toTopOf="@+id/txtPT2C"
                             app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.5"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent"
                             app:layout_constraintVertical_bias="0.41000003" />
@@ -598,10 +680,12 @@
                             android:layout_marginStart="5dp"
                             android:layout_marginTop="2dp"
                             android:layout_marginEnd="5dp"
-                            android:textColor="@color/colorAccent"
+                            android:layout_marginBottom="10dp"
+                            android:textColor="@color/textTomorrow"
                             android:textSize="12sp"
+                            app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintHorizontal_bias="0.0"
+                            app:layout_constraintHorizontal_bias="0.5"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@+id/txtTenT2C" />
 
@@ -611,26 +695,31 @@
                 <androidx.cardview.widget.CardView
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="2"
                     android:layout_marginEnd="10dp"
-                    app:cardCornerRadius="20dp"
-                    android:gravity="center">
+                    android:layout_weight="2"
+                    android:gravity="center"
+                    app:cardBackgroundColor="@color/infoBackground"
+                    app:cardCornerRadius="20dp">
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent">
+                        android:layout_height="match_parent"
+                        android:background="@drawable/tomorrow_background"
+                        >
 
                         <TextView
                             android:id="@+id/txtTenT3C"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="5dp"
+                            android:layout_marginTop="10dp"
                             android:layout_marginEnd="5dp"
                             android:gravity="center|start"
-                            android:textColor="@color/colorAccent"
+                            android:textColor="@color/textTomorrow"
                             android:textSize="12sp"
-                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintBottom_toTopOf="@+id/txtPT3C"
                             app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.5"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent"
                             app:layout_constraintVertical_bias="0.41000003" />
@@ -642,10 +731,13 @@
                             android:layout_marginStart="5dp"
                             android:layout_marginTop="2dp"
                             android:layout_marginEnd="5dp"
+                            android:layout_marginBottom="10dp"
                             android:text=""
-                            android:textColor="@color/colorAccent"
+                            android:textColor="@color/textTomorrow"
                             android:textSize="12sp"
+                            app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.5"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@+id/txtTenT3C" />
 
@@ -655,26 +747,31 @@
                 <androidx.cardview.widget.CardView
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="2"
                     android:layout_marginEnd="10dp"
-                    app:cardCornerRadius="20dp"
-                    android:gravity="center">
+                    android:layout_weight="2"
+                    android:gravity="center"
+                    app:cardBackgroundColor="@color/infoBackground"
+                    app:cardCornerRadius="20dp">
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent">
+                        android:layout_height="match_parent"
+                        android:background="@drawable/tomorrow_background"
+                        >
 
                         <TextView
                             android:id="@+id/txtTenT4C"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="5dp"
+                            android:layout_marginTop="10dp"
                             android:layout_marginEnd="5dp"
                             android:gravity="center|start"
-                            android:textColor="@color/colorAccent"
+                            android:textColor="@color/textTomorrow"
                             android:textSize="12sp"
-                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintBottom_toTopOf="@+id/txtPT4C"
                             app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.5"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent"
                             app:layout_constraintVertical_bias="0.41000003" />
@@ -686,9 +783,12 @@
                             android:layout_marginStart="5dp"
                             android:layout_marginTop="2dp"
                             android:layout_marginEnd="5dp"
-                            android:textColor="@color/colorAccent"
+                            android:layout_marginBottom="10dp"
+                            android:textColor="@color/textTomorrow"
                             android:textSize="12sp"
+                            app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.5"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@+id/txtTenT4C" />
 
@@ -698,27 +798,32 @@
                 <androidx.cardview.widget.CardView
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="2"
                     android:layout_marginEnd="10dp"
-                    app:cardCornerRadius="20dp"
-                    android:gravity="center">
+                    android:layout_weight="2"
+                    android:gravity="center"
+                    app:cardBackgroundColor="@color/infoBackground"
+                    app:cardCornerRadius="20dp">
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        tools:ignore="TooManyViews">
+                        tools:ignore="TooManyViews"
+                        android:background="@drawable/tomorrow_background"
+                        >
 
                         <TextView
                             android:id="@+id/txtTenT5C"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="5dp"
+                            android:layout_marginTop="10dp"
                             android:layout_marginEnd="5dp"
                             android:gravity="center|start"
-                            android:textColor="@color/colorAccent"
+                            android:textColor="@color/textTomorrow"
                             android:textSize="12sp"
-                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintBottom_toTopOf="@+id/txtPT5C"
                             app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.5"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent"
                             app:layout_constraintVertical_bias="0.41000003" />
@@ -730,9 +835,12 @@
                             android:layout_marginStart="5dp"
                             android:layout_marginTop="2dp"
                             android:layout_marginEnd="5dp"
-                            android:textColor="@color/colorAccent"
+                            android:layout_marginBottom="10dp"
+                            android:textColor="@color/textTomorrow"
                             android:textSize="12sp"
+                            app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.5"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@+id/txtTenT5C" />
 
@@ -742,26 +850,31 @@
                 <androidx.cardview.widget.CardView
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="2"
                     android:layout_marginEnd="10dp"
-                    app:cardCornerRadius="20dp"
-                    android:gravity="center">
+                    android:layout_weight="2"
+                    android:gravity="center"
+                    app:cardBackgroundColor="@color/infoBackground"
+                    app:cardCornerRadius="20dp">
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent">
+                        android:layout_height="match_parent"
+                        android:background="@drawable/tomorrow_background"
+                        >
 
                         <TextView
                             android:id="@+id/txtTenT6C"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="5dp"
+                            android:layout_marginTop="10dp"
                             android:layout_marginEnd="5dp"
                             android:gravity="center|start"
-                            android:textColor="@color/colorAccent"
+                            android:textColor="@color/textTomorrow"
                             android:textSize="12sp"
-                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintBottom_toTopOf="@+id/txtPT6C"
                             app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.5"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent"
                             app:layout_constraintVertical_bias="0.41000003" />
@@ -773,9 +886,12 @@
                             android:layout_marginStart="5dp"
                             android:layout_marginTop="2dp"
                             android:layout_marginEnd="5dp"
-                            android:textColor="@color/colorAccent"
+                            android:layout_marginBottom="10dp"
+                            android:textColor="@color/textTomorrow"
                             android:textSize="12sp"
+                            app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.5"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@+id/txtTenT6C" />
 
@@ -785,26 +901,31 @@
                 <androidx.cardview.widget.CardView
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="2"
                     android:layout_marginEnd="10dp"
-                    app:cardCornerRadius="20dp"
-                    android:gravity="center">
+                    android:layout_weight="2"
+                    android:gravity="center"
+                    app:cardBackgroundColor="@color/infoBackground"
+                    app:cardCornerRadius="20dp">
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent">
+                        android:layout_height="match_parent"
+                        android:background="@drawable/tomorrow_background"
+                        >
 
                         <TextView
                             android:id="@+id/txtTenT7C"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="5dp"
+                            android:layout_marginTop="10dp"
                             android:layout_marginEnd="5dp"
                             android:gravity="center|start"
-                            android:textColor="@color/colorAccent"
+                            android:textColor="@color/textTomorrow"
                             android:textSize="12sp"
-                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintBottom_toTopOf="@+id/txtPT7C"
                             app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.5"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent"
                             app:layout_constraintVertical_bias="0.41000003" />
@@ -816,9 +937,12 @@
                             android:layout_marginStart="5dp"
                             android:layout_marginTop="2dp"
                             android:layout_marginEnd="5dp"
-                            android:textColor="@color/colorAccent"
+                            android:layout_marginBottom="10dp"
+                            android:textColor="@color/textTomorrow"
                             android:textSize="12sp"
+                            app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.5"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@+id/txtTenT7C" />
 
@@ -828,26 +952,31 @@
                 <androidx.cardview.widget.CardView
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="2"
                     android:layout_marginEnd="10dp"
-                    app:cardCornerRadius="20dp"
-                    android:gravity="center">
+                    android:layout_weight="2"
+                    android:gravity="center"
+                    app:cardBackgroundColor="@color/infoBackground"
+                    app:cardCornerRadius="20dp">
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent">
+                        android:layout_height="match_parent"
+                        android:background="@drawable/tomorrow_background"
+                        >
 
                         <TextView
                             android:id="@+id/txtTenT8C"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="5dp"
+                            android:layout_marginTop="10dp"
                             android:layout_marginEnd="5dp"
                             android:gravity="center|start"
-                            android:textColor="@color/colorAccent"
+                            android:textColor="@color/textTomorrow"
                             android:textSize="12sp"
-                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintBottom_toTopOf="@+id/txtPT8C"
                             app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.5"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent"
                             app:layout_constraintVertical_bias="0.39" />
@@ -859,9 +988,12 @@
                             android:layout_marginStart="5dp"
                             android:layout_marginTop="2dp"
                             android:layout_marginEnd="5dp"
-                            android:textColor="@color/colorAccent"
+                            android:layout_marginBottom="10dp"
+                            android:textColor="@color/textTomorrow"
                             android:textSize="12sp"
+                            app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.5"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@+id/txtTenT8C" />
 
@@ -876,7 +1008,7 @@
             android:id="@+id/txtTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="10dp"
             android:text="@{data.title}"
             android:textColor="#000"
             android:textStyle="bold"

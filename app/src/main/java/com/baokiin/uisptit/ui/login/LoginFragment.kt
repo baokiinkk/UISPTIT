@@ -11,6 +11,7 @@ import android.os.Bundle
 import android.text.SpannableString
 import android.text.method.LinkMovementMethod
 import android.text.style.*
+import android.util.Log
 import android.view.KeyEvent
 import android.view.LayoutInflater
 import android.view.View
@@ -25,6 +26,8 @@ import com.baokiin.uisptit.databinding.LoginFragmentBinding
 import com.github.ybq.android.spinkit.sprite.Sprite
 import com.github.ybq.android.spinkit.style.*
 import kotlinx.android.synthetic.main.login_fragment.*
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 @Suppress("DEPRECATED_IDENTITY_EQUALS")
@@ -36,26 +39,23 @@ class LoginFragment : Fragment(){
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        Log.d("quocbaokiin","login")
         val bd: LoginFragmentBinding =
             DataBindingUtil.inflate(inflater, R.layout.login_fragment, container, false)
         bd.lifecycleOwner = this
         bd.viewmodel = viewModel
         sp = requireActivity().getSharedPreferences("Login", Context.MODE_PRIVATE)
         bd.spin.setIndeterminateDrawable(returnSprite())
-        if(sp.getBoolean("login",false)){
-                findNavController().navigate(R.id.login_to_infor)
-        }
-
-
         viewModel.bool.observe(viewLifecycleOwner, Observer {
-            if(it == true){
-                sp.edit().putBoolean("login",true).apply()
-                findNavController().navigate(R.id.login_to_infor)
-            }
-            else if(it == false){
-                spin_kit.visibility = View.GONE
-                bd.errorTv.text = "Sai tài khoản hoặc mật khẩu"
-            }
+                if(it == true){
+                    sp.edit().putBoolean("login",true).apply()
+                    findNavController().navigate(R.id.login_to_infor)
+                }
+                else if(it == false){
+                    spin_kit.visibility = View.GONE
+                    bd.errorTv.text = "Sai tài khoản hoặc mật khẩu"
+                }
+
         })
         return bd.root
     }

@@ -5,6 +5,6 @@ import com.baokiin.uisptit.data.repository.DataRepository
 
 interface OptionUseCase {
     val repo : DataRepository
-    fun getdata(getdata:(InfoUser) -> Unit)
-    fun deleteLogin()
+    suspend fun getdata(getdata:(InfoUser) -> Unit)
+    suspend fun deleteLogin()
 }

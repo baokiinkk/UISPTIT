@@ -8,15 +8,11 @@
             name="data"
             type="com.baokiin.uisptit.ui.schedule.ScheduleViewModel" />
     </data>
-    <jp.co.recruit_lifestyle.android.widget.WaveSwipeRefreshLayout
-        android:outlineAmbientShadowColor="@color/colorAccent"
-        android:id="@+id/fresh_schedule"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:targetApi="p">
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/infoBackground"
+        >
 
         <androidx.cardview.widget.CardView
             android:id="@+id/cardDiem"
@@ -73,13 +69,32 @@
             android:id="@+id/spinner"
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:layout_marginEnd="50dp"
+            android:layout_marginEnd="15dp"
             android:layout_marginBottom="10dp"
             android:background="@drawable/icon_spinner"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/home" />
+
+        <TextView
+            android:id="@+id/home"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginEnd="15dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/home"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/btnXoay" />
+
+        <TextView
+            android:id="@+id/btnXoay"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginEnd="50dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/zoom_out"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    </jp.co.recruit_lifestyle.android.widget.WaveSwipeRefreshLayout>
 </layout>

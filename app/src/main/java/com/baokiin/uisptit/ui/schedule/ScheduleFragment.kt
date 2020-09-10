@@ -19,9 +19,11 @@ import com.baokiin.uisptit.data.db.model.ListTableTime
 import com.baokiin.uisptit.data.db.model.TimeTable
 import com.baokiin.uisptit.databinding.FragmentScheduleBinding
 import com.google.android.material.tabs.TabLayoutMediator
+import kotlinx.android.synthetic.main.fragment_mark.*
 import kotlinx.android.synthetic.main.fragment_mark.tabLayout
 import kotlinx.android.synthetic.main.fragment_mark.viewpager
 import kotlinx.android.synthetic.main.fragment_schedule.*
+import kotlinx.android.synthetic.main.fragment_schedule.btnXoay
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.text.SimpleDateFormat
 import java.util.*
@@ -38,7 +40,7 @@ class ScheduleFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        requireActivity().requestedOrientation  = ActivityInfo.SCREEN_ORIENTATION_SENSOR_LANDSCAPE
+        //requireActivity().requestedOrientation  = ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE
         val bd: FragmentScheduleBinding =
             DataBindingUtil.inflate(inflater, R.layout.fragment_schedule,container,false)
         bd.lifecycleOwner=this
@@ -89,7 +91,15 @@ class ScheduleFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        home.setOnClickListener {
+            viewpager.setCurrentItem(getCurrentWeek(dataSpinner))
+        }
+        btnXoay.setOnClickListener {
+            if(requireActivity().requestedOrientation == ActivityInfo.SCREEN_ORIENTATION_SENSOR_PORTRAIT)
+                requireActivity().requestedOrientation  = ActivityInfo.SCREEN_ORIENTATION_SENSOR_LANDSCAPE
+            else
+                requireActivity().requestedOrientation  = ActivityInfo.SCREEN_ORIENTATION_SENSOR_PORTRAIT
+        }
         tabLayoutMediator = TabLayoutMediator(
             tabLayout,
             viewpager,
@@ -117,14 +127,6 @@ class ScheduleFragment : Fragment() {
 
         }
 
-        fresh_schedule.setWaveRGBColor(99,80,200)
-        fresh_schedule.setColorSchemeColors(Color.WHITE)
-        fresh_schedule.setShadowRadius(0)
-        fresh_schedule.setOnRefreshListener {
-            viewpager.setCurrentItem(getCurrentWeek(dataSpinner))
-            fresh_schedule.isRefreshing = false
-
-        }
 
     }
     private fun decodeSemester(str : String) : String{

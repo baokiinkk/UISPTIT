@@ -98,6 +98,7 @@ dependencies {
 
     //refresh
     implementation 'com.github.recruit-lifestyle:WaveSwipeRefreshLayout:1.6'
+    implementation 'com.cleveroad:fireworkypulltorefresh:1.0.3'
 
     //http
     implementation 'com.squareup.okhttp3:okhttp:3.2.0'
@@ -114,4 +115,7 @@ dependencies {
     implementation 'com.diogobernardino.williamchart:tooltip-points:3.7.1'
 
     implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
+
+    //shape hinh anh
+    implementation 'com.github.florent37:shapeofview:1.4.7'
 }

@@ -5,5 +5,5 @@ import com.baokiin.uisptit.data.repository.DataRepository
 
 interface ExamUseCase {
     val repo : DataRepository
-    fun getExam(getdata:(MutableList<ExamTimetable>) -> Unit)
+    suspend fun getExam(getdata:(MutableList<ExamTimetable>) -> Unit)
 }

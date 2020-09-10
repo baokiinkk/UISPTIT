@@ -35,15 +35,17 @@
         <TableLayout
             android:id="@+id/constraintLayout2"
             android:layout_width="0dp"
-            android:layout_height="400dp"
+            android:layout_height="0dp"
             android:layout_marginStart="10dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="94dp"
             android:layout_marginEnd="10dp"
-            android:padding="20dp"
+            android:layout_marginBottom="128dp"
             android:background="@drawable/white_backround"
+            android:padding="20dp"
+            app:layout_constraintBottom_toTopOf="@+id/button2"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView20">
+            app:layout_constraintTop_toTopOf="parent">
 
             <TableRow
                 android:layout_width="match_parent"
@@ -152,7 +154,7 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:gravity="center_vertical"
-                    android:text="@{viewmodel.lop}"/>
+                    android:text="@{viewmodel.lop}" />
             </TableRow>
 
             <TableRow
@@ -258,6 +260,20 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:ignore="HardcodedText" />
+
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="174dp"
+            android:layout_marginTop="59dp"
+            android:layout_marginEnd="144dp"
+            android:layout_marginBottom="61dp"
+            android:text="Button"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/button" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

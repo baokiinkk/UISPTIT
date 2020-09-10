@@ -3,7 +3,8 @@ package com.baokiin.uisptit.data.usecase
 import com.baokiin.uisptit.data.repository.DataRepository
 
 class LoginUseCaseImpl(override val repo: DataRepository) :LoginUseCase {
-    override fun isLogin(name: String, pass: String, islogin: (Boolean) -> Unit) {
+    suspend override fun isLogin(name: String, pass: String, islogin:suspend(Boolean) -> Unit) {
+
         repo.isLogin(name,pass){
             if(it)
                 repo.addLogin(name,pass)
@@ -11,7 +12,7 @@ class LoginUseCaseImpl(override val repo: DataRepository) :LoginUseCase {
         }
     }
 
-    override fun getLogin(bool: (Boolean) -> Unit) {
+    suspend override fun getLogin(bool: suspend (Boolean) -> Unit) {
         repo.getLogin {
             if(it.size == 1)
                     bool(true)
@@ -19,7 +20,7 @@ class LoginUseCaseImpl(override val repo: DataRepository) :LoginUseCase {
         }
     }
 
-    override fun deleteLogin() {
+    suspend override fun deleteLogin() {
         repo.deleteLogin()
     }
 }

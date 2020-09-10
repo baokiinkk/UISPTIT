@@ -1,13 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<selector xmlns:android="http://schemas.android.com/apk/res/android">
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
     <item>
         <shape>
-            <gradient
-                android:startColor="@color/colorAccent"
-                android:centerColor="@color/colorAccent"
-                android:endColor="@color/colorAccent0"
-                android:angle="0"/>
-
+            <corners android:radius="10dp"/>
+            <solid android:color="@color/colorTomorrow"/>
         </shape>
     </item>
-</selector>
+    <item >
+        <shape>
+            <gradient
+                android:startColor="#4000B4FF"
+                android:centerColor="#00FFFFFF"
+                android:endColor="#0000D7C1"
+                android:angle="315"/>
+            <corners android:radius="10dp"/>
+        </shape>
+    </item>
+
+
+
+</layer-list>

@@ -5,7 +5,7 @@ import com.baokiin.uisptit.data.repository.DataRepository
 interface LoginUseCase {
 
     val repo : DataRepository
-    fun isLogin(name:String,pass:String,islogin:(Boolean)->Unit)
-    fun getLogin(bool:(Boolean)->Unit)
-    fun deleteLogin()
+    suspend fun isLogin(name:String,pass:String,islogin: suspend (Boolean)->Unit)
+    suspend fun getLogin(bool:suspend (Boolean)->Unit)
+    suspend fun deleteLogin()
 }

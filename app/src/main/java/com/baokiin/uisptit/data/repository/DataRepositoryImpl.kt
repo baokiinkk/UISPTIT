@@ -20,10 +20,8 @@ class DataRepositoryImpl(var network: HttpUis, var dao:AppDao) :
     private var list: MutableMap<String, String>? = null
     // private lateinit var loginInfor: LoginInfor
 
-
     @Throws(DataRepository.LoginException::class)
-    override fun isLogin(name:String,pass:String, islogin: (Boolean) -> Unit) {
-        GlobalScope.launch (Dispatchers.IO){
+    suspend override fun isLogin(name:String,pass:String, islogin:suspend (Boolean) -> Unit) {
            list = network.login(name,pass)
             if (list!!.isNotEmpty()) {
                 dao.deleteExam()
@@ -90,72 +88,53 @@ class DataRepositoryImpl(var network: HttpUis, var dao:AppDao) :
             } else {
                 islogin(false)
             }
-        }
     }
 
 
-    override fun addLogin(name: String, pass: String) {
-        GlobalScope.launch(Dispatchers.IO){
+    suspend override fun addLogin(name: String, pass: String) {
             dao.addUser(LoginInfor(name,pass))
-        }
     }
 
-    override fun deleteLogin() {
-        GlobalScope.launch(Dispatchers.IO){
+    suspend override fun deleteLogin() {
             dao.deleteLogin()
-        }
     }
 
-    override fun getDataDiem( hk:String,getdata: (MutableList<Mark>) -> Unit) {
-        GlobalScope.launch(Dispatchers.IO){
+    suspend override fun getDataDiem( hk:String,getdata: (MutableList<Mark>) -> Unit) {
             val markHK:MutableList<Mark>
             if(hk.equals(""))
                 markHK= dao.getMark()
             else markHK = dao.getMarkHK(hk)
             getdata(markHK)
-        }
     }
 
-    override fun getCNTAA(data: (Int) -> Unit) {
-        GlobalScope.launch {
-            data(dao.getCNTAA())
-        }
+    suspend override fun getCNTAA(data: (Int) -> Unit) {
+        data(dao.getCNTAA())
     }
 
-    override fun getDataSemester(hk: String, getdata: (MutableList<SemesterMark>) -> Unit) {
-        GlobalScope.launch(Dispatchers.IO){
+    suspend override fun getDataSemester(hk: String, getdata: (MutableList<SemesterMark>) -> Unit) {
             val markHK:MutableList<SemesterMark>
             if(hk.equals(""))
                 markHK= dao.getSemester()
             else markHK = dao.getSemesterHK(hk)
             getdata(markHK)
-        }
     }
 
-    override fun getExam(data: (MutableList<ExamTimetable>) -> Unit) {
-        GlobalScope.launch {
+    suspend override fun getExam(data: (MutableList<ExamTimetable>) -> Unit) {
             data(dao.getExamTimeTable())
-        }
     }
 
-    override fun getInforUser(data: (InfoUser) -> Unit) {
-        GlobalScope.launch(Dispatchers.Default){
+    suspend override fun getInforUser(data: (InfoUser) -> Unit) {
             val datadao = dao.getInforUser()
             data(datadao)
-        }
     }
 
-    override fun getLogin(data: (MutableList<LoginInfor>) -> Unit) {
-        GlobalScope.launch {
+    suspend override fun getLogin(data: suspend (MutableList<LoginInfor>) -> Unit) {
             data(dao.getLogin())
-        }
     }
 
-    override fun getTimeTable(data: (MutableList<TimeTable>) -> Unit) {
-        GlobalScope.launch {
+    suspend override fun getTimeTable(data: (MutableList<TimeTable>) -> Unit) {
             val tmp = dao.getTimeTable();
             data(tmp)
-        }
     }
 
     @SuppressLint("SimpleDateFormat")

@@ -3,6 +3,8 @@ package com.baokiin.uisptit.ui.option
 import android.content.Context
 import android.content.SharedPreferences
 import android.os.Bundle
+import android.util.Log
+import android.view.KeyEvent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -47,5 +49,18 @@ class OptionFragment : Fragment(){
             sp.edit().clear().apply()
             findNavController().navigate(R.id.op_to_log)
         }
+
+    }
+    override fun onResume() {
+        super.onResume()
+        if (view == null) {
+            return
+        }
+
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        Log.d("quocbaokiin","back");
     }
 }
