@@ -2,6 +2,7 @@ package com.baokiin.uisptit.ui.schedule
 import android.annotation.SuppressLint
 import android.content.pm.ActivityInfo
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -132,10 +133,16 @@ class ScheduleFragment : Fragment() {
                 if(date.before(startDate))
                     return 0
             }
-            if(date.before(endDate) && (date.after(startDate) || date.equals(startDate)))
+            //Log.d("tncnhan", date.toString() + "___" + num +"___"+ startDate.toString() + "___" + endDate.toString())
+            if(date.before(endDate) && (date.after(startDate)) || isSameDay(date, startDate) || isSameDay(date, endDate))
                 return (num.toInt())-1
         }
         return data.size-1
+    }
+
+    fun isSameDay(date1 : Date, date2 : Date) : Boolean{
+        val fmt = SimpleDateFormat("yyyMMdd")
+        return fmt.format(date1).equals(fmt.format(date2))
     }
     @SuppressLint("SimpleDateFormat")
     fun toDate(str:String): Date {
