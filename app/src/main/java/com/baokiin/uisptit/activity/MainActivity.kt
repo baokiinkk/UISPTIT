@@ -10,7 +10,6 @@ import com.baokiin.uisptit.R
 class MainActivity : AppCompatActivity(){
     lateinit var sp: SharedPreferences
     override fun onCreate(savedInstanceState: Bundle?) {
-        Log.d("quocbaokiin","start")
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
     }

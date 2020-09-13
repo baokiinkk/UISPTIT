@@ -10,7 +10,9 @@ import kotlinx.coroutines.launch
 
 class ScheduleViewModel(private val timeUseCase: TimeTableUseCase):ViewModel(){
     val data:MutableLiveData<MutableList<TimeTable> ?> = MutableLiveData(null)
-
+    init {
+        getData()
+    }
     fun getData() {
         viewModelScope.launch(Dispatchers.IO) {
             timeUseCase.getTimeTable {

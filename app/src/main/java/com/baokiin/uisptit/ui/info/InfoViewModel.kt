@@ -18,9 +18,6 @@ class InfoViewModel(private val repo: DataRepository) : ViewModel() {
     val cntaa:MutableLiveData<Int> = MutableLiveData(0)
     val listExam:MutableLiveData<MutableList<ExamTimetable>?> = MutableLiveData(null)
     val dataTimeTableTime:MutableLiveData<MutableList<TimeTable> ?> = MutableLiveData(null)
-    init {
-        getData()
-    }
     fun getData(){
         viewModelScope.launch(Dispatchers.IO) {
             repo.getDataDiem("") {

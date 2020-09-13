@@ -11,7 +11,7 @@
     </data>
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:background="@color/cardBackground"
+        android:background="@color/infoBackground"
         android:layout_height="match_parent">
 
         <TableLayout
@@ -210,19 +210,13 @@
                 </TableLayout>
 
 
-                <androidx.cardview.widget.CardView
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_marginEnd="10dp"
-                    android:layout_weight="2"
-                    android:gravity="center"
-                    app:cardBackgroundColor="@color/infoBackground"
-                    app:cardCornerRadius="20dp">
-
                     <androidx.constraintlayout.widget.ConstraintLayout
-                        android:layout_width="match_parent"
+                        android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:background="@drawable/day_background">
+                        android:layout_marginEnd="10dp"
+                        android:layout_weight="2"
+                        android:gravity="center"
+                        android:background="@drawable/tomorrow_background">
 
                         <TextView
                             android:id="@+id/txtTenT2S"
@@ -258,20 +252,13 @@
                             app:layout_constraintTop_toBottomOf="@+id/txtTenT2S" />
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
-                </androidx.cardview.widget.CardView>
-
-                <androidx.cardview.widget.CardView
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_marginEnd="10dp"
-                    android:layout_weight="2"
-                    android:gravity="center"
-                    app:cardBackgroundColor="@color/infoBackground"
-                    app:cardCornerRadius="20dp">
 
                     <androidx.constraintlayout.widget.ConstraintLayout
-                        android:layout_width="match_parent"
+                        android:layout_width="0dp"
                         android:layout_height="match_parent"
+                        android:layout_marginEnd="10dp"
+                        android:layout_weight="2"
+                        android:gravity="center"
                         android:background="@drawable/tomorrow_background">
 
                         <TextView
@@ -309,20 +296,13 @@
                             app:layout_constraintTop_toBottomOf="@+id/txtTenT3S" />
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
-                </androidx.cardview.widget.CardView>
-
-                <androidx.cardview.widget.CardView
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_marginEnd="10dp"
-                    android:layout_weight="2"
-                    android:gravity="center"
-                    app:cardBackgroundColor="@color/infoBackground"
-                    app:cardCornerRadius="20dp">
 
                     <androidx.constraintlayout.widget.ConstraintLayout
-                        android:layout_width="match_parent"
+                        android:layout_width="0dp"
                         android:layout_height="match_parent"
+                        android:layout_marginEnd="10dp"
+                        android:layout_weight="2"
+                        android:gravity="center"
                         android:background="@drawable/tomorrow_background">
 
                         <TextView
@@ -359,20 +339,12 @@
                             app:layout_constraintTop_toBottomOf="@+id/txtTenT4S" />
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
-                </androidx.cardview.widget.CardView>
-
-                <androidx.cardview.widget.CardView
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_marginEnd="10dp"
-                    android:layout_weight="2"
-                    android:gravity="center"
-                    app:cardBackgroundColor="@color/infoBackground"
-                    app:cardCornerRadius="20dp">
-
                     <androidx.constraintlayout.widget.ConstraintLayout
-                        android:layout_width="match_parent"
+                        android:layout_width="0dp"
                         android:layout_height="match_parent"
+                        android:layout_marginEnd="10dp"
+                        android:layout_weight="2"
+                        android:gravity="center"
                         android:background="@drawable/tomorrow_background">
 
                         <TextView
@@ -409,20 +381,12 @@
                             app:layout_constraintTop_toBottomOf="@+id/txtTenT5S" />
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
-                </androidx.cardview.widget.CardView>
-
-                <androidx.cardview.widget.CardView
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_marginEnd="10dp"
-                    android:layout_weight="2"
-                    android:gravity="center"
-                    app:cardBackgroundColor="@color/infoBackground"
-                    app:cardCornerRadius="20dp">
-
                     <androidx.constraintlayout.widget.ConstraintLayout
-                        android:layout_width="match_parent"
+                        android:layout_width="0dp"
                         android:layout_height="match_parent"
+                        android:layout_marginEnd="10dp"
+                        android:layout_weight="2"
+                        android:gravity="center"
                         android:background="@drawable/tomorrow_background">
 
                         <TextView
@@ -459,20 +423,12 @@
                             app:layout_constraintTop_toBottomOf="@+id/txtTenT6S" />
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
-                </androidx.cardview.widget.CardView>
-
-                <androidx.cardview.widget.CardView
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_marginEnd="10dp"
-                    android:layout_weight="2"
-                    android:gravity="center"
-                    app:cardBackgroundColor="@color/infoBackground"
-                    app:cardCornerRadius="20dp">
-
                     <androidx.constraintlayout.widget.ConstraintLayout
-                        android:layout_width="match_parent"
+                        android:layout_width="0dp"
                         android:layout_height="match_parent"
+                        android:layout_marginEnd="10dp"
+                        android:layout_weight="2"
+                        android:gravity="center"
                         android:background="@drawable/tomorrow_background">
 
                         <TextView
@@ -509,20 +465,12 @@
                             app:layout_constraintTop_toBottomOf="@+id/txtTenT7S" />
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
-                </androidx.cardview.widget.CardView>
-
-                <androidx.cardview.widget.CardView
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="2"
-                    android:gravity="center"
-                    android:layout_marginEnd="5dp"
-                    app:cardBackgroundColor="@color/infoBackground"
-                    app:cardCornerRadius="20dp">
-
                     <androidx.constraintlayout.widget.ConstraintLayout
-                        android:layout_width="match_parent"
+                        android:layout_width="0dp"
                         android:layout_height="match_parent"
+                        android:layout_marginEnd="10dp"
+                        android:layout_weight="2"
+                        android:gravity="center"
                         android:background="@drawable/tomorrow_background">
 
                         <TextView
@@ -559,7 +507,6 @@
                             app:layout_constraintTop_toBottomOf="@+id/txtTenT8S" />
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
-                </androidx.cardview.widget.CardView>
 
             </TableRow>
 
@@ -656,18 +603,12 @@
                 </TableLayout>
 
 
-                <androidx.cardview.widget.CardView
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_marginEnd="10dp"
-                    android:layout_weight="2"
-                    android:gravity="center"
-                    app:cardBackgroundColor="@color/infoBackground"
-                    app:cardCornerRadius="20dp">
-
                     <androidx.constraintlayout.widget.ConstraintLayout
-                        android:layout_width="match_parent"
+                        android:layout_width="0dp"
                         android:layout_height="match_parent"
+                        android:layout_marginEnd="10dp"
+                        android:layout_weight="2"
+                        android:gravity="center"
                         android:background="@drawable/tomorrow_background">
 
                         <TextView
@@ -704,20 +645,12 @@
                             app:layout_constraintTop_toBottomOf="@+id/txtTenT2C" />
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
-                </androidx.cardview.widget.CardView>
-
-                <androidx.cardview.widget.CardView
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_marginEnd="10dp"
-                    android:layout_weight="2"
-                    android:gravity="center"
-                    app:cardBackgroundColor="@color/infoBackground"
-                    app:cardCornerRadius="20dp">
-
                     <androidx.constraintlayout.widget.ConstraintLayout
-                        android:layout_width="match_parent"
+                        android:layout_width="0dp"
                         android:layout_height="match_parent"
+                        android:layout_marginEnd="10dp"
+                        android:layout_weight="2"
+                        android:gravity="center"
                         android:background="@drawable/tomorrow_background">
 
                         <TextView
@@ -755,20 +688,12 @@
                             app:layout_constraintTop_toBottomOf="@+id/txtTenT3C" />
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
-                </androidx.cardview.widget.CardView>
-
-                <androidx.cardview.widget.CardView
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_marginEnd="10dp"
-                    android:layout_weight="2"
-                    android:gravity="center"
-                    app:cardBackgroundColor="@color/infoBackground"
-                    app:cardCornerRadius="20dp">
-
                     <androidx.constraintlayout.widget.ConstraintLayout
-                        android:layout_width="match_parent"
+                        android:layout_width="0dp"
                         android:layout_height="match_parent"
+                        android:layout_marginEnd="10dp"
+                        android:layout_weight="2"
+                        android:gravity="center"
                         android:background="@drawable/tomorrow_background">
 
                         <TextView
@@ -805,20 +730,12 @@
                             app:layout_constraintTop_toBottomOf="@+id/txtTenT4C" />
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
-                </androidx.cardview.widget.CardView>
-
-                <androidx.cardview.widget.CardView
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_marginEnd="10dp"
-                    android:layout_weight="2"
-                    android:gravity="center"
-                    app:cardBackgroundColor="@color/infoBackground"
-                    app:cardCornerRadius="20dp">
-
                     <androidx.constraintlayout.widget.ConstraintLayout
-                        android:layout_width="match_parent"
+                        android:layout_width="0dp"
                         android:layout_height="match_parent"
+                        android:layout_marginEnd="10dp"
+                        android:layout_weight="2"
+                        android:gravity="center"
                         android:background="@drawable/tomorrow_background"
                         tools:ignore="TooManyViews">
 
@@ -856,20 +773,12 @@
                             app:layout_constraintTop_toBottomOf="@+id/txtTenT5C" />
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
-                </androidx.cardview.widget.CardView>
-
-                <androidx.cardview.widget.CardView
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_marginEnd="10dp"
-                    android:layout_weight="2"
-                    android:gravity="center"
-                    app:cardBackgroundColor="@color/infoBackground"
-                    app:cardCornerRadius="20dp">
-
                     <androidx.constraintlayout.widget.ConstraintLayout
-                        android:layout_width="match_parent"
+                        android:layout_width="0dp"
                         android:layout_height="match_parent"
+                        android:layout_marginEnd="10dp"
+                        android:layout_weight="2"
+                        android:gravity="center"
                         android:background="@drawable/tomorrow_background">
 
                         <TextView
@@ -906,20 +815,12 @@
                             app:layout_constraintTop_toBottomOf="@+id/txtTenT6C" />
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
-                </androidx.cardview.widget.CardView>
-
-                <androidx.cardview.widget.CardView
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_marginEnd="10dp"
-                    android:layout_weight="2"
-                    android:gravity="center"
-                    app:cardBackgroundColor="@color/infoBackground"
-                    app:cardCornerRadius="20dp">
-
                     <androidx.constraintlayout.widget.ConstraintLayout
-                        android:layout_width="match_parent"
+                        android:layout_width="0dp"
                         android:layout_height="match_parent"
+                        android:layout_marginEnd="10dp"
+                        android:layout_weight="2"
+                        android:gravity="center"
                         android:background="@drawable/tomorrow_background">
 
                         <TextView
@@ -956,20 +857,13 @@
                             app:layout_constraintTop_toBottomOf="@+id/txtTenT7C" />
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
-                </androidx.cardview.widget.CardView>
-
-                <androidx.cardview.widget.CardView
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="2"
-                    android:gravity="center"
-                    android:layout_marginEnd="5dp"
-                    app:cardBackgroundColor="@color/infoBackground"
-                    app:cardCornerRadius="20dp">
 
                     <androidx.constraintlayout.widget.ConstraintLayout
-                        android:layout_width="match_parent"
+                        android:layout_width="0dp"
                         android:layout_height="match_parent"
+                        android:layout_marginEnd="10dp"
+                        android:layout_weight="2"
+                        android:gravity="center"
                         android:background="@drawable/tomorrow_background">
 
                         <TextView
@@ -1006,7 +900,6 @@
                             app:layout_constraintTop_toBottomOf="@+id/txtTenT8C" />
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
-                </androidx.cardview.widget.CardView>
 
             </TableRow>
 

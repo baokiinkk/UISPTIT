@@ -70,7 +70,7 @@ class InfoFragment : Fragment(){
         if(!sp.getBoolean("login",false)){
             findNavController().navigate(R.id.to_login)
         }
-
+        else viewModel.getData()
         val adapter = AdapterMark {
             findNavController().navigate(R.id.to_mark)
         }

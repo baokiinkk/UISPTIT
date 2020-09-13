@@ -21,7 +21,7 @@ class DataRepositoryImpl(var network: HttpUis, var dao:AppDao) :
     // private lateinit var loginInfor: LoginInfor
 
     @Throws(DataRepository.LoginException::class)
-    suspend override fun isLogin(name:String,pass:String, islogin:suspend (Boolean) -> Unit) {
+    override suspend fun isLogin(name:String, pass:String, islogin:suspend (Boolean) -> Unit) {
            list = network.login(name,pass)
             if (list!!.isNotEmpty()) {
                 dao.deleteExam()
@@ -91,15 +91,15 @@ class DataRepositoryImpl(var network: HttpUis, var dao:AppDao) :
     }
 
 
-    suspend override fun addLogin(name: String, pass: String) {
+    override suspend fun addLogin(name: String, pass: String) {
             dao.addUser(LoginInfor(name,pass))
     }
 
-    suspend override fun deleteLogin() {
+    override suspend fun deleteLogin() {
             dao.deleteLogin()
     }
 
-    suspend override fun getDataDiem( hk:String,getdata: (MutableList<Mark>) -> Unit) {
+    override suspend fun getDataDiem(hk:String, getdata: (MutableList<Mark>) -> Unit) {
             val markHK:MutableList<Mark>
             if(hk.equals(""))
                 markHK= dao.getMark()
@@ -107,11 +107,11 @@ class DataRepositoryImpl(var network: HttpUis, var dao:AppDao) :
             getdata(markHK)
     }
 
-    suspend override fun getCNTAA(data: (Int) -> Unit) {
+    override suspend fun getCNTAA(data: (Int) -> Unit) {
         data(dao.getCNTAA())
     }
 
-    suspend override fun getDataSemester(hk: String, getdata: (MutableList<SemesterMark>) -> Unit) {
+    override suspend fun getDataSemester(hk: String, getdata: (MutableList<SemesterMark>) -> Unit) {
             val markHK:MutableList<SemesterMark>
             if(hk.equals(""))
                 markHK= dao.getSemester()
@@ -119,20 +119,20 @@ class DataRepositoryImpl(var network: HttpUis, var dao:AppDao) :
             getdata(markHK)
     }
 
-    suspend override fun getExam(data: (MutableList<ExamTimetable>) -> Unit) {
+    override suspend fun getExam(data: (MutableList<ExamTimetable>) -> Unit) {
             data(dao.getExamTimeTable())
     }
 
-    suspend override fun getInforUser(data: (InfoUser) -> Unit) {
+    override suspend fun getInforUser(data: (InfoUser) -> Unit) {
             val datadao = dao.getInforUser()
             data(datadao)
     }
 
-    suspend override fun getLogin(data: suspend (MutableList<LoginInfor>) -> Unit) {
+    override suspend fun getLogin(data: suspend (MutableList<LoginInfor>) -> Unit) {
             data(dao.getLogin())
     }
 
-    suspend override fun getTimeTable(data: (MutableList<TimeTable>) -> Unit) {
+    override suspend fun getTimeTable(data: (MutableList<TimeTable>) -> Unit) {
             val tmp = dao.getTimeTable();
             data(tmp)
     }
@@ -147,12 +147,12 @@ class DataRepositoryImpl(var network: HttpUis, var dao:AppDao) :
     fun xuliLichThi(htmlFile : String) : MutableList<MutableList<String>>{
         val doc = Jsoup.parse(htmlFile)
         val noiDung = doc.select("table#ctl00_ContentPlaceHolder1_ctl00_gvXem td")
-        var res = mutableListOf<String>()
+        val res = mutableListOf<String>()
         for(x in noiDung )
         {
             res.add(x.text())
         }
-        var temp = mutableListOf<MutableList<String>>()
+        val temp = mutableListOf<MutableList<String>>()
         var row : MutableList<String> = mutableListOf()
         for(i in 0 until res.size){
             val j = i%12
@@ -170,8 +170,8 @@ class DataRepositoryImpl(var network: HttpUis, var dao:AppDao) :
     fun xuLiThongTin(htmlFile : String) : MutableList<String>{
         val doc = Jsoup.parse(htmlFile)
         val noiDung = doc.select("div.infor-member td")
-        var res = mutableListOf<String>()
-        var temp = mutableListOf<String>()
+        val res = mutableListOf<String>()
+        val temp = mutableListOf<String>()
         for(x in noiDung )
         {
             res.add(x.text())
@@ -186,13 +186,13 @@ class DataRepositoryImpl(var network: HttpUis, var dao:AppDao) :
     fun xuLiDiemTongKet(htmlFile : String) : MutableList<MutableList<String>>{
         val doc = Jsoup.parse(htmlFile)
         val noiDung = doc.select("div#ctl00_ContentPlaceHolder1_ctl00_div1 tr.title-hk-diem span.Label,tr.row-diemTK span.Label")
-        var res = mutableListOf<String>()
+        val res = mutableListOf<String>()
         for(x in noiDung )
         {
             if (!isBaoLuu(x.text()))
                 res.add(x.text())
         }
-        var temp = mutableListOf<MutableList<String>>()
+        val temp = mutableListOf<MutableList<String>>()
         var row : MutableList<String> = mutableListOf()
         for(i in 0 until res.size){
             val j = i%13
@@ -213,13 +213,13 @@ class DataRepositoryImpl(var network: HttpUis, var dao:AppDao) :
         return temp
     }
     fun xuLiDiem(htmlFile: String): MutableList<MutableList<String>> {
-        var noiDung: MutableList<String> = mutableListOf()
-        var htmlDidJsoup = Jsoup.parse(htmlFile)
-        var doc = htmlDidJsoup.select("div#ctl00_ContentPlaceHolder1_ctl00_div1 tr.title-hk-diem span.Label,tr.row-diem span.Label")
+        val noiDung: MutableList<String> = mutableListOf()
+        val htmlDidJsoup = Jsoup.parse(htmlFile)
+        val doc = htmlDidJsoup.select("div#ctl00_ContentPlaceHolder1_ctl00_div1 tr.title-hk-diem span.Label,tr.row-diem span.Label")
         for (x in doc) {
             noiDung.add(x.text())
         }
-        var res = mutableListOf<MutableList<String>>()
+        val res = mutableListOf<MutableList<String>>()
         var result:MutableList<String> = mutableListOf()
         result.add("")
         var cnt = 1
@@ -271,7 +271,7 @@ class DataRepositoryImpl(var network: HttpUis, var dao:AppDao) :
         for (x in doc) {
             noiDung.add(x.text())
         }
-        var res = mutableListOf<MutableList<String>>()
+        val res = mutableListOf<MutableList<String>>()
         var monHoc:MutableList<String> = mutableListOf()
         for (i in 0 until noiDung.size) {
             val j = i%15
@@ -288,7 +288,7 @@ class DataRepositoryImpl(var network: HttpUis, var dao:AppDao) :
 
     // gom mã tuần học và môn học để thành dữ liệu đổ vào sql
     fun xuLiTKB(listMonHoc : MutableList<MutableList<String>>, listTuan : MutableList<String>) : MutableList<MutableList<String>>{
-        var res = mutableListOf<MutableList<String>>()
+        val res = mutableListOf<MutableList<String>>()
         var row = mutableListOf<String>()
         for (week in listTuan){
             var emptyWeek = true
@@ -322,7 +322,7 @@ class DataRepositoryImpl(var network: HttpUis, var dao:AppDao) :
     fun getDate(stringDate : String) : MutableList<Date>{
         val startDate = stringDate.substring(1, 11)
         val endDate = stringDate.substring(13, 23)
-        var res = mutableListOf<Date>()
+        val res = mutableListOf<Date>()
         res.add(toDate(startDate))
         res.add(toDate(endDate))
         return res
@@ -340,7 +340,7 @@ class DataRepositoryImpl(var network: HttpUis, var dao:AppDao) :
     fun xuLiTuanHoc(htmlFile : String) : MutableList<String>{
         val doc = Jsoup.parse(htmlFile)
         val noiDung = doc.select("#ctl00_ContentPlaceHolder1_ctl00_ddlTuan>option")
-        var res = mutableListOf<String>()
+        val res = mutableListOf<String>()
         for(x in noiDung )
         {
             res.add(getDigits(x.text()))
@@ -349,7 +349,7 @@ class DataRepositoryImpl(var network: HttpUis, var dao:AppDao) :
     }
 
     fun thuTuNgay(ngay : String) : String{
-        var res = when(ngay){
+        val res = when(ngay){
             "Hai" -> 2
             "Ba" -> 3
             "Tư" -> 4

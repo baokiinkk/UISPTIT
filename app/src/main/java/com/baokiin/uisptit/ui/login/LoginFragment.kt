@@ -39,7 +39,6 @@ class LoginFragment : Fragment(){
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        Log.d("quocbaokiin","login")
         val bd: LoginFragmentBinding =
             DataBindingUtil.inflate(inflater, R.layout.login_fragment, container, false)
         bd.lifecycleOwner = this
