@@ -17,10 +17,9 @@
         </shape>
     </item>
     <item android:drawable="@drawable/logo"
-        android:top="50dp"
-        android:bottom="50dp"
-        android:start="50dp"
-        android:end="50dp"
+        android:width="100dp"
+        android:height="100dp"
+        android:gravity="center"
         >
 
     </item>

@@ -56,7 +56,7 @@ class InfoFragment : Fragment(){
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        //requireActivity().requestedOrientation  = ActivityInfo.SCREEN_ORIENTATION_SENSOR_PORTRAIT
+        requireActivity().requestedOrientation  = ActivityInfo.SCREEN_ORIENTATION_SENSOR_PORTRAIT
         val bd: FragmentInfoBinding =
             DataBindingUtil.inflate(inflater, R.layout.fragment_info, container, false)
         bd.lifecycleOwner = this
@@ -139,21 +139,23 @@ class InfoFragment : Fragment(){
                 xAxis.position = XAxis.XAxisPosition.BOTTOM
                 val yAxisL = bd.linechart.axisLeft
                 yAxisL.setDrawGridLines(false)
+                yAxisL.textColor = Color.rgb(175, 175, 175)
                 yAxisL.mAxisMaximum = 4.0f
                 yAxisL.granularity = 0.1f
                 val dataset = LineDataSet(entries, "Điểm Tích Lũy")
                 dataset.setDrawFilled(true)
-                dataset.fillColor = Color.rgb(99, 80, 200)
+                ////dataset.fillColor = Color.rgb(99, 80, 200)
+                dataset.mode = LineDataSet.Mode.CUBIC_BEZIER
                 dataset.lineWidth = 3f
                 dataset.valueFormatter = DataValueFormatter()
                 dataset.valueTextSize = 8f
                 dataset.circleRadius = 6f
                 dataset.circleHoleRadius = 3f
-                dataset.cubicIntensity = 10f
-                dataset.valueTextColor = Color.BLACK
-                dataset.color = Color.rgb(74, 146, 246)
-                dataset.setCircleColor(Color.rgb(74, 146, 246))
-
+                dataset.cubicIntensity = 0.2f
+                dataset.valueTextColor = Color.rgb(0, 215, 193)
+                dataset.color = Color.rgb(0, 215, 193)
+                dataset.setCircleColor(Color.argb(40, 0, 235, 213))
+                dataset.circleHoleColor = Color.rgb(0, 215, 193)
                 dataset.fillFormatter =
                     IFillFormatter { _, _ -> bd.linechart.axisLeft.axisMinimum }
 
@@ -177,7 +179,6 @@ class InfoFragment : Fragment(){
 
                 val legend = bd.linechart.legend
                 legend.isEnabled = false
-
 
                 bd.linechart.axisRight.isEnabled = false
                 bd.linechart.data = lineData

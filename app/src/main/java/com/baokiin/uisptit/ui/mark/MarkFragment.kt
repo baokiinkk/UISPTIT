@@ -30,8 +30,9 @@ class MarkFragment :Fragment() {
             DataBindingUtil.inflate(inflater, R.layout.fragment_mark,container,false)
         bd.lifecycleOwner=this
         bd.viewmodel=viewModel
-//        requireActivity().requestedOrientation  = ActivityInfo.SCREEN_ORIENTATION_SENSOR_LANDSCAPE
+//
         viewModel.getData("")
+        requireActivity().requestedOrientation  = ActivityInfo.SCREEN_ORIENTATION_SENSOR_LANDSCAPE
         viewModel.getDataSemester("")
         val adapter = Adapter()
         bd.viewpager.adapter = adapter

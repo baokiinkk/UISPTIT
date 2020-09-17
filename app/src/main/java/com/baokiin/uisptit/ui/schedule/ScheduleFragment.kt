@@ -35,6 +35,7 @@ class ScheduleFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        requireActivity().requestedOrientation  = ActivityInfo.SCREEN_ORIENTATION_SENSOR_LANDSCAPE
         val bd: FragmentScheduleBinding =
             DataBindingUtil.inflate(inflater, R.layout.fragment_schedule,container,false)
         bd.lifecycleOwner=this
@@ -52,7 +53,7 @@ class ScheduleFragment : Fragment() {
                     list = mutableListOf()
                     var tmp: MutableList<TimeTable> = mutableListOf()
                     var str = it[0].tuan
-                    var dataSpinner:MutableList<String> = mutableListOf()
+                     dataSpinner = mutableListOf()
                     tmp.add(it[0])
                     var j = 0
                     for (i in 1 until it.size) {
