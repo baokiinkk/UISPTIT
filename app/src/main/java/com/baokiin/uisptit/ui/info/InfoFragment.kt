@@ -304,7 +304,7 @@ class InfoFragment : Fragment(){
         else if(hour < 19)
             "Chúc buổi chiều mát mẻ!"
         else
-            "Chúc buổi tối như con cac!"
+            "Chúc buổi tối ấm áp và ngủ ngon!"
     }
 
     private fun getTKBNgay(day : Date, tkb : MutableList<TimeTable>) : MutableList<MutableList<String>>{
