@@ -32,7 +32,7 @@ class MarkFragment :Fragment() {
         bd.viewmodel=viewModel
 //
         viewModel.getData("")
-        requireActivity().requestedOrientation  = ActivityInfo.SCREEN_ORIENTATION_SENSOR_LANDSCAPE
+      //  requireActivity().requestedOrientation  = ActivityInfo.SCREEN_ORIENTATION_SENSOR_LANDSCAPE
         viewModel.getDataSemester("")
         val adapter = Adapter()
         bd.viewpager.adapter = adapter

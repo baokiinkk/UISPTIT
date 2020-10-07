@@ -18,7 +18,7 @@ import java.util.concurrent.TimeUnit
 
 class HttpUis( var context: Context)  {
      fun login(name:String,pass:String) : MutableMap<String,String>  {
-         Log.d("tncnhan", "start request")
+         //Log.d("tncnhan", "start request")
          val list :MutableMap<String,String> = mutableMapOf()
          val cookieJars: ClearableCookieJar =
             PersistentCookieJar(SetCookieCache(), SharedPrefsCookiePersistor(context))
@@ -52,7 +52,7 @@ class HttpUis( var context: Context)  {
                  .build()
              client.newCall(request).execute()
          }
-
+         Log.d("tncnhan", "ok")
          //==================================================
 
          //LOGIN =============
