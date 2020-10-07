@@ -8,6 +8,7 @@
     <dimen name="paddingMark">15dp</dimen><!-- -->
     <dimen name="cardTitle">40dp</dimen><!-- khoảng cách từ lề đến tiêu đề cardview-->
     <dimen name="cardRange">30dp</dimen><!-- khoảng cách giữa các card-->
+    <dimen name="paddingThongTinSinhVien">7dp</dimen><!-- khoảng cách giữa các hàng trong thông tin sinh viên-->
 
 
 

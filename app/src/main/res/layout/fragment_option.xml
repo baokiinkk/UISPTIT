@@ -15,43 +15,44 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/colorRow"
+        android:background="@color/infoBackground"
         tools:context=".ui.option.OptionFragment">
 
         <!-- TODO: Update blank fragment layout -->
 
-        <Button
+        <TextView
             android:id="@+id/button"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="500dp"
-            android:layout_marginEnd="500dp"
-            android:layout_marginBottom="50dp"
             android:text="@string/dang_xuat"
-            android:textColor="#000"
+            android:gravity="center"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:textColor="#4000D7C1"
+            android:background="@drawable/logout_button"
+            android:textStyle="bold"
+            app:elevation="0dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.484"
             app:layout_constraintStart_toStartOf="parent" />
 
         <TableLayout
             android:id="@+id/constraintLayout2"
             android:layout_width="0dp"
-            android:layout_height="0dp"
+            android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="24dp"
             android:layout_marginEnd="10dp"
-            android:layout_marginBottom="50dp"
-            android:background="@drawable/white_backround"
+            android:background="@drawable/day_background"
             android:padding="20dp"
-            app:layout_constraintBottom_toTopOf="@+id/button"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView20">
 
             <TableRow
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_weight="1">
 
                 <TextView
@@ -59,16 +60,22 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:gravity="center_vertical"
+                    android:paddingTop="@dimen/paddingThongTinSinhVien"
+                    android:paddingBottom="@dimen/paddingThongTinSinhVien"
                     android:text="Mã sinh viên"
+                    android:textColor="@color/colorThongTinSinhVien"
                     tools:ignore="HardcodedText" />
 
                 <TextView
                     android:id="@+id/txtMaSV"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="1"
+                    android:layout_weight="2"
                     android:gravity="center_vertical"
-                    android:text="@{viewmodel.id}" />
+                    android:paddingTop="@dimen/paddingThongTinSinhVien"
+                    android:paddingBottom="@dimen/paddingThongTinSinhVien"
+                    android:text="@{viewmodel.id}"
+                    android:textColor="@color/colorThongTinSinhVien" />
             </TableRow>
 
             <TableRow
@@ -81,16 +88,22 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:gravity="center_vertical"
+                    android:paddingTop="@dimen/paddingThongTinSinhVien"
+                    android:paddingBottom="@dimen/paddingThongTinSinhVien"
                     android:text="Tên sinh viên"
+                    android:textColor="@color/colorThongTinSinhVien"
                     tools:ignore="HardcodedText" />
 
                 <TextView
                     android:id="@+id/txtTenSV"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="1"
+                    android:layout_weight="2"
                     android:gravity="center_vertical"
-                    android:text="@{viewmodel.ten}" />
+                    android:paddingTop="@dimen/paddingThongTinSinhVien"
+                    android:paddingBottom="@dimen/paddingThongTinSinhVien"
+                    android:text="@{viewmodel.ten}"
+                    android:textColor="@color/colorThongTinSinhVien" />
             </TableRow>
 
             <TableRow
@@ -103,16 +116,22 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:gravity="center_vertical"
+                    android:paddingTop="@dimen/paddingThongTinSinhVien"
+                    android:paddingBottom="@dimen/paddingThongTinSinhVien"
                     android:text="Phái"
+                    android:textColor="@color/colorThongTinSinhVien"
                     tools:ignore="HardcodedText" />
 
                 <TextView
                     android:id="@+id/txtPhai"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="1"
+                    android:layout_weight="2"
                     android:gravity="center_vertical"
-                    android:text="@{viewmodel.phai}" />
+                    android:paddingTop="@dimen/paddingThongTinSinhVien"
+                    android:paddingBottom="@dimen/paddingThongTinSinhVien"
+                    android:text="@{viewmodel.phai}"
+                    android:textColor="@color/colorThongTinSinhVien" />
             </TableRow>
 
             <TableRow
@@ -125,16 +144,22 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:gravity="center_vertical"
+                    android:paddingTop="@dimen/paddingThongTinSinhVien"
+                    android:paddingBottom="@dimen/paddingThongTinSinhVien"
                     android:text="Nơi sinh"
+                    android:textColor="@color/colorThongTinSinhVien"
                     tools:ignore="HardcodedText" />
 
                 <TextView
                     android:id="@+id/txtNoiSinh"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="1"
+                    android:layout_weight="2"
                     android:gravity="center_vertical"
-                    android:text="@{viewmodel.noiSinh}" />
+                    android:paddingTop="@dimen/paddingThongTinSinhVien"
+                    android:paddingBottom="@dimen/paddingThongTinSinhVien"
+                    android:text="@{viewmodel.noiSinh}"
+                    android:textColor="@color/colorThongTinSinhVien" />
             </TableRow>
 
             <TableRow
@@ -147,16 +172,22 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:gravity="center_vertical"
+                    android:paddingTop="@dimen/paddingThongTinSinhVien"
+                    android:paddingBottom="@dimen/paddingThongTinSinhVien"
                     android:text="Lớp"
+                    android:textColor="@color/colorThongTinSinhVien"
                     tools:ignore="HardcodedText" />
 
                 <TextView
                     android:id="@+id/txtlop"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="1"
+                    android:layout_weight="2"
                     android:gravity="center_vertical"
-                    android:text="@{viewmodel.lop}" />
+                    android:paddingTop="@dimen/paddingThongTinSinhVien"
+                    android:paddingBottom="@dimen/paddingThongTinSinhVien"
+                    android:text="@{viewmodel.lop}"
+                    android:textColor="@color/colorThongTinSinhVien" />
             </TableRow>
 
             <TableRow
@@ -169,16 +200,22 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:gravity="center_vertical"
+                    android:paddingTop="@dimen/paddingThongTinSinhVien"
+                    android:paddingBottom="@dimen/paddingThongTinSinhVien"
                     android:text="Ngành"
+                    android:textColor="@color/colorThongTinSinhVien"
                     tools:ignore="HardcodedText" />
 
                 <TextView
                     android:id="@+id/txtNganh"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="1"
+                    android:layout_weight="2"
                     android:gravity="center_vertical"
-                    android:text="@{viewmodel.nganh}" />
+                    android:paddingTop="@dimen/paddingThongTinSinhVien"
+                    android:paddingBottom="@dimen/paddingThongTinSinhVien"
+                    android:text="@{viewmodel.nganh}"
+                    android:textColor="@color/colorThongTinSinhVien" />
             </TableRow>
 
             <TableRow
@@ -191,16 +228,22 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:gravity="center_vertical"
+                    android:paddingTop="@dimen/paddingThongTinSinhVien"
+                    android:paddingBottom="@dimen/paddingThongTinSinhVien"
                     android:text="Khoa"
+                    android:textColor="@color/colorThongTinSinhVien"
                     tools:ignore="HardcodedText" />
 
                 <TextView
                     android:id="@+id/txtKhoa"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="1"
+                    android:layout_weight="2"
                     android:gravity="center_vertical"
-                    android:text="@{viewmodel.khoa}" />
+                    android:paddingTop="@dimen/paddingThongTinSinhVien"
+                    android:paddingBottom="@dimen/paddingThongTinSinhVien"
+                    android:text="@{viewmodel.khoa}"
+                    android:textColor="@color/colorThongTinSinhVien" />
             </TableRow>
 
             <TableRow
@@ -213,16 +256,22 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:gravity="center_vertical"
+                    android:paddingTop="@dimen/paddingThongTinSinhVien"
+                    android:paddingBottom="@dimen/paddingThongTinSinhVien"
                     android:text="Hệ đào tạo"
+                    android:textColor="@color/colorThongTinSinhVien"
                     tools:ignore="HardcodedText" />
 
                 <TextView
                     android:id="@+id/txtHedt"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="1"
+                    android:layout_weight="2"
                     android:gravity="center_vertical"
-                    android:text="@{viewmodel.heDaoTao}" />
+                    android:paddingTop="@dimen/paddingThongTinSinhVien"
+                    android:paddingBottom="@dimen/paddingThongTinSinhVien"
+                    android:text="@{viewmodel.heDaoTao}"
+                    android:textColor="@color/colorThongTinSinhVien" />
             </TableRow>
 
             <TableRow
@@ -235,16 +284,22 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:gravity="center_vertical"
+                    android:paddingTop="@dimen/paddingThongTinSinhVien"
+                    android:paddingBottom="@dimen/paddingThongTinSinhVien"
                     android:text="Khóa học"
+                    android:textColor="@color/colorThongTinSinhVien"
                     tools:ignore="HardcodedText" />
 
                 <TextView
                     android:id="@+id/txtKhoahoc"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="1"
+                    android:layout_weight="2"
                     android:gravity="center_vertical"
-                    android:text="@{viewmodel.khoaHoc}" />
+                    android:paddingTop="@dimen/paddingThongTinSinhVien"
+                    android:paddingBottom="@dimen/paddingThongTinSinhVien"
+                    android:text="@{viewmodel.khoaHoc}"
+                    android:textColor="@color/colorThongTinSinhVien" />
             </TableRow>
 
         </TableLayout>
@@ -255,8 +310,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:text="Thông tin sinh viên"
-            android:textColor="@color/colorAccent"
-            android:textSize="@dimen/sizeTextTitle"
+            android:textColor="#B200B4FF"
+            android:textSize="@dimen/sizeTextTitleHint"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

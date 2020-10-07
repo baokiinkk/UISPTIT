@@ -26,7 +26,7 @@
     <color name="textTomorrow">@color/colorAccent2</color>
     <color name="textToday">@color/colorAccent0</color>
 <!--    <color name="hockiTitle">#006CFD</color>-->
-    <color name="hockiTitle">#252C3F</color>
+    <color name="hockiTitle">@color/colorAccent2</color>
     <color name="textLichThi">@color/colorAccent0</color>
     <color name="diemCacMon">#FFFFFF</color>
     <color name="diemCacMonTitle">@color/colorAccent2</color>
@@ -36,5 +36,6 @@
     <color name="colorTitle2">#10076d</color>
     <color name="cardBackground">#293346</color>
     <color name="lineColor">#00D7C1</color>
+    <color name="colorThongTinSinhVien">#CDFFFFFF</color>
 
 </resources>

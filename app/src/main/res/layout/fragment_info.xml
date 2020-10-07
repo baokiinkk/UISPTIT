@@ -34,7 +34,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="200dp"
                     android:background="@drawable/title_shape"
-                    android:elevation="5dp"
+                    android:elevation="@dimen/shadow"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent">
@@ -54,7 +54,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="10dp"
                             android:layout_marginEnd="20dp"
-                            android:background="@drawable/option"
+                            android:background="@drawable/icon_account"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
 
@@ -62,7 +62,7 @@
                             android:id="@+id/txtTitle"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="40dp"
+                            android:layout_marginStart="20dp"
                             android:layout_marginTop="10dp"
                             android:fontFamily="sans-serif-light"
                             android:text="@string/hello"
@@ -100,7 +100,7 @@
                             android:id="@+id/txtBuoi"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="40dp"
+                            android:layout_marginStart="20dp"
                             android:layout_marginBottom="10dp"
                             android:fontFamily="sans-serif-light"
                             android:paddingStart="2dp"
@@ -387,6 +387,7 @@
                                     android:layout_height="match_parent"
                                     android:layout_margin="10dp"
                                     android:layout_weight="1"
+                                    android:elevation="@dimen/shadow"
                                     android:background="@drawable/day_background">
 
                                     <TextView
@@ -440,6 +441,7 @@
                                     android:layout_height="match_parent"
                                     android:layout_margin="10dp"
                                     android:layout_weight="1"
+                                    android:elevation="@dimen/shadow"
                                     android:background="@drawable/tomorrow_background">
 
                                     <TextView
@@ -495,6 +497,7 @@
                                     android:layout_height="match_parent"
                                     android:layout_margin="10dp"
                                     android:layout_weight="1"
+                                    android:elevation="@dimen/shadow"
                                     android:background="@drawable/day_background">
 
                                     <TextView
@@ -544,6 +547,7 @@
                                     android:layout_height="match_parent"
                                     android:layout_margin="10dp"
                                     android:layout_weight="1"
+                                    android:elevation="@dimen/shadow"
                                     android:background="@drawable/tomorrow_background">
 
                                     <TextView
@@ -726,7 +730,7 @@
                                 android:id="@+id/contrainMark"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                                android:background="@drawable/day_background">
+                                >
 
                                 <TableLayout
                                     android:id="@+id/tenMon"

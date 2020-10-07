@@ -38,17 +38,17 @@ class ExamScheduleFragment :Fragment(){
                 adapter.submitList(it)
             }
         })
-
-        bd.btnLich.setOnClickListener {
-            val intent = Intent(Intent.ACTION_EDIT)
-            intent.type = "vnd.android.cursor.item/event"
-            val listExam = viewModel.listExamTime.value
-            if (listExam != null) {
-                for(i in listExam) {
-                    addCalendar(i)
-                }
-            }
-        }
+            //nút lịch
+//        bd.btnLich.setOnClickListener {
+//            val intent = Intent(Intent.ACTION_EDIT)
+//            intent.type = "vnd.android.cursor.item/event"
+//            val listExam = viewModel.listExamTime.value
+//            if (listExam != null) {
+//                for(i in listExam) {
+//                    addCalendar(i)
+//                }
+//            }
+//        }
         return bd.root
     }
     private fun addCalendar(obj : ExamTimetable){

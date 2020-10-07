@@ -12,6 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".ui.mark.MarkFragment"
+        android:background="@color/infoBackground"
         >
 
         <TableLayout
@@ -38,7 +39,7 @@
                     android:layout_weight="1"
                     android:gravity="center"
                     android:text="@string/ma_mon"
-                    android:textColor="#000"
+                    android:textColor="#FFF"
                     android:textStyle="bold" />
 
                 <TextView
@@ -49,7 +50,7 @@
                     android:layout_weight="2"
                     android:gravity="center"
                     android:text="@string/ten_mon"
-                    android:textColor="#000"
+                    android:textColor="#FFF"
                     android:textStyle="bold" />
 
                 <TextView
@@ -60,7 +61,7 @@
                     android:layout_weight="1"
                     android:gravity="center"
                     android:text="@string/ghep_thi"
-                    android:textColor="#000"
+                    android:textColor="#FFF"
                     android:textStyle="bold" />
 
                 <TextView
@@ -71,7 +72,7 @@
                     android:layout_weight="1"
                     android:gravity="center"
                     android:text="@string/t_thi"
-                    android:textColor="#000"
+                    android:textColor="#FFF"
                     android:textStyle="bold" />
 
                 <TextView
@@ -82,7 +83,7 @@
                     android:layout_weight="1"
                     android:gravity="center"
                     android:text="@string/s_l_ng"
-                    android:textColor="#000"
+                    android:textColor="#FFF"
                     android:textStyle="bold" />
 
                 <TextView
@@ -93,7 +94,7 @@
                     android:layout_weight="1"
                     android:gravity="center"
                     android:text="@string/ng_y_thi"
-                    android:textColor="#000"
+                    android:textColor="#FFF"
                     android:textStyle="bold" />
 
                 <TextView
@@ -104,7 +105,7 @@
                     android:layout_weight="1"
                     android:gravity="center"
                     android:text="@string/b_t_u"
-                    android:textColor="#000"
+                    android:textColor="#FFF"
                     android:textStyle="bold" />
 
                 <TextView
@@ -115,7 +116,7 @@
                     android:layout_weight="1"
                     android:gravity="center"
                     android:text="@string/s_ti_t"
-                    android:textColor="#000"
+                    android:textColor="#FFF"
                     android:textStyle="bold" />
 
                 <TextView
@@ -126,7 +127,7 @@
                     android:layout_weight="1"
                     android:gravity="center"
                     android:text="@string/ph_ng"
-                    android:textColor="#000"
+                    android:textColor="#FFF"
                     android:textStyle="bold" />
 
                 <TextView
@@ -137,7 +138,7 @@
                     android:layout_weight="1"
                     android:gravity="center"
                     android:text="@string/ghi_ch"
-                    android:textColor="#000"
+                    android:textColor="#FFF"
                     android:textStyle="bold" />
 
             </TableRow>
@@ -158,17 +159,17 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tenMon" />
 
-        <Button
-            android:id="@+id/btnLich"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:text="Lịch"
-            android:textColor="#000"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            tools:ignore="HardcodedText" />
+<!--        <Button-->
+<!--            android:id="@+id/btnLich"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginBottom="10dp"-->
+<!--            android:text="Lịch"-->
+<!--            android:textColor="#000"-->
+<!--            app:layout_constraintBottom_toBottomOf="parent"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            tools:ignore="HardcodedText" />-->
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
