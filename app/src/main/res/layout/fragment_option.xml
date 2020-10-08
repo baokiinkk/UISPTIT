@@ -4,9 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="viewmodel"
             type="com.baokiin.uisptit.data.db.model.InfoUser" />
+
         <variable
             name="data"
             type="com.baokiin.uisptit.ui.option.OptionViewModel" />
@@ -24,12 +26,12 @@
             android:id="@+id/button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/dang_xuat"
+            android:background="@drawable/logout_button"
             android:gravity="center"
             android:paddingTop="10dp"
             android:paddingBottom="10dp"
+            android:text="@string/dang_xuat"
             android:textColor="#4000D7C1"
-            android:background="@drawable/logout_button"
             android:textStyle="bold"
             app:elevation="0dp"
             app:layout_constraintBottom_toBottomOf="parent"

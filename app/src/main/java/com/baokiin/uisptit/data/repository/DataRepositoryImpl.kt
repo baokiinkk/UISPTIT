@@ -1,18 +1,13 @@
 package com.baokiin.uis.data.repository.login
 
 import android.annotation.SuppressLint
-import android.util.Log
 import com.baokiin.uis.data.api.HttpUis
 import com.baokiin.uisptit.data.db.AppDao
 import com.baokiin.uisptit.data.db.model.*
 import com.baokiin.uisptit.data.repository.DataRepository
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
 import org.jsoup.Jsoup
 import java.text.SimpleDateFormat
 import java.util.*
-import kotlin.collections.MutableMap.MutableEntry
 
 
 class DataRepositoryImpl(var network: HttpUis, var dao:AppDao) :
@@ -133,8 +128,8 @@ class DataRepositoryImpl(var network: HttpUis, var dao:AppDao) :
     }
 
     override suspend fun getTimeTable(data: (MutableList<TimeTable>) -> Unit) {
-            val tmp = dao.getTimeTable();
-            data(tmp)
+        val tmp = dao.getTimeTable()
+        data(tmp)
     }
 
     @SuppressLint("SimpleDateFormat")

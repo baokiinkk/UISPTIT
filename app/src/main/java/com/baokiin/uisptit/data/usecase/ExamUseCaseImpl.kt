@@ -6,7 +6,7 @@ import com.baokiin.uisptit.data.repository.DataRepository
 
 class ExamUseCaseImpl(override val repo: DataRepository) :ExamUseCase
 {
-    suspend override fun getExam(getdata: (MutableList<ExamTimetable>) -> Unit) {
+    override suspend fun getExam(getdata: (MutableList<ExamTimetable>) -> Unit) {
         repo.getExam {
             getdata(it)
         }

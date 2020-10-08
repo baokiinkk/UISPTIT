@@ -16,7 +16,5 @@ interface DataRepository {
     suspend fun getTimeTable(data:(MutableList<TimeTable>)->Unit)
     suspend fun addLogin(name:String,pass:String)
     suspend fun deleteLogin()
-    class LoginException: Exception(){
-
-    }
+    class LoginException : Exception()
 }

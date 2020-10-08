@@ -2,8 +2,6 @@ package com.baokiin.uis.data.api
 
 import android.content.Context
 import android.util.Log
-import android.widget.Toast
-import com.baokiin.uisptit.data.db.model.LoginInfor
 import com.franmontiel.persistentcookiejar.ClearableCookieJar
 import com.franmontiel.persistentcookiejar.PersistentCookieJar
 import com.franmontiel.persistentcookiejar.cache.SetCookieCache
@@ -11,7 +9,6 @@ import com.franmontiel.persistentcookiejar.persistence.SharedPrefsCookiePersisto
 import okhttp3.FormBody
 import okhttp3.OkHttpClient
 import okhttp3.Request
-import okhttp3.RequestBody
 import org.jsoup.Jsoup
 import java.util.concurrent.TimeUnit
 
@@ -65,23 +62,31 @@ class HttpUis( var context: Context)  {
             .build()
 
          request = Request.Builder()
-            .url("http://uis.ptithcm.edu.vn/default.aspx")
-            .post(formBody)
-            .build()
+             .url("http://uis.ptithcm.edu.vn/default.aspx")
+             .post(formBody)
+             .build()
 
          response = client.newCall(request).execute()
-         if(response.priorResponse() == null) return mutableMapOf()
+         if (response.priorResponse() == null) return mutableMapOf()
 
+
+
+         request = Request.Builder()
+             .url("http://123.30.155.178:85/api/Schedule")
+             .get()
+             .build()
+         response = client.newCall(request).execute()
+         Log.d("quocbaokiin", response.body().string())
 
          // DIEM ==============
          request = Request.Builder()
-            .url("http://uis.ptithcm.edu.vn/default.aspx?page=xemdiemthi")
-            .get()
-            .build()
+             .url("http://uis.ptithcm.edu.vn/default.aspx?page=xemdiemthi")
+             .get()
+             .build()
          responseHtml = Jsoup.parse(client.newCall(request).execute().body().string())
          var viewState = responseHtml.select("#__VIEWSTATE").attr("value")
          formBody = FormBody.Builder()
-             .add("__EVENTTARGET" , "ctl00\$ContentPlaceHolder1\$ctl00\$lnkChangeview2")
+             .add("__EVENTTARGET", "ctl00\$ContentPlaceHolder1\$ctl00\$lnkChangeview2")
              .add("__EVENTARGUMENT" , "")
              .add("__VIEWSTATE", viewState)
              .add("__VIEWSTATEGENERATOR", "CA0B0334")

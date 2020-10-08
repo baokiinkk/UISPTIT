@@ -6,7 +6,7 @@ import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 
 class OptionUsecaseImpl(override val repo: DataRepository):OptionUseCase{
-    suspend override fun getdata(getdata: (InfoUser) -> Unit) {
+    override suspend fun getdata(getdata: (InfoUser) -> Unit) {
         GlobalScope.launch {
             repo.getInforUser {
                 getdata(it)
@@ -14,7 +14,7 @@ class OptionUsecaseImpl(override val repo: DataRepository):OptionUseCase{
         }
     }
 
-    suspend override fun deleteLogin() {
+    override suspend fun deleteLogin() {
         GlobalScope.launch {
             repo.deleteLogin()
         }

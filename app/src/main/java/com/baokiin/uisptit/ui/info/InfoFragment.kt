@@ -11,7 +11,6 @@ import android.graphics.drawable.Drawable
 import android.net.ConnectivityManager
 import android.net.NetworkInfo
 import android.os.Bundle
-import android.util.Log
 import android.view.KeyEvent
 import android.view.LayoutInflater
 import android.view.View
@@ -307,6 +306,7 @@ class InfoFragment : Fragment(){
             "Chúc buổi tối ấm áp và ngủ ngon!"
     }
 
+    // lấy 4 ô
     private fun getTKBNgay(day : Date, tkb : MutableList<TimeTable>) : MutableList<MutableList<String>>{
         val res = mutableListOf<MutableList<String>>()
         var row = mutableListOf<String>()

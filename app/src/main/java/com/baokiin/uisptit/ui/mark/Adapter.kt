@@ -8,14 +8,13 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.baokiin.uisptit.data.db.model.ListMark
 import com.baokiin.uisptit.databinding.ItemMarkBinding
-import com.baokiin.uisptit.databinding.ItemMarkInforBinding
 import com.baokiin.uisptit.ui.info.AdapterMark
 import kotlinx.android.synthetic.main.item_mark.view.*
 
 
-class Adapter() :ListAdapter<ListMark,Adapter.ViewHodel>(MyDIffMark()) {
+class Adapter : ListAdapter<ListMark, Adapter.ViewHodel>(MyDIffMark()) {
 
-    class ViewHodel(val binding:ItemMarkBinding) : RecyclerView.ViewHolder(binding.root) {
+    class ViewHodel(val binding: ItemMarkBinding) : RecyclerView.ViewHolder(binding.root) {
         companion object {
             fun from(parent: ViewGroup): ViewHodel {
                 val binding =
@@ -23,10 +22,11 @@ class Adapter() :ListAdapter<ListMark,Adapter.ViewHodel>(MyDIffMark()) {
                 return ViewHodel(binding)
             }
         }
-        fun bind(item:ListMark)
+
+        fun bind(item: ListMark)
         {
             binding.viewmodel=item
-            val adapter = AdapterMark(){}
+            val adapter = AdapterMark {}
             itemView.recycleViewDiem.adapter = adapter
             itemView.recycleViewDiem.layoutManager = LinearLayoutManager(itemView.context)
             adapter.submitList(item.list)

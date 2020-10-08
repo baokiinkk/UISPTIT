@@ -2,7 +2,6 @@ package com.baokiin.uisptit.ui.schedule
 import android.annotation.SuppressLint
 import android.content.pm.ActivityInfo
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -21,7 +20,6 @@ import kotlinx.android.synthetic.main.fragment_schedule.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.text.SimpleDateFormat
 import java.util.*
-
 
 
 @Suppress("NULLABILITY_MISMATCH_BASED_ON_JAVA_ANNOTATIONS")
@@ -72,7 +70,7 @@ class ScheduleFragment : Fragment() {
                             tmp.add(it[i])
                             str = it[i].tuan
                         }
-                        if(i == it.size-1){
+                        if (i == it.size - 1) {
                             list.add(ListTableTime(decodeSemester(str), tmp))
                             dataSpinner.add(decodeSemester(str))
                         }
@@ -81,10 +79,14 @@ class ScheduleFragment : Fragment() {
                     adapter.submitList(list)
 
 
-                    val spinnerAdapter: ArrayAdapter<String> = ArrayAdapter(requireContext(),android.R.layout.simple_spinner_dropdown_item,dataSpinner)
-                    bd.spinner?.adapter = spinnerAdapter
-                    bd.spinner?.setSelection(2)
-                    bd.spinner?.setSelection(getCurrentWeek(dataSpinner))
+                    val spinnerAdapter: ArrayAdapter<String> = ArrayAdapter(
+                        requireContext(),
+                        android.R.layout.simple_spinner_dropdown_item,
+                        dataSpinner
+                    )
+                    bd.spinner.adapter = spinnerAdapter
+                    bd.spinner.setSelection(2)
+                    bd.spinner.setSelection(getCurrentWeek(dataSpinner))
 
                 }
             }
@@ -116,7 +118,7 @@ class ScheduleFragment : Fragment() {
             }
         }
         home.setOnClickListener {
-            viewpager.setCurrentItem(getCurrentWeek(dataSpinner))
+            viewpager.currentItem = getCurrentWeek(dataSpinner)
         }
     }
     private fun decodeSemester(str : String) : String{
