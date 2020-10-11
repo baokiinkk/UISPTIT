@@ -132,7 +132,7 @@
             android:layout_marginEnd="50dp"
             android:layout_marginBottom="148dp"
             android:contentDescription="@string/logoDescription"
-            android:src="@drawable/logo"
+            app:srcCompat="@drawable/ic_logo_main"
             app:layout_constraintBottom_toTopOf="@+id/username_et"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"

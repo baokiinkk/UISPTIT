@@ -89,7 +89,7 @@ class MainActivity : AppCompatActivity(){
                         IMMEDIATE,
                         this,
                         MY_REQUEST_CODE
-                    );
+                    )
                 }
             }
     }

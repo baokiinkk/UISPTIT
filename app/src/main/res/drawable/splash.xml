@@ -16,7 +16,7 @@
             <corners android:radius="10dp"/>
         </shape>
     </item>
-    <item android:drawable="@drawable/logo"
+    <item android:drawable="@drawable/ic_logo_main"
         android:width="100dp"
         android:height="100dp"
         android:gravity="center"

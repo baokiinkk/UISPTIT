@@ -85,17 +85,17 @@
             android:layout_marginBottom="10dp"
             android:background="@drawable/home"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/btnXoay" />
-
-        <TextView
-            android:id="@+id/btnXoay"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_marginEnd="50dp"
-            android:layout_marginBottom="10dp"
-            android:background="@drawable/zoom"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
+
+<!--        <TextView-->
+<!--            android:id="@+id/btnXoay"-->
+<!--            android:layout_width="30dp"-->
+<!--            android:layout_height="30dp"-->
+<!--            android:layout_marginEnd="50dp"-->
+<!--            android:layout_marginBottom="10dp"-->
+<!--            android:background="@drawable/zoom"-->
+<!--            app:layout_constraintBottom_toBottomOf="parent"-->
+<!--            app:layout_constraintEnd_toEndOf="parent" />-->
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
