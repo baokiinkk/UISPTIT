@@ -32,7 +32,7 @@
                     android:layout_weight="1"
                     android:gravity="center"
                     android:text="@{data.maMon}"
-                    android:textColor="#000"
+                    android:textColor="#FFF"
                     android:textStyle="bold" />
 
                 <TextView
@@ -43,7 +43,7 @@
                     android:layout_weight="2"
                     android:gravity="center"
                     android:text="@{data.tenMon}"
-                    android:textColor="#000"
+                    android:textColor="#FFF"
                     android:textStyle="bold" />
 
                 <TextView
@@ -54,7 +54,7 @@
                     android:layout_weight="1"
                     android:gravity="center"
                     android:text="@{data.lop}"
-                    android:textColor="#000"
+                    android:textColor="#FFF"
                     android:textStyle="bold" />
 
                 <TextView
@@ -65,7 +65,7 @@
                     android:layout_weight="1"
                     android:gravity="center"
                     android:text="@{data.toThi}"
-                    android:textColor="#000"
+                    android:textColor="#FFF"
                     android:textStyle="bold" />
 
                 <TextView
@@ -76,7 +76,7 @@
                     android:layout_weight="1"
                     android:gravity="center"
                     android:text="@{data.soLuong}"
-                    android:textColor="#000"
+                    android:textColor="#FFF"
                     android:textStyle="bold" />
 
                 <TextView
@@ -87,7 +87,7 @@
                     android:layout_weight="1"
                     android:gravity="center"
                     android:text="@{data.ngayThi.substring(0,6)+data.ngayThi.substring(8,10)}"
-                    android:textColor="#000"
+                    android:textColor="#FFF"
                     android:textStyle="bold" />
 
                 <TextView
@@ -98,7 +98,7 @@
                     android:layout_weight="1"
                     android:gravity="center"
                     android:text="@{String.valueOf(data.startTime)}"
-                    android:textColor="#000"
+                    android:textColor="#FFF"
                     android:textStyle="bold" />
 
                 <TextView
@@ -109,7 +109,7 @@
                     android:layout_weight="1"
                     android:gravity="center"
                     android:text="@{String.valueOf(data.sotiet)}"
-                    android:textColor="#000"
+                    android:textColor="#FFF"
                     android:textStyle="bold" />
 
                 <TextView
@@ -120,7 +120,7 @@
                     android:layout_weight="1"
                     android:gravity="center"
                     android:text="@{data.phong}"
-                    android:textColor="#000"
+                    android:textColor="#FFF"
                     android:textStyle="bold" />
 
                 <TextView
@@ -131,7 +131,7 @@
                     android:layout_weight="1"
                     android:gravity="center"
                     android:text="@{data.ghichu}"
-                    android:textColor="#000"
+                    android:textColor="#FFF"
                     android:textStyle="bold" />
 
             </TableRow>

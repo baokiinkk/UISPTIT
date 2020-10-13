@@ -39,7 +39,7 @@
                         android:layout_weight="1"
                         android:gravity="center"
                         android:text="@string/ma_mon"
-                        android:textColor="#FFF"
+                        android:textColor="@color/colorAccent0"
                         android:textStyle="bold" />
 
                     <TextView
@@ -50,7 +50,7 @@
                         android:layout_weight="2"
                         android:gravity="center"
                         android:text="@string/ten_mon"
-                        android:textColor="#FFF"
+                        android:textColor="@color/colorAccent0"
                         android:textStyle="bold" />
 
                     <TextView
@@ -61,7 +61,7 @@
                         android:layout_weight="1"
                         android:gravity="center"
                         android:text="@string/ghep_thi"
-                        android:textColor="#FFF"
+                        android:textColor="@color/colorAccent0"
                         android:textStyle="bold" />
 
                     <TextView
@@ -72,7 +72,7 @@
                         android:layout_weight="1"
                         android:gravity="center"
                         android:text="@string/t_thi"
-                        android:textColor="#FFF"
+                        android:textColor="@color/colorAccent0"
                         android:textStyle="bold" />
 
                     <TextView
@@ -83,7 +83,7 @@
                         android:layout_weight="1"
                         android:gravity="center"
                         android:text="@string/s_l_ng"
-                        android:textColor="#FFF"
+                        android:textColor="@color/colorAccent0"
                         android:textStyle="bold" />
 
                     <TextView
@@ -94,7 +94,7 @@
                         android:layout_weight="1"
                         android:gravity="center"
                         android:text="@string/ng_y_thi"
-                        android:textColor="#FFF"
+                        android:textColor="@color/colorAccent0"
                         android:textStyle="bold" />
 
                     <TextView
@@ -105,7 +105,7 @@
                         android:layout_weight="1"
                         android:gravity="center"
                         android:text="@string/b_t_u"
-                        android:textColor="#FFF"
+                        android:textColor="@color/colorAccent0"
                         android:textStyle="bold" />
 
                     <TextView
@@ -116,7 +116,7 @@
                         android:layout_weight="1"
                         android:gravity="center"
                         android:text="@string/s_ti_t"
-                        android:textColor="#FFF"
+                        android:textColor="@color/colorAccent0"
                         android:textStyle="bold" />
 
                     <TextView
@@ -127,7 +127,7 @@
                         android:layout_weight="1"
                         android:gravity="center"
                         android:text="@string/ph_ng"
-                        android:textColor="#FFF"
+                        android:textColor="@color/colorAccent0"
                         android:textStyle="bold" />
 
                     <TextView
@@ -138,7 +138,7 @@
                         android:layout_weight="1"
                         android:gravity="center"
                         android:text="@string/ghi_ch"
-                        android:textColor="#FFF"
+                        android:textColor="@color/colorAccent0"
                         android:textStyle="bold" />
 
                 </TableRow>
