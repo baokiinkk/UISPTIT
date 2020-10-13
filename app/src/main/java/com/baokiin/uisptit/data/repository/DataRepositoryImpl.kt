@@ -1,6 +1,7 @@
 package com.baokiin.uis.data.repository.login
 
 import android.annotation.SuppressLint
+import android.util.Log
 import com.baokiin.uis.data.api.HttpUis
 import com.baokiin.uisptit.data.db.AppDao
 import com.baokiin.uisptit.data.db.model.*
@@ -27,6 +28,7 @@ class DataRepositoryImpl(var network: HttpUis, var dao:AppDao) :
                 dao.deleteSemester()
                 val exam = xuliLichThi(list!!.get("LichThi")!!)
                 for (i in exam) {
+                    Log.d("tncnhan", i.toString())
                     dao.addExamTimeTable(
                         ExamTimetable(
                             0,
@@ -48,7 +50,7 @@ class DataRepositoryImpl(var network: HttpUis, var dao:AppDao) :
                 dao.addInforUser(InfoUser(inforUser[0],inforUser[1],inforUser[2],inforUser[3],inforUser[4],inforUser[5],
                         inforUser[6],inforUser[7],inforUser[8]))
 
-                var mark = xuLiDiem(list!!.get("Diem")!!)
+                val mark = xuLiDiem(list!!.get("Diem")!!)
                 for (i in mark)
                     dao.addMark(
                             Mark(
@@ -133,7 +135,7 @@ class DataRepositoryImpl(var network: HttpUis, var dao:AppDao) :
     }
 
     @SuppressLint("SimpleDateFormat")
-    fun toDate(str:String): java.util.Date {
+    fun toDate(str:String): Date {
         val sdf =
             SimpleDateFormat("dd/MM/yyyy")
         val d = sdf.parse(str)
@@ -150,10 +152,10 @@ class DataRepositoryImpl(var network: HttpUis, var dao:AppDao) :
         val temp = mutableListOf<MutableList<String>>()
         var row : MutableList<String> = mutableListOf()
         for(i in 0 until res.size){
-            val j = i%12
+            val j = i%14
             if (j == 0) continue
             row.add(res[i])
-            if(j == 11){
+            if(j == 13){
                 temp.add(row)
                 row = mutableListOf()
             }
