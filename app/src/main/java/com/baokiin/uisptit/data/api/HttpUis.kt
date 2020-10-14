@@ -1,7 +1,6 @@
 package com.baokiin.uis.data.api
 
 import android.content.Context
-import android.util.Log
 import com.franmontiel.persistentcookiejar.ClearableCookieJar
 import com.franmontiel.persistentcookiejar.PersistentCookieJar
 import com.franmontiel.persistentcookiejar.cache.SetCookieCache
@@ -49,7 +48,6 @@ class HttpUis( var context: Context)  {
                  .build()
              client.newCall(request).execute()
          }
-         Log.d("tncnhan", "ok")
          //==================================================
 
          //LOGIN =============
@@ -76,9 +74,9 @@ class HttpUis( var context: Context)  {
              .get()
              .build()
          response = client.newCall(request).execute()
-         Log.d("quocbaokiin", response.body().string())
 
          // DIEM ==============
+
          request = Request.Builder()
              .url("http://uis.ptithcm.edu.vn/default.aspx?page=xemdiemthi")
              .get()
@@ -87,7 +85,7 @@ class HttpUis( var context: Context)  {
          var viewState = responseHtml.select("#__VIEWSTATE").attr("value")
          formBody = FormBody.Builder()
              .add("__EVENTTARGET", "ctl00\$ContentPlaceHolder1\$ctl00\$lnkChangeview2")
-             .add("__EVENTARGUMENT" , "")
+             .add("__EVENTARGUMENT", "")
              .add("__VIEWSTATE", viewState)
              .add("__VIEWSTATEGENERATOR", "CA0B0334")
              .build()
@@ -97,6 +95,7 @@ class HttpUis( var context: Context)  {
              .build()
 
          response = client.newCall(request).execute()
+
          list["Diem"] = response.body().string()
 
 
@@ -105,8 +104,7 @@ class HttpUis( var context: Context)  {
              .url("http://uis.ptithcm.edu.vn/Default.aspx?page=xemlichthi")
              .get()
              .build()
-         if (response.body() == null)
-             Log.d("tncnhan", "null")
+         //if (response.body() == null)
          response = client.newCall(request).execute()
          list["LichThi"] = response.body().string()
 

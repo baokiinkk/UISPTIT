@@ -60,7 +60,7 @@ class InfoFragment : Fragment(){
             DataBindingUtil.inflate(inflater, R.layout.fragment_info, container, false)
         bd.lifecycleOwner = this
         bd.viewmodel = viewModel
-
+        //Log.d("tncnhan", "check login---------------------------------")
         val adapterExam = AdapterExam{
             findNavController().navigate(R.id.to_exam_scher)
         }
@@ -80,25 +80,28 @@ class InfoFragment : Fragment(){
 
         bd.recycleExam.adapter = adapterExam
         bd.recycleExam.layoutManager = LinearLayoutManager(context)
+        //Log.d("tncnhan", "get time, buoi")
         currentTime = Calendar.getInstance().time
-        bd.txtTime.text = sp.getString("updateTime","")
+        bd.txtTime.text = sp.getString("updateTime", "")
         bd.txtBuoi.text = getBuoi()
+
+        //Log.d("tncnhan", "get diem")
         viewModel.listData.observe(viewLifecycleOwner, Observer {
-            if(it != null) {
-                val tmp:MutableList<Mark> = mutableListOf()
+            if (it != null) {
+                val tmp: MutableList<Mark> = mutableListOf()
                 val str = it[it.size - 1].semester
                 tmp.add(it[it.size - 1])
-                for (i in it.size-2 downTo 0) {
+                for (i in it.size - 2 downTo 0) {
                     if (it[i].semester == str) {
                         tmp.add(it[i])
-                    }
-                    else break
+                    } else break
                 }
                 adapter.submitList(tmp)
                 fresh.isRefreshing = false
             }
         })
 
+        //Log.d("tncnhan", "get lich thi")
         viewModel.listExam.observe(viewLifecycleOwner, Observer {
             if(it != null){
                 if(it.isNotEmpty()) {
@@ -109,6 +112,7 @@ class InfoFragment : Fragment(){
 
         })
 
+        //Log.d("tncnhan", "tao do thi")
         viewModel.listSemester.observe(viewLifecycleOwner, Observer {
             if(it != null) {
                 val entries = ArrayList<Entry>()
@@ -196,29 +200,32 @@ class InfoFragment : Fragment(){
             }
         })
 
+        //Log.d("tncnhan", "refesh")
         viewModel.bool.observe(viewLifecycleOwner, Observer {
             if(it == true){
                 viewModel.getData()
                 currentTime = Calendar.getInstance().time
                 val sdf = SimpleDateFormat("HH:mm dd/MM/yy")
-                val str = "Cập nhật lúc: "+sdf.format(currentTime).toString()
-                sp.edit().putString("updateTime",str).apply()
+                val str = "Cập nhật lúc: " + sdf.format(currentTime).toString()
+                sp.edit().putString("updateTime", str).apply()
                 txtTime.text = str
                 Toast.makeText(context, "Cập nhật thành công!", Toast.LENGTH_SHORT).show()
                 viewModel.bool.postValue(false)
             }
         })
 
+
+        //Log.d("tncnhan", "get tkb 4 o")
         viewModel.dataTimeTableTime.observe(viewLifecycleOwner, Observer {
             it?.let {
                 val dateCurrent = Date()
-                var tmp = getTKBNgay(dateCurrent,it)
-                bd.txtP1.text  = tmp[0][0]
-                if(tmp[0].size > 1){
+                var tmp = getTKBNgay(dateCurrent, it)
+                bd.txtP1.text = tmp[0][0]
+                if (tmp[0].size > 1) {
                     bd.txtMon1.text = tmp[0][1]
                 }
                 bd.txtP2.text = tmp[1][0]
-                if(tmp[1].size > 1)
+                if (tmp[1].size > 1)
                     bd.txtMon2.text = tmp[1][1]
 
                 dateCurrent.time += 1000*60*60*24

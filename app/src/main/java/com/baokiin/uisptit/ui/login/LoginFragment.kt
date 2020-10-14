@@ -6,17 +6,22 @@ import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.graphics.Typeface
+import android.net.ConnectivityManager
+import android.net.NetworkInfo
 import android.net.Uri
 import android.os.Bundle
 import android.text.SpannableString
 import android.text.method.LinkMovementMethod
-import android.text.style.*
-import android.util.Log
+import android.text.style.ClickableSpan
+import android.text.style.RelativeSizeSpan
+import android.text.style.StyleSpan
+import android.text.style.UnderlineSpan
 import android.view.KeyEvent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -26,8 +31,6 @@ import com.baokiin.uisptit.databinding.LoginFragmentBinding
 import com.github.ybq.android.spinkit.sprite.Sprite
 import com.github.ybq.android.spinkit.style.*
 import kotlinx.android.synthetic.main.login_fragment.*
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 @Suppress("DEPRECATED_IDENTITY_EQUALS")
@@ -63,9 +66,17 @@ class LoginFragment : Fragment(){
         super.onViewCreated(view, savedInstanceState)
 
        login_button.setOnClickListener {
-            viewModel.check(username_et.editText?.text.toString(),password_et.editText?.text.toString())
-           spin_kit.visibility = View.VISIBLE
-           hideKeyboard()
+           if (verifyAvailableNetwork()) {
+               viewModel.check(
+                   username_et.editText?.text.toString(),
+                   password_et.editText?.text.toString()
+               )
+               spin_kit.visibility = View.VISIBLE
+               hideKeyboard()
+           } else {
+               Toast.makeText(context, "Không có kết nối mạng!!", Toast.LENGTH_SHORT).show()
+           }
+
        }
 
         val span = SpannableString("Bằng cách Đăng Nhập, bạn đồng ý với Chính sách Quyền riêng tư của chúng tôi.")
@@ -107,13 +118,23 @@ class LoginFragment : Fragment(){
         val rnds = (0 .. 4).random()
         return list[rnds]
     }
+
     private fun Fragment.hideKeyboard() {
         view?.let { activity?.hideKeyboard(it) }
     }
 
     private fun Context.hideKeyboard(view: View) {
-        val inputMethodManager = getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
+        val inputMethodManager =
+            getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
         inputMethodManager.hideSoftInputFromWindow(view.windowToken, 0)
+    }
+
+    fun verifyAvailableNetwork(): Boolean {
+        val cm: ConnectivityManager? =
+            activity?.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager?
+        val activeNetwork: NetworkInfo? = cm?.activeNetworkInfo
+        val isConnected: Boolean = activeNetwork?.isConnectedOrConnecting == true
+        return isConnected
     }
 
 }
