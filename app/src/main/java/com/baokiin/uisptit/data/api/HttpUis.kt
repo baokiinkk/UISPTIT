@@ -14,7 +14,12 @@ import java.util.concurrent.TimeUnit
 
 class HttpUis( var context: Context)  {
      fun login(name:String,pass:String) : MutableMap<String,String>  {
-         //Log.d("tncnhan", "start request")
+         //Log.d("tncnhan", "start request")\
+         //check  name
+         if (name.get(0).toLowerCase() != 'n')
+             return mutableMapOf()
+
+
          val list :MutableMap<String,String> = mutableMapOf()
          val cookieJars: ClearableCookieJar =
             PersistentCookieJar(SetCookieCache(), SharedPrefsCookiePersistor(context))
@@ -69,11 +74,11 @@ class HttpUis( var context: Context)  {
 
 
 
-         request = Request.Builder()
-             .url("http://123.30.155.178:85/api/Schedule")
-             .get()
-             .build()
-         response = client.newCall(request).execute()
+//         request = Request.Builder()
+//             .url("http://123.30.155.178:85/api/Schedule")
+//             .get()
+//             .build()
+//         response = client.newCall(request).execute()
 
          // DIEM ==============
 
