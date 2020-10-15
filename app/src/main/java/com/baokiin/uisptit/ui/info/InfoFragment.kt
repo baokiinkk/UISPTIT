@@ -163,16 +163,10 @@ class InfoFragment : Fragment(){
                     IFillFormatter { _, _ -> bd.linechart.axisLeft.axisMinimum }
 
                 // set color of filled area
+                val drawable: Drawable? =
+                    context?.let { it1 -> ContextCompat.getDrawable(it1, R.drawable.fade_graph) }
+                dataset.fillDrawable = drawable
 
-                // set color of filled area
-                if (Utils.getSDKInt() >= 18) {
-                    // drawables only supported on api level 18 and above
-                    val drawable: Drawable? =
-                        context?.let { it1 -> ContextCompat.getDrawable(it1, R.drawable.fade_graph) }
-                    dataset.fillDrawable = drawable
-                } else {
-                    dataset.fillColor = Color.rgb(99, 80, 200)
-                }
 
                 val data: ArrayList<ILineDataSet> = ArrayList()
                 data.add(dataset)
