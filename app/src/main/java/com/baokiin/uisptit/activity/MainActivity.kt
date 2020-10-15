@@ -12,6 +12,7 @@ import com.google.android.play.core.appupdate.AppUpdateManagerFactory
 import com.google.android.play.core.install.model.AppUpdateType
 import com.google.android.play.core.install.model.AppUpdateType.IMMEDIATE
 import com.google.android.play.core.install.model.UpdateAvailability
+import com.google.android.play.core.ktx.requestAppUpdateInfo
 
 
 class MainActivity : AppCompatActivity(){
@@ -28,7 +29,6 @@ class MainActivity : AppCompatActivity(){
         appUpdateManager = AppUpdateManagerFactory.create(this)
         // Returns an intent object that you use to check for an update.
         val appUpdateInfoTask = appUpdateManager.appUpdateInfo
-
         // Checks that the platform will allow the specified type of update.
                 appUpdateInfoTask.addOnSuccessListener { appUpdateInfo ->
                     if (appUpdateInfo.updateAvailability() == UpdateAvailability.UPDATE_AVAILABLE
@@ -63,7 +63,7 @@ class MainActivity : AppCompatActivity(){
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == MY_REQUEST_CODE) {
             if (resultCode != RESULT_OK) {
-                Log.d("tncnhan","Update flow failed! Result code: $resultCode")
+                //Log.d("tncnhan","Update flow failed! Result code: $resultCode")
                 // If the update is cancelled or fails,
                 // you can request to start the update again.
             }

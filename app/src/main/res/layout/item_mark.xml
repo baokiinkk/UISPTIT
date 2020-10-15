@@ -43,7 +43,7 @@
                     android:layout_weight="3"
                     android:gravity="center"
                     android:text="@string/ten_mon"
-                    android:textColor="#000"
+                    android:textColor="@color/colorAccent0"
                     android:textStyle="bold" />
 
                 <TextView
@@ -54,7 +54,7 @@
                     android:layout_weight="1"
                     android:gravity="center"
                     android:text="@string/thi"
-                    android:textColor="#000"
+                    android:textColor="@color/colorAccent0"
                     android:textStyle="bold" />
 
                 <TextView
@@ -65,7 +65,7 @@
                     android:layout_weight="1"
                     android:gravity="center"
                     android:text="@string/tong"
-                    android:textColor="#000"
+                    android:textColor="@color/colorAccent0"
                     android:textStyle="bold" />
 
                 <TextView
@@ -76,7 +76,7 @@
                     android:layout_weight="1"
                     android:gravity="center"
                     android:text="@string/ket_qua"
-                    android:textColor="#000"
+                    android:textColor="@color/colorAccent0"
                     android:textStyle="bold" />
             </TableRow>
 
