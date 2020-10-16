@@ -34,7 +34,7 @@
     <color name="cardTitle">#ECEDEF</color>
     <color name="colorTitle1">@color/colorAccent</color>
     <color name="colorTitle2">#10076d</color>
-    <color name="cardBackground">#293346</color>
+    <color name="cardBackground">#99293346</color>
     <color name="lineColor">#00D7C1</color>
     <color name="colorThongTinSinhVien">#CDFFFFFF</color>
 
