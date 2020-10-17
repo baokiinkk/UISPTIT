@@ -34,7 +34,6 @@ import com.github.mikephil.charting.data.LineDataSet
 import com.github.mikephil.charting.formatter.IFillFormatter
 import com.github.mikephil.charting.formatter.ValueFormatter
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet
-import com.github.mikephil.charting.utils.Utils
 import kotlinx.android.synthetic.main.fragment_info.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.text.DecimalFormat
@@ -196,7 +195,7 @@ class InfoFragment : Fragment(){
 
         //Log.d("tncnhan", "refesh")
         viewModel.bool.observe(viewLifecycleOwner, Observer {
-            if(it == true){
+            if (it.equals("")) {
                 viewModel.getData()
                 currentTime = Calendar.getInstance().time
                 val sdf = SimpleDateFormat("HH:mm dd/MM/yy")
@@ -204,7 +203,7 @@ class InfoFragment : Fragment(){
                 sp.edit().putString("updateTime", str).apply()
                 txtTime.text = str
                 Toast.makeText(context, "Cập nhật thành công!", Toast.LENGTH_SHORT).show()
-                viewModel.bool.postValue(false)
+                viewModel.bool.postValue(null)
             }
         })
 

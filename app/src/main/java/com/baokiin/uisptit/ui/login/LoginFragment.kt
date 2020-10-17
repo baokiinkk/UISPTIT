@@ -49,13 +49,12 @@ class LoginFragment : Fragment(){
         sp = requireActivity().getSharedPreferences("Login", Context.MODE_PRIVATE)
         bd.spin.setIndeterminateDrawable(returnSprite())
         viewModel.bool.observe(viewLifecycleOwner, Observer {
-                if(it == true){
-                    sp.edit().putBoolean("login",true).apply()
+                if (it.equals("")) {
+                    sp.edit().putBoolean("login", true).apply()
                     findNavController().navigate(R.id.login_to_infor)
-                }
-                else if(it == false){
+                } else {
                     spin_kit.visibility = View.GONE
-                    bd.errorTv.text = "Sai tài khoản hoặc mật khẩu"
+                    bd.errorTv.text = it
                 }
 
         })
@@ -129,6 +128,18 @@ class LoginFragment : Fragment(){
         inputMethodManager.hideSoftInputFromWindow(view.windowToken, 0)
     }
 
+    //    fun verifyAvailableNetwork(): Boolean {
+//        val addresses =
+//            InetAddress.getAllByName("www.google.com")
+//        for (address in addresses) {
+//            if (address.isReachable(5000)) {
+//                return true
+//            } else {
+//                return false
+//            }
+//        }
+//        return false
+//    }
     fun verifyAvailableNetwork(): Boolean {
         val cm: ConnectivityManager? =
             activity?.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager?

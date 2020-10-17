@@ -3,11 +3,12 @@ package com.baokiin.uisptit.data.usecase
 import com.baokiin.uisptit.data.repository.DataRepository
 
 class LoginUseCaseImpl(override val repo: DataRepository) :LoginUseCase {
-    override suspend fun isLogin(name: String, pass: String, islogin: suspend (Boolean) -> Unit) {
+    override suspend fun isLogin(name: String, pass: String, islogin: suspend (String) -> Unit) {
 
         repo.isLogin(name, pass) {
-            if (it)
+            if (it.equals(""))
                 repo.addLogin(name, pass)
+
             islogin(it)
         }
     }

@@ -11,9 +11,9 @@ import kotlinx.coroutines.launch
 
 class InfoViewModel(private val repo: DataRepository) : ViewModel() {
     val listData:MutableLiveData<MutableList<Mark>?> = MutableLiveData(null)
-    val title:MutableLiveData<String?> = MutableLiveData(null)
-    val bool:MutableLiveData<Boolean?> = MutableLiveData(null)
-    val login:MutableLiveData<LoginInfor?> = MutableLiveData(null)
+    val title: MutableLiveData<String?> = MutableLiveData(null)
+    val bool: MutableLiveData<String?> = MutableLiveData(null)
+    val login: MutableLiveData<LoginInfor?> = MutableLiveData(null)
     val listSemester:MutableLiveData<MutableList<SemesterMark>?> = MutableLiveData(null)
     val cntaa:MutableLiveData<Int> = MutableLiveData(0)
     val listExam:MutableLiveData<MutableList<ExamTimetable>?> = MutableLiveData(null)

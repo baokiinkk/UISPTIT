@@ -1,7 +1,6 @@
 package com.baokiin.uis.data.repository.login
 
 import android.annotation.SuppressLint
-import android.util.Log
 import com.baokiin.uis.data.api.HttpUis
 import com.baokiin.uisptit.data.db.AppDao
 import com.baokiin.uisptit.data.db.model.*
@@ -16,20 +15,19 @@ class DataRepositoryImpl(var network: HttpUis, var dao:AppDao) :
     private var list: MutableMap<String, String>? = null
     // private lateinit var loginInfor: LoginInfor
 
-    @Throws(DataRepository.LoginException::class)
-    override suspend fun isLogin(name:String, pass:String, islogin:suspend (Boolean) -> Unit) {
-           list = network.login(name,pass)
-            if (list!!.isNotEmpty()) {
-                dao.deleteExam()
-                dao.deleteExamTimeTable()
-                dao.deleteInforUser()
-                dao.deleteMark()
-                dao.deleteTimeTable()
-                dao.deleteSemester()
-                val exam = xuliLichThi(list!!.get("LichThi")!!)
-                for (i in exam) {
-                    //Log.d("tncnhan", i.toString())
-                    dao.addExamTimeTable(
+    override suspend fun isLogin(name: String, pass: String, islogin: suspend (String) -> Unit) {
+        list = network.login(name, pass)
+        if (!list!!.containsKey("error")) {
+            dao.deleteExam()
+            dao.deleteExamTimeTable()
+            dao.deleteInforUser()
+            dao.deleteMark()
+            dao.deleteTimeTable()
+            dao.deleteSemester()
+            val exam = xuliLichThi(list!!.get("LichThi")!!)
+            for (i in exam) {
+                //Log.d("tncnhan", i.toString())
+                dao.addExamTimeTable(
                         ExamTimetable(
                             0,
                             i[0],
@@ -81,9 +79,9 @@ class DataRepositoryImpl(var network: HttpUis, var dao:AppDao) :
                 }
 
 
-                islogin(true)
+            islogin("")
             } else {
-                islogin(false)
+            islogin(list!!.get("error")!!)
             }
     }
 

@@ -1,7 +1,6 @@
 package com.baokiin.uis.data.api
 
 import android.content.Context
-import android.util.Log
 import com.franmontiel.persistentcookiejar.ClearableCookieJar
 import com.franmontiel.persistentcookiejar.PersistentCookieJar
 import com.franmontiel.persistentcookiejar.cache.SetCookieCache
@@ -16,16 +15,19 @@ import java.util.concurrent.TimeUnit
 class HttpUis( var context: Context)  {
      fun login(name:String,pass:String) : MutableMap<String,String>  {
          //Log.d("tncnhan", "start request")\
+         val list: MutableMap<String, String> = mutableMapOf()
          //check  name
-         if (name.get(0).toLowerCase() != 'n')
-             return mutableMapOf()
+
+         if (name.length > 0 && name.get(0).toLowerCase() != 'n') {
+             list["error"] = "Tài khoản không hợp lệ!"
+             return list
+         }
 
 
-         val list :MutableMap<String,String> = mutableMapOf()
          val cookieJars: ClearableCookieJar =
-            PersistentCookieJar(SetCookieCache(), SharedPrefsCookiePersistor(context))
+             PersistentCookieJar(SetCookieCache(), SharedPrefsCookiePersistor(context))
          var client = OkHttpClient().newBuilder()
-            .cookieJar(cookieJars)
+             .cookieJar(cookieJars)
              .connectTimeout(10, TimeUnit.SECONDS)
              .writeTimeout(10, TimeUnit.SECONDS)
              .readTimeout(10, TimeUnit.SECONDS)
@@ -92,7 +94,8 @@ class HttpUis( var context: Context)  {
              .build()
          response = client.newCall(request).execute()
          if(response.priorResponse() != null){
-             list["error"] = "Vào trang UIS mục Xem Điểm để đánh giá giảng viên!"
+             list["error"] =
+                 "Vào trang UIS mục Xem Điểm để đánh giá giảng viên sau đó mới có thể tiếp tục sử dụng app!"
              return list
          }
          responseHtml = Jsoup.parse(response.body().string())
