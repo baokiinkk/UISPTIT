@@ -1,9 +1,10 @@
 package com.baokiin.uisptit.activity
 
+import android.app.ActivityManager
+import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import com.baokiin.uisptit.R
@@ -12,7 +13,6 @@ import com.google.android.play.core.appupdate.AppUpdateManagerFactory
 import com.google.android.play.core.install.model.AppUpdateType
 import com.google.android.play.core.install.model.AppUpdateType.IMMEDIATE
 import com.google.android.play.core.install.model.UpdateAvailability
-import com.google.android.play.core.ktx.requestAppUpdateInfo
 
 
 class MainActivity : AppCompatActivity(){
@@ -24,7 +24,9 @@ class MainActivity : AppCompatActivity(){
 
         super.onCreate(savedInstanceState)
 
+
         //in-app update
+        var updated : Boolean = false
         // Creates instance of the manager.
         appUpdateManager = AppUpdateManagerFactory.create(this)
         // Returns an intent object that you use to check for an update.
@@ -44,11 +46,13 @@ class MainActivity : AppCompatActivity(){
                             this,
                             // Include a request code to later monitor this update request.
                             MY_REQUEST_CODE)
+                        updated = true
+
                     }
                 }
 
-
         setContentView(R.layout.activity_main)
+
     }
 
     override fun onBackPressed() {

@@ -11,6 +11,7 @@ import android.graphics.drawable.Drawable
 import android.net.ConnectivityManager
 import android.net.NetworkInfo
 import android.os.Bundle
+import android.util.Log
 import android.view.KeyEvent
 import android.view.LayoutInflater
 import android.view.View
@@ -265,11 +266,19 @@ class InfoFragment : Fragment(){
         fresh.setShadowRadius(0)
         fresh.setColorSchemeColors(Color.WHITE)
         fresh.setOnRefreshListener {
+            sp = requireActivity().getSharedPreferences("Login", Context.MODE_PRIVATE)
             val cm: ConnectivityManager? = activity?.getSystemService(Context.CONNECTIVITY_SERVICE ) as ConnectivityManager?
             val activeNetwork: NetworkInfo? = cm?.activeNetworkInfo
             val isConnected: Boolean = activeNetwork?.isConnectedOrConnecting == true
             if(isConnected) {
-                viewModel.reload()
+                if(!sp.contains("reload")){
+                    Log.d("tncnhan", "test")
+                    findNavController().navigate(R.id.to_login)
+                }
+                else{
+                    viewModel.reload()
+                }
+
             }
             else {
                 Toast.makeText(context, "Không kết nối được!", Toast.LENGTH_SHORT).show()

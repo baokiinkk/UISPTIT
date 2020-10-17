@@ -51,6 +51,7 @@ class LoginFragment : Fragment(){
         viewModel.bool.observe(viewLifecycleOwner, Observer {
                 if (it.equals("")) {
                     sp.edit().putBoolean("login", true).apply()
+                    sp.edit().putBoolean("reload", true).apply()
                     findNavController().navigate(R.id.login_to_infor)
                 } else {
                     spin_kit.visibility = View.GONE
