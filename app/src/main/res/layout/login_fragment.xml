@@ -92,8 +92,8 @@
             style="@style/Widget.MaterialComponents.Button.OutlinedButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="300dp"
-            android:layout_marginEnd="300dp"
+            android:layout_marginStart="500dp"
+            android:layout_marginEnd="500dp"
             android:layout_marginBottom="16dp"
             android:background="#00FFFFFF"
             android:text="@string/login"
@@ -106,7 +106,6 @@
             app:iconTint="#000000"
             app:layout_constraintBottom_toTopOf="@+id/textView4"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.521"
             app:layout_constraintStart_toStartOf="parent"
             app:rippleColor="@color/colorAccent"
             app:strokeColor="#FFFFFF" />
@@ -119,7 +118,7 @@
             android:layout_marginEnd="500dp"
             android:layout_marginBottom="8dp"
             android:gravity="center"
-            android:textColor="#B30000"
+            android:textColor="@color/colorError"
             app:layout_constraintBottom_toTopOf="@+id/login_button"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />

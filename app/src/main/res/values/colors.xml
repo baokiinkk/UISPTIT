@@ -38,5 +38,6 @@
     <color name="cardTittle">#99293346</color>
     <color name="lineColor">#00D7C1</color>
     <color name="colorThongTinSinhVien">#CDFFFFFF</color>
+    <color name="colorError">#FF2E2E</color>
 
 </resources>

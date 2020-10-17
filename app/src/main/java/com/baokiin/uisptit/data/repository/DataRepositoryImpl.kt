@@ -71,7 +71,7 @@ class DataRepositoryImpl(var network: HttpUis, var dao:AppDao) :
 
                 }
 
-
+//                xuLiMonHoc2(list!!.get("TKB2")!!)
                 val tkb = xuLiTKB(xuLiMonHoc(list!!.get("TKB")!!), xuLiTuanHoc(list!!.get("TuanHoc")!!))
                 for (i in tkb) {
                     dao.addTimeTable(
@@ -208,7 +208,6 @@ class DataRepositoryImpl(var network: HttpUis, var dao:AppDao) :
             }
         }
 
-
         return temp
     }
     fun xuLiDiem(htmlFile: String): MutableList<MutableList<String>> {
@@ -249,6 +248,10 @@ class DataRepositoryImpl(var network: HttpUis, var dao:AppDao) :
                 }
             }
         }
+
+//        for(i in 0 until res.size){
+//            Log.d("tncnhan", res[i].toString())
+//        }
         return res
     }
 
@@ -283,11 +286,36 @@ class DataRepositoryImpl(var network: HttpUis, var dao:AppDao) :
                 monHoc.add(noiDung[i])
             }
         }
-        for (i in 0 until res.size){
-            Log.d("tncnhan", res[i].toString())
-        }
         return res
     }
+
+//    fun xuLiMonHoc2(htmlFile : String) : MutableList<MutableList<String>>{
+//        val htmlDidJsoup = Jsoup.parse(htmlFile)
+//        val doc = htmlDidJsoup.select("div.grid-roll2>table.body-table")
+//        val noiDung = mutableListOf<String>()
+//        for (x in doc) {
+//            Log.d("tncnhan", x.text())
+//            noiDung.add(x.text())
+//        }
+//
+//        val res = mutableListOf<MutableList<String>>()
+//        var monHoc:MutableList<String> = mutableListOf()
+//        for (i in 0 until noiDung.size) {
+//            val j = i%15
+//            if (j == 14) {
+//                if(!monHoc[0].equals(""))
+//                    res.add(monHoc)
+//                monHoc = mutableListOf()
+//            }
+//            else{
+//                monHoc.add(noiDung[i])
+//            }
+//        }
+//        for(i in 0 until res.size){
+//            Log.d("tncnhan", "mon " + res[i].toString())
+//        }
+//        return res
+//    }
 
     // gom mã tuần học và môn học để thành dữ liệu đổ vào sql
     fun xuLiTKB(listMonHoc : MutableList<MutableList<String>>, listTuan : MutableList<String>) : MutableList<MutableList<String>>{

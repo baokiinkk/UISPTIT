@@ -125,9 +125,24 @@ class HttpUis( var context: Context)  {
          response = client.newCall(request).execute()
          list["LichThi"] = response.body().string()
 
+         /*
+         TODO
+         //test TKB
+         request = Request.Builder()
+         .url("http://uis.ptithcm.edu.vn/default.aspx?page=thoikhoabieu&sta=1")
+         .get()
+         .build()
+         response = client.newCall(request).execute()
 
-         //============================
-         // TUAN HOC =================
+         list["TKB2"] = response.body().string()
+
+         //====================================
+         ============================
+
+
+
+         TUAN HOC =================
+         */
          request = Request.Builder()
              .url("http://uis.ptithcm.edu.vn/Default.aspx?page=thoikhoabieu")
              .get()
@@ -155,6 +170,8 @@ class HttpUis( var context: Context)  {
          response = client.newCall(request).execute()
 
          list["TKB"] = response.body().string()
+
+
 
 
          // LOG OUT ================

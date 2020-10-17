@@ -2,6 +2,7 @@ package com.baokiin.uisptit.ui.mark
 
 import android.content.pm.ActivityInfo
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -48,8 +49,10 @@ class MarkFragment :Fragment() {
                             tmpSemester.add( SemesterMark("",0f,0f,0f,0f,0,0))
                         var j = 0
                         tmpSemester.addAll(it)
+
                         tmp.add(mark[0])
                         for (i in 1 until mark.size) {
+                            //Log.d("tncnhan", mark[i].semester)
                             if (mark[i].semester == str) {
                                 tmp.add(mark[i])
                                 if (i == mark.size - 1) {
@@ -65,6 +68,11 @@ class MarkFragment :Fragment() {
                                 tmp = mutableListOf()
                                 tmp.add(mark[i])
                                 str = mark[i].semester
+                                if (i == mark.size - 1) {
+                                    if(j>=it.size)
+                                        tmpSemester.add( SemesterMark("",0f,0f,0f,0f,0,0))
+                                    list.add(ListMark(decodeSemester(str), tmp, tmpSemester[j]))
+                                }
                             }
                         }
                         adapter.submitList(list)
