@@ -13,6 +13,7 @@ import java.util.*
 
 class DataRepositoryImpl(var network: HttpUis, var dao:AppDao) :
     DataRepository {
+    private val hashKey = "askdfjalksjfl;ka"
     private var list: MutableMap<String, String>? = null
     // private lateinit var loginInfor: LoginInfor
 
@@ -89,6 +90,7 @@ class DataRepositoryImpl(var network: HttpUis, var dao:AppDao) :
 
 
     override suspend fun addLogin(name: String, pass: String) {
+
             dao.addUser(LoginInfor(name,pass))
     }
 
@@ -126,7 +128,9 @@ class DataRepositoryImpl(var network: HttpUis, var dao:AppDao) :
     }
 
     override suspend fun getLogin(data: suspend (MutableList<LoginInfor>) -> Unit) {
-            data(dao.getLogin())
+        var accountInfo: MutableList<LoginInfor> = dao.getLogin()
+
+        data(accountInfo)
     }
 
     override suspend fun getTimeTable(data: (MutableList<TimeTable>) -> Unit) {
@@ -383,5 +387,6 @@ class DataRepositoryImpl(var network: HttpUis, var dao:AppDao) :
             return true
         }
     }
+
 
 }

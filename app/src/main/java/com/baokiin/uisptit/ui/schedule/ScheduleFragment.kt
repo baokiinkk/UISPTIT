@@ -85,8 +85,7 @@ class ScheduleFragment : Fragment() {
                         dataSpinner
                     )
                     bd.spinner.adapter = spinnerAdapter
-                    bd.spinner.setSelection(2)
-                    bd.spinner.setSelection(getCurrentWeek(dataSpinner))
+                    bd.spinner.setSelection(getCurrentWeek(dataSpinner), false)
 
                 }
             }
@@ -114,11 +113,14 @@ class ScheduleFragment : Fragment() {
                 position: Int,
                 id: Long
             ) {
-                viewpager.setCurrentItem(position,true)
+                viewpager.setCurrentItem(
+                    position, false
+                )
             }
         }
         home.setOnClickListener {
-            viewpager.currentItem = getCurrentWeek(dataSpinner)
+
+            viewpager.setCurrentItem(getCurrentWeek(dataSpinner), true)
         }
     }
     private fun decodeSemester(str : String) : String{

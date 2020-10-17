@@ -9,26 +9,23 @@
             name="data"
             type="com.baokiin.uisptit.data.db.model.ListTableTime" />
     </data>
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:background="@color/infoBackground"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_gravity="center">
 
         <TableLayout
-            android:layout_width="0dp"
-            android:layout_height="0dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/txtTitle"
             android:layout_marginTop="5dp"
-            android:layout_marginBottom="5dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txtTitle">
+            android:layout_marginBottom="5dp">
 
             <TableRow
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="5dp"
-               >
+                android:layout_marginBottom="5dp">
 
                 <TextView
                     android:layout_width="0dp"
@@ -55,8 +52,8 @@
                     android:layout_weight="2"
                     android:gravity="center"
                     android:text="THỨ BA"
-                    android:textSize="@dimen/sizeThuVaTiet"
                     android:textColor="@color/textToday"
+                    android:textSize="@dimen/sizeThuVaTiet"
                     tools:ignore="HardcodedText" />
 
                 <TextView
@@ -66,8 +63,8 @@
                     android:layout_weight="2"
                     android:gravity="center"
                     android:text="THỨ TƯ"
-                    android:textSize="@dimen/sizeThuVaTiet"
                     android:textColor="@color/textToday"
+                    android:textSize="@dimen/sizeThuVaTiet"
                     tools:ignore="HardcodedText" />
 
                 <TextView
@@ -77,8 +74,8 @@
                     android:layout_weight="2"
                     android:gravity="center"
                     android:text="THỨ NĂM"
-                    android:textSize="@dimen/sizeThuVaTiet"
                     android:textColor="@color/textToday"
+                    android:textSize="@dimen/sizeThuVaTiet"
                     tools:ignore="HardcodedText" />
 
                 <TextView
@@ -88,8 +85,8 @@
                     android:layout_weight="2"
                     android:gravity="center"
                     android:text="THỨ SÁU"
-                    android:textSize="@dimen/sizeThuVaTiet"
                     android:textColor="@color/textToday"
+                    android:textSize="@dimen/sizeThuVaTiet"
                     tools:ignore="HardcodedText" />
 
                 <TextView
@@ -99,19 +96,19 @@
                     android:layout_weight="2"
                     android:gravity="center"
                     android:text="THỨ BẢY"
-                    android:textSize="@dimen/sizeThuVaTiet"
                     android:textColor="@color/textToday"
+                    android:textSize="@dimen/sizeThuVaTiet"
                     tools:ignore="HardcodedText" />
 
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginEnd="5dp"
                     android:layout_weight="2"
                     android:gravity="center"
                     android:text="CHỦ NHẬT"
-                    android:layout_marginEnd="5dp"
-                    android:textSize="@dimen/sizeThuVaTiet"
                     android:textColor="@color/textToday"
+                    android:textSize="@dimen/sizeThuVaTiet"
                     tools:ignore="HardcodedText" />
 
             </TableRow>
@@ -139,8 +136,8 @@
                             android:layout_weight="1"
                             android:gravity="center"
                             android:text="Tiết 1"
-                            android:textSize="@dimen/sizeThuVaTiet"
                             android:textColor="@color/textToday"
+                            android:textSize="@dimen/sizeThuVaTiet"
                             tools:ignore="HardcodedText" />
                     </TableRow>
 
@@ -155,8 +152,8 @@
                             android:layout_weight="1"
                             android:gravity="center"
                             android:text="Tiết 2"
-                            android:textSize="@dimen/sizeThuVaTiet"
                             android:textColor="@color/textToday"
+                            android:textSize="@dimen/sizeThuVaTiet"
                             tools:ignore="HardcodedText" />
                     </TableRow>
 
@@ -171,8 +168,8 @@
                             android:layout_weight="1"
                             android:gravity="center"
                             android:text="Tiết 3"
-                            android:textSize="@dimen/sizeThuVaTiet"
                             android:textColor="@color/textToday"
+                            android:textSize="@dimen/sizeThuVaTiet"
                             tools:ignore="HardcodedText" />
                     </TableRow>
 
@@ -187,8 +184,8 @@
                             android:layout_weight="1"
                             android:gravity="center"
                             android:text="Tiết 4"
-                            android:textSize="@dimen/sizeThuVaTiet"
                             android:textColor="@color/textToday"
+                            android:textSize="@dimen/sizeThuVaTiet"
                             tools:ignore="HardcodedText" />
                     </TableRow>
 
@@ -203,310 +200,314 @@
                             android:layout_weight="1"
                             android:gravity="center"
                             android:text="Tiết 5"
-                            android:textSize="@dimen/sizeThuVaTiet"
                             android:textColor="@color/textToday"
+                            android:textSize="@dimen/sizeThuVaTiet"
                             tools:ignore="HardcodedText" />
                     </TableRow>
                 </TableLayout>
 
 
-                    <androidx.constraintlayout.widget.ConstraintLayout
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginEnd="10dp"
+                    android:layout_weight="2"
+                    android:background="@drawable/tomorrow_background"
+                    android:gravity="center">
+
+                    <TextView
+                        android:id="@+id/txtTenT2S"
                         android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_marginEnd="10dp"
-                        android:layout_weight="2"
-                        android:gravity="center"
-                        android:background="@drawable/tomorrow_background">
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginEnd="5dp"
+                        android:gravity="center|start"
+                        android:textColor="@color/textTomorrow"
+                        android:textSize="@dimen/sizeTenMonVaPhong"
+                        app:layout_constraintBottom_toTopOf="@+id/txtPT2S"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.41000003" />
 
-                        <TextView
-                            android:id="@+id/txtTenT2S"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="5dp"
-                            android:layout_marginTop="10dp"
-                            android:layout_marginEnd="5dp"
-                            android:gravity="center|start"
-                            android:textColor="@color/textTomorrow"
-                            android:textSize="@dimen/sizeTenMonVaPhong"
-                            app:layout_constraintBottom_toTopOf="@+id/txtPT2S"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintHorizontal_bias="0.5"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"
-                            app:layout_constraintVertical_bias="0.41000003" />
-
-                        <TextView
-                            android:id="@+id/txtPT2S"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="5dp"
-                            android:layout_marginTop="2dp"
-                            android:layout_marginEnd="5dp"
-                            android:layout_marginBottom="10dp"
-                            android:textColor="@color/textTomorrow"
-                            android:textSize="@dimen/sizeTenMonVaPhong"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintHorizontal_bias="0.5"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/txtTenT2S" />
-
-                    </androidx.constraintlayout.widget.ConstraintLayout>
-
-                    <androidx.constraintlayout.widget.ConstraintLayout
+                    <TextView
+                        android:id="@+id/txtPT2S"
                         android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_marginEnd="10dp"
-                        android:layout_weight="2"
-                        android:gravity="center"
-                        android:background="@drawable/tomorrow_background">
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginTop="2dp"
+                        android:layout_marginEnd="5dp"
+                        android:layout_marginBottom="10dp"
+                        android:textColor="@color/textTomorrow"
+                        android:textSize="@dimen/sizeTenMonVaPhong"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/txtTenT2S" />
 
-                        <TextView
-                            android:id="@+id/txtTenT3S"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="5dp"
-                            android:layout_marginTop="10dp"
-                            android:layout_marginEnd="5dp"
-                            android:gravity="center|start"
-                            android:textColor="@color/textTomorrow"
-                            android:textSize="@dimen/sizeTenMonVaPhong"
-                            app:layout_constraintBottom_toTopOf="@+id/txtPT3S"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintHorizontal_bias="0.5"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"
-                            app:layout_constraintVertical_bias="0.41000003" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
-                        <TextView
-                            android:id="@+id/txtPT3S"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="5dp"
-                            android:layout_marginTop="2dp"
-                            android:layout_marginEnd="5dp"
-                            android:layout_marginBottom="10dp"
-                            android:text=""
-                            android:textColor="@color/textTomorrow"
-                            android:textSize="@dimen/sizeTenMonVaPhong"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintHorizontal_bias="0.5"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/txtTenT3S" />
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginEnd="10dp"
+                    android:layout_weight="2"
+                    android:background="@drawable/tomorrow_background"
+                    android:gravity="center">
 
-                    </androidx.constraintlayout.widget.ConstraintLayout>
-
-                    <androidx.constraintlayout.widget.ConstraintLayout
+                    <TextView
+                        android:id="@+id/txtTenT3S"
                         android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_marginEnd="10dp"
-                        android:layout_weight="2"
-                        android:gravity="center"
-                        android:background="@drawable/tomorrow_background">
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginEnd="5dp"
+                        android:gravity="center|start"
+                        android:textColor="@color/textTomorrow"
+                        android:textSize="@dimen/sizeTenMonVaPhong"
+                        app:layout_constraintBottom_toTopOf="@+id/txtPT3S"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.41000003" />
 
-                        <TextView
-                            android:id="@+id/txtTenT4S"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="5dp"
-                            android:layout_marginTop="10dp"
-                            android:layout_marginEnd="5dp"
-                            android:gravity="center|start"
-                            android:textColor="@color/textTomorrow"
-                            android:textSize="@dimen/sizeTenMonVaPhong"
-                            app:layout_constraintBottom_toTopOf="@+id/txtPT4S"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintHorizontal_bias="0.5"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"
-                            app:layout_constraintVertical_bias="0.41000003" />
-
-                        <TextView
-                            android:id="@+id/txtPT4S"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="5dp"
-                            android:layout_marginTop="2dp"
-                            android:layout_marginEnd="5dp"
-                            android:layout_marginBottom="10dp"
-                            android:textColor="@color/textTomorrow"
-                            android:textSize="@dimen/sizeTenMonVaPhong"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintHorizontal_bias="0.5"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/txtTenT4S" />
-
-                    </androidx.constraintlayout.widget.ConstraintLayout>
-                    <androidx.constraintlayout.widget.ConstraintLayout
+                    <TextView
+                        android:id="@+id/txtPT3S"
                         android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_marginEnd="10dp"
-                        android:layout_weight="2"
-                        android:gravity="center"
-                        android:background="@drawable/tomorrow_background">
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginTop="2dp"
+                        android:layout_marginEnd="5dp"
+                        android:layout_marginBottom="10dp"
+                        android:text=""
+                        android:textColor="@color/textTomorrow"
+                        android:textSize="@dimen/sizeTenMonVaPhong"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/txtTenT3S" />
 
-                        <TextView
-                            android:id="@+id/txtTenT5S"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="5dp"
-                            android:layout_marginTop="10dp"
-                            android:layout_marginEnd="5dp"
-                            android:gravity="center|start"
-                            android:textColor="@color/textTomorrow"
-                            android:textSize="@dimen/sizeTenMonVaPhong"
-                            app:layout_constraintBottom_toTopOf="@+id/txtPT5S"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintHorizontal_bias="0.5"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"
-                            app:layout_constraintVertical_bias="0.41000003" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
-                        <TextView
-                            android:id="@+id/txtPT5S"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="5dp"
-                            android:layout_marginTop="2dp"
-                            android:layout_marginEnd="5dp"
-                            android:layout_marginBottom="10dp"
-                            android:textColor="@color/textTomorrow"
-                            android:textSize="@dimen/sizeTenMonVaPhong"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintHorizontal_bias="0.5"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/txtTenT5S" />
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginEnd="10dp"
+                    android:layout_weight="2"
+                    android:background="@drawable/tomorrow_background"
+                    android:gravity="center">
 
-                    </androidx.constraintlayout.widget.ConstraintLayout>
-                    <androidx.constraintlayout.widget.ConstraintLayout
+                    <TextView
+                        android:id="@+id/txtTenT4S"
                         android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_marginEnd="10dp"
-                        android:layout_weight="2"
-                        android:gravity="center"
-                        android:background="@drawable/tomorrow_background">
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginEnd="5dp"
+                        android:gravity="center|start"
+                        android:textColor="@color/textTomorrow"
+                        android:textSize="@dimen/sizeTenMonVaPhong"
+                        app:layout_constraintBottom_toTopOf="@+id/txtPT4S"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.41000003" />
 
-                        <TextView
-                            android:id="@+id/txtTenT6S"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="5dp"
-                            android:layout_marginTop="10dp"
-                            android:layout_marginEnd="5dp"
-                            android:gravity="center|start"
-                            android:textColor="@color/textTomorrow"
-                            android:textSize="@dimen/sizeTenMonVaPhong"
-                            app:layout_constraintBottom_toTopOf="@+id/txtPT6S"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintHorizontal_bias="0.5"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"
-                            app:layout_constraintVertical_bias="0.41000003" />
-
-                        <TextView
-                            android:id="@+id/txtPT6S"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="5dp"
-                            android:layout_marginTop="2dp"
-                            android:layout_marginEnd="5dp"
-                            android:layout_marginBottom="10dp"
-                            android:textColor="@color/textTomorrow"
-                            android:textSize="@dimen/sizeTenMonVaPhong"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintHorizontal_bias="0.5"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/txtTenT6S" />
-
-                    </androidx.constraintlayout.widget.ConstraintLayout>
-                    <androidx.constraintlayout.widget.ConstraintLayout
+                    <TextView
+                        android:id="@+id/txtPT4S"
                         android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_marginEnd="10dp"
-                        android:layout_weight="2"
-                        android:gravity="center"
-                        android:background="@drawable/tomorrow_background">
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginTop="2dp"
+                        android:layout_marginEnd="5dp"
+                        android:layout_marginBottom="10dp"
+                        android:textColor="@color/textTomorrow"
+                        android:textSize="@dimen/sizeTenMonVaPhong"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/txtTenT4S" />
 
-                        <TextView
-                            android:id="@+id/txtTenT7S"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="5dp"
-                            android:layout_marginTop="10dp"
-                            android:layout_marginEnd="5dp"
-                            android:gravity="center|start"
-                            android:textColor="@color/textTomorrow"
-                            android:textSize="@dimen/sizeTenMonVaPhong"
-                            app:layout_constraintBottom_toTopOf="@+id/txtPT7S"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintHorizontal_bias="0.5"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"
-                            app:layout_constraintVertical_bias="0.41000003" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
-                        <TextView
-                            android:id="@+id/txtPT7S"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="5dp"
-                            android:layout_marginTop="2dp"
-                            android:layout_marginEnd="5dp"
-                            android:layout_marginBottom="10dp"
-                            android:textColor="@color/textTomorrow"
-                            android:textSize="@dimen/sizeTenMonVaPhong"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintHorizontal_bias="0.5"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/txtTenT7S" />
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginEnd="10dp"
+                    android:layout_weight="2"
+                    android:background="@drawable/tomorrow_background"
+                    android:gravity="center">
 
-                    </androidx.constraintlayout.widget.ConstraintLayout>
-                    <androidx.constraintlayout.widget.ConstraintLayout
+                    <TextView
+                        android:id="@+id/txtTenT5S"
                         android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_marginEnd="10dp"
-                        android:layout_weight="2"
-                        android:gravity="center"
-                        android:background="@drawable/tomorrow_background">
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginEnd="5dp"
+                        android:gravity="center|start"
+                        android:textColor="@color/textTomorrow"
+                        android:textSize="@dimen/sizeTenMonVaPhong"
+                        app:layout_constraintBottom_toTopOf="@+id/txtPT5S"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.41000003" />
 
-                        <TextView
-                            android:id="@+id/txtTenT8S"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="5dp"
-                            android:layout_marginTop="10dp"
-                            android:layout_marginEnd="5dp"
-                            android:gravity="center|start"
-                            android:textColor="@color/textTomorrow"
-                            android:textSize="@dimen/sizeTenMonVaPhong"
-                            app:layout_constraintBottom_toTopOf="@+id/txtPT8S"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintHorizontal_bias="0.5"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"
-                            app:layout_constraintVertical_bias="0.39" />
+                    <TextView
+                        android:id="@+id/txtPT5S"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginTop="2dp"
+                        android:layout_marginEnd="5dp"
+                        android:layout_marginBottom="10dp"
+                        android:textColor="@color/textTomorrow"
+                        android:textSize="@dimen/sizeTenMonVaPhong"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/txtTenT5S" />
 
-                        <TextView
-                            android:id="@+id/txtPT8S"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="5dp"
-                            android:layout_marginTop="2dp"
-                            android:layout_marginEnd="5dp"
-                            android:layout_marginBottom="10dp"
-                            android:textColor="@color/textTomorrow"
-                            android:textSize="@dimen/sizeTenMonVaPhong"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintHorizontal_bias="0.5"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/txtTenT8S" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
-                    </androidx.constraintlayout.widget.ConstraintLayout>
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginEnd="10dp"
+                    android:layout_weight="2"
+                    android:background="@drawable/tomorrow_background"
+                    android:gravity="center">
+
+                    <TextView
+                        android:id="@+id/txtTenT6S"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginEnd="5dp"
+                        android:gravity="center|start"
+                        android:textColor="@color/textTomorrow"
+                        android:textSize="@dimen/sizeTenMonVaPhong"
+                        app:layout_constraintBottom_toTopOf="@+id/txtPT6S"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.41000003" />
+
+                    <TextView
+                        android:id="@+id/txtPT6S"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginTop="2dp"
+                        android:layout_marginEnd="5dp"
+                        android:layout_marginBottom="10dp"
+                        android:textColor="@color/textTomorrow"
+                        android:textSize="@dimen/sizeTenMonVaPhong"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/txtTenT6S" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginEnd="10dp"
+                    android:layout_weight="2"
+                    android:background="@drawable/tomorrow_background"
+                    android:gravity="center">
+
+                    <TextView
+                        android:id="@+id/txtTenT7S"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginEnd="5dp"
+                        android:gravity="center|start"
+                        android:textColor="@color/textTomorrow"
+                        android:textSize="@dimen/sizeTenMonVaPhong"
+                        app:layout_constraintBottom_toTopOf="@+id/txtPT7S"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.41000003" />
+
+                    <TextView
+                        android:id="@+id/txtPT7S"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginTop="2dp"
+                        android:layout_marginEnd="5dp"
+                        android:layout_marginBottom="10dp"
+                        android:textColor="@color/textTomorrow"
+                        android:textSize="@dimen/sizeTenMonVaPhong"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/txtTenT7S" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginEnd="10dp"
+                    android:layout_weight="2"
+                    android:background="@drawable/tomorrow_background"
+                    android:gravity="center">
+
+                    <TextView
+                        android:id="@+id/txtTenT8S"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginEnd="5dp"
+                        android:gravity="center|start"
+                        android:textColor="@color/textTomorrow"
+                        android:textSize="@dimen/sizeTenMonVaPhong"
+                        app:layout_constraintBottom_toTopOf="@+id/txtPT8S"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.39" />
+
+                    <TextView
+                        android:id="@+id/txtPT8S"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginTop="2dp"
+                        android:layout_marginEnd="5dp"
+                        android:layout_marginBottom="10dp"
+                        android:textColor="@color/textTomorrow"
+                        android:textSize="@dimen/sizeTenMonVaPhong"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/txtTenT8S" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
             </TableRow>
 
@@ -532,8 +533,8 @@
                             android:layout_weight="1"
                             android:gravity="center"
                             android:text="Tiết 6"
-                            android:textSize="@dimen/sizeThuVaTiet"
                             android:textColor="@color/textToday"
+                            android:textSize="@dimen/sizeThuVaTiet"
                             tools:ignore="HardcodedText" />
                     </TableRow>
 
@@ -548,8 +549,8 @@
                             android:layout_weight="1"
                             android:gravity="center"
                             android:text="Tiết 7"
-                            android:textSize="@dimen/sizeThuVaTiet"
                             android:textColor="@color/textToday"
+                            android:textSize="@dimen/sizeThuVaTiet"
                             tools:ignore="HardcodedText" />
                     </TableRow>
 
@@ -564,8 +565,8 @@
                             android:layout_weight="1"
                             android:gravity="center"
                             android:text="Tiết 8"
-                            android:textSize="@dimen/sizeThuVaTiet"
                             android:textColor="@color/textToday"
+                            android:textSize="@dimen/sizeThuVaTiet"
                             tools:ignore="HardcodedText" />
                     </TableRow>
 
@@ -580,8 +581,8 @@
                             android:layout_weight="1"
                             android:gravity="center"
                             android:text="Tiết 9"
-                            android:textSize="@dimen/sizeThuVaTiet"
                             android:textColor="@color/textToday"
+                            android:textSize="@dimen/sizeThuVaTiet"
                             tools:ignore="HardcodedText" />
                     </TableRow>
 
@@ -596,310 +597,315 @@
                             android:layout_weight="1"
                             android:gravity="center"
                             android:text="Tiết 10"
-                            android:textSize="@dimen/sizeThuVaTiet"
                             android:textColor="@color/textToday"
+                            android:textSize="@dimen/sizeThuVaTiet"
                             tools:ignore="HardcodedText" />
                     </TableRow>
                 </TableLayout>
 
 
-                    <androidx.constraintlayout.widget.ConstraintLayout
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginEnd="10dp"
+                    android:layout_weight="2"
+                    android:background="@drawable/tomorrow_background"
+                    android:gravity="center">
+
+                    <TextView
+                        android:id="@+id/txtTenT2C"
                         android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_marginEnd="10dp"
-                        android:layout_weight="2"
-                        android:gravity="center"
-                        android:background="@drawable/tomorrow_background">
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginEnd="5dp"
+                        android:gravity="center|start"
+                        android:textColor="@color/textTomorrow"
+                        android:textSize="@dimen/sizeTenMonVaPhong"
+                        app:layout_constraintBottom_toTopOf="@+id/txtPT2C"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.41000003" />
 
-                        <TextView
-                            android:id="@+id/txtTenT2C"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="5dp"
-                            android:layout_marginTop="10dp"
-                            android:layout_marginEnd="5dp"
-                            android:gravity="center|start"
-                            android:textColor="@color/textTomorrow"
-                            android:textSize="@dimen/sizeTenMonVaPhong"
-                            app:layout_constraintBottom_toTopOf="@+id/txtPT2C"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintHorizontal_bias="0.5"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"
-                            app:layout_constraintVertical_bias="0.41000003" />
-
-                        <TextView
-                            android:id="@+id/txtPT2C"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="5dp"
-                            android:layout_marginTop="2dp"
-                            android:layout_marginEnd="5dp"
-                            android:layout_marginBottom="10dp"
-                            android:textColor="@color/textTomorrow"
-                            android:textSize="@dimen/sizeTenMonVaPhong"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintHorizontal_bias="0.5"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/txtTenT2C" />
-
-                    </androidx.constraintlayout.widget.ConstraintLayout>
-                    <androidx.constraintlayout.widget.ConstraintLayout
+                    <TextView
+                        android:id="@+id/txtPT2C"
                         android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_marginEnd="10dp"
-                        android:layout_weight="2"
-                        android:gravity="center"
-                        android:background="@drawable/tomorrow_background">
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginTop="2dp"
+                        android:layout_marginEnd="5dp"
+                        android:layout_marginBottom="10dp"
+                        android:textColor="@color/textTomorrow"
+                        android:textSize="@dimen/sizeTenMonVaPhong"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/txtTenT2C" />
 
-                        <TextView
-                            android:id="@+id/txtTenT3C"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="5dp"
-                            android:layout_marginTop="10dp"
-                            android:layout_marginEnd="5dp"
-                            android:gravity="center|start"
-                            android:textColor="@color/textTomorrow"
-                            android:textSize="12sp"
-                            app:layout_constraintBottom_toTopOf="@+id/txtPT3C"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintHorizontal_bias="0.5"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"
-                            app:layout_constraintVertical_bias="0.41000003" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
-                        <TextView
-                            android:id="@+id/txtPT3C"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="5dp"
-                            android:layout_marginTop="2dp"
-                            android:layout_marginEnd="5dp"
-                            android:layout_marginBottom="10dp"
-                            android:text=""
-                            android:textColor="@color/textTomorrow"
-                            android:textSize="@dimen/sizeTenMonVaPhong"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintHorizontal_bias="0.5"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/txtTenT3C" />
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginEnd="10dp"
+                    android:layout_weight="2"
+                    android:background="@drawable/tomorrow_background"
+                    android:gravity="center">
 
-                    </androidx.constraintlayout.widget.ConstraintLayout>
-                    <androidx.constraintlayout.widget.ConstraintLayout
+                    <TextView
+                        android:id="@+id/txtTenT3C"
                         android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_marginEnd="10dp"
-                        android:layout_weight="2"
-                        android:gravity="center"
-                        android:background="@drawable/tomorrow_background">
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginEnd="5dp"
+                        android:gravity="center|start"
+                        android:textColor="@color/textTomorrow"
+                        android:textSize="12sp"
+                        app:layout_constraintBottom_toTopOf="@+id/txtPT3C"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.41000003" />
 
-                        <TextView
-                            android:id="@+id/txtTenT4C"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="5dp"
-                            android:layout_marginTop="10dp"
-                            android:layout_marginEnd="5dp"
-                            android:gravity="center|start"
-                            android:textColor="@color/textTomorrow"
-                            android:textSize="@dimen/sizeTenMonVaPhong"
-                            app:layout_constraintBottom_toTopOf="@+id/txtPT4C"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintHorizontal_bias="0.5"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"
-                            app:layout_constraintVertical_bias="0.41000003" />
-
-                        <TextView
-                            android:id="@+id/txtPT4C"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="5dp"
-                            android:layout_marginTop="2dp"
-                            android:layout_marginEnd="5dp"
-                            android:layout_marginBottom="10dp"
-                            android:textColor="@color/textTomorrow"
-                            android:textSize="@dimen/sizeTenMonVaPhong"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintHorizontal_bias="0.5"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/txtTenT4C" />
-
-                    </androidx.constraintlayout.widget.ConstraintLayout>
-                    <androidx.constraintlayout.widget.ConstraintLayout
+                    <TextView
+                        android:id="@+id/txtPT3C"
                         android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_marginEnd="10dp"
-                        android:layout_weight="2"
-                        android:gravity="center"
-                        android:background="@drawable/tomorrow_background"
-                        tools:ignore="TooManyViews">
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginTop="2dp"
+                        android:layout_marginEnd="5dp"
+                        android:layout_marginBottom="10dp"
+                        android:text=""
+                        android:textColor="@color/textTomorrow"
+                        android:textSize="@dimen/sizeTenMonVaPhong"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/txtTenT3C" />
 
-                        <TextView
-                            android:id="@+id/txtTenT5C"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="5dp"
-                            android:layout_marginTop="10dp"
-                            android:layout_marginEnd="5dp"
-                            android:gravity="center|start"
-                            android:textColor="@color/textTomorrow"
-                            android:textSize="@dimen/sizeTenMonVaPhong"
-                            app:layout_constraintBottom_toTopOf="@+id/txtPT5C"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintHorizontal_bias="0.5"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"
-                            app:layout_constraintVertical_bias="0.41000003" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
-                        <TextView
-                            android:id="@+id/txtPT5C"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="5dp"
-                            android:layout_marginTop="2dp"
-                            android:layout_marginEnd="5dp"
-                            android:layout_marginBottom="10dp"
-                            android:textColor="@color/textTomorrow"
-                            android:textSize="@dimen/sizeTenMonVaPhong"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintHorizontal_bias="0.5"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/txtTenT5C" />
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginEnd="10dp"
+                    android:layout_weight="2"
+                    android:background="@drawable/tomorrow_background"
+                    android:gravity="center">
 
-                    </androidx.constraintlayout.widget.ConstraintLayout>
-                    <androidx.constraintlayout.widget.ConstraintLayout
+                    <TextView
+                        android:id="@+id/txtTenT4C"
                         android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_marginEnd="10dp"
-                        android:layout_weight="2"
-                        android:gravity="center"
-                        android:background="@drawable/tomorrow_background">
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginEnd="5dp"
+                        android:gravity="center|start"
+                        android:textColor="@color/textTomorrow"
+                        android:textSize="@dimen/sizeTenMonVaPhong"
+                        app:layout_constraintBottom_toTopOf="@+id/txtPT4C"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.41000003" />
 
-                        <TextView
-                            android:id="@+id/txtTenT6C"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="5dp"
-                            android:layout_marginTop="10dp"
-                            android:layout_marginEnd="5dp"
-                            android:gravity="center|start"
-                            android:textColor="@color/textTomorrow"
-                            android:textSize="@dimen/sizeTenMonVaPhong"
-                            app:layout_constraintBottom_toTopOf="@+id/txtPT6C"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintHorizontal_bias="0.5"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"
-                            app:layout_constraintVertical_bias="0.41000003" />
-
-                        <TextView
-                            android:id="@+id/txtPT6C"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="5dp"
-                            android:layout_marginTop="2dp"
-                            android:layout_marginEnd="5dp"
-                            android:layout_marginBottom="10dp"
-                            android:textColor="@color/textTomorrow"
-                            android:textSize="@dimen/sizeTenMonVaPhong"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintHorizontal_bias="0.5"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/txtTenT6C" />
-
-                    </androidx.constraintlayout.widget.ConstraintLayout>
-                    <androidx.constraintlayout.widget.ConstraintLayout
+                    <TextView
+                        android:id="@+id/txtPT4C"
                         android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_marginEnd="10dp"
-                        android:layout_weight="2"
-                        android:gravity="center"
-                        android:background="@drawable/tomorrow_background">
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginTop="2dp"
+                        android:layout_marginEnd="5dp"
+                        android:layout_marginBottom="10dp"
+                        android:textColor="@color/textTomorrow"
+                        android:textSize="@dimen/sizeTenMonVaPhong"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/txtTenT4C" />
 
-                        <TextView
-                            android:id="@+id/txtTenT7C"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="5dp"
-                            android:layout_marginTop="10dp"
-                            android:layout_marginEnd="5dp"
-                            android:gravity="center|start"
-                            android:textColor="@color/textTomorrow"
-                            android:textSize="@dimen/sizeTenMonVaPhong"
-                            app:layout_constraintBottom_toTopOf="@+id/txtPT7C"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintHorizontal_bias="0.5"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"
-                            app:layout_constraintVertical_bias="0.41000003" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
-                        <TextView
-                            android:id="@+id/txtPT7C"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="5dp"
-                            android:layout_marginTop="2dp"
-                            android:layout_marginEnd="5dp"
-                            android:layout_marginBottom="10dp"
-                            android:textColor="@color/textTomorrow"
-                            android:textSize="@dimen/sizeTenMonVaPhong"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintHorizontal_bias="0.5"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/txtTenT7C" />
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginEnd="10dp"
+                    android:layout_weight="2"
+                    android:background="@drawable/tomorrow_background"
+                    android:gravity="center"
+                    tools:ignore="TooManyViews">
 
-                    </androidx.constraintlayout.widget.ConstraintLayout>
-
-                    <androidx.constraintlayout.widget.ConstraintLayout
+                    <TextView
+                        android:id="@+id/txtTenT5C"
                         android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_marginEnd="10dp"
-                        android:layout_weight="2"
-                        android:gravity="center"
-                        android:background="@drawable/tomorrow_background">
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginEnd="5dp"
+                        android:gravity="center|start"
+                        android:textColor="@color/textTomorrow"
+                        android:textSize="@dimen/sizeTenMonVaPhong"
+                        app:layout_constraintBottom_toTopOf="@+id/txtPT5C"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.41000003" />
 
-                        <TextView
-                            android:id="@+id/txtTenT8C"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="5dp"
-                            android:layout_marginTop="10dp"
-                            android:layout_marginEnd="5dp"
-                            android:gravity="center|start"
-                            android:textColor="@color/textTomorrow"
-                            android:textSize="@dimen/sizeTenMonVaPhong"
-                            app:layout_constraintBottom_toTopOf="@+id/txtPT8C"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintHorizontal_bias="0.5"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"
-                            app:layout_constraintVertical_bias="0.39" />
+                    <TextView
+                        android:id="@+id/txtPT5C"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginTop="2dp"
+                        android:layout_marginEnd="5dp"
+                        android:layout_marginBottom="10dp"
+                        android:textColor="@color/textTomorrow"
+                        android:textSize="@dimen/sizeTenMonVaPhong"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/txtTenT5C" />
 
-                        <TextView
-                            android:id="@+id/txtPT8C"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="5dp"
-                            android:layout_marginTop="2dp"
-                            android:layout_marginEnd="5dp"
-                            android:layout_marginBottom="10dp"
-                            android:textColor="@color/textTomorrow"
-                            android:textSize="@dimen/sizeTenMonVaPhong"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintHorizontal_bias="0.5"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/txtTenT8C" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
-                    </androidx.constraintlayout.widget.ConstraintLayout>
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginEnd="10dp"
+                    android:layout_weight="2"
+                    android:background="@drawable/tomorrow_background"
+                    android:gravity="center">
+
+                    <TextView
+                        android:id="@+id/txtTenT6C"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginEnd="5dp"
+                        android:gravity="center|start"
+                        android:textColor="@color/textTomorrow"
+                        android:textSize="@dimen/sizeTenMonVaPhong"
+                        app:layout_constraintBottom_toTopOf="@+id/txtPT6C"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.41000003" />
+
+                    <TextView
+                        android:id="@+id/txtPT6C"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginTop="2dp"
+                        android:layout_marginEnd="5dp"
+                        android:layout_marginBottom="10dp"
+                        android:textColor="@color/textTomorrow"
+                        android:textSize="@dimen/sizeTenMonVaPhong"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/txtTenT6C" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginEnd="10dp"
+                    android:layout_weight="2"
+                    android:background="@drawable/tomorrow_background"
+                    android:gravity="center">
+
+                    <TextView
+                        android:id="@+id/txtTenT7C"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginEnd="5dp"
+                        android:gravity="center|start"
+                        android:textColor="@color/textTomorrow"
+                        android:textSize="@dimen/sizeTenMonVaPhong"
+                        app:layout_constraintBottom_toTopOf="@+id/txtPT7C"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.41000003" />
+
+                    <TextView
+                        android:id="@+id/txtPT7C"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginTop="2dp"
+                        android:layout_marginEnd="5dp"
+                        android:layout_marginBottom="10dp"
+                        android:textColor="@color/textTomorrow"
+                        android:textSize="@dimen/sizeTenMonVaPhong"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/txtTenT7C" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginEnd="10dp"
+                    android:layout_weight="2"
+                    android:background="@drawable/tomorrow_background"
+                    android:gravity="center">
+
+                    <TextView
+                        android:id="@+id/txtTenT8C"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginEnd="5dp"
+                        android:gravity="center|start"
+                        android:textColor="@color/textTomorrow"
+                        android:textSize="@dimen/sizeTenMonVaPhong"
+                        app:layout_constraintBottom_toTopOf="@+id/txtPT8C"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.39" />
+
+                    <TextView
+                        android:id="@+id/txtPT8C"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginTop="2dp"
+                        android:layout_marginEnd="5dp"
+                        android:layout_marginBottom="10dp"
+                        android:textColor="@color/textTomorrow"
+                        android:textSize="@dimen/sizeTenMonVaPhong"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/txtTenT8C" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
             </TableRow>
 
@@ -910,11 +916,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
+            android:layout_centerHorizontal="true"
+            android:gravity="center"
             android:text="@{data.title}"
             android:textColor="@color/colorAccent2"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            android:textStyle="bold" />
+    </RelativeLayout>
 </layout>
