@@ -1,6 +1,7 @@
 package com.baokiin.uis.data.repository.login
 
 import android.annotation.SuppressLint
+import android.util.Log
 import com.baokiin.uis.data.api.HttpUis
 import com.baokiin.uisptit.data.db.AppDao
 import com.baokiin.uisptit.data.db.model.*
@@ -274,16 +275,17 @@ class DataRepositoryImpl(var network: HttpUis, var dao:AppDao) :
         for (i in 0 until noiDung.size) {
             val j = i%15
             if (j == 14) {
-                res.add(monHoc)
+                if(!monHoc[0].equals(""))
+                    res.add(monHoc)
                 monHoc = mutableListOf()
             }
             else{
                 monHoc.add(noiDung[i])
             }
         }
-//        for (i in 0 until res.size){
-//            Log.d("tncnhan", res[i].toString())
-//        }
+        for (i in 0 until res.size){
+            Log.d("tncnhan", res[i].toString())
+        }
         return res
     }
 
