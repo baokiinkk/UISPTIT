@@ -1,6 +1,7 @@
 package com.baokiin.uis.data.api
 
 import android.content.Context
+import android.util.Log
 import com.franmontiel.persistentcookiejar.ClearableCookieJar
 import com.franmontiel.persistentcookiejar.PersistentCookieJar
 import com.franmontiel.persistentcookiejar.cache.SetCookieCache
@@ -70,7 +71,11 @@ class HttpUis( var context: Context)  {
              .build()
 
          response = client.newCall(request).execute()
-         if (response.priorResponse() == null) return mutableMapOf()
+         //Log.d("tncnhan", "code: " + response.)
+         if (response.priorResponse() == null) {
+             list["error"] = "Sai tên đăng nhập hoặc tài khoản!"
+             return list
+         }
 
 
 
@@ -81,12 +86,16 @@ class HttpUis( var context: Context)  {
 //         response = client.newCall(request).execute()
 
          // DIEM ==============
-
          request = Request.Builder()
              .url("http://uis.ptithcm.edu.vn/default.aspx?page=xemdiemthi")
              .get()
              .build()
-         responseHtml = Jsoup.parse(client.newCall(request).execute().body().string())
+         response = client.newCall(request).execute()
+         if(response.priorResponse() != null){
+             list["error"] = "Vào trang UIS mục Xem Điểm để đánh giá giảng viên!"
+             return list
+         }
+         responseHtml = Jsoup.parse(response.body().string())
          var viewState = responseHtml.select("#__VIEWSTATE").attr("value")
          formBody = FormBody.Builder()
              .add("__EVENTTARGET", "ctl00\$ContentPlaceHolder1\$ctl00\$lnkChangeview2")

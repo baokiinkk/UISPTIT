@@ -13,7 +13,6 @@ import java.util.*
 
 class DataRepositoryImpl(var network: HttpUis, var dao:AppDao) :
     DataRepository {
-    private val hashKey = "askdfjalksjfl;ka"
     private var list: MutableMap<String, String>? = null
     // private lateinit var loginInfor: LoginInfor
 
@@ -29,7 +28,7 @@ class DataRepositoryImpl(var network: HttpUis, var dao:AppDao) :
                 dao.deleteSemester()
                 val exam = xuliLichThi(list!!.get("LichThi")!!)
                 for (i in exam) {
-                    Log.d("tncnhan", i.toString())
+                    //Log.d("tncnhan", i.toString())
                     dao.addExamTimeTable(
                         ExamTimetable(
                             0,
@@ -284,6 +283,9 @@ class DataRepositoryImpl(var network: HttpUis, var dao:AppDao) :
                 monHoc.add(noiDung[i])
             }
         }
+//        for (i in 0 until res.size){
+//            Log.d("tncnhan", res[i].toString())
+//        }
         return res
     }
 
