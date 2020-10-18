@@ -61,6 +61,7 @@ class InfoFragment : Fragment(){
         val bd: FragmentInfoBinding =
             DataBindingUtil.inflate(inflater, R.layout.fragment_info, container, false)
         vers = requireActivity().getSharedPreferences("version", Context.MODE_PRIVATE)
+        sp = requireActivity().getSharedPreferences("Login", Context.MODE_PRIVATE)
         //Log.d("tncnhan", verCode.toString())
         if( vers.getInt("versionCode", -1) != BuildConfig.VERSION_CODE){
             vers.edit().putInt("versionCode", BuildConfig.VERSION_CODE).apply()
@@ -74,7 +75,7 @@ class InfoFragment : Fragment(){
         val adapterExam = AdapterExam{
             findNavController().navigate(R.id.to_exam_scher)
         }
-        sp = requireActivity().getSharedPreferences("Login", Context.MODE_PRIVATE)
+
 
         if(!sp.getBoolean("login",false)){
             findNavController().navigate(R.id.to_login)
