@@ -26,6 +26,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
+import com.baokiin.uisptit.BuildConfig
 import com.baokiin.uisptit.R
 import com.baokiin.uisptit.databinding.LoginFragmentBinding
 import com.github.ybq.android.spinkit.sprite.Sprite
@@ -51,7 +52,10 @@ class LoginFragment : Fragment(){
         viewModel.bool.observe(viewLifecycleOwner, Observer {
                 if (it.equals("")) {
                     sp.edit().putBoolean("login", true).apply()
-                    sp.edit().putBoolean("reload", true).apply()
+                    var vers : SharedPreferences = requireActivity().getSharedPreferences("version", Context.MODE_PRIVATE)
+                    if(vers.getInt("versionCode", -1) != BuildConfig.VERSION_CODE){
+                        vers.edit().putInt("versionCode",  BuildConfig.VERSION_CODE).apply()
+                    }
                     findNavController().navigate(R.id.login_to_infor)
                 } else {
                     spin_kit.visibility = View.GONE

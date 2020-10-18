@@ -23,6 +23,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.baokiin.uisptit.BuildConfig
 import com.baokiin.uisptit.R
 import com.baokiin.uisptit.data.db.model.Mark
 import com.baokiin.uisptit.data.db.model.TimeTable
@@ -50,6 +51,7 @@ class InfoFragment : Fragment(){
     private val viewModel: InfoViewModel by viewModel()
     private lateinit var currentTime: Date
     private lateinit var sp:SharedPreferences
+    private lateinit var vers : SharedPreferences
     @SuppressLint("SimpleDateFormat")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -58,6 +60,14 @@ class InfoFragment : Fragment(){
         requireActivity().requestedOrientation  = ActivityInfo.SCREEN_ORIENTATION_SENSOR_PORTRAIT
         val bd: FragmentInfoBinding =
             DataBindingUtil.inflate(inflater, R.layout.fragment_info, container, false)
+        vers = requireActivity().getSharedPreferences("version", Context.MODE_PRIVATE)
+        //Log.d("tncnhan", verCode.toString())
+        if( vers.getInt("versionCode", -1) != BuildConfig.VERSION_CODE){
+            vers.edit().putInt("versionCode", BuildConfig.VERSION_CODE).apply()
+            sp.edit().clear().apply()
+            viewModel.deleteLogin()
+            findNavController().navigate(R.id.to_login)
+        }
         bd.lifecycleOwner = this
         bd.viewmodel = viewModel
         //Log.d("tncnhan", "check login---------------------------------")
@@ -69,6 +79,7 @@ class InfoFragment : Fragment(){
         if(!sp.getBoolean("login",false)){
             findNavController().navigate(R.id.to_login)
         }
+
         else viewModel.getData()
         val adapter = AdapterMark {
             findNavController().navigate(R.id.to_mark)
@@ -274,14 +285,7 @@ class InfoFragment : Fragment(){
             val activeNetwork: NetworkInfo? = cm?.activeNetworkInfo
             val isConnected: Boolean = activeNetwork?.isConnectedOrConnecting == true
             if(isConnected) {
-                if(!sp.contains("reload")){
-                    Log.d("tncnhan", "test")
-                    findNavController().navigate(R.id.to_login)
-                }
-                else{
                     viewModel.reload()
-                }
-
             }
             else {
                 Toast.makeText(context, "Không kết nối được!", Toast.LENGTH_SHORT).show()

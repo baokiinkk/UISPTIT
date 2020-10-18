@@ -60,4 +60,10 @@ class InfoViewModel(private val repo: DataRepository) : ViewModel() {
         return res
     }
 
+    fun deleteLogin(){
+        viewModelScope.launch(Dispatchers.IO) {
+            repo.deleteLogin()
+        }
+    }
+
 }

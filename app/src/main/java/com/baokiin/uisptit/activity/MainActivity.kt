@@ -5,6 +5,7 @@ import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import com.baokiin.uisptit.R
@@ -23,10 +24,10 @@ class MainActivity : AppCompatActivity(){
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
 
 
         //in-app update
-        var updated : Boolean = false
         // Creates instance of the manager.
         appUpdateManager = AppUpdateManagerFactory.create(this)
         // Returns an intent object that you use to check for an update.
@@ -46,12 +47,10 @@ class MainActivity : AppCompatActivity(){
                             this,
                             // Include a request code to later monitor this update request.
                             MY_REQUEST_CODE)
-                        updated = true
 
                     }
                 }
 
-        setContentView(R.layout.activity_main)
 
     }
 
@@ -71,6 +70,7 @@ class MainActivity : AppCompatActivity(){
                 // If the update is cancelled or fails,
                 // you can request to start the update again.
             }
+
         }
     }
 
