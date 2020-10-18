@@ -67,21 +67,20 @@ class InfoFragment : Fragment(){
             vers.edit().putInt("versionCode", BuildConfig.VERSION_CODE).apply()
             sp.edit().clear().apply()
             viewModel.deleteLogin()
-            findNavController().navigate(R.id.to_login)
         }
         bd.lifecycleOwner = this
         bd.viewmodel = viewModel
         //Log.d("tncnhan", "check login---------------------------------")
+        if(!sp.getBoolean("login",false)){
+            findNavController().navigate(R.id.to_login)
+        }
+        else viewModel.getData()
+
+
         val adapterExam = AdapterExam{
             findNavController().navigate(R.id.to_exam_scher)
         }
 
-
-        if(!sp.getBoolean("login",false)){
-            findNavController().navigate(R.id.to_login)
-        }
-
-        else viewModel.getData()
         val adapter = AdapterMark {
             findNavController().navigate(R.id.to_mark)
         }

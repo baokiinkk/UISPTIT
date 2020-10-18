@@ -57,9 +57,4 @@ class OptionFragment : Fragment(){
         }
 
     }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        Log.d("quocbaokiin", "back")
-    }
 }
