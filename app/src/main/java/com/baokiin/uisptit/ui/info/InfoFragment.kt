@@ -196,16 +196,19 @@ class InfoFragment : Fragment(){
 
         //Log.d("tncnhan", "refesh")
         viewModel.bool.observe(viewLifecycleOwner, Observer {
-            if (it.equals("")) {
-                viewModel.getData()
-                currentTime = Calendar.getInstance().time
-                val sdf = SimpleDateFormat("HH:mm dd/MM/yy")
-                val str = "Cập nhật lúc: " + sdf.format(currentTime).toString()
-                sp.edit().putString("updateTime", str).apply()
-                txtTime.text = str
-                Toast.makeText(context, "Cập nhật thành công!", Toast.LENGTH_SHORT).show()
-                viewModel.bool.postValue(null)
+            it?.let {
+                if (it.equals("")) {
+                    viewModel.getData()
+                    currentTime = Calendar.getInstance().time
+                    val sdf = SimpleDateFormat("HH:mm dd/MM/yy")
+                    val str = "Cập nhật lúc: " + sdf.format(currentTime).toString()
+                    sp.edit().putString("updateTime", str).apply()
+                    txtTime.text = str
+                    Toast.makeText(context, "Cập nhật thành công!", Toast.LENGTH_SHORT).show()
+                    viewModel.bool.postValue(null)
+                }
             }
+
         })
 
 
