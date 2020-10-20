@@ -1,12 +1,16 @@
 package com.baokiin.uis.data.repository.login
 
 import android.annotation.SuppressLint
+import android.text.Html
 import android.util.Log
 import com.baokiin.uis.data.api.HttpUis
 import com.baokiin.uisptit.data.db.AppDao
 import com.baokiin.uisptit.data.db.model.*
 import com.baokiin.uisptit.data.repository.DataRepository
 import org.jsoup.Jsoup
+import org.w3c.dom.Element
+import java.lang.Exception
+import java.lang.annotation.ElementType
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -19,16 +23,17 @@ class DataRepositoryImpl(var network: HttpUis, var dao:AppDao) :
     override suspend fun isLogin(name: String, pass: String, islogin: suspend (String) -> Unit) {
         list = network.login(name, pass)
         if (!list!!.containsKey("error")) {
-            dao.deleteExam()
-            dao.deleteExamTimeTable()
-            dao.deleteInforUser()
-            dao.deleteMark()
-            dao.deleteTimeTable()
-            dao.deleteSemester()
-            val exam = xuliLichThi(list!!.get("LichThi")!!)
-            for (i in exam) {
-                //Log.d("tncnhan", i.toString())
-                dao.addExamTimeTable(
+            try{
+                dao.deleteExam()
+                dao.deleteExamTimeTable()
+                dao.deleteInforUser()
+                dao.deleteMark()
+                dao.deleteTimeTable()
+                dao.deleteSemester()
+                val exam = xuliLichThi(list!!.get("LichThi")!!)
+                for (i in exam) {
+                    //Log.d("tncnhan", i.toString())
+                    dao.addExamTimeTable(
                         ExamTimetable(
                             0,
                             i[0],
@@ -47,42 +52,46 @@ class DataRepositoryImpl(var network: HttpUis, var dao:AppDao) :
 
                 val inforUser = xuLiThongTin(list!!.get("LichThi")!!)
                 dao.addInforUser(InfoUser(inforUser[0],inforUser[1],inforUser[2],inforUser[3],inforUser[4],inforUser[5],
-                        inforUser[6],inforUser[7],inforUser[8]))
+                    inforUser[6],inforUser[7],inforUser[8]))
 
                 val mark = xuLiDiem(list!!.get("Diem")!!)
                 for (i in mark)
                     dao.addMark(
-                            Mark(
-                                    0, i[0], i[2], i[3], i[4], i[5], i[6], i[7], i[8], i[9], i[10],
-                                    i[11], i[12], i[13], i[14], i[15], i[16], i[17], i[18], i[19], i[20]
-                            )
+                        Mark(
+                            0, i[0], i[2], i[3], i[4], i[5], i[6], i[7], i[8], i[9], i[10],
+                            i[11], i[12], i[13], i[14], i[15], i[16], i[17], i[18], i[19], i[20]
+                        )
                     )
 
 
                 val semester = xuLiDiemTongKet(list!!.get("Diem")!!)
                 for (i in semester) {
                     dao.addSemester(
-                            SemesterMark(
-                                    i[0], i[1].toFloat(), i[2].toFloat(), i[3].toFloat(),
-                                    i[4].toFloat(), i[5].toInt(), i[6].toInt()
-                            )
+                        SemesterMark(
+                            i[0], i[1].toFloat(), i[2].toFloat(), i[3].toFloat(),
+                            i[4].toFloat(), i[5].toInt(), i[6].toInt()
+                        )
 
                     )
 
                 }
 
-//                xuLiMonHoc2(list!!.get("TKB2")!!)
+                //xuLiMonHoc2(list!!.get("TKB2")!!)
                 val tkb = xuLiTKB(xuLiMonHoc(list!!.get("TKB")!!), xuLiTuanHoc(list!!.get("TuanHoc")!!))
                 for (i in tkb) {
                     dao.addTimeTable(
-                            TimeTable(0, i[0], i[1], i[2], i[3], i[4])
+                        TimeTable(0, i[0], i[1], i[2], i[3], i[4])
                     )
                 }
+            }
+            catch (e : Exception){
+                islogin("Lỗi trong quá trình tải dữ liệu!")
+            }
 
 
             islogin("")
             } else {
-            islogin(list!!.get("error")!!)
+                islogin(list!!.get("error")!!)
             }
     }
 
@@ -175,7 +184,7 @@ class DataRepositoryImpl(var network: HttpUis, var dao:AppDao) :
         {
             res.add(x.text())
         }
-        for(i in 1..res.size-1 step 2){
+        for(i in 1 until res.size step 2){
             temp.add(res[i])
         }
         return temp
@@ -266,38 +275,13 @@ class DataRepositoryImpl(var network: HttpUis, var dao:AppDao) :
     }
 
     // từ file html môn học -> list chứa lịch từng môn học
-    fun xuLiMonHoc(htmlFile : String) : MutableList<MutableList<String>>{
-        val htmlDidJsoup = Jsoup.parse(htmlFile)
-        val doc = htmlDidJsoup.select("table.body-table td")
-        val noiDung = mutableListOf<String>()
-        for (x in doc) {
-            noiDung.add(x.text())
-        }
-        val res = mutableListOf<MutableList<String>>()
-        var monHoc:MutableList<String> = mutableListOf()
-        for (i in 0 until noiDung.size) {
-            val j = i%15
-            if (j == 14) {
-                if(!monHoc[0].equals(""))
-                    res.add(monHoc)
-                monHoc = mutableListOf()
-            }
-            else{
-                monHoc.add(noiDung[i])
-            }
-        }
-        return res
-    }
-
-//    fun xuLiMonHoc2(htmlFile : String) : MutableList<MutableList<String>>{
+//    fun xuLiMonHoc(htmlFile : String) : MutableList<MutableList<String>>{
 //        val htmlDidJsoup = Jsoup.parse(htmlFile)
-//        val doc = htmlDidJsoup.select("div.grid-roll2>table.body-table")
+//        val doc = htmlDidJsoup.select("table.body-table td")
 //        val noiDung = mutableListOf<String>()
 //        for (x in doc) {
-//            Log.d("tncnhan", x.text())
 //            noiDung.add(x.text())
 //        }
-//
 //        val res = mutableListOf<MutableList<String>>()
 //        var monHoc:MutableList<String> = mutableListOf()
 //        for (i in 0 until noiDung.size) {
@@ -311,28 +295,65 @@ class DataRepositoryImpl(var network: HttpUis, var dao:AppDao) :
 //                monHoc.add(noiDung[i])
 //            }
 //        }
-//        for(i in 0 until res.size){
-//            Log.d("tncnhan", "mon " + res[i].toString())
+//        for(x in res){
+//            Log.d("tncnhanMonHocCu", x.toString())
 //        }
 //        return res
 //    }
+
+    fun xuLiMonHoc(htmlFile : String) : MutableList<MutableList<String>>{
+        val htmlDidJsoup = Jsoup.parse(htmlFile)
+        //val doc = htmlDidJsoup.select("div.grid-roll2>table.body-table")
+        val table =  htmlDidJsoup.select("div.grid-roll2>table")
+        val res = mutableListOf<MutableList<String>>()
+        for (x in table) {
+            val obj = x.child(0).child(0)
+            try {
+                for(i in 0 until obj.child(8).childNodes().size){
+                        var infoObj = mutableListOf<String>()
+                        for(i in 0 until 5)
+                            infoObj.add(obj.child(i).text())
+                        infoObj.add(obj.child(8).child(i).text())
+                        infoObj.add(obj.child(9).child(i).text())
+                        infoObj.add(obj.child(10).child(i).text())
+                        infoObj.add(obj.child(11).child(i).text().substring(0, 4))
+                        infoObj.add(getTuan(obj.child(13).child(i).getElementsByAttribute("onmouseover").attr("onmouseover")))
+                        res.add(infoObj)
+//                        Log.d("tncnhanMon", infoObj.toString())
+                        //Log.d("tncnhanMon", "--------------------------------------------")
+                }
+                //Log.d("tncnhanMon",obj.child(13).child(0).getElementsByAttribute("onmouseover").attr("onmouseover"))
+
+            }
+            catch (e : Exception){
+//                Log.d("tncnhan", "get Fail")
+            }
+
+
+        }
+
+
+        return res
+    }
 
     // gom mã tuần học và môn học để thành dữ liệu đổ vào sql
     fun xuLiTKB(listMonHoc : MutableList<MutableList<String>>, listTuan : MutableList<String>) : MutableList<MutableList<String>>{
         val res = mutableListOf<MutableList<String>>()
         var row = mutableListOf<String>()
-        for (week in listTuan){
+        for (i in 0 until listTuan.size){
             var emptyWeek = true
+            val week = listTuan.get(i)
             for (obj in listMonHoc){
-                if (checkDate(week,getDate(obj[13]))){
+                if (isHaveObj(i, obj[9])){
+//                    Log.d("tncnhan", "i = " + i.toString() + ", " + obj[9])
                     emptyWeek = false
                     row = mutableListOf()
                     row.add(week)
-                    row.add(thuTuNgay(obj[8]))
-                    if(obj[9] == "1") row.add("0")
+                    row.add(thuTuNgay(obj[5]))
+                    if(obj[6] == "1") row.add("0")
                     else    row.add("1")
                     row.add(obj[1])
-                    row.add(obj[11])
+                    row.add(obj[8])
                     res.add(row)
                 }
             }
@@ -346,6 +367,8 @@ class DataRepositoryImpl(var network: HttpUis, var dao:AppDao) :
                 res.add(row)
             }
         }
+//        for (x in res)
+//            Log.d("tncnhanTuanKTB", x.toString())
         return res
     }
 
@@ -418,5 +441,17 @@ class DataRepositoryImpl(var network: HttpUis, var dao:AppDao) :
         }
     }
 
+    private fun getTuan(ddrivetiptuan : String) : String{
+        return ddrivetiptuan.substring(15, ddrivetiptuan.length-2)
+    }
+
+    private fun isHaveObj(index : Int, weekString : String) : Boolean{
+        try {
+            return weekString[index] != '-'
+        }
+        catch (e : Exception) {
+            return false
+        }
+    }
 
 }
