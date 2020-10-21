@@ -252,7 +252,7 @@ class InfoFragment : Fragment(){
 
             }
             catch (e : Exception){
-                Log.d("tncnhan", "catch info")
+                //Log.d("tncnhan", "catch info")
                 sp.edit().clear().apply()
                 viewModel.deleteLogin()
                 findNavController().navigate(R.id.to_login)
