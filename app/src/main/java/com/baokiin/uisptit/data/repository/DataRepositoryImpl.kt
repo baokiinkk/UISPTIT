@@ -83,13 +83,13 @@ class DataRepositoryImpl(var network: HttpUis, var dao:AppDao) :
                         TimeTable(0, i[0], i[1], i[2], i[3], i[4])
                     )
                 }
+                islogin("")
             }
             catch (e : Exception){
+
+                //islogin("-----------------------------")
                 islogin("Lỗi trong quá trình tải dữ liệu!")
             }
-
-
-            islogin("")
             } else {
                 islogin(list!!.get("error")!!)
             }

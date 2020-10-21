@@ -10,6 +10,7 @@ import okhttp3.OkHttpClient
 import okhttp3.Request
 import org.jsoup.Jsoup
 import java.lang.Exception
+import java.net.InetAddress
 import java.util.concurrent.TimeUnit
 
 
@@ -26,6 +27,7 @@ class HttpUis( var context: Context)  {
 
 
          try{
+             val address = InetAddress.getByName("uis.ptithcm.edu.vn")
              val cookieJars: ClearableCookieJar =
                  PersistentCookieJar(SetCookieCache(), SharedPrefsCookiePersistor(context))
              var client = OkHttpClient().newBuilder()
@@ -156,23 +158,23 @@ class HttpUis( var context: Context)  {
 
 
              // TKB ==================
-             responseHtml = Jsoup.parse(res)
-             viewState = responseHtml.select("#__VIEWSTATE").attr("value")
-             formBody = FormBody.Builder()
-                 .add("__EVENTTARGET" , "ctl00\$ContentPlaceHolder1\$ctl00\$rad_ThuTiet")
-                 .add("__EVENTARGUMENT" , "")
-                 .add("__VIEWSTATE", viewState)
-                 .add("__VIEWSTATEGENERATOR", "CA0B0334")
-                 .add("ctl00\$ContentPlaceHolder1\$ctl00\$rad_ThuTiet", "rad_ThuTiet")
-                 .add("ctl00\$ContentPlaceHolder1\$ctl00\$rad_MonHoc", "rad_MonHoc")
-                 .build()
-             request = Request.Builder()
-                 .url("http://uis.ptithcm.edu.vn/Default.aspx?page=thoikhoabieu&sta=1")
-                 .post(formBody)
-                 .build()
-             response = client.newCall(request).execute()
-
-             list["TKB2"] = response.body().string()
+//             responseHtml = Jsoup.parse(res)
+//             viewState = responseHtml.select("#__VIEWSTATE").attr("value")
+//             formBody = FormBody.Builder()
+//                 .add("__EVENTTARGET" , "ctl00\$ContentPlaceHolder1\$ctl00\$rad_ThuTiet")
+//                 .add("__EVENTARGUMENT" , "")
+//                 .add("__VIEWSTATE", viewState)
+//                 .add("__VIEWSTATEGENERATOR", "CA0B0334")
+//                 .add("ctl00\$ContentPlaceHolder1\$ctl00\$rad_ThuTiet", "rad_ThuTiet")
+//                 .add("ctl00\$ContentPlaceHolder1\$ctl00\$rad_MonHoc", "rad_MonHoc")
+//                 .build()
+//             request = Request.Builder()
+//                 .url("http://uis.ptithcm.edu.vn/Default.aspx?page=thoikhoabieu&sta=1")
+//                 .post(formBody)
+//                 .build()
+//             response = client.newCall(request).execute()
+//
+//             list["TKB2"] = response.body().string()
 
 
 
