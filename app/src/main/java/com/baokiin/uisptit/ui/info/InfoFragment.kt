@@ -38,7 +38,10 @@ import com.github.mikephil.charting.formatter.ValueFormatter
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet
 import kotlinx.android.synthetic.main.fragment_info.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import java.io.IOException
 import java.lang.Exception
+import java.net.HttpURLConnection
+import java.net.URL
 import java.text.DecimalFormat
 import java.text.SimpleDateFormat
 import java.util.*
@@ -219,6 +222,10 @@ class InfoFragment : Fragment(){
                             Toast.makeText(context, "Cập nhật thành công!", Toast.LENGTH_SHORT).show()
                             viewModel.bool.postValue(null)
                         }
+                        else{
+                            Toast.makeText(context, viewModel.bool.value, Toast.LENGTH_SHORT).show()
+                            fresh.isRefreshing = false
+                        }
                     }
 
                 })
@@ -297,10 +304,17 @@ class InfoFragment : Fragment(){
             val activeNetwork: NetworkInfo? = cm?.activeNetworkInfo
             val isConnected: Boolean = activeNetwork?.isConnectedOrConnecting == true
             if(isConnected) {
+                try {
                     viewModel.reload()
+                    //Toast.makeText(context, bool, Toast.LENGTH_SHORT).show()
+                }catch (e : Exception){
+                    //Log.d("tncnhan", "no info")
+                    Toast.makeText(context, "Lỗi load dữ liệu!", Toast.LENGTH_SHORT).show()
+                    fresh.isRefreshing = false
+                }
             }
             else {
-                Toast.makeText(context, "Không kết nối được!", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, "Chưa kết nối Internet!", Toast.LENGTH_SHORT).show()
                 fresh.isRefreshing = false
             }
         }
@@ -373,6 +387,7 @@ class InfoFragment : Fragment(){
             SimpleDateFormat("dd/MM/yyyy")
         return sdf.parse(str)
     }
+
 
 
 

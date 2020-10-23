@@ -1,16 +1,24 @@
 package com.baokiin.uis.data.api
 
 import android.content.Context
+import android.net.ConnectivityManager
+import android.net.NetworkInfo
+import android.util.Log
+import android.widget.Toast
+import com.baokiin.uisptit.activity.MainActivity
 import com.franmontiel.persistentcookiejar.ClearableCookieJar
 import com.franmontiel.persistentcookiejar.PersistentCookieJar
 import com.franmontiel.persistentcookiejar.cache.SetCookieCache
 import com.franmontiel.persistentcookiejar.persistence.SharedPrefsCookiePersistor
+import com.github.mikephil.charting.charts.Chart.LOG_TAG
 import okhttp3.FormBody
 import okhttp3.OkHttpClient
 import okhttp3.Request
 import org.jsoup.Jsoup
-import java.lang.Exception
+import java.io.IOException
+import java.net.HttpURLConnection
 import java.net.InetAddress
+import java.net.URL
 import java.util.concurrent.TimeUnit
 
 
@@ -19,6 +27,10 @@ class HttpUis( var context: Context)  {
          //Log.d("tncnhan", "start request")\
          val list: MutableMap<String, String> = mutableMapOf()
          //check  name
+         if(!hasActiveInternetConnection(context)){
+             list["error"] = "Không kết nối được tới Server UIS!"
+             return list
+         }
 
          if (name.length > 0 && name.get(0).toLowerCase() != 'n') {
              list["error"] = "Tài khoản không hợp lệ!"
@@ -200,6 +212,22 @@ class HttpUis( var context: Context)  {
              return list
          }
     }
+
+    fun hasActiveInternetConnection(context: Context?): Boolean {
+            try {
+                val urlc: HttpURLConnection =
+                    URL("http://www.google.com").openConnection() as HttpURLConnection
+                urlc.setRequestProperty("User-Agent", "Test")
+                urlc.setRequestProperty("Connection", "close")
+                urlc.setConnectTimeout(1500)
+                urlc.connect()
+                return urlc.getResponseCode() === 200
+            } catch (e: IOException) {
+                //sLog.d("tncnhan", "no ping")
+            }
+        return false
+    }
+
 
 
 }

@@ -90,9 +90,10 @@ class DataRepositoryImpl(var network: HttpUis, var dao:AppDao) :
                 //islogin("-----------------------------")
                 islogin("Lỗi trong quá trình tải dữ liệu!")
             }
-            } else {
+        }
+        else {
                 islogin(list!!.get("error")!!)
-            }
+        }
     }
 
 
