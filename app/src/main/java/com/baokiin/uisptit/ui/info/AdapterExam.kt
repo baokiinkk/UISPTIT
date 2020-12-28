@@ -17,9 +17,10 @@ import com.github.mikephil.charting.data.Entry
 import com.github.mikephil.charting.highlight.Highlight
 
 
-class AdapterExam(private val onClick:()->Unit) :ListAdapter<ExamTimetable,AdapterExam.ViewHodel>(ExamDIff()) {
+class AdapterExam(private val onClick: () -> Unit) :
+    ListAdapter<ExamTimetable, AdapterExam.ViewHodel>(ExamDIff()) {
 
-    class ViewHodel(val binding:ItemExamBinding) : RecyclerView.ViewHolder(binding.root) {
+    class ViewHodel(val binding: ItemExamBinding) : RecyclerView.ViewHolder(binding.root) {
         companion object {
             fun from(parent: ViewGroup): ViewHodel {
                 val binding =
@@ -27,9 +28,9 @@ class AdapterExam(private val onClick:()->Unit) :ListAdapter<ExamTimetable,Adapt
                 return ViewHodel(binding)
             }
         }
-        fun bind(item:ExamTimetable,onClick: (() -> Unit)? = null)
-        {
-            binding.data=item
+
+        fun bind(item: ExamTimetable, onClick: (() -> Unit)? = null) {
+            binding.data = item
             onClick?.let {
                 itemView.setOnClickListener {
                     onClick()

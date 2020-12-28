@@ -38,6 +38,7 @@ class InfoViewModel(private val repo: DataRepository) : ViewModel() {
             }
         }
     }
+
     fun reload() {
         viewModelScope.launch(Dispatchers.IO) {
             repo.getLogin { infor ->
@@ -47,10 +48,17 @@ class InfoViewModel(private val repo: DataRepository) : ViewModel() {
             }
         }
     }
+
+    fun deleteLogin() {
+        viewModelScope.launch(Dispatchers.IO) {
+            repo.deleteLogin()
+        }
+    }
+
     @SuppressLint("DefaultLocale")
-    private fun xuLiTen(name : String) : String{
+    private fun xuLiTen(name: String): String {
         var res = ""
-        for(i in (name.length-1) downTo 0){
+        for (i in (name.length - 1) downTo 0) {
             if (name[i] == ' ')
                 break
             res += name[i]
@@ -60,10 +68,5 @@ class InfoViewModel(private val repo: DataRepository) : ViewModel() {
         return res
     }
 
-    fun deleteLogin(){
-        viewModelScope.launch(Dispatchers.IO) {
-            repo.deleteLogin()
-        }
-    }
 
 }

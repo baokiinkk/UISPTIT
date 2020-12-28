@@ -1,16 +1,10 @@
 package com.baokiin.uis.data.api
 
 import android.content.Context
-import android.net.ConnectivityManager
-import android.net.NetworkInfo
-import android.util.Log
-import android.widget.Toast
-import com.baokiin.uisptit.activity.MainActivity
 import com.franmontiel.persistentcookiejar.ClearableCookieJar
 import com.franmontiel.persistentcookiejar.PersistentCookieJar
 import com.franmontiel.persistentcookiejar.cache.SetCookieCache
 import com.franmontiel.persistentcookiejar.persistence.SharedPrefsCookiePersistor
-import com.github.mikephil.charting.charts.Chart.LOG_TAG
 import okhttp3.FormBody
 import okhttp3.OkHttpClient
 import okhttp3.Request
@@ -51,7 +45,7 @@ class HttpUis( var context: Context)  {
 
              //check CAPCHA
              var request: Request = Request.Builder()
-                 .url("http://uis.ptithcm.edu.vn/default.aspx")
+                 .url("https://uis.ptithcm.edu.vn/default.aspx")
                  .get()
                  .build()
              var response = client.newCall(request).execute()
@@ -67,7 +61,7 @@ class HttpUis( var context: Context)  {
                      .add("ctl00\$ContentPlaceHolder1\$ctl00\$btnXacNhan", "Vào website")
                      .build()
                  request = Request.Builder()
-                     .url("http://uis.ptithcm.edu.vn/default.aspx?page=xemdiemthi")
+                     .url("https://uis.ptithcm.edu.vn/default.aspx?page=xemdiemthi")
                      .post(formBody)
                      .build()
                  client.newCall(request).execute()
@@ -84,7 +78,7 @@ class HttpUis( var context: Context)  {
                  .build()
 
              request = Request.Builder()
-                 .url("http://uis.ptithcm.edu.vn/default.aspx")
+                 .url("https://uis.ptithcm.edu.vn/default.aspx")
                  .post(formBody)
                  .build()
 
@@ -106,7 +100,7 @@ class HttpUis( var context: Context)  {
              // DIEM ==============
              //TODO
              request = Request.Builder()
-                 .url("http://uis.ptithcm.edu.vn/default.aspx?page=xemdiemthi")
+                 .url("https://uis.ptithcm.edu.vn/default.aspx?page=xemdiemthi")
                  .get()
                  .build()
              response = client.newCall(request).execute()
@@ -124,7 +118,7 @@ class HttpUis( var context: Context)  {
                  .add("__VIEWSTATEGENERATOR", "CA0B0334")
                  .build()
              request = Request.Builder()
-                 .url("http://uis.ptithcm.edu.vn/default.aspx?page=xemdiemthi")
+                 .url("https://uis.ptithcm.edu.vn/default.aspx?page=xemdiemthi")
                  .post(formBody)
                  .build()
 
@@ -135,7 +129,7 @@ class HttpUis( var context: Context)  {
 
              // LICH THI =============
              request = Request.Builder()
-                 .url("http://uis.ptithcm.edu.vn/Default.aspx?page=xemlichthi")
+                 .url("https://uis.ptithcm.edu.vn/Default.aspx?page=xemlichthi")
                  .get()
                  .build()
              //if (response.body() == null)
@@ -146,7 +140,7 @@ class HttpUis( var context: Context)  {
              //TODO
              //test TKB
              request = Request.Builder()
-                 .url("http://uis.ptithcm.edu.vn/default.aspx?page=thoikhoabieu&sta=1")
+                 .url("https://uis.ptithcm.edu.vn/default.aspx?page=thoikhoabieu&sta=1")
                  .get()
                  .build()
              response = client.newCall(request).execute()
@@ -161,7 +155,7 @@ class HttpUis( var context: Context)  {
              //TUAN HOC =================
 
              request = Request.Builder()
-                 .url("http://uis.ptithcm.edu.vn/Default.aspx?page=thoikhoabieu")
+                 .url("https://uis.ptithcm.edu.vn/Default.aspx?page=thoikhoabieu")
                  .get()
                  .build()
              response = client.newCall(request).execute()
@@ -199,7 +193,7 @@ class HttpUis( var context: Context)  {
                  .build()
 
              request = Request.Builder()
-                 .url("http://uis.ptithcm.edu.vn/default.aspx")
+                 .url("https://uis.ptithcm.edu.vn/default.aspx")
                  .post(formBody)
                  .build()
 
@@ -216,12 +210,12 @@ class HttpUis( var context: Context)  {
     fun hasActiveInternetConnection(context: Context?): Boolean {
             try {
                 val urlc: HttpURLConnection =
-                    URL("http://www.google.com").openConnection() as HttpURLConnection
+                    URL("https://www.google.com").openConnection() as HttpURLConnection
                 urlc.setRequestProperty("User-Agent", "Test")
                 urlc.setRequestProperty("Connection", "close")
-                urlc.setConnectTimeout(1500)
+                urlc.connectTimeout = 1500
                 urlc.connect()
-                return urlc.getResponseCode() === 200
+                return urlc.responseCode === 200
             } catch (e: IOException) {
                 //sLog.d("tncnhan", "no ping")
             }
