@@ -98,7 +98,6 @@ class HttpUis( var context: Context)  {
 //         response = client.newCall(request).execute()
 
              // DIEM ==============
-             //TODO
              request = Request.Builder()
                  .url("https://uis.ptithcm.edu.vn/default.aspx?page=xemdiemthi")
                  .get()

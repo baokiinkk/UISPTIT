@@ -18,6 +18,18 @@ import java.util.*
 class DataRepositoryImpl(var network: HttpUis, var dao:AppDao) :
     DataRepository {
     private var list: MutableMap<String, String>? = null
+    private val point = mapOf<String, Float>(
+        "A+" to 4F,
+        "A" to 3.7F,
+        "B+" to 3.5F,
+        "B" to 3F,
+        "C+" to 2.5F,
+        "C" to 2F,
+        "D+" to 1.5F,
+        "D" to 1F,
+        "F" to 0F
+    )
+    private var semesterPoint = mutableMapOf<String, Float>()
     // private lateinit var loginInfor: LoginInfor
 
     override suspend fun isLogin(name: String, pass: String, islogin: suspend (String) -> Unit) {
@@ -55,21 +67,36 @@ class DataRepositoryImpl(var network: HttpUis, var dao:AppDao) :
                     inforUser[6],inforUser[7],inforUser[8]))
 
                 val mark = xuLiDiem(list!!.get("Diem")!!)
-                for (i in mark)
+                var thisSem = mark[0].get(0)
+                var sum = 0F
+                var sumPoint = 0.0F
+                for (i in mark){
+                    Log.d("tncnhan", i.toString())
+                    if(!i[0].equals(thisSem)){
+                        semesterPoint.put(thisSem, sumPoint/sum)
+                        thisSem = i[0]
+                        sumPoint = 0.0F
+                        sum = 0F
+                    }
+                    sumPoint += point.get(i[18])!! * i[4].toFloat()
+                    sum += i[4].toFloat()
                     dao.addMark(
                         Mark(
                             0, i[0], i[2], i[3], i[4], i[5], i[6], i[7], i[8], i[9], i[10],
                             i[11], i[12], i[13], i[14], i[15], i[16], i[17], i[18], i[19], i[20]
                         )
                     )
+                }
+                semesterPoint.put(thisSem, sumPoint/sum)
 
 
                 val semester = xuLiDiemTongKet(list!!.get("Diem")!!)
                 for (i in semester) {
+                    Log.d("tncnhan", i.toString())
                     dao.addSemester(
                         SemesterMark(
-                            i[0], i[1].toFloat(), i[2].toFloat(), i[3].toFloat(),
-                            i[4].toFloat(), i[5].toInt(), i[6].toInt()
+                            i[0], i[1].toFloat(), semesterPoint.get(i[0])!!, i[2].toFloat(),
+                            i[3].toFloat(), i[4].toInt(), i[5].toInt()
                         )
 
                     )
@@ -88,6 +115,7 @@ class DataRepositoryImpl(var network: HttpUis, var dao:AppDao) :
             catch (e : Exception){
 
                 //islogin("-----------------------------")
+                Log.d("tncnhan", e.toString())
                 islogin("Lỗi trong quá trình tải dữ liệu!")
             }
         }
@@ -200,11 +228,12 @@ class DataRepositoryImpl(var network: HttpUis, var dao:AppDao) :
         {
             if (!isBaoLuu(x.text()))
                 res.add(x.text())
+            Log.d("tncnhan", x.text())
         }
         val temp = mutableListOf<MutableList<String>>()
         var row : MutableList<String> = mutableListOf()
         for(i in 0 until res.size){
-            val j = i%13
+            val j = i%11
             if (j%2 == 0)
             {
                 if(j == 0)
@@ -212,8 +241,9 @@ class DataRepositoryImpl(var network: HttpUis, var dao:AppDao) :
                 else
                     row.add(res[i])
             }
-            if(j == 12){
+            if(j == 10){
                 temp.add(row)
+
                 row = mutableListOf()
             }
         }
