@@ -71,7 +71,7 @@ class DataRepositoryImpl(var network: HttpUis, var dao:AppDao) :
                 var sum = 0F
                 var sumPoint = 0.0F
                 for (i in mark){
-                    Log.d("tncnhan", i.toString())
+                    //Log.d("tncnhan", i.toString())
                     if(!i[0].equals(thisSem)){
                         semesterPoint.put(thisSem, sumPoint/sum)
                         thisSem = i[0]
@@ -92,7 +92,7 @@ class DataRepositoryImpl(var network: HttpUis, var dao:AppDao) :
 
                 val semester = xuLiDiemTongKet(list!!.get("Diem")!!)
                 for (i in semester) {
-                    Log.d("tncnhan", i.toString())
+                    //Log.d("tncnhan", i.toString())
                     dao.addSemester(
                         SemesterMark(
                             i[0], i[1].toFloat(), semesterPoint.get(i[0])!!, i[2].toFloat(),
@@ -115,7 +115,7 @@ class DataRepositoryImpl(var network: HttpUis, var dao:AppDao) :
             catch (e : Exception){
 
                 //islogin("-----------------------------")
-                Log.d("tncnhan", e.toString())
+                //Log.d("tncnhan", e.toString())
                 islogin("Lỗi trong quá trình tải dữ liệu!")
             }
         }
