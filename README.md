@@ -1,5 +1,5 @@
 # UISPTIT
-![Authors](https://github.com/baokiinkk/paint/blob/master/Authors.png)
+![Authors](https://play-lh.googleusercontent.com/IhsJHKS8SFOoXYptYQTJ9-PEnfsLRNTneIi3frtVMpQV1aChXmkUqAAblrnPThvYmD8=w1366-h657-rw)
 
 
 ### Thực Hiện:
@@ -33,13 +33,14 @@
     - Xử lí đa màn hình.
 
 #### III. Ảnh Demo
-![2D](https://github.com/baokiinkk/paint/blob/master/2D.png)
+![2D](https://play-lh.googleusercontent.com/VHn6teF41mG1XzN_44UZgA5XRCURRi3_MizaHhJIBU_SPz2kKAEqhkgrYMng7I9-TrY-=w1366-h657-rw)
 
-![3D](https://github.com/baokiinkk/paint/blob/master/3D.png)
+![3D](https://play-lh.googleusercontent.com/1M4WQs0Dm-T2OolWRKSz1cn11Q_zP8o5m6MVeGfE6xA0OIaL5EtxFIC8Y2rqxz6zuA=w720-h310-rw)
 
-![Impossible Triangle](https://github.com/baokiinkk/paint/blob/master/ImpossibleTri.png)
+![Impossible Triangle](https://play-lh.googleusercontent.com/O5iFVPSq6az0oujSFbU9gwNtBo5k3kuKm5nHepSY6J2CfWx_O3sms5F4AW2Ml7HEe-Y=w720-h310-rw)
+#### III. Link tải app
+https://play.google.com/store/apps/details?id=com.baokiin.uisptit&hl=vi&gl=US
 
-![Flower](https://github.com/baokiinkk/paint/blob/master/Flower.png)
 
 
 
