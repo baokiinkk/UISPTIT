@@ -8,36 +8,29 @@
 
 ### Nội Dung
 #### I. Yêu cầu
-- **Hệ tọa độ:**
-    - Cho phép người dùng chọn hệ tọa độ 2D, 3D và vẽ hệ tọa độ lên màn hình, mỗi đơn vị tương ứng 5 pixel.
-- **Vẽ trong hệ tọa độ 2D:**
-    - Tự động (hoặc cho người dùng chọn)  vẽ ít nhất 2 vật cơ bản.
-    - Mỗi vật được tạo bởi ít nhất 2 hình cơ sở khác nhau. 
-    - Có ít nhất 4 hình cơ sở được vẽ trong sản phẩm. Thực hiện các phép biến đổi (tịnh tiến, quay, đối xứng, thu phóng) trên các hình để tạo hiệu ứng chuyển động.
-    - Hiển thị tọa độ của các hình cơ sở trên hệ tọa độ người dùng.
-- **Vẽ trong hệ tọa độ 3D:**
-    - Cho phép người dùng chọn hình ảnh cơ bản cần vẽ: hình cầu, hình hộp chữ nhật, hình hộp vuông, hình trụ,… trong hệ tọa độ 3D 
-    - Dùng thuật toán Cavalier hoặc Cabinet để vẽ các đối tượng trong hệ tọa độ 3D dựa vào các thông số người dùng nhập vào. 
-    - Ví dụ: Hình cầu (tọa độ tâm, bán kính), hình hộp chữ nhật (tọa độ đỉnh dưới bên trái, chiều dài, chiều rộng, chiều cao), hình trụ (chiều cao, tâm đáy, bán kính đáy).
+- **Đăng nhập:**
+    - Cho phép người dùng đăng nhập bằng tài khoản do nhà trường cung cấp.Lưu tài khoản cho lần sau mở app.
+- **Biểu đồ quá trình học tập:**
+    - Show biểu đồ điểm tích lũy của người dùng trong suốt các năm học.
+- **Lịch thi, thời khóa biểu, điểm thi:**
+    - Show cơ bản về lịch thi, thời khóa biểu, điểm thi ở màn hình chính, người dùng muốn xem chi tiết thì nhấn vào cardView tương ứng.
 
-#### II. Một số chức năng bổ sung
-Nhóm quyết định thực hiện **Đồ Án** giống một chương trình vẽ và lấy ứng dụng **Paint** trên **Window** để làm mẫu. Do đó, **Đồ Án** có một số chức năng không có trong yêu cầu.
-
-- Chức năng cơ bản:
-  - Undo/Redo các tác vụ.
-  - Lưu/Mở ảnh.
-  - Chuyển đổi giữa vẽ 2D và 3D, hiển thị lưới tọa độ, tọa độ của hình.
-  - Vẽ các hình cơ bản 2D/3D, bằng thao tác kéo thả. Riêng với 3D có thêm mục Custom để nhập các thông số của hình.
-  - Chọn màu cho các nét vẽ.
-  - Tô màu, xóa (cục tẩy), xóa tất cả.
-  - ...
-- Chức năng bổ sung:
-  - Đối xứng hình qua điểm, gốc tọa độ, trục tọa độ.
-  - Vẽ nhiều hình đối xứng qua 1 điểm.
-  - Xoay, di chuyển hình vừa vẽ.
-  - Cài đặt ẩn/hiện lưới pixel, chọn màu cho lưới pixel.
-  - Chạy hình chuyển động, hình này được tạo từ các hình cơ sở kết hợp với các phép biến đổi hình. Gồm có: Chuyển động Pháo Hoa, Chuyển động Xe Chạy.
-  - Load ảnh động (Đang phát triển) dùng để đọc và in ra màn hình 1 loạt các hình ảnh giống một bộ phim. Hiện tại chức năng này sẽ đọc các frame hình có sẵn trong folder đồ án. Dự kiến sẽ phát triển để đọc 1 file Gif tự chọn.
+#### II. Một số kỹ thuật sử dụng
+- Android UI/UX Libraries:
+    - Sử dụng bộ thư viện từ trang: https://github.com/wasabeef/awesome-android-ui?fbclid=IwAR3pgu1yvdcgd3BCyfZTDMy2JkBVixGCc5o7OiEZ3oTCKLs9a_qTmGeuU6E
+- Mô hình MVVM:
+    - navigation điều hướng các fragment(viewModel).
+    - Koin để tiêm các class(DI).
+    - Room database.
+    - usercase để chia nhỏ dữ liệu từ repository.
+    - flow coroutine + livedata .
+    - databinding.
+- OKHTTP:
+    - request get,post thông tin từ trang uis(trường) để lấy về tập html, sử dụng Jquery để truy vấn lấy các thông tin cần thiết để đưa vào database.
+- Các thành phần sử dụng:
+    - RecycleView: sử dụng listAdapter để tối ưu, kĩ thuật recycleView lồng recyclView.
+    - ViewPage2+TabLayout để thực hiện vuốt các item, hoặc lựa chọn các tab phía dưới.
+    - Xử lí đa màn hình.
 
 #### III. Ảnh Demo
 ![2D](https://github.com/baokiinkk/paint/blob/master/2D.png)
