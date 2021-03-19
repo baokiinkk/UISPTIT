@@ -27,7 +27,8 @@ class DataRepositoryImpl(var network: HttpUis, var dao:AppDao) :
         "C" to 2F,
         "D+" to 1.5F,
         "D" to 1F,
-        "F" to 0F
+        "F" to 0F,
+        "" to 0F
     )
     private var semesterPoint = mutableMapOf<String, Float>()
     // private lateinit var loginInfor: LoginInfor
@@ -78,7 +79,13 @@ class DataRepositoryImpl(var network: HttpUis, var dao:AppDao) :
                         sumPoint = 0.0F
                         sum = 0F
                     }
-                    sumPoint += point.get(i[18])!! * i[4].toFloat()
+                    if(i[18].isBlank()){
+                        sumPoint += 0
+                    }
+                    else{
+                        sumPoint += point.get(i[18])!! * i[4].toFloat()
+                    }
+
                     sum += i[4].toFloat()
                     dao.addMark(
                         Mark(
@@ -87,9 +94,15 @@ class DataRepositoryImpl(var network: HttpUis, var dao:AppDao) :
                         )
                     )
                 }
-                semesterPoint.put(thisSem, sumPoint/sum)
 
+                if(sum.toInt() != 0){
+                    semesterPoint.put(thisSem, sumPoint/sum)
+                }
+                else{
+                    semesterPoint.put(thisSem, 0.0F)
+                }
 
+                Log.d("tncnhan", "here")
                 val semester = xuLiDiemTongKet(list!!.get("Diem")!!)
                 for (i in semester) {
                     //Log.d("tncnhan", i.toString())
@@ -115,7 +128,7 @@ class DataRepositoryImpl(var network: HttpUis, var dao:AppDao) :
             catch (e : Exception){
 
                 //islogin("-----------------------------")
-                //Log.d("tncnhan", e.toString())
+                e.printStackTrace()
                 islogin("Lỗi trong quá trình tải dữ liệu!")
             }
         }
