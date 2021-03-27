@@ -17,14 +17,14 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="m">
         <activity
-            android:name=".activity.MainActivity"
+            android:name="com.baokiin.uisptit.ui.activity.MainActivity"
             android:label="@string/app_name"
             android:windowSoftInputMode="adjustResize"
             tools:ignore="Instantiatable">
 
         </activity>
 
-        <activity android:name=".activity.SplashActivity"
+        <activity android:name="com.baokiin.uisptit.ui.activity.SplashActivity"
             android:theme="@style/SplashTheme"
             >
             <intent-filter>

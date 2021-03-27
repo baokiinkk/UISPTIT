@@ -180,6 +180,9 @@ class InfoFragment : Fragment(){
                         // set color of filled area
                         val drawable: Drawable? =
                             context?.let { it1 -> ContextCompat.getDrawable(it1, R.drawable.fade_graph) }
+                            context?.apply {
+
+                            }
                         dataset.fillDrawable = drawable
 
 

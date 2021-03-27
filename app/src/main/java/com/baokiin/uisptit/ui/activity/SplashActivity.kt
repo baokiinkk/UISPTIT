@@ -1,8 +1,7 @@
-package com.baokiin.uisptit.activity
+package com.baokiin.uisptit.ui.activity
 
 import android.content.Intent
 import android.os.Bundle
-import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
 
 

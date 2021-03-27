@@ -323,7 +323,6 @@
             android:layout_marginTop="10dp"
             android:text="Điểm trung bình học kì hệ 4:"
             android:textColor="@color/hockiTitle"
-            android:visibility="gone"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView5"
             tools:ignore="HardcodedText" />
@@ -336,7 +335,6 @@
             android:layout_marginTop="10dp"
             android:text="@{String.valueOf(viewmodel.listSemesterMark.mediumScore4)}"
             android:textColor="@color/colorAccent0"
-            android:visibility="gone"
             app:layout_constraintStart_toEndOf="@+id/textView3"
             app:layout_constraintTop_toBottomOf="@+id/textView5" />
 

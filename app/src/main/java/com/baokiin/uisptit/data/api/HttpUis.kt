@@ -1,5 +1,4 @@
 package com.baokiin.uis.data.api
-
 import android.content.Context
 import com.franmontiel.persistentcookiejar.ClearableCookieJar
 import com.franmontiel.persistentcookiejar.PersistentCookieJar

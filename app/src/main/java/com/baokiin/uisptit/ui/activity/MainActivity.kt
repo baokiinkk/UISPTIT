@@ -1,4 +1,4 @@
-package com.baokiin.uisptit.activity
+package com.baokiin.uisptit.ui.activity
 
 import android.content.Intent
 import android.content.SharedPreferences
@@ -17,13 +17,18 @@ class MainActivity : AppCompatActivity(){
     lateinit var sp: SharedPreferences
     lateinit var appUpdateManager: AppUpdateManager
     private val MY_REQUEST_CODE = 11
-
+    fun Any?.ss(f:()->Unit){
+        f()
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        val s:Int? = null
+        s.ss {
 
+        }
         //in-app update
         // Creates instance of the manager.
         appUpdateManager = AppUpdateManagerFactory.create(this)
