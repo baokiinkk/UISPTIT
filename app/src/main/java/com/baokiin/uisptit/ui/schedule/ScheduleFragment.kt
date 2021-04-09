@@ -2,6 +2,7 @@ package com.baokiin.uisptit.ui.schedule
 import android.annotation.SuppressLint
 import android.content.pm.ActivityInfo
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -69,6 +70,7 @@ class ScheduleFragment : Fragment() {
                             tmp = mutableListOf()
                             tmp.add(it[i])
                             str = it[i].tuan
+                            //Log.d("tncnhan", j.toString())
                         }
                         if (i == it.size - 1) {
                             list.add(ListTableTime(decodeSemester(str), tmp))
@@ -129,10 +131,14 @@ class ScheduleFragment : Fragment() {
     private fun getCurrentWeek(data:MutableList<String>) :Int{
         val date = Date()
         var firstWeek= true
+        //Log.d("tncnhan", data.size.toString())
+        val firstNum = data[0].substring(5, 7)
         for(i in data){
+
             val startDate = toDate(i.substring(11,21))
             val endDate = toDate(i.substring(26,36))
             val num = i.substring(5,7)
+            //Log.d("tncnhan", i.toString())
             if(firstWeek){
                 firstWeek = false
                 if(date.before(startDate))
@@ -140,7 +146,7 @@ class ScheduleFragment : Fragment() {
             }
             //Log.d("tncnhan", date.toString() + "___" + num +"___"+ startDate.toString() + "___" + endDate.toString())
             if(date.before(endDate) && (date.after(startDate)) || isSameDay(date, startDate) || isSameDay(date, endDate))
-                return (num.toInt())-1
+                return (num.toInt() - firstNum.toInt())
         }
         return data.size-1
     }
